@@ -40,7 +40,7 @@ public class SettlePrintAction extends ActionSupport {
 		String multiParams = null;
 		HttpServletRequest request = ServletActionContext.getRequest();
 		multiParams = CommonOperation.nTrim(request.getParameter("multiParams"));//I20180403D11;I20180403D9;I20180403D8
-		System.out.println(request.getParameter("MultiRows"));
+		System.out.println(request.getParameter("multiParams"));
 //		multiParams = "I20180403D11;I20180403D9;I20180403D8";
 		String paramsStr ="";
 		for (String s:multiParams.split(";")) 
