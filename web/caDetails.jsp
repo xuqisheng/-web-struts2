@@ -2,6 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	<script src="../jquery/custom/jquery.min.js"></script>
+	<script src="../jquery/custom/jquery.table2excel.min.js"></script>
 <script src="../jquery/angular.min.js">
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -55,10 +57,11 @@ table.inTable td {
 
 
 </style>
+
 <script type="text/javascript">
 
-//var year =  window.parent.year;
-//var month =  window.parent.month;
+var year =  window.parent.year;
+var month =  window.parent.month;
 var app = angular.module('detailTable', []);
 app.controller('detailTableControl', function($scope,$http) {
 //dataDB
@@ -69,7 +72,16 @@ app.controller('detailTableControl', function($scope,$http) {
 	$scope.$watch('$viewContentLoaded', function() {  
 		$scope.getData();
 	}); 
-	
+	$scope.toExcel = (function(){
+        $("#inTable").table2excel({
+            exclude: ".excludeThisClass",
+            name: "Worksheet Name",
+            exclude_inputs: false,
+            fileext: ".xls",
+            filename: $("#tableName").text()
+        });
+        alert("下载成功");
+    });
 	$scope.parser = (function(typeJson,jsonData){
 		var typeData=angular.fromJson(typeJson);
 		var jsonData = angular.fromJson(jsonData);
@@ -93,6 +105,8 @@ app.controller('detailTableControl', function($scope,$http) {
 				});
 			
 			});
+			console.log(typeList);
+			console.log(store);
 			store[key] = typeList;
 		});	
 		
@@ -169,8 +183,8 @@ app.controller('detailTableControl', function($scope,$http) {
 	//查询
 
 	$scope.getData = (function(){
-		var year = 2018;
-		var month = 04;
+		//var year = 2018;
+		//var month = 05;
         $scope.year = year;
         $scope.month= month;
 		$http({
@@ -225,8 +239,8 @@ app.filter('customCurrency', ["$filter", function ($filter) {
 </head>
 <body ng-app="detailTable" ng-controller="detailTableControl">
 <div id="print">
-<h1>{{year}}年{{month}}月各餐厅领料明细表</h1>
-<table class="inTable" title="detailTable" width="900px">
+<h1 id="tableName" class="tableName">{{year}}年{{month}}月各餐厅领料明细表</h1>
+<table id="inTable" class="inTable" title="detailTable" width="900px">
 		<thead >
 			<tr>
 				<td><b>类别名称</b></td>
@@ -273,6 +287,9 @@ app.filter('customCurrency', ["$filter", function ($filter) {
 				</tfoot>
 	</table>
 </div>
-<center><button type="button"   ng-click="printPage()" >打印界面</button></center>
+<center>
+	<button type="button"   ng-click="printPage()" >打印界面</button>
+	<button type="button"   ng-click="toExcel()">导出表格</button>
+</center>
 </body>
 </html>
