@@ -10,81 +10,21 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 
-<script type="text/javascript" src="../jquery/jquery-1.3.2.js"></script>
-<script type="text/javascript" src="../jquery/jquery.validate.min.js"></script>
-<script type="text/javascript" src="../core/common.js"></script>
-<script type="text/javascript" src="../core/customWin.js"></script>
-<script type="text/javascript" src="../core/userContext.js"></script>
+	<script src="../jquery/custom/jquery.min.js"></script>
+	<script src="../jquery/custom/jquery.table2excel.min.js"></script>
 <title>采购单</title>
-
 <script>
-	//*生成打印页面*/
-	function atoc(numberValue) {
-		var numberValue = new String(Math.round(numberValue * 100)); // 数字金额
-		var chineseValue = ""; // 转换后的汉字金额
-		var String1 = "零壹贰叁肆伍陆柒捌玖"; // 汉字数字
-		var String2 = "万仟佰拾亿仟佰拾万仟佰拾元角分"; // 对应单位
-		var len = numberValue.length; // numberValue 的字符串长度
-		var Ch1; // 数字的汉语读法
-		var Ch2; // 数字位的汉字读法
-		var nZero = 0; // 用来计算连续的零值的个数
-		var String3; // 指定位置的数值
-		if (len > 15) {
-			alert("超出计算范围");
-			return "";
-		}
-		if (numberValue == 0) {
-			chineseValue = "零元整";
-			return chineseValue;
-		}
-		String2 = String2.substr(String2.length - len, len); // 取出对应位数的STRING2的值
-		for (var i = 0; i < len; i++) {
-			String3 = parseInt(numberValue.substr(i, 1), 10); // 取出需转换的某一位的值
-			if (i != (len - 3) && i != (len - 7) && i != (len - 11)
-					&& i != (len - 15)) {
-				if (String3 == 0) {
-					Ch1 = "";
-					Ch2 = "";
-					nZero = nZero + 1;
-				} else if (String3 != 0 && nZero != 0) {
-					Ch1 = "零" + String1.substr(String3, 1);
-					Ch2 = String2.substr(i, 1);
-					nZero = 0;
-				} else {
-					Ch1 = String1.substr(String3, 1);
-					Ch2 = String2.substr(i, 1);
-					nZero = 0;
-				}
-			} else { // 该位是万亿，亿，万，元位等关键位
-				if (String3 != 0 && nZero != 0) {
-					Ch1 = "零" + String1.substr(String3, 1);
-					Ch2 = String2.substr(i, 1);
-					nZero = 0;
-				} else if (String3 != 0 && nZero == 0) {
-					Ch1 = String1.substr(String3, 1);
-					Ch2 = String2.substr(i, 1);
-					nZero = 0;
-				} else if (String3 == 0 && nZero >= 3) {
-					Ch1 = "";
-					Ch2 = "";
-					nZero = nZero + 1;
-				} else {
-					Ch1 = "";
-					Ch2 = String2.substr(i, 1);
-					nZero = nZero + 1;
-				}
-				if (i == (len - 11) || i == (len - 3)) { // 如果该位是亿位或元位，则必须写上
-					Ch2 = String2.substr(i, 1);
-				}
-			}
-			chineseValue = chineseValue + Ch1 + Ch2;
-		}
-		if (String3 == 0) { // 最后一位（分）为0时，加上“整”
-			chineseValue = chineseValue + "整";
-		}
-		return chineseValue;
-	}
-
+    function toExcelData() {
+        $("#printContent").table2excel({
+            exclude: ".excludeThisClass",
+            name: "Worksheet Name",
+            exclude_inputs: false,
+            fileext: ".xls",
+            filename: "采购单"
+        });
+        alert("导出成功！");
+    }
+    var MultiRows = window.parent.MultiRows;
 	//获得当前时间
 	var myDate = new Date();
 	var time = myDate.toLocaleString(); //获取日期与时间
@@ -115,28 +55,27 @@
 		html += ('<div class="printdiv"id = "printdiv"> ');
 		html += '<br>';
 		//条形码
-		html += ('<table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0">');
+		html += ('<thead   border="0" align="center" cellpadding="0" cellspacing="0">');
 		html += ('<tr align="center" class="TitleStyle">');
-		html += ('<td align="center"  width="40%"><h3>采购单位:' + supplier_name + '</h3></td>');
+		html += ('<td align="center" style="border:0px;" colspan="7"><h3>采购单位:' + supplier_name + '</h3></td>');
 		html += ('</tr>');
-		html += ('</table>');
+		html += ('</thead>');
 		html += ('<br>');
-		html += ('<table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0" style="line-height: 20px;border:1px #999999 solid;line-height: 22px">');
+		html += ('<thead   border="0" align="center" cellpadding="0" cellspacing="0" style="line-height: 20px;border:1px #999999 solid;line-height: 22px">');
 		html += ('<tr align="left" class="text" style="line-height:28px;">');
-		html += ('<td width="30%" align="left" class="title">&nbsp;</td>');
-		html += ('<td width="30%" align="right" class="title">&nbsp;</td>');
+		html += ('<td style="border:0px;" align="left" class="title">&nbsp;</td>');
+		html += ('<td style="border:0px;"  align="right" class="title">&nbsp;</td>');
 		html += ('</tr>');
 		html += ('<tr align="left" class="text" style="line-height:28px;">');
-		html += ('<td width="30%" align="left" class="title">&nbsp;打印时间：'
+		html += ('<td style="border-bottom:0px;border-right:0px;border-left:0px" colspan="7"  align="left" class="title">&nbsp;打印时间：'
 				+ time + '</td>');
-		html += ('<td width="30%" align="right" class="title">&nbsp;</td>');
 		html += ('</tr>');
 		html += ('<tr align="left" class="text" style="line-height:28px;">');
-		html += ('<td width="30%" align="left" class="title">&nbsp;</td>');
-		html += ('<td width="30%" align="right" class="title"></td>');
+		html += ('<td style="border:0px;" align="left" class="title">&nbsp;</td>');
+		html += ('<td style="border:0px;" align="right" class="title"></td>');
 		html += ('</tr>');
-		html += ('</table>');
-		html += ('<table class="print_table" width="90%" border="1" cellpadding="0" cellspacing="0">');
+		html += ('</thead>');
+		html += ('<tbody class="print_table"  border="1" cellpadding="0" cellspacing="0">');
 
 		$.each(tojsons,
 						function(i) {
@@ -149,7 +88,7 @@
 							var arr_details = cols.details;
 							html += '<tr class=text align="center" >';
 							html += '<td style="border:none" width="3%">&nbsp;</td>';
-							html += '<td align="center" colspan="2" width="30%" style="border:none"><h4 >';
+							html += '<td align="center" colspan="2"  style="border:none"><h4 >';
 							html += class_name;
 							html += '</4></td>';
 							html += '</tr>'
@@ -183,24 +122,26 @@
 									html += '</tr>'
 											});
 						});
-		html += ('<table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0" style="line-height: 22px;border:1px #999999 solid;line-height: 18px">');
-		html += ('<tr align="left" class="text" style="line-height:28px;">');
-		html += ('<td width="12%" align="left" class="title">&nbsp;</td>');
-		html += ('<td width="12%" align="left" class="title">&nbsp;</td>');
-		html += ('</tr>');
-		html += ('<tr align="left" class="text" style="line-height:28px;">');
-		html += ('<td width="33%" align="left" class="title">经办人（签名）：</td>');
-		html += ('<td width="33%" align="left" class="title">证明人（签名）：</td>');
-		html += ('<td width="33%" align="left" class="title">审批人（签名）：</td>');
-		html += ('</tr>');
-		html += '</table>';
-		html += '</table>';
+        html += '</tbody>';
+
+        html += ('<tfoot  border="0" align="center" cellpadding="0" cellspacing="0" style="line-height: 22px;border:1px #999999 solid;line-height: 18px">');
+        html += ('<tr align="left" class="text" style="line-height:28px;">');
+        html += ('<td colspan="7" style="border: 0px;"  align="left" class="title">&nbsp;</td>');
+        html += ('</tr>');
+        html += ('<tr align="left" style="line-height:28px;">');
+        html += ('<td style="border: 0px;" colspan="2" align="left" >经办人（签名）：</td>');
+        html += ('<td style="border: 0px;" colspan="2" align="left" >证明人（签名）：</td>');
+        html += ('<td style="border: 0px;" colspan="3" align="left" >审批人（签名）：</td>');
+        html += ('</tr>');
+        html += '</tfoot>';
+
 		html += ('</div>');
 
 		return html;
 	}
 	$(function() {
-		var MultiRows = window.parent.MultiRows;
+
+		//var MultiRows = "Z20180502D1";
 		$.ajax({
 			type : "POST",
 			url : 'OrderPrintAction_printDoOrderF.action',
@@ -241,9 +182,16 @@
 			<td><input name="BtnPrint" type="button" id="BtnPrint"
 				value="打印订购单" onClick="doprint();"></td>
 		</tr>
+		<tr align="center">
+			<td>&nbsp;</td>
+		</tr>
+		<tr align="center">
+			<td><input name="BtnPrint" type="button"  value="导出表格" onClick="toExcelData();"></td>
+		</tr>
 	</table>
-	<div id="printContent" width="100%" align="center"
-		style="overflow: auto;"></div>
+	<table id="printContent" width="100%"  border="1" align="center" cellpadding="0" cellspacing="0" >
+
+	</table>
 </body>
 
 </html>
