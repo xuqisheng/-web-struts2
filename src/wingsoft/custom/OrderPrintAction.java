@@ -302,7 +302,7 @@ System.out.println(Sql);
 String Sql =
 " select (select storename from store t where storeid=od.class_id) as class_name, "+ 
 " (select name from supplier where id =od.provide_id) as provide_name,"+
-" ol.purchase_id,od.id,od.product_name,od.specifications,od.package_unit,od.purchase_num,od.remarks, od.provide_id"+ 
+" ol.purchase_id,od.id,od.product_name,od.specifications,od.package_unit,od.purchase_num,od.remarks,od.price, od.provide_id"+
 " from order_dtl od,order_link ol  " + 
 " where od.id = ol.order_dtl_id "+ 
 " and ol.purchase_id in ("+para_str+") "+ 
@@ -323,6 +323,7 @@ System.out.println(Sql);
 						"',specifications:'"+CommonOperation.nTrim((rs.getString("specifications"))).replaceAll("'", "\\\\\'")+
 						"',package_unit:'"+CommonOperation.nTrim((rs.getString("package_unit"))).replaceAll("'", "\\\\\'")+
 						"',purchase_num:'"+CommonOperation.nTrim((rs.getString("purchase_num"))).replaceAll("'", "\\\\\'")+
+						"',price:'"+CommonOperation.nTrim((rs.getString("price"))).replaceAll("'", "\\\\\'")+
 						"'},";
 				flag = true;
 			}
@@ -350,6 +351,7 @@ System.out.println(Sql);
 				details.put("purchase_num", jsonObj.get("purchase_num"));
 				details.put("provide_name", jsonObj.get("provide_name"));
 				details.put("class_id", jsonObj.get("class_id"));
+				details.put("price",jsonObj.get("price"));
 				provide_name.add(jsonObj.getString("provide_name"));
 				class_id.add(details.getString("class_id"));
 				details_list.add(details);

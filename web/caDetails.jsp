@@ -76,7 +76,6 @@ app.controller('detailTableControl', function($scope,$http) {
         $("#inTable").table2excel({
             exclude: ".excludeThisClass",
             name: "Worksheet Name",
-            exclude_inputs: false,
             fileext: ".xls",
             filename: $("#tableName").text()
         });
@@ -142,7 +141,6 @@ app.controller('detailTableControl', function($scope,$http) {
 			classList.push(key);
 		}
 	$scope.rsList = reList;
-	//console.log(reList);
 	$scope.classList = classList;
 	$scope.getTypeCount($scope.classList,$scope.rsList);//统计班组总计
 	$scope.typeAmount($scope.classList,$scope.rsList);//统计类别总计
@@ -183,8 +181,8 @@ app.controller('detailTableControl', function($scope,$http) {
 	//查询
 
 	$scope.getData = (function(){
-		//var year = 2018;
-		//var month = 05;
+		 // year = "2018-01-01";
+		 // month =  "2019-01-01";
         $scope.year = year;
         $scope.month= month;
 		$http({
@@ -238,7 +236,7 @@ app.filter('customCurrency', ["$filter", function ($filter) {
 </head>
 <body ng-app="detailTable" ng-controller="detailTableControl">
 <div id="print">
-<h1 id="tableName" class="tableName">{{year}}年{{month}}月各餐厅领料明细表</h1>
+<h1 id="tableName" class="tableName">{{year}}至{{month}}各餐厅领料明细表</h1>
 <table id="inTable" class="inTable" title="detailTable" width="900px">
 		<thead >
 			<tr>

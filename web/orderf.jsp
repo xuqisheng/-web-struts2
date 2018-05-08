@@ -109,6 +109,7 @@ $.each(tojsons,function(i){
 			html += '<td nowrap class="title" >包装单位&nbsp;</td>';
 			html += '<td nowrap class="title" >备注&nbsp;</td>';
 			html += '<td nowrap class="title" >采购数量&nbsp;</td>';
+            //html += '<td nowrap class="title" >参考单价&nbsp;</td>';
 			html += '</tr>';
 			
 			$.each(clazz_list,function(i){
@@ -120,6 +121,8 @@ $.each(tojsons,function(i){
 				var specifications = claz_li.specifications;
 				var package_unit = claz_li.package_unit;
 				var purchase_num = claz_li.purchase_num;
+				var price = claz_li.price;
+				//console.log(price);
 				html += '<tr class=text align=center width="100%" >';
 				html += '<td >'+(i+1)+'</td>';
 				html += '<td >'+product_name+'</td>';
@@ -128,6 +131,7 @@ $.each(tojsons,function(i){
 		        html += '<td>'+package_unit+'</td>';
 		        html += '<td align=center>'+remarks+'</td>';
 				html += '<td >'+Number(purchase_num).toFixed(0)+'</td>';
+                //html += '<td >'+Number(price).toFixed(2)+'</td>';
 				html += '</tr>';
 				
 			});
@@ -152,7 +156,7 @@ return html;
 }
   $(function(){
       //MultiRows ="Z20180504D1;P20180507D2;P20180507D1;P20180504D1";
-	  MultiRows = "P20180504D1";
+	 // MultiRows = "P20180504D1";
   	$.ajax({
 		type: "POST",
 		url:  'OrderPrintAction_printAllOrder.action',

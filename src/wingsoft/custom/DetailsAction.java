@@ -51,11 +51,10 @@ public class DetailsAction extends ActionSupport{
 //暂时	
 		HttpServletRequest request = ServletActionContext.getRequest();
 		//String cost_id = CommonOperation.nTrim(request.getParameter("tableID"));
-		String year = CommonOperation.nTrim(request.getParameter("year"));
+		String year = CommonOperation.nTrim(request.getParameter("year"));//this year means STARTS TIME
 		String month = CommonOperation.nTrim(request.getParameter("month"));
-		if(Integer.valueOf(month)<10&&!month.startsWith("0")){
-			month = "0"+ month;
-		}
+		//System.out.println(year+"  "+month);
+
 		String sql1 = "select td.id as pici ,t.id,t.class_id,t.straight_toclass as isClass, " +
 				"(select tc.storename from store tc where tc.storeid= t.class_id) storename, " + 
 				"(select c.pro_cate  as cateId from product c where id =td.product_id) as pro_cate, " + 
@@ -67,7 +66,7 @@ public class DetailsAction extends ActionSupport{
 				"and t.type='1' " + 
 				"and t.status not in ('3','4','5') " + 
 				"and t.id = td.pici(+) " +
-				"and TO_CHAR(td.createdate,'YYYY-MM')  =  '"+year+"-"+month+"' "+
+				"and td.createdate between to_date ('"+year+"','yyyy-mm-dd') and to_date('"+month+"','yyyy-mm-dd') "+
 				"group by t.id,td.id,t.class_id,t.straight_toclass ,t.class_id,td.out_num,td.out_price,td.product_id " +
 				"order by td.id ";
 		String sql2 = "select t.id, t.name,t.parents from pro_category t"; 
@@ -85,8 +84,6 @@ public class DetailsAction extends ActionSupport{
 				jsonObj.put("class_id",CommonOperation.nTrim(rs1.getString("class_id")));
 				jsonObj.put("isClass", CommonOperation.nTrim(rs1.getString("isclass")));
 				jsonObj.put("storeName", CommonOperation.nTrim(rs1.getString("storename")));
-//				jsonObj.put("out_num",CommonOperation.nTrim(rs1.getString("out_num")));
-//				jsonObj.put("out_price",CommonOperation.nTrim(rs1.getString("out_price")));
 				jsonObj.put("acount", CommonOperation.nTrim(rs1.getString("acount")));
 				jsonObj.put("cate", CommonOperation.nTrim(rs1.getString("cate")));
 
@@ -95,7 +92,6 @@ public class DetailsAction extends ActionSupport{
 				}else{
 					jsonObj.put("pro_cate","00");
 				}
-
 				rs1JsonArray.add(jsonObj);
 			}
 		System.out.println("rs1JsonArray"+rs1JsonArray);
@@ -111,7 +107,7 @@ public class DetailsAction extends ActionSupport{
 			typeOfJson.add(child);
 		}	
 		typeOfJson = commonJsonDeal.childTreeCount(typeOfJson.toString(), "parents");
-//System.out.println("typeOfJson:"+typeOfJson);//分类啊
+System.out.println("typeOfJson:"+typeOfJson);//分类啊
 		JSONArray tempStockJsonArray =commonJsonDeal.updateJsonType(rs1JsonArray.toString(), "storeName");
 		JSONArray resultList = new JSONArray();
 		for(Object jArray:tempStockJsonArray) {
@@ -125,8 +121,6 @@ public class DetailsAction extends ActionSupport{
 				li_result.add(jli_childObj);
 			}
 			jli = li_result;
-//			System.out.println("大分类之后222++"+jli.toString());
-//			jObject.remove("list");
 			jObject.put("list",jli);
 			resultList.add(jObject);
 		}

@@ -82,7 +82,7 @@ public class TypeListAction extends ActionSupport {
         try {
             Object obj = JSONUtil.deserialize(request.getReader());
             JSONObject jsonObject = JSONObject.fromObject(obj);
-            List<String> StringList  = new ArrayList<String>();
+            List<String> StringList =null;
             StringList=(List<String>) jsonObject.get("selectList");
             CommonJsonDeal commonJsonDeal = CommonJsonDeal.getInstance();
 
@@ -92,8 +92,9 @@ public class TypeListAction extends ActionSupport {
                     "AND (product.category = pc.id) " +
                     "and (sn.store_id = 1 or sn.store_id is null) " +
                     "and pc.pcname in "+commonJsonDeal.getParameters(StringList) +
+                    "and sn.out_amt !=0 "+
                     "ORDER BY product.category ASC, product.name ASC, product.specifications ASC";
-
+            System.out.println(sql);
             conn = pool.getConnection();
             ps1 = conn.prepareStatement(sql);
             rs1 = ps1.executeQuery();
@@ -109,7 +110,7 @@ public class TypeListAction extends ActionSupport {
                 child.put("id",CommonOperation.nTrim(rs1.getString("id")));
                 jsonArray.add(child);
             }
-            json = commonJsonDeal.childTreeCount(jsonArray.toString(),"parents").toString();
+            json = jsonArray.toString();
             System.out.println(json);
         }catch (IOException ioe){
             ioe.printStackTrace();

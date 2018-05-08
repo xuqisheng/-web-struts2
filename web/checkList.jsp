@@ -78,7 +78,7 @@ html += ('<div id = "printdiv"> ');
 			//条形码
 			html += ('<thead  width="90%"  border="0" align="center" cellpadding="0" cellspacing="0">');
 			html += ('<tr align="center" >');
-			html += ('<td colspan="7" align="center"  style="border: 0px;" width="40%"><h3 id="tableName">入库验收单</h3></td>');
+			html += ('<td colspan="7" align="center"  style="border: 0px;" width="40%"><h3 id="tableName">客户部门验收单</h3></td>');
 			html += ('</tr>');
 			html += ('</thead>');
 			html += ('<tbody  border="0" align="center"  style="line-height: 20px;border:0px;line-height: 22px">');
@@ -157,7 +157,7 @@ return html;
 
   $(function(){
 
-	 // var MultiRows = "O20180503D4";
+	  // var MultiRows = "O20180503D4";
   	$.ajax({
 		type: "POST",
 		url:  'OrderPrintAction_checkList.action',
