@@ -8,7 +8,7 @@
 
 	<script src="../jquery/custom/jquery.min.js"></script>
 	<script src="../jquery/custom/jquery.table2excel.min.js"></script>
-<title>采购单</title>
+<title>中心仓库采购验收单</title>
 <script>
 
     function toExcelData() {
@@ -40,18 +40,18 @@ function orderbuy(printContent,tojsons){
 	$.each(tojsons,function(i){
 		var cols = tojsons[i];
 		var arr_details = cols.provide_list;
-		if (arr_details.length!=0){
-			$.each(arr_details,function(i){
-				var clazz = arr_details[i];
-				clazz_list = clazz.clazz_name;
-				if (clazz_list.length!=0){
-					$.each(clazz_list,function(i){
-						var purchase_num = clazz_list[i].purchase_num;
-						v_mount= v_mount + parseInt(purchase_num);
-					});
-				}
-			});
-		}
+		// if (arr_details.length!=0){
+		// 	$.each(arr_details,function(i){
+		// 		var clazz = arr_details[i];
+		// 		clazz_list = clazz.clazz_name;
+		// 		if (clazz_list.length!=0){
+		// 			$.each(clazz_list,function(i){
+		// 				var purchase_num = clazz_list[i].purchase_num;
+		// 				v_mount= v_mount + parseInt(purchase_num);
+		// 			});
+		// 		}
+		// 	});
+		// }
 	});
 	var myDate = new Date();
 	var time = myDate.toLocaleString( ); //获取日期与时间
@@ -63,7 +63,7 @@ html += ('<div >');
 			//条形码
 			html += ('<thead align="center" >');
 			html += ('<tr>');
-			html += ('<td align="center" style="border: 0px;text-align: center"  colspan="7"   ><h1 id="tableName">采购单</h1></td>');
+			html += ('<td align="center" style="border: 0px;text-align: center"  colspan="7"   ><h1 id="tableName">采购验收单</h1></td>');
 			html += ('</tr>');
 			html += ('</thead>');
 			html += ('<tbody border="1"  align="center"  style="line-height: 20px;border:1px #999999 solid;line-height: 22px">');
@@ -72,7 +72,7 @@ html += ('<div >');
 			html += ('</tr>');
 			html += ('<tr align="left" style="line-height:28px;">');
 			html += ('<td style="border: 0px;"  colspan="3" align="left" class="title">&nbsp;打印时间：'+time+'</td>');
-     		html += ('<td style="border: 0px;"  colspan="4" align="right" class="title">采购总金额：'+Number(v_mount).toFixed(2)+'&nbsp;</td>');
+     		// html += ('<td style="border: 0px;"  colspan="4" align="right" class="title">采购总金额：'+Number(v_mount).toFixed(2)+'&nbsp;</td>');
 			html += ('</tr>');
 			html += ('<tr>');
 			html += ('<td style="border-bottom:0px;border-right:0px;border-left:0px;width: 100%" colspan="7"  >&nbsp;</td>');
@@ -108,7 +108,7 @@ $.each(tojsons,function(i){
 			html += '<td nowrap class="title" >采购规格&nbsp;</td>';
 			html += '<td nowrap class="title" >包装单位&nbsp;</td>';
 			html += '<td nowrap class="title" >备注&nbsp;</td>';
-			html += '<td nowrap class="title" >采购金额&nbsp;</td>'; 
+			html += '<td nowrap class="title" >采购数量&nbsp;</td>';
 			html += '</tr>';
 			
 			$.each(clazz_list,function(i){
@@ -127,7 +127,7 @@ $.each(tojsons,function(i){
 		        html += '<td >'+specifications+'</td>';
 		        html += '<td>'+package_unit+'</td>';
 		        html += '<td align=center>'+remarks+'</td>';
-				html += '<td >'+Number(purchase_num).toFixed(2)+'</td>';
+				html += '<td >'+Number(purchase_num).toFixed(0)+'</td>';
 				html += '</tr>';
 				
 			});
@@ -152,7 +152,7 @@ return html;
 }
   $(function(){
       //MultiRows ="Z20180504D1;P20180507D2;P20180507D1;P20180504D1";
-	  //MultiRows = "P20180504D1";
+	  MultiRows = "P20180504D1";
   	$.ajax({
 		type: "POST",
 		url:  'OrderPrintAction_printAllOrder.action',
