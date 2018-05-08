@@ -226,7 +226,6 @@ app.controller('detailTableControl', function($scope,$http) {
 });
 app.filter('customCurrency', ["$filter", function ($filter) {
     return function(amount, currencySymbol){
-    	//var currency = $filter('number');
     	var currency = $filter('currency');
         if(amount == 0){
             return "";

@@ -14,21 +14,23 @@
 	<script src="../jquery/custom/jquery.table2excel.min.js"></script>
 <title>采购单</title>
 <script>
+    var supplier_name = window.parent.supplier_name;
+    var MultiRows = window.parent.MultiRows;
     function toExcelData() {
         $("#printContent").table2excel({
             exclude: ".excludeThisClass",
             name: "Worksheet Name",
             exclude_inputs: false,
             fileext: ".xls",
-            filename: "采购单"
+            filename: supplier_name+"采购单"+".xls"
         });
         alert("导出成功！");
     }
-    var MultiRows = window.parent.MultiRows;
+
 	//获得当前时间
 	var myDate = new Date();
 	var time = myDate.toLocaleString(); //获取日期与时间
-	var supplier_name = window.parent.supplier_name;
+
 	//先获取到相关变量值
 	var batNo = window.parent.batNo;
 	var total = window.parent.total;
@@ -63,16 +65,14 @@
 		html += ('<br>');
 		html += ('<thead   border="0" align="center" cellpadding="0" cellspacing="0" style="line-height: 20px;border:1px #999999 solid;line-height: 22px">');
 		html += ('<tr align="left" class="text" style="line-height:28px;">');
-		html += ('<td style="border:0px;" align="left" class="title">&nbsp;</td>');
-		html += ('<td style="border:0px;"  align="right" class="title">&nbsp;</td>');
+		html += ('<td colspan="7" style="border:0px;">&nbsp;</td>');
 		html += ('</tr>');
 		html += ('<tr align="left" class="text" style="line-height:28px;">');
 		html += ('<td style="border-bottom:0px;border-right:0px;border-left:0px" colspan="7"  align="left" class="title">&nbsp;打印时间：'
 				+ time + '</td>');
 		html += ('</tr>');
 		html += ('<tr align="left" class="text" style="line-height:28px;">');
-		html += ('<td style="border:0px;" align="left" class="title">&nbsp;</td>');
-		html += ('<td style="border:0px;" align="right" class="title"></td>');
+		html += ('<td colspan="7" style="border:0px;" >&nbsp;</td>');
 		html += ('</tr>');
 		html += ('</thead>');
 		html += ('<tbody class="print_table"  border="1" cellpadding="0" cellspacing="0">');
@@ -140,7 +140,7 @@
 		return html;
 	}
 	$(function() {
-
+        //MultiRows ="Z20180504D1";
 		//var MultiRows = "Z20180502D1";
 		$.ajax({
 			type : "POST",
@@ -156,7 +156,7 @@
 				if (data) {
 					html = orderbuy(printContent, data.json);
 				}
-				console.log(html);
+				// console.log(html);
 				printContent.html(html);
 			},
 			error : function(e) {

@@ -10,13 +10,15 @@
 	<script src="../jquery/custom/jquery.table2excel.min.js"></script>
 <title>采购单</title>
 <script>
+
     function toExcelData() {
+       // var table = $('#printContent').DataTable();
         $("#printContent").table2excel({
             exclude: ".excludeThisClass",
             name: "Worksheet Name",
             exclude_inputs: false,
             fileext: ".xls",
-            filename: $("#tableName").text()
+            filename: $("#tableName").text()+".xls"
         });
         alert("导出成功！");
     }
@@ -51,9 +53,6 @@ function orderbuy(printContent,tojsons){
 			});
 		}
 	});
-	
-	
-	
 	var myDate = new Date();
 	var time = myDate.toLocaleString( ); //获取日期与时间
 var url = document.URL;  
@@ -63,21 +62,20 @@ html += ('<div >');
 			html += '<br>';
 			//条形码
 			html += ('<thead align="center" >');
-			html += ('<tr align="center" class="TitleStyle">');
-			html += ('<td style="border: 0px;"  colspan="7" align="center"  ><h1 id="tableName">采购单</h1></td>');
+			html += ('<tr>');
+			html += ('<td align="center" style="border: 0px;text-align: center"  colspan="7"   ><h1 id="tableName">采购单</h1></td>');
 			html += ('</tr>');
 			html += ('</thead>');
 			html += ('<tbody border="1"  align="center"  style="line-height: 20px;border:1px #999999 solid;line-height: 22px">');
-			html += ('<tr align="left" class="text" style="line-height:28px;">');
-			html += ('<td style="border: 0px;"  align="left" class="title">&nbsp;</td>');
-     		html += ('<td style="border: 0px;"  align="right" class="title">&nbsp;</td>');
+			html += ('<tr align="left" style="line-height:28px;">');
+     		html += ('<td style="border: 0px;"  colspan="7" class="title">&nbsp;</td>');
 			html += ('</tr>');
-			html += ('<tr align="left" class="text" style="line-height:28px;">');
+			html += ('<tr align="left" style="line-height:28px;">');
 			html += ('<td style="border: 0px;"  colspan="3" align="left" class="title">&nbsp;打印时间：'+time+'</td>');
      		html += ('<td style="border: 0px;"  colspan="4" align="right" class="title">采购总金额：'+Number(v_mount).toFixed(2)+'&nbsp;</td>');
 			html += ('</tr>');
-			html += ('<tr align="left" class="text" style="line-height:28px;">');
-			html += ('<td colspan="7" width="100%" style="border-bottom: 0px;border-left: 0px;border-right: 0px;"   align="left" class="title">&nbsp;</td>');
+			html += ('<tr>');
+			html += ('<td style="border-bottom:0px;border-right:0px;border-left:0px;width: 100%" colspan="7"  >&nbsp;</td>');
      		html += ('</tr>');
 			html += ('</tbody>');
 			html += ('<tbody  border="1" >');
@@ -90,8 +88,6 @@ $.each(tojsons,function(i){
 		html += '<td style="border: 0px;"   colspan="7" align="center" style="font-weight:bold;font-size:26px;" >&nbsp;';
 		html += '<h1>'+provide_name+'</h1>';
 		html += "</td>";
-	   	html += '<td style="border: 0px;"  align="left" colspan="2"  style="border:none">';
-		html += '</td>';
 		html += '</tr>'
 		
     	$.each(arr_details,function(i){
@@ -109,7 +105,7 @@ $.each(tojsons,function(i){
 			html += '<td nowrap class="title" >序号</td>';
 			html += '<td nowrap class="title" >商品名称&nbsp;</td>';
 			html += '<td nowrap class="title" >采购单编号&nbsp;</td>';
-			html += '<td nowrap class="title" >采购规格&nbsp;</td>'; 
+			html += '<td nowrap class="title" >采购规格&nbsp;</td>';
 			html += '<td nowrap class="title" >包装单位&nbsp;</td>';
 			html += '<td nowrap class="title" >备注&nbsp;</td>';
 			html += '<td nowrap class="title" >采购金额&nbsp;</td>'; 
@@ -142,7 +138,7 @@ $.each(tojsons,function(i){
         html += '</tbody>';
         
 		html += ('<tfoot  border="0" align="center" cellpadding="0" cellspacing="0" style="line-height: 22px;border:1px #999999 solid;line-height: 18px">');
-		html += ('<tr align="left" class="text" style="line-height:28px;">');
+		html += ('<tr align="left" style="line-height:28px;">');
 		html += ('<td colspan="7" style="border: 0px;"  align="left" class="title">&nbsp;</td>');
 		html += ('</tr>');
 		html += ('<tr align="left" style="line-height:28px;">');
@@ -155,8 +151,8 @@ $.each(tojsons,function(i){
 return html;
 }
   $(function(){
-	  //
-	 // MultiRows = "P20180504D1";
+      //MultiRows ="Z20180504D1;P20180507D2;P20180507D1;P20180504D1";
+	  //MultiRows = "P20180504D1";
   	$.ajax({
 		type: "POST",
 		url:  'OrderPrintAction_printAllOrder.action',

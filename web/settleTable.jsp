@@ -19,88 +19,69 @@
 	var myDate = new Date();
 	var time = myDate.toLocaleString(); //获取日期与时间
 	var supplier_name = window.parent.supplier_name;
-    var MultiRows = window.parent.MultiRows;
 	//先获取到相关变量值
 	var batNo = window.parent.batNo;
 	var total = window.parent.total;
+    var MultiRows = window.parent.MultiRows;
+	var unitName = window.parent.supplier;
 	var req_date = window.parent.req_date;
 	var url = document.URL;
 	var uarr = url.split('/');
     function toExcelData() {
+        // var table = $('#printContent').DataTable();
         $("#printContent").table2excel({
+            exclude: ".excludeThisClass",
             name: "Worksheet Name",
             fileext: ".xls",
-            filename: "结算单打印"+".xls"
+            filename: unitName+"结算单"+".xls"
         });
         alert("导出成功！");
     }
 	function orderbuy(printContent, tojsons) {
-		var unitName =  "结算单打印";
+		//var unitName =  "结算单位XXXXX";
 		var tojsons = eval(tojsons);
 		var v_amount = 0;
+		//v_amount = v_amount + parseInt(arr_details[i].purchase_num);
 		$.each(tojsons, function(i) {
-			$.each(tojsons[i].list, function(j,apt){
-						$.each(apt.list, function(k,arr){
-							$.each(arr.list, function(l,aar){
-								v_amount = v_amount + aar.total*1;
-						});
-					});
-				});
+			$.each(tojsons[i].list, function(i,arr){
+				v_amount = v_amount + arr.total*1;
+			});
 		});
 		var myDate = new Date();
 		var time = myDate.toLocaleString(); //获取日期与时间
 		var url = document.URL;
-		var uarr = url.split('/');
 		var html = "";
 		html += ('<div class="printdiv" id = "printdiv"> ');
 		html += '<br>';
-		html += ('<thead   border="0" align="center" cellpadding="0" cellspacing="0">');
-		html += ('<tr align="center" class="TitleStyle">');
-		html += ('<td style="border:0px;" colspan="7" align="center"  width="40%"><h1>' + unitName + '</h1></td>');
+		html += ('<thead  border="0" align="center" cellpadding="0" cellspacing="0">');
+		html += ('<tr align="center">');
+		html += ('<td style="border: 0px;" align="center" colspan="7" ><h3>结算单位:' + unitName + '</h3></td>');
 		html += ('</tr>');
 		html += ('</thead>');
 		html += ('<br>');
 		html += ('<tbody   border="0" align="center" cellpadding="0" cellspacing="0" style="line-height: 20px;border:1px #999999 solid;line-height: 22px">');
 		html += ('<tr align="left" class="text" style="line-height:28px;">');
-		html += ('<td  style="border:0px;" colspan="7" align="left" class="title">&nbsp;</td>');
+		html += ('<td style="border:0px" border="0" align="left" colspan="7">&nbsp;</td>');
 		html += ('</tr>');
 		html += ('<tr align="left" class="text" style="line-height:28px;">');
-		html += ('<td  style="border-left:0px;border-right:0px;border-top: 0px;" ' +
-			'colspan="7" align="left" class="title">&nbsp;打印时间：'+ time + '</td>');
+		html += ('<td style="border-bottom:0px;border-right:0px;border-left:0px" align="left" colspan="7">&nbsp;打印时间：'	+ time + '</td>');
 		html += ('</tr>');
 		html += ('<tr align="left" class="text" style="line-height:28px;">');
-		html += ('<td style="border:0px;" colspan="7" align="right" class="title">总金额：'+Number(v_amount).toFixed(2) +'</td>');
+		html += ('<td style="border:0px" colspan="7" align="right">总金额：'+Number(v_amount).toFixed(2) +'</td>');
 		html += ('</tr>');
 		html += ('</tbody>');
-		html += ('<tbody class="print_table"  border="1" cellpadding="0" cellspacing="0">');
+		html += ('<tbody class="print_table" width="90%" border="1" cellpadding="0" cellspacing="0">');
 
 		$.each(tojsons, function(i) {
 							var cols = tojsons[i];
-							var supplier_name = cols.supplier_name;// 批次
-							var listp = cols.list;
+							var pici = cols.pici;// 批次
+							var arr_details = cols.list;
 							html += '<tr class=text align="center" >';
-							html += '<td align="center" colspan="7"  style="border:none"><h2>';
-							html += supplier_name;
-							html += '</2></td>';
-							html += '</tr>';
-		//遍历审核单
-		$.each(listp,function(j){
-			var cols = listp[j];
-			var ar_details = cols.list;
-			html += '<tr  align="center" >';
-			html += '<td style="border:none" width="3%"><h3>审核单号&nbsp;</h3></td>';
-            html += '<td align="left" style="border:0px">';
-			html += cols.apply_ord;
-			html += '</b></td>';
-			html += '</tr>';
-			//遍历批次
-			$.each(ar_details, function(l) {
-				var cols = ar_details[l];
-				var arr_details = cols.list;
-							html += '<tr class=text align=center >';
-							html += '<td  class="title" style="border:none"><strong>批次</strong></td>';
-							html += '<td style="border:none"  class="title" ><strong>'+cols.pici+'</strong></td>';
-							html += '</tr>';			
+							html += '<td style="border:none" width="3%">批次&nbsp;</td>';
+							html += '<td align="left" colspan="2" style="border:none"><h4 >';
+							html += pici;
+							html += '</4></td>';
+							html += '</tr>'
 							html += '<tr class=text align=center >';
 							html += '<td >序号</td>';
 							html += '<td >商品名称&nbsp;</td>';
@@ -109,36 +90,29 @@
 							html += '<td >商品规格&nbsp;</td>';
 							html += '<td >单价&nbsp;</td>';
 							html += '<td >小计&nbsp;</td>';
+							//html += '<td >采购金额&nbsp;</td>';
 							html += '</tr>';
-							
-							$.each(arr_details, function(k) {
-									var id = arr_details[k].id;
-									var product_name = arr_details[k].product_name;
-									var in_num = arr_details[k].in_num;
-									var package_unit = arr_details[k].package_unit;
-									var specifications = arr_details[k].specifications;
-									var in_price = arr_details[k].in_price;
-									var total = arr_details[k].total;
+							$.each(arr_details, function(i) {
+									var id = arr_details[i].id;
+									var product_name = arr_details[i].product_name;
+									var product_id = arr_details[i].product_id;
+									var in_num = arr_details[i].in_num;
+									var package_unit = arr_details[i].package_unit;
+									var specifications = arr_details[i].specifications;
+									var in_price = arr_details[i].in_price;
+									var total = arr_details[i].total;
 									html += '<tr class=text align=center width="100%" >';
-									html += '<td >' +(k+1)+ '</td>';
-									html += '<td >' +product_name+ '</td>';
-									html += '<td >' +in_num+ '</td>';
-									html += '<td>' +package_unit+ '</td>';
+									html += '<td >' + (i + 1)+ '</td>';
+									html += '<td >' + product_name + '</td>';
+									html += '<td>' +in_num + '</td>';
+									html += '<td >' + package_unit+ '</td>';
 									html += '<td >' +specifications+ '</td>';
 									html += '<td align="right">' +Number(in_price).toFixed(2)+ '</td>';
 									html += '<td align="right">' +Number(total).toFixed(2)+ '</td>';
-									html += '</tr>';
-							
-									});
-							html += '<tr class=text align=center >';
-							html += '<td class="title" style="border:none">&nbsp;</td>';
-							html += '<td style="border:none"  class="title" >&nbsp;</td>';
-							html += '</tr>';
-							
-					});
+									html += '</tr>'
+											});
 						});
-		 });
-	    html += '</tbody>';
+		html += '</tbody>';
 
         html += ('<tfoot  border="0" align="center" cellpadding="0" cellspacing="0" style="line-height: 22px;border:1px #999999 solid;line-height: 18px">');
         html += ('<tr align="left" class="text" style="line-height:28px;">');
@@ -150,17 +124,17 @@
         html += ('<td style="border: 0px;" colspan="3" align="left" >审批人（签名）：</td>');
         html += ('</tr>');
         html += '</tfoot>';
+
 		html += ('</div>');
 
 		return html;
 	}
 	$(function() {
-		//传入id
-
-		// MultiRows = "141;142;143;144";
+		//var MultiRows = window.parent.MultiRows;
+		//MultiRows = "I20180503D2";
 		$.ajax({
 			type : "POST",
-			url : 'settlePrint_allDataFromDB.action',
+			url : 'settlePrint_dataFromDB.action',
 			dataType : "json",
 			data : {
 				"multiParams" : MultiRows,

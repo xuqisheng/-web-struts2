@@ -36,9 +36,9 @@ function toExcelData() {
     $("#printContent").table2excel({
         exclude: ".excludeThisClass",
         name: "Worksheet Name",
-        exclude_inputs: false,
+        exclude_inputs: true,
         fileext: ".xls",
-        filename: $("#tableName").text()
+        filename: $("#tableName").text()+".xls"
     });
     alert("导出成功！");
 }
@@ -157,7 +157,7 @@ return html;
 
   $(function(){
 
-	  //var MultiRows = "O20180503D4";
+	 // var MultiRows = "O20180503D4";
   	$.ajax({
 		type: "POST",
 		url:  'OrderPrintAction_checkList.action',
