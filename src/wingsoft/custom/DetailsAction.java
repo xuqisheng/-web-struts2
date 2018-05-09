@@ -23,7 +23,11 @@ public class DetailsAction extends ActionSupport{
 	private static final long serialVersionUID = 3404623771668905007L;
 	public String json;
 	public String typeJson;
-	
+	public String storeNameJson ;
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
 	public String getJson() {
 		return json;
 	}
@@ -40,14 +44,24 @@ public class DetailsAction extends ActionSupport{
 		this.typeJson = typeJson;
 	}
 
+	public String getStoreNameJson() {
+		return storeNameJson;
+	}
+
+	public void setStoreNameJson(String storeNameJson) {
+		this.storeNameJson = storeNameJson;
+	}
+
 	public String dataFromDB() {
 		ConnectionPool pool = ConnectionPoolManager.getPool("CMServer");
 		System.out.println(pool);
 		Connection conn = null;
 		PreparedStatement ps1 = null;
 		PreparedStatement ps2 = null;
+		PreparedStatement psStoreNames= null;
 		ResultSet rs1 = null;
 		ResultSet rs2 = null;
+		ResultSet rsStoreNames = null;
 //暂时	
 		HttpServletRequest request = ServletActionContext.getRequest();
 		//String cost_id = CommonOperation.nTrim(request.getParameter("tableID"));
@@ -70,7 +84,7 @@ public class DetailsAction extends ActionSupport{
 				"group by t.id,td.id,t.class_id,t.straight_toclass ,t.class_id,td.out_num,td.out_price,td.product_id " +
 				"order by td.id ";
 		String sql2 = "select t.id, t.name,t.parents from pro_category t"; 
-		System.out.println(sql1);
+		String sqlStore = "select t.* from store t";
 		try {
 			CommonJsonDeal commonJsonDeal = CommonJsonDeal.getInstance();
 			conn = pool.getConnection();			
@@ -94,7 +108,7 @@ public class DetailsAction extends ActionSupport{
 				}
 				rs1JsonArray.add(jsonObj);
 			}
-		System.out.println("rs1JsonArray"+rs1JsonArray);
+System.out.println("rs1JsonArray"+rs1JsonArray);
 		ps2 = conn.prepareStatement(sql2);
 		rs2 = ps2.executeQuery();
 		//this "typeOfJson" contains all of category
@@ -124,6 +138,17 @@ System.out.println("typeOfJson:"+typeOfJson);//分类啊
 			jObject.put("list",jli);
 			resultList.add(jObject);
 		}
+
+		psStoreNames=conn.prepareStatement(sqlStore);
+		rsStoreNames = psStoreNames.executeQuery();
+		JSONArray storeNamesArray = new JSONArray();
+		while(rsStoreNames.next()){
+			JSONObject store_jo = new JSONObject();
+			store_jo.put("storename",CommonOperation.nTrim(rsStoreNames.getString("storename")));
+			storeNamesArray.add(store_jo);
+		}
+
+		storeNameJson=storeNamesArray.toString();
 		json=resultList.toString();
 		typeJson = typeOfJson.toString();
 //		System.out.println("json:"+json);
@@ -135,10 +160,14 @@ System.out.println("typeOfJson:"+typeOfJson);//分类啊
 					rs1.close();
 				if (rs2 != null)
 					rs2.close();
+				if (rsStoreNames!=null)
+					rsStoreNames.close();
 				if (ps1 != null)
 					ps1.close();
 				if (ps2 != null)
 					ps2.close();
+				if(psStoreNames!=null)
+					psStoreNames.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

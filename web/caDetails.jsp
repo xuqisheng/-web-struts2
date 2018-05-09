@@ -29,8 +29,7 @@
 		font-size: 16px;
 	}
 table.inTable {
-	width:1000px;
-	margin-left: auto;
+margin-left: auto;
 	margin-right: auto;
 	align-content: center;
 	border-width: 0px;
@@ -51,8 +50,8 @@ table.inTable td {
 	border-width: 1px;
 	border-style: solid;
 	border-color: #666666;
-	width: 15%;
-    height: 10%;
+	height: 20px;
+	width: 200px;
 }
 
 
@@ -81,10 +80,18 @@ app.controller('detailTableControl', function($scope,$http) {
         });
         alert("下载成功");
     });
-	$scope.parser = (function(typeJson,jsonData){
+	//important
+	$scope.parser = (function(typeJson,jsonData,storeNameJson){
+        var classList = [];
 		var typeData=angular.fromJson(typeJson);
 		var jsonData = angular.fromJson(jsonData);
+		var storeNames = angular.fromJson(storeNameJson);
 		var store = {};
+        angular.forEach(storeNames,function(li){
+            var temp = [];
+            classList.push(li.storename);
+            store[li.storename]=temp;
+        });
 		angular.forEach(jsonData, function (jsonD){// list
 			var cateCount = 0;
 			var key = jsonD.storeName;
@@ -104,9 +111,11 @@ app.controller('detailTableControl', function($scope,$http) {
 				});
 			
 			});
-			console.log(typeList);
-			console.log(store);
+			//console.log(typeList);
+			//console.log(store);
 			store[key] = typeList;
+            console.log(typeList);
+            console.log(store);
 		});	
 		
 		//console.log(store);//班组对应
@@ -114,13 +123,20 @@ app.controller('detailTableControl', function($scope,$http) {
 
 		reList = [];
 		//type遍历
+		///////question waiting
 		angular.forEach(typeData,function(jsObj){
 			var fobj = {};
 			fobj = jsObj;
 			var childList = [];
 			//type.list遍历
 			angular.forEach(jsObj.list,function(childType){
-				//childType对象
+
+			    //childType对象
+				/*
+				* angular.forEach(storeNames,function(li){
+            		classList.push(li.storename);
+				});
+				* */
 				for(var key in store){//key 是所有的班组名称
 					childType[key]= "0";
 					angular.forEach(store[key],function(ljj){
@@ -136,10 +152,17 @@ app.controller('detailTableControl', function($scope,$http) {
 		
 	});
 	
-	var classList = [];
-		for(var key in store){
-			classList.push(key);
-		}
+
+		// for(var key in store){
+		//     console.log(key)
+		// 	classList.push(key);
+		// }
+		// angular.forEach(storeNames,function(li){
+         //    classList.push(li.storename);
+		// });
+
+		//console.log(classList);
+
 	$scope.rsList = reList;
 	$scope.classList = classList;
 	$scope.getTypeCount($scope.classList,$scope.rsList);//统计班组总计
@@ -181,8 +204,8 @@ app.controller('detailTableControl', function($scope,$http) {
 	//查询
 
 	$scope.getData = (function(){
-		 // year = "2018-01-01";
-		 // month =  "2019-01-01";
+		 year = "2018-01-01";
+		 month =  "2019-01-01";
         $scope.year = year;
         $scope.month= month;
 		$http({
@@ -193,7 +216,7 @@ app.controller('detailTableControl', function($scope,$http) {
 		    method: 'post',
 		    url: 'DetailsActionPrint_dataFromDB.action',
 		}).then(function successCallback(response) {
-			$scope.parser(response.data.typeJson,response.data.json);
+			$scope.parser(response.data.typeJson,response.data.json,response.data.storeNameJson);
 		}, function errorCallback(response) {
 				alert("请输入正确的时间!");
 		});
@@ -237,18 +260,18 @@ app.filter('customCurrency', ["$filter", function ($filter) {
 <body ng-app="detailTable" ng-controller="detailTableControl">
 <div id="print">
 <h1 id="tableName" class="tableName">{{year}}至{{month}}各餐厅领料明细表</h1>
-<table id="inTable" class="inTable" title="detailTable" width="900px">
+<table id="inTable" class="inTable" title="detailTable" >
 		<thead >
 			<tr>
-				<td><b>类别名称</b></td>
-				<td ng-repeat="clazz in classList"><b>{{clazz}}</b></td>
-				<td><b>合计</b></td>
+				<td ><b>类别名称</b></td>
+				<td  ng-repeat="clazz in classList"><b>{{clazz}}</b></td>
+				<td ><b>合计</b></td>
 			</tr>
 		</thead>
 				<tbody class="inTable" ng-repeat="dataTable in rsList">
 					<tr ng-repeat = "datas in dataTable.list">
 						<td >{{datas.name}}</td>
-						<td style="text-align: right;" ng-repeat="clazz in classList">{{datas[clazz]|customCurrency:""}}</td>
+						<td  style="text-align: right;" ng-repeat="clazz in classList">{{datas[clazz]|customCurrency:""}}</td>
 						<td style="text-align: right;">{{datas.count|customCurrency:""}}</td>
 					</tr>
 					<tr>
@@ -271,6 +294,7 @@ app.filter('customCurrency', ["$filter", function ($filter) {
 						</td>
 						<td style="text-align: right;">{{getAll()|customCurrency:""}}</td>
 					</tr>
+					<!--
 					<tr>
 						<td><b>餐厅收入</b></td>
 						<td ng-repeat="clazz in classList"></td>
@@ -281,6 +305,7 @@ app.filter('customCurrency', ["$filter", function ($filter) {
 						<td ng-repeat="clazz in classList"></td>
 						<td></td>
 					</tr>
+					-->
 				</tfoot>
 	</table>
 </div>
