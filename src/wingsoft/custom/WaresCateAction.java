@@ -3,11 +3,16 @@ package wingsoft.custom;
 import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.json.JSONException;
+import org.apache.struts2.json.JSONUtil;
 import wingsoft.tool.common.CommonOperation;
 import wingsoft.tool.db.ConnectionPool;
 import wingsoft.tool.db.ConnectionPoolManager;
 
 import javax.naming.NamingException;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,32 +43,37 @@ public class WaresCateAction extends ActionSupport {
     public String waresCateData(){
         System.out.println("WaresCateAction_waresCateData");
         ConnectionPool pool = ConnectionPoolManager.getPool("CMServer");
-        PreparedStatement psStore  =null;
+        HttpServletRequest request = ServletActionContext.getRequest();
         PreparedStatement ps = null;
         PreparedStatement psType = null;
         ResultSet rs = null;
-        ResultSet rsStore = null;
         ResultSet rsType = null;
         Connection conn =null ;
-        String sqlStore = "select * from store s where s.levels in (0,1)";
         String sqlType = "select t.id, t.name  from pro_category t where parents is not null";
-        String sql = "select t.product_id ,t.in_num,t.in_price,t.store_id , " +
-                "(select c.category  from product c where id = t.product_id) as cate  " +
-                "from stock_dtl t " +
-                "where substr(id,0,1) = 'I'  ";
+
         try {
             conn = pool.getConnection();
             psType = conn.prepareStatement(sqlType);
             rsType = psType.executeQuery();
             JSONArray jsonArrayType = new JSONArray();//类别get
+            Object obj = JSONUtil.deserialize(request.getReader());
+//            System.out.println(obj);
             while(rsType.next()){
                 JSONObject typeObj = new JSONObject();
                 typeObj.put("id",CommonOperation.nTrim(rsType.getString("id")));
                 typeObj.put("name",CommonOperation.nTrim(rsType.getString("name")));
                 jsonArrayType.add(typeObj);
             }
+            String startTime =  JSONObject.fromObject(obj).getString("startTime");
+            String endTime = JSONObject.fromObject(obj).getString("endTime");
+            String sql = "select t.product_id ,t.in_num,t.in_price,t.store_id , " +
+                    "(select c.category  from product c where id = t.product_id) as cate  " +
+                    "from stock_dtl t " +
+                    "where substr(id,0,1) = 'I'  "+
+                    "and t.createdate between to_date ('"+startTime+"','yyyy-mm-dd') and to_date('"+endTime+"','yyyy-mm-dd') ";
             JSONArray arrayNumPrice = new JSONArray();
             ps = conn.prepareStatement(sql);
+System.out.println(sql);
             rs = ps.executeQuery();
             while(rs.next()){
                 JSONObject jo = new JSONObject();
@@ -77,18 +87,21 @@ public class WaresCateAction extends ActionSupport {
             CommonJsonDeal cjd = CommonJsonDeal.getInstance();
             arrayNumPrice  = cjd.updateJsonType(arrayNumPrice.toString(),"cate");
             jsonArray = arrayNumPrice;
-            System.out.println(jsonArray);
+           // System.out.println(jsonArray);
             typeJsonArray = jsonArrayType;
         }catch (NamingException na){
             na.printStackTrace();
         }catch (SQLException sle){
             sle.printStackTrace();
-        }finally {
+        }catch (IOException eo){
+            eo.printStackTrace();
+        }catch (JSONException jsonE){
+            jsonE.printStackTrace();
+        }
+        finally {
             pool.closePreparedStatement(ps);
-            pool.closePreparedStatement(psStore);
             pool.closePreparedStatement(psType);
             pool.closeResultSet(rs);
-            pool.closeResultSet(rsStore);
             pool.closeResultSet(rsType);
             pool.returnConnection(conn);
         }
