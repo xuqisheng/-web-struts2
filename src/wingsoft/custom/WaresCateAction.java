@@ -66,10 +66,12 @@ public class WaresCateAction extends ActionSupport {
             }
             String startTime =  JSONObject.fromObject(obj).getString("startTime");
             String endTime = JSONObject.fromObject(obj).getString("endTime");
+            String class_id = JSONObject.fromObject(obj).getString("class_id");
             String sql = "select t.product_id ,t.in_num,t.in_price,t.store_id , " +
                     "(select c.category  from product c where id = t.product_id) as cate  " +
                     "from stock_dtl t " +
                     "where substr(id,0,1) = 'I'  "+
+                    "and t.store_id = "+class_id+
                     "and t.createdate between to_date ('"+startTime+"','yyyy-mm-dd') and to_date('"+endTime+"','yyyy-mm-dd') ";
             JSONArray arrayNumPrice = new JSONArray();
             ps = conn.prepareStatement(sql);
