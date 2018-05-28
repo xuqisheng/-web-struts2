@@ -31,6 +31,7 @@
 	}
 </style>
 <script>
+    var MultiRows = window.parent.MultiRows;
 //*生成打印页面*/
 function toExcelData() {
     $("#printContent").table2excel({
@@ -46,7 +47,7 @@ function toExcelData() {
 //获得当前时间
 var myDate = new Date();
 var time = myDate.toLocaleString( ); //获取日期与时间
-var MultiRows = window.parent.MultiRows;
+var fileUrl = window.parent.fileUrl;
 //先获取到相关变量值
 var batNo = window.parent.batNo;
 var total = window.parent.total;
@@ -157,10 +158,10 @@ return html;
 
   $(function(){
 
-	  // var MultiRows = "O20180503D4";
+	// var MultiRows = "O20180524D4";
   	$.ajax({
 		type: "POST",
-		url:  'OrderPrintAction_checkList.action',
+		url: fileUrl,
 		dataType: "json",
 		data: {"MultiRows":MultiRows},
 		success: function(data,textStatus){

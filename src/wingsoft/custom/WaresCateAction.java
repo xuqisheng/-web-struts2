@@ -22,6 +22,15 @@ public class WaresCateAction extends ActionSupport {
 
     public JSONArray jsonArray;
     public JSONArray typeJsonArray;
+    public JSONObject name;
+
+    public JSONObject getName() {
+        return name;
+    }
+
+    public void setName(JSONObject name) {
+        this.name = name;
+    }
 
     public JSONArray getTypeJsonArray() {
         return typeJsonArray;
@@ -45,12 +54,13 @@ public class WaresCateAction extends ActionSupport {
         ConnectionPool pool = ConnectionPoolManager.getPool("CMServer");
         HttpServletRequest request = ServletActionContext.getRequest();
         PreparedStatement ps = null;
+        PreparedStatement ps2=null;
         PreparedStatement psType = null;
         ResultSet rs = null;
+        ResultSet rs2 = null;
         ResultSet rsType = null;
         Connection conn =null ;
         String sqlType = "select t.id, t.name  from pro_category t where parents is not null";
-
         try {
             conn = pool.getConnection();
             psType = conn.prepareStatement(sqlType);
@@ -68,11 +78,20 @@ public class WaresCateAction extends ActionSupport {
             String endTime = JSONObject.fromObject(obj).getString("endTime");
             String class_id = JSONObject.fromObject(obj).getString("class_id");
             String sql = "select t.product_id ,t.in_num,t.in_price,t.store_id , " +
-                    "(select c.category  from product c where id = t.product_id) as cate  " +
+                    "(select c.category  from product c where id = t.product_id) as cate " +
                     "from stock_dtl t " +
                     "where substr(id,0,1) = 'I'  "+
-                    "and t.store_id = "+class_id+
-                    "and t.createdate between to_date ('"+startTime+"','yyyy-mm-dd') and to_date('"+endTime+"','yyyy-mm-dd') ";
+                    " and t.store_id = "+class_id+
+                    " and t.createdate between to_date ('"+startTime+"','yyyy-mm-dd') and to_date('"+endTime+"','yyyy-mm-dd') ";
+
+            String sql2 = "select tp.name as storeName from customer tp where tp.id = "+class_id;
+            System.out.println(sql2);
+            ps2 = conn.prepareStatement(sql2);
+            rs2 = ps2.executeQuery();
+            JSONObject nameJ = new JSONObject();
+            if(rs2.next()){
+                nameJ.put("storeName",rs2.getString(CommonOperation.nTrim("storeName")));
+            }
             JSONArray arrayNumPrice = new JSONArray();
             ps = conn.prepareStatement(sql);
 System.out.println(sql);
@@ -89,8 +108,8 @@ System.out.println(sql);
             CommonJsonDeal cjd = CommonJsonDeal.getInstance();
             arrayNumPrice  = cjd.updateJsonType(arrayNumPrice.toString(),"cate");
             jsonArray = arrayNumPrice;
-           // System.out.println(jsonArray);
             typeJsonArray = jsonArrayType;
+            name =nameJ;
         }catch (NamingException na){
             na.printStackTrace();
         }catch (SQLException sle){
@@ -102,9 +121,11 @@ System.out.println(sql);
         }
         finally {
             pool.closePreparedStatement(ps);
+            pool.closePreparedStatement(ps2);
             pool.closePreparedStatement(psType);
             pool.closeResultSet(rs);
             pool.closeResultSet(rsType);
+            pool.closeResultSet(rs2);
             pool.returnConnection(conn);
         }
         //and td.createdate between to_date ('"+year+"','yyyy-mm-dd') and to_date('"+month+"','yyyy-mm-dd')

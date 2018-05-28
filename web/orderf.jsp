@@ -74,7 +74,7 @@ html += ('<div >');
 			html += ('<td style="border: 0px;"  colspan="3" align="left" class="title">&nbsp;打印时间：'+time+'</td>');
      		// html += ('<td style="border: 0px;"  colspan="4" align="right" class="title">采购总金额：'+Number(v_mount).toFixed(2)+'&nbsp;</td>');
 			html += ('</tr>');
-			html += ('<tr>');
+			html += ('<tr>');//centerInCheck.jsp
 			html += ('<td style="border-bottom:0px;border-right:0px;border-left:0px;width: 100%" colspan="7"  >&nbsp;</td>');
      		html += ('</tr>');
 			html += ('</tbody>');
@@ -109,7 +109,7 @@ $.each(tojsons,function(i){
 			html += '<td nowrap class="title" >包装单位&nbsp;</td>';
 			html += '<td nowrap class="title" >备注&nbsp;</td>';
 			html += '<td nowrap class="title" >采购数量&nbsp;</td>';
-            //html += '<td nowrap class="title" >参考单价&nbsp;</td>';
+			//html += '<td nowrap class="title" >参考单价&nbsp;</td>';
 			html += '</tr>';
 			
 			$.each(clazz_list,function(i){
@@ -155,8 +155,7 @@ $.each(tojsons,function(i){
 return html;
 }
   $(function(){
-      //MultiRows ="Z20180504D1;P20180507D2;P20180507D1;P20180504D1";
-	 // MultiRows = "P20180504D1";
+      // MultiRows = "P20180522D2;P20180522D7";
   	$.ajax({
 		type: "POST",
 		url:  'OrderPrintAction_printAllOrder.action',

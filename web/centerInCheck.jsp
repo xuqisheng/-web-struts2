@@ -1,4 +1,3 @@
-<!--- MultiRows = "I20180516D1;I20180504D3;I20180504D2;I20180504D1;I20180504D1"; $.ajax({ type : "POST", url : 'CenterInCheckAction_centerInCheck.action', dataType : "json", data : { "multiParams" : MultiRows, }, -->
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -77,7 +76,6 @@
             html += supplier_name;
             html += '</2></td>';
             html += '</tr>';
-
 //遍历批次
                 $.each(listp, function (li) {
                     var pici = listp[li].pici;
@@ -113,7 +111,6 @@
                         html += '<td align="right">' + Number(in_price).toFixed(2) + '</td>';
                         html += '<td align="right">' + Number(total).toFixed(2) + '</td>';
                         html += '</tr>';
-
                     });
                     html += '<tr class=text align=center >';
                     html += '<td class="title" style="border:none">&nbsp;</td>';
@@ -141,11 +138,11 @@
 
     $(function () {
 //传入id
-        MultiRows = "I20180516D1;I20180504D3;I20180504D2;I20180504D1;I20180504D1"
+       // MultiRows = "I20180516D1;I20180504D3;I20180504D2;I20180504D1;I20180504D1"
 // MultiRows = "141;142;143;144";
         $.ajax({
             type: "POST",
-            url: 'CenterInCheckAction_centerInCheck.action',
+            url: 'CenterInCheckAction_centerIn.action',
             dataType: "json",
             data: {
                 "multiParams": MultiRows,

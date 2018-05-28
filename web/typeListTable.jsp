@@ -54,32 +54,7 @@
             display: inline-block;
             font-size: 12px;
         }
-        table.inTable {
-            width:1000px;
-            margin-left: auto;
-            margin-right: auto;
-            align-content: center;
-            border-width: 0px;
-            border-style: solid;
-            border-color: #666666;
-            border-collapse: collapse;
-        }
-
-        table.inTable tr {
-            border-style: solid;
-            border-color: #666666;
-            border-width: 0px;
-            border-style: solid;
-        }
-
-        table.inTable td {
-            text-align: center;
-            border-width: 1px;
-            border-style: solid;
-            border-color: #666666;
-            width: 15%;
-            height: 10%;
-        }
+        typeList
     </style>
 </head>
 <body>
@@ -193,7 +168,6 @@
                     alert("请首先选择类别！");
                     return;
                 }else{
-
                     this.$http.post('TList_selectType.action',{selectList:this.selectList}).then(rss=>{
                         this.showTableData(rss.data.json);
                 },rsf=>{

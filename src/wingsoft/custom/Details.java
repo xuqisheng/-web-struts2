@@ -10,6 +10,24 @@ public class Details {
 	private String remarks; //备注
 	private String out_num;/**入库数量*/ //只有check详细里有
 	private String out_price;/** 入库价格*/ //只有check详细里有
+	private String price;//re -repice
+	private String midle_store ; //
+
+	public String getMidle_store() {
+		return midle_store;
+	}
+
+	public void setMidle_store(String midle_store) {
+		this.midle_store = midle_store;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
 
 	public String getPurchase_id() {
 		return purchase_id;

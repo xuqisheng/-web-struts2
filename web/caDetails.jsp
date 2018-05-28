@@ -53,8 +53,6 @@ table.inTable td {
 	height: 20px;
 	width: 200px;
 }
-
-
 </style>
 
 <script type="text/javascript">
@@ -204,8 +202,8 @@ app.controller('detailTableControl', function($scope,$http) {
 	//查询
 
 	$scope.getData = (function(){
-		 year = "2018-01-01";
-		 month =  "2019-01-01";
+		 // year = "2018-01-01";
+		 // month =  "2019-01-01";
         $scope.year = year;
         $scope.month= month;
 		$http({

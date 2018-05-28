@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+处理焦点问题
+-->
+<style>
+    .focus{
+        background-color: beige;
+
+    }
+    .unfocus{
+        background-color: chartreuse;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script language="JavaScript">
+        function keyDown(event){
+            var event = event||window.event;
+            var focus = document.activeElement;
+            var key = event.keyCode||event.which||event.charCode;
+        switch (key){
+            case 38://shang
+                if(focus.previousElementSibling){
+                    var tempList = focus.classList;
+                    focus.classList = focus.previousElementSibling.classList;
+                    focus.previousElementSibling.focus();
+                    focus = focus.previousElementSibling;
+                    focus.classList = tempList;
+                    // focus.classList.remove('unfocus');
+                    // focus.classList.add('focus');
+                    break;
+                }
+            case 40:
+                if(focus.nextElementSibling){
+                    var tempList = focus.classList;
+                    focus.classList = focus.nextElementSibling.classList;
+                    focus.nextElementSibling.focus();
+                    focus = focus.nextElementSibling;
+                    // focus.classList.remove('unfocus');
+                    // focus.classList.add('focus');
+                    break;
+                }
+        }
+        }
+    </script>
+</head>
+<body>
+<table onkeydown="keyDown(event)">
+    <tr><td>
+        <input class="focus" id="1" value=" "/>
+        <input id="2" value=" " class="unfocus"/>
+        <input id="3" value=" " class="unfocus"/>
+        <input id="4" value=" " class="unfocus"/>
+        <input id="5" value=" " class="unfocus"/>
+        <input id="6" value=" " class="unfocus"/>
+    </td></tr>
+</table>
+</body>
+</html>
