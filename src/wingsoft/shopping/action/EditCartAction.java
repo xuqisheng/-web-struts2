@@ -57,6 +57,8 @@ public class EditCartAction extends ActionSupport {
 		
 		return null;
 	}
-
+public String test(){
+		return" ";
+}
 
 }

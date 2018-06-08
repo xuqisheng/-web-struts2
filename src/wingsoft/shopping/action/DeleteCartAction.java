@@ -47,22 +47,26 @@ public class DeleteCartAction extends ActionSupport {
 		return null;
 	}
 
-	public boolean deleteALl(String userid) throws  SQLException{
+	public void deleteAll() throws  Exception{
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpServletResponse response = ServletActionContext.getResponse();
 		Connection c = DBManager.getConnection();
 		PreparedStatement ps;
 		try{
-			String deleteAll = "delete from SHP_cart where userid=rpad(?,30,' ') and orderid is null";
-			ps  = c.prepareStatement(deleteAll);
+			String userid = "";//暂定
+			if (request.getSession().getAttribute("userId")!=null) {
+				userid = (String) request.getSession().getAttribute("userId");
+			}
+			String deleteAll = "delete from SHP_cart where userid=rpad(?,30,' ')";
+			ps  = c.prepareStatement(deleteAll);//o
 			ps.setString(1,userid);
 			int index = ps.executeUpdate();
-			if(index==1)
-				return true;
 		}catch (Exception e){
 			e.printStackTrace();
 		}
 		finally{
 			c.close();
 		}
-		return false;
+		response.sendRedirect("cart.jsp");
 	}
 }

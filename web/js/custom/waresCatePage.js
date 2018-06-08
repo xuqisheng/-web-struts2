@@ -16,7 +16,7 @@ var tbc = new Vue({
             var keyRs = {};
             this.typeJsonArray = data.typeJsonArray;
             //数据待解析
-            this.typeJsonArray.forEach(item =>{
+            this.typeJsonArray.forEach( item=>{
                 var listF = [];
                 listF.push(item.name);
                 listF.push(0);
