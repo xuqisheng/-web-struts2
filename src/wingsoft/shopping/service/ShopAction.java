@@ -22,6 +22,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.apache.struts2.ServletActionContext;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -31,8 +33,9 @@ import org.dom4j.io.SAXReader;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import wingsoft.tool.common.Md5Tools;
-
+import wingsoft.shopping.action.BaseAction;
+import wingsoft.shopping.dao.CommentsDAO;
+import wingsoft.shopping.dao.ItemDAO;
 import wingsoft.shopping.model.Item;
 import wingsoft.shopping.model.Itempara;
 import wingsoft.shopping.service.dao.ShopDao;
@@ -40,43 +43,19 @@ import wingsoft.shopping.util.Comm;
 import wingsoft.tool.db.ConnectionPool;
 import wingsoft.tool.db.ConnectionPoolManager;
 
-public class ShopAction extends ActionSupport{
-	private String json = "";
-	
-	
-	
-	public String getJson() {
-		return json;
-	}
+public class ShopAction extends BaseAction {
 
 
-	public void setJson(String json) {
-		this.json = json;
-	}
-
-	
-
-   public String test1(){
-		HttpServletResponse response = ServletActionContext.getResponse();
-		HttpServletRequest request = ServletActionContext.getRequest();
-	   json = "ok"; 
-		try {
-			request.getRequestDispatcher("cashier.jsp").forward(request, response);
-		} catch (ServletException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return "success";
-   }	
 	
 	/**
 	 * 获取订单信息
 	 * **/
 	public String GetOrders(){
 		ShopDao sd = new ShopDao();
-		json = sd.GetOrders();
-		return "success";
+		JSONObject jo = new JSONObject();
+		jo.put("json",JSONArray.fromObject(sd.GetOrders()));
+		setJsonObject(jo);
+		return OBJECT;
 		
 	}	
 	
@@ -84,8 +63,10 @@ public class ShopAction extends ActionSupport{
 	/**收藏商品**/
 	public String Collection(){
 		ShopDao sd = new ShopDao();
-		json = sd.Collection();
-		return "success";
+		JSONObject jo = new JSONObject();
+		jo.put("json",sd.Collection());
+		setJsonObject(jo);
+		return OBJECT;
 		
 	}
 	
@@ -94,72 +75,84 @@ public class ShopAction extends ActionSupport{
 	 * **/
 	public String GetOrdersByORDERID(){
 		ShopDao sd = new ShopDao();
-		json = sd.GetOrdersByORDERID();
-		return "success";
-		
+		JSONObject jo = new JSONObject();
+		jo.put("json",JSONArray.fromObject(sd.GetOrdersByORDERID()));
+		setJsonObject(jo);
+		return OBJECT;
 	}
 	/**获取供应商信息**/
 	public String GetSuppliers(){
 		ShopDao sd = new ShopDao();
-		json = sd.GetSuppliers();
-		return "success";
-		
+		JSONObject jo = new JSONObject();
+		jo.put("json",JSONArray.fromObject(sd.GetSuppliers()));
+		setJsonObject(jo);
+		return OBJECT;
 	}
 	
 	/**保存自购材料**/
 	public String SaveProducts(){
 		System.out.println("a");
 		ShopDao sd = new ShopDao();
-		json = sd.SaveProducts();
-		return "success";
+		JSONObject jo = new JSONObject();
+		jo.put("json",sd.SaveProducts());
+		setJsonObject(jo);
+		return OBJECT;
 		
 	}
 	/**获取之前自购材料**/
 	public String Getproduct_s(){
 		ShopDao sd = new ShopDao();
-		json = sd.Getproduct_s();
-		return "success";
-		
+		JSONObject jo = new JSONObject();
+		jo.put("json",JSONArray.fromObject(sd.Getproduct_s()));
+		setJsonObject(jo);
+		return OBJECT;
 	}
 	
 	/**删除已保存自购材料**/
 	public String Delproduct_s(){
 		ShopDao sd = new ShopDao();
-		json = sd.Delproduct_s();
-		return "success";
+		//
+		JSONObject jo = new JSONObject();
+		jo.put("json",sd.SaveProducts());
+		setJsonObject(jo);
+		return OBJECT;
 		
 	}
 	/**获取热门搜索**/
 
 	public String hot_search(){
 		ShopDao sd = new ShopDao();
-		json = sd.hot_search();
-		return "success";
-		
+		JSONObject jo = new JSONObject();
+		jo.put("json",JSONArray.fromObject(sd.hot_search()));
+		setJsonObject(jo);
+		return OBJECT;
 	}
 	
 	/**获取商品分类**/
 	public String CATEGORY(){
 		ShopDao sd = new ShopDao();
-		json = sd.CATEGORY();
-		return "success";
-		
+		JSONObject jo = new JSONObject();
+		jo.put("json",JSONArray.fromObject(sd.CATEGORY()));
+		setJsonObject(jo);
+		return OBJECT;
 	}
 	/**求购信息反馈**/
 	public String WantReq(){
 		ShopDao sd = new ShopDao();
-		json = sd.WantReq();
-		return "success";
-		
+		JSONObject jo = new JSONObject();
+		jo.put("json",JSONArray.fromObject(sd.WantReq()));
+		setJsonObject(jo);
+		return OBJECT;
 	}
 	
 	
 	/**获取当前用户历史代付人员**/
 	public String GET_OT_PAY(){
 		ShopDao sd = new ShopDao();
-		json = sd.GET_OT_PAY();
-		return "success";
-		
+		JSONObject jo = new JSONObject();
+		jo.put("json",JSONArray.fromObject(sd.GET_OT_PAY()));
+		setJsonObject(jo);
+		return OBJECT;
 	}
 	
 	
@@ -167,39 +160,49 @@ public class ShopAction extends ActionSupport{
 	/**获取历史自购供应商**/
 	public String SupplierS(){
 		ShopDao sd = new ShopDao();
-		json = sd.SupplierS();
-		return "success";
-		
+		JSONObject jo = new JSONObject();
+		jo.put("json",JSONArray.fromObject(sd.SupplierS()));
+		setJsonObject(jo);
+		return OBJECT;
 	}
 	
 	/**保存自购订单**/
 	public String SaveOrder_S(){
 		ShopDao sd = new ShopDao();
-		json = sd.SaveOrder_S();
-		return "success";
+		JSONObject jo = new JSONObject();
+		jo.put("json",sd.SaveOrder_S());
+		setJsonObject(jo);
+		return OBJECT;
 		
 	}
 	
 	public String WantFor(){
 		ShopDao sd = new ShopDao();
-		json = sd.WantFor();
-		return "success"; 
+		//
+		JSONObject jo = new JSONObject();
+		jo.put("json",sd.WantFor());
+		setJsonObject(jo);
+		return OBJECT;
 		
 	}
 	
 	/**保存订单，提交订单**/
 	public String SaveOrder(){
 		ShopDao sd = new ShopDao();
-		json = sd.SaveOrder();
-		return "success";
+		JSONObject jo = new JSONObject();
+		jo.put("json",sd.SaveOrder());
+		setJsonObject(jo);
+		return OBJECT;
 		
 		}
 	
 	/**快速购买**/
 	public String QuickBuy(){
 		ShopDao sd = new ShopDao();
-		json = sd.QuickBuy();
-		return "success";
+		JSONObject jo = new JSONObject();
+		jo.put("json",sd.QuickBuy());
+		setJsonObject(jo);
+		return OBJECT;
 		
 		}
 	
@@ -207,60 +210,66 @@ public class ShopAction extends ActionSupport{
 	/**获取用户所属课题组**/
 	public String GetTGROUP(){
 		ShopDao sd = new ShopDao();
-		json = sd.GetTGROUP();
-		return "success";
-		
+		JSONObject jo = new JSONObject();
+		jo.put("json",JSONArray.fromObject(sd.GetTGROUP()));
+		setJsonObject(jo);
+		return OBJECT;
 	}
 	
 	/**获取广告**/
 	public String GetRECOMMEND(){
 		ShopDao sd = new ShopDao();
-		json = sd.GetRECOMMEND();
-		return "success";
-		
+		JSONObject jo = new JSONObject();
+		jo.put("json",JSONArray.fromObject(sd.GetRECOMMEND()));
+		setJsonObject(jo);
+		return OBJECT;
 	}
 	
 	/**获取管制品申请单**/
 	public String GetREQUISITION(){
 		ShopDao sd = new ShopDao();
-		json = sd.GetREQUISITION();
-		return "success";
-		
+		JSONObject jo = new JSONObject();
+		jo.put("json",JSONArray.fromObject(sd.GetREQUISITION()));
+		setJsonObject(jo);
+		return OBJECT;
 		}
 	
 	
 	/**获取求购信息**/
 	public String GetWantFor(){
-
 		ShopDao sd = new ShopDao();
-		json = sd.GetWantFor();
-		return "success";
-		
+		JSONObject jo = new JSONObject();
+		jo.put("json",JSONArray.fromObject(sd.GetWantFor()));
+		setJsonObject(jo);
+		return OBJECT;
 	}
 	
 	/**获取同售供应商**/
 	public String GetSamSale(){
-
 		ShopDao sd = new ShopDao();
-		json = sd.GetSamSale();
-		return "success";
-		
+		JSONObject jo = new JSONObject();
+		jo.put("json",JSONArray.fromObject(sd.GetSamSale()));
+		setJsonObject(jo);
+		return OBJECT;
 	}
 	
 	/**关闭求购**/
 	public String Close_WantFor(){
-
 		ShopDao sd = new ShopDao();
-		json = sd.Close_WantFor();
-		return "success";
+		//
+		JSONObject jo = new JSONObject();
+		jo.put("json",sd.Close_WantFor());
+		setJsonObject(jo);
+		return OBJECT;
 		
 	}
 	/**忽略供应商求购反馈**/
 	public String ignore(){
-
 		ShopDao sd = new ShopDao();
-		json = sd.Close_WantFor();
-		return "success";
+		JSONObject jo = new JSONObject();
+		jo.put("json",sd.Close_WantFor());
+		setJsonObject(jo);
+		return OBJECT;
 		
 	}
 	
@@ -274,15 +283,17 @@ public class ShopAction extends ActionSupport{
 		String userid = "";
 		if (request.getSession().getAttribute("userId")!=null) {
 			userid = (String) request.getSession().getAttribute("userId");
-			json = "ok";
+			JSONObject jo = new JSONObject();
+			jo.put("json","ok");
+			setJsonObject(jo);
 		}else{
 			System.out.println("未登录");
-			json = "err";
-			
+			JSONObject jo = new JSONObject();
+			jo.put("json","err");
+			setJsonObject(jo);
 		}
 		
-		
-		return "success";
+		return OBJECT;
 		
 	}
 
@@ -332,7 +343,11 @@ public class ShopAction extends ActionSupport{
 			}
 			pool.returnConnection(conn);
 		}
-		return Res;
+		JSONObject jo = new JSONObject();
+		jo.put("json",Res);
+		setJsonObject(jo);
+		return OBJECT;
+
 	}
 
 	
@@ -359,7 +374,7 @@ public class ShopAction extends ActionSupport{
 		System.out.println(Sql);
 		try {
 		List<Item> is = new ArrayList<Item>();
-		 json = "[";
+		String json = "[";
 		if (groupcode==""||"".equals(groupcode)||groupcode=="0"||"0".equals(groupcode)) {
 			conn = pool.getConnection();	
 			ps = conn.prepareStatement(Sql);
@@ -384,10 +399,10 @@ public class ShopAction extends ActionSupport{
 			json = json.substring(0,json.length()-1);
 		}
 		json+="]";
-		
-		
-		System.out.println("地址="+json);
-		
+
+			JSONObject jo = new JSONObject();
+			jo.put("json",JSONArray.fromObject(json));
+			setJsonObject(jo);
 //		response.setCharacterEncoding("utf-8");
 //		response.setContentType("html/text");
 //		PrintWriter out=null;
@@ -414,31 +429,33 @@ public class ShopAction extends ActionSupport{
 			}
 			pool.returnConnection(conn);
 		}
-		return "success";
-		
+		return OBJECT;
+
 	}
 
 	
 
 
 
-
+////////////////////403标记
 /**获取选中结算材料**/
 public String GetSettleCart(){
 
 	ShopDao sd = new ShopDao();
-	json = sd.GetSettleCart();
-	return "success";
+	JSONObject jo = new JSONObject();
+	jo.put("json",JSONArray.fromObject(sd.GetSettleCart()));
+	setJsonObject(jo);
+	return OBJECT;
 	
 }
 
 
 public String GetCart(){
-
 	ShopDao sd = new ShopDao();
-	json = sd.GetCart();
-	return "success";
-	
+	JSONObject jo = new JSONObject();
+	jo.put("json",JSONArray.fromObject(sd.GetCart()));
+	setJsonObject(jo);
+	return OBJECT;
 }
 
 public String GetProInfo(){
@@ -463,7 +480,7 @@ public String GetProInfo(){
 	System.out.println(Sql);
 	try {
 	List<Item> is = new ArrayList<Item>();
-	 json = "[";
+	String json = "[";
 	
 	conn = pool.getConnection();	
 	ps = conn.prepareStatement(Sql);
@@ -483,11 +500,10 @@ public String GetProInfo(){
 		json = json.substring(0,json.length()-1);
 	}
 	json+="]";
-	
-	
 	System.out.println(json);
-	
-
+		JSONObject jo = new JSONObject();
+		jo.put("json",JSONArray.fromObject(json));
+		setJsonObject(jo);
 	} catch (Exception e) {
 		e.printStackTrace();
 	} finally {
@@ -506,7 +522,7 @@ public String GetProInfo(){
 		}
 		pool.returnConnection(conn);
 	}
-	return "success";
+	return OBJECT;
 	
 }
 
@@ -544,11 +560,12 @@ public String SaveAddress(){
 	ps.setString(3, GetPhone);
 	ps.setString(4, GetAddress);
 	ps.execute();
-	json = "ok";
-	
-	
+	String json = "ok";
+
+		JSONObject jo = new JSONObject();
+		jo.put("json",json);
+		setJsonObject(jo);
 	System.out.println(json);
-	
 
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -568,7 +585,7 @@ public String SaveAddress(){
 		}
 		pool.returnConnection(conn);
 	}
-	return "success";
+	return OBJECT;
 	
 }
 
@@ -600,12 +617,13 @@ public String AddressDef(){
 	ps.setString(1, AddressId);
 	ps.setString(2, userid);
 	ps.execute();
-	json = "ok";
+	String json = "ok";
 	
 	
 	System.out.println(json);
-	
-
+		JSONObject jo = new JSONObject();
+		jo.put("json",json);
+		setJsonObject(jo);
 	} catch (Exception e) {
 		e.printStackTrace();
 	} finally {
@@ -624,7 +642,7 @@ public String AddressDef(){
 		}
 		pool.returnConnection(conn);
 	}
-	return "success";
+	return OBJECT;
 	
 }
 
@@ -650,7 +668,7 @@ public String supplier(){
 	ps = conn.prepareStatement(Sql);
 	ps.setString(1, supplierid);
 	rs = ps.executeQuery();
-	json = "[";
+	String json = "[";
 	boolean flag = false;
 	while (rs.next()) {
 			json+="{name:'"+Comm.nTrim(rs.getString("name"))+
@@ -665,11 +683,10 @@ public String supplier(){
 		json = json.substring(0,json.length()-1);
 	}
 	json+="]";
-	
-	
+		JSONObject jo = new JSONObject();
+		jo.put("json",JSONArray.fromObject(json));
+		setJsonObject(jo);
 	System.out.println(json);
-	
-
 	} catch (Exception e) {
 		e.printStackTrace();
 	} finally {
@@ -688,46 +705,8 @@ public String supplier(){
 		}
 		pool.returnConnection(conn);
 	}
-	return "success";
+	return OBJECT;
 	
 }
 
-
-
-
-	public static void main(String[] args) throws DocumentException {
-//		 SAXReader reader = new SAXReader();
-//		  Document document = DocumentHelper.parseText("<?xml version=\"1.0\" encoding=\"utf-8\"?><error><type>2</type><msg>1</msg></error>");
-//		  Element root = document.getRootElement();
-//
-//		  Iterator it = root.elementIterator("error");
-//		  System.out.println(it.next());
-//		  while (it.hasNext()) {
-//		   Element element = (Element) it.next();
-//
-//		 
-//		   System.out.println("id: " + element.attributeValue("type"));
-//
-//
-//		   System.out.println();
-//		  }
-		
-//		Itempara i = new Itempara();
-//		i.setValue("a");
-//		i.setItemid("a");
-//		System.out.println(i.toString());
-	
-		String a = "1234";
-		//System.out.println(a.substring(1));
-		System.out.println(a.substring(0,a.length()-1));
-		String b= "a";
-		if ("a"=="a"&&"a".equals("b")) {
-			System.out.println("a");
-		}
-		}
-	
-
-	
-  
-	
 }

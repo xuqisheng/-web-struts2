@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONArray;
 import org.apache.struts2.ServletActionContext;
 
 import wingsoft.shopping.dao.CategoryDAO;
@@ -15,21 +16,8 @@ import wingsoft.shopping.model.Category;
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
-public class GetCategoryAction extends ActionSupport {
-	/*
-	 * Generated Methods
-	 */
-	/**
-	 * Method execute
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return ActionForward
-	 * @throws IOException 
-	 * @throws SQLException 
-	 */
+public class GetCategoryAction extends BaseAction {
+
 	public String execute() throws IOException, SQLException {
 		HttpServletResponse response = ServletActionContext.getResponse();
 
@@ -50,16 +38,8 @@ public class GetCategoryAction extends ActionSupport {
 		}
 		json = json.substring(0,json.length()-1);
 		json+="]";
-		
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("html/text");
-		PrintWriter out=null;
-	
-		out=response.getWriter();
-		out.print(json);
-		out.flush();
-		out.close();
-		
-		return null;
+		JSONArray jo = JSONArray.fromObject(json);
+		setJsonArray(jo);
+		return SUCCESS;
 	}
 }

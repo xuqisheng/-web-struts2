@@ -47,12 +47,11 @@ public class ItemDAO {
 	private final String selectAll = "select * from SHP_item where parents is not null and published = 'true' order by itemid DESC";
 	private final String selectChildren = "select SHP_item.*, (select '{'||wm_concat('\"'||trim(sp.parameterid)||'\":\"'||replace(trim(sp.value),'\"','\\\"')||'\"')||'}'  from shp_itempara sp " +
 			" where sp.itemid=SHP_item.itemid and sp.value is not null) itempara from SHP_item where trim(parents)=? and published = 'true'";
-	//select distinct SHP_ITEM.itemid,itemname,prize,itemimg,ITEMCATE from SHP_item,(select itemid from (select itemid,count(*) c from shp_itempara where trim(parameterid)='0' and trim(value) like '%%' or trim(parameterid)='1' and trim(value) like '%%' group by itemid) where c=2) b where (SHP_item.itemid = b.itemid or shp_item.parents = b.itemid) and itemcate like '%%' and itemname like '%%';
 	public Item selectItem(String itemid) throws SQLException {
 		Connection c = DBManager.getConnection();
 		PreparedStatement ps=c.prepareStatement(selectItem);
-		System.out.println("selectItem1="+selectItem);
-		System.out.println(itemid);
+//		System.out.println("selectItem1="+selectItem);
+//		System.out.println(itemid);
 		ps.setString(1, CommonOperation.nTrim((itemid)));
 		ResultSet rs = ps.executeQuery();
 		
@@ -85,6 +84,7 @@ public class ItemDAO {
 	
 	public int countCategory(String categoryid, String para,String keyword, String value) throws SQLException {
 		Connection c = DBManager.getConnection();
+
 		String sql = "";
 		String SearchKey = "INSERT INTO SEARCHKEY(SEARCHKEY, SEARCHDATE, USERID) " +
 			" values(trim(?),sysdate,trim(?))";
@@ -188,15 +188,7 @@ public class ItemDAO {
 		if (keyword!=null&&!"".equals(keyword)) {
 			sql+=" and (";
 			String[] keys = keyword.split(" ");
-//			for (int i=0;i<keys.length;i++) {
-//				if (i==0) {
-//					sql+="itemname like '%"+keys[i]+"%'";
-//				} else {
-//					sql+=" or itemname like '%"+keys[i]+"%'";
-//				}
-//			}
-//			sql+=") ";
-			/*by吴斌 20170524  增加属性搜索*/
+
 			for (int i=0;i<keys.length;i++) {
 				System.out.println(keys[i]);
 				if (keys[i]!=""&&!"".equals(keys[i])) {
@@ -238,8 +230,10 @@ public class ItemDAO {
 		return is;
 	}
 	
-	public List<Item> selectCategory(String categoryid, String para, String value, String keyword, int perpage, int page,Boolean IsCollection) throws SQLException {
+	public List<Item> selectCategory(String categoryid, String para, String value, String keyword, int perpage, int page,Boolean IsCollection)  {
+
 		Connection c = DBManager.getConnection();
+		System.out.println("连接：：："+c);
 		String sql = "";
 		
 		int length = 0;
@@ -258,7 +252,6 @@ public class ItemDAO {
 			}
 			
 			//处理各类选项
-		
 			HashMap<String,String> map = new HashMap<String,String>();
 			for (int i=0;i<length;i++) {
 				if (map.containsKey(pas[i])) {
@@ -280,35 +273,39 @@ public class ItemDAO {
 				System.out.println(" val="+val);
 				
 				ParameterDAO pd = new ParameterDAO();
-				Parameter p = pd.selectParameter(key);
-				System.out.println("属性="+p.getParametertype());
-				if (p.getParametertype().equals("string")) {
-					sql+=" (trim(parameterid) = '" + key + "' and (";
-					String[] vals = val.split(",");
-					for (int i=0;i<vals.length;i++) {
-						sql+="trim(value) = '" + vals[i]+"'";
-						if (i==vals.length-1) {
-							sql+=")) ";
-						} else {
-							sql+=" or ";
+				try {
+					Parameter p = pd.selectParameter(key);
+					System.out.println("属性="+p.getParametertype());
+					if (p.getParametertype().equals("string")) {
+						sql+=" (trim(parameterid) = '" + key + "' and (";
+						String[] vals = val.split(",");
+						for (int i=0;i<vals.length;i++) {
+							sql+="trim(value) = '" + vals[i]+"'";
+							if (i==vals.length-1) {
+								sql+=")) ";
+							} else {
+								sql+=" or ";
+							}
+						}
+
+					} else {
+						sql+=" (trim(parameterid) = '" + key + "' and (";
+						System.out.println("val="+val);
+						String[] vals = val.split(",");
+						for (int i=0;i<vals.length;i++) {
+							System.out.println("vals="+vals[i]);
+							sql+="TO_NUMBER(trim(value)) between '" + vals[i].substring(0,vals[i].indexOf("~")) +"' and '"+vals[i].substring(vals[i].indexOf("~")+1)+"' ";
+							if (i==vals.length-1) {
+								sql+=")) ";
+							} else {
+								sql+=" or ";
+							}
 						}
 					}
-					
-				} else {
-					sql+=" (trim(parameterid) = '" + key + "' and (";
-					System.out.println("val="+val);
-					String[] vals = val.split(",");
-					for (int i=0;i<vals.length;i++) {
-						System.out.println("vals="+vals[i]);
-						sql+="TO_NUMBER(trim(value)) between '" + vals[i].substring(0,vals[i].indexOf("~")) +"' and '"+vals[i].substring(vals[i].indexOf("~")+1)+"' ";
-						if (i==vals.length-1) {
-							sql+=")) ";
-						} else {
-							sql+=" or ";
-						}
-					}
+				}catch (Exception e){
+					e.printStackTrace();
 				}
-				
+
 				if (iter.hasNext()) {
 					sql+=" or ";
 				}
@@ -355,10 +352,15 @@ public class ItemDAO {
 			sql += selectCategory4;
 			sql = "select * from ("+sql+") where parents is not null and rn between " + ((page-1)*perpage+1) + " and "+page*perpage;
 			System.out.println("item="+sql);
-			ps=c.prepareStatement(sql);
-			if (length!=0) {
-				ps.setInt(1,length);
+			try {
+				ps=c.prepareStatement(sql);
+				if (length!=0) {
+					ps.setInt(1,length);
+				}
+			}catch (Exception e){
+				e.printStackTrace();
 			}
+
 		}
 		else{
 			HttpServletRequest request = ServletActionContext.getRequest();
@@ -367,40 +369,57 @@ public class ItemDAO {
 			sql	= selectCategory5;
 			sql = "select * from ("+sql+") where parents is not null and rn between " + ((page-1)*perpage+1) + " and "+page*perpage + " order by INDATE desc";
 			System.out.println("item="+sql);
-			ps =c.prepareStatement(sql);
+			try {
+				ps =c.prepareStatement(sql);
 				ps.setString(1, userid);
-		} 
-		
-		ResultSet rs = ps.executeQuery();
-		
-		List<Item> is = new ArrayList<Item>();
-		ItemparaDAO id = new ItemparaDAO();
-		
-		while (rs.next()){
-			//TODO: WARNING 这里用1，2，3作为getString的参数不好。应改成字段名。
-			Item i = new Item();
-			i.setItemid(rs.getString(1).trim());
-			i.setItemname(rs.getString(2).trim());
-			i.setPrize(rs.getDouble(3));
-			i.setItemimg(CommonOperation.nTrim(rs.getString(4)));
-			i.setItemimgupload(CommonOperation.nTrim(rs.getString(8)));
-			i.setItemcate(rs.getString(5).trim());
-			i.setItempara(CommonOperation.nTrim(rs.getString("itempara")));
-			String s = rs.getString(6);
-			if (s!=null) {
-				s = s.trim();
+			}catch (Exception e){
+				e.printStackTrace();
 			}
-			i.setItempage(s);
-			s = rs.getString(7);
-			if (s!=null) {
-				s = s.trim();
-			}
-			// TODO: setItemimgupload
-			i.setParents(s);
-			is.add(i);
+
 		}
-		c.close();
+		List<Item> is = new ArrayList<Item>();
+		try {
+			ResultSet rs = ps.executeQuery();
+
+
+			ItemparaDAO id = new ItemparaDAO();
+
+			while (rs.next()){
+				//TODO: WARNING 这里用1，2，3作为getString的参数不好。应改成字段名。
+				Item i = new Item();
+				i.setItemid(rs.getString(1).trim());
+				i.setItemname(rs.getString(2).trim());
+				i.setPrize(rs.getDouble(3));
+				i.setItemimg(CommonOperation.nTrim(rs.getString(4)));
+				i.setItemimgupload(CommonOperation.nTrim(rs.getString(8)));
+				i.setItemcate(rs.getString(5).trim());
+				i.setItempara(CommonOperation.nTrim(rs.getString("itempara")));
+				String s = rs.getString(6);
+				if (s!=null) {
+					s = s.trim();
+				}
+				i.setItempage(s);
+				s = rs.getString(7);
+				if (s!=null) {
+					s = s.trim();
+				}
+				i.setParents(s);
+				is.add(i);
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+
+		finally {
+			try {
+				c.close();
+			}
+			catch (Exception e){
+				e.printStackTrace();
+			}
+		}
 		return is;
+
 	}
 	
 	public List<Item> selectAll() throws SQLException {

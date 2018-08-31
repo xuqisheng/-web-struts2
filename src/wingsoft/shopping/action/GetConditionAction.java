@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONArray;
 import org.apache.struts2.ServletActionContext;
 
 import wingsoft.shopping.dao.ItemparaDAO;
@@ -17,22 +18,19 @@ import wingsoft.shopping.model.Parameter;
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
-public class GetConditionAction extends ActionSupport {
+public class GetConditionAction extends BaseAction {
 	/*
 	 * Generated Methods
 	 */
 	/**
 	 * Method execute
 	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
 	 * @return ActionForward
 	 * @throws IOException 
 	 * @throws SQLException 
 	 */
 	public String execute() throws IOException, SQLException {
+		System.out.println("getConditionAction is starting");
 		HttpServletResponse response = ServletActionContext.getResponse();
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String category = request.getParameter("category");
@@ -61,8 +59,6 @@ public class GetConditionAction extends ActionSupport {
 		//for (int i=0;i<3;i++) {
 		for (int i=0;i<ps.size();i++) {
 			Parameter p = pd.selectParameter(ps.get(i)); 
-			/**by 吴斌  修改属性筛选bug**/
-			//json+="{\"id\":\""+i+"\",\"display\":\"";
 			json+="{\"id\":\""+p.getParameterid()+"\",\"display\":\"";
 			
 			json+=p.getParametername()+"\",\"options\":[";
@@ -79,7 +75,7 @@ public class GetConditionAction extends ActionSupport {
 				}
 				json+="]";
 			} else {
-				List<String> value = ip.findNumPara(p.getParameterid(),category, keyword);
+				List<String> value = ip.findNumPara(p.getParameterid(), category, keyword);
 				boolean flag = false;
 				while (!value.isEmpty()) {
 					json+="\""+value.remove(0)+"\",";
@@ -94,16 +90,10 @@ public class GetConditionAction extends ActionSupport {
 		}
 		json = json.substring(0,json.length()-1);
 		json+="]";
-		
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("html/text");
-		PrintWriter out=null;
-		System.out.println("condition="+json);
-		out=response.getWriter();
-		out.print(json);
-		out.flush();
-		out.close();
-		
-		return null;
+		JSONArray jo = JSONArray.fromObject(json);
+		setJsonArray(jo);
+		System.out.println("getConditionAction is ended");
+		return SUCCESS;
 	}
+
 }

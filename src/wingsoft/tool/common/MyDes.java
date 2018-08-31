@@ -9,7 +9,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class MyDes
 {
-  private static String strDefaultKey = "12345678";
+  private static String strDefaultKey = "wingsoft";//"wingsoft"
   private Cipher encryptCipher;
   private Cipher decryptCipher;
 
@@ -48,14 +48,12 @@ public class MyDes
     return arrOut;
   }
 
-  public MyDes()
-    throws Exception
+  public MyDes() throws Exception
   {
     this(strDefaultKey);
   }
 
-  public MyDes(String strKey)
-    throws Exception
+  public MyDes(String strKey) throws Exception
   {
     this.encryptCipher = null;
     this.decryptCipher = null;
@@ -107,19 +105,26 @@ public class MyDes
 
     return key; }
 
-  public static void main(String[] argv) {
-    MyDes des;
-    try {//sKRfEOOs1rqvZKWD2DqB+l00nBTJ9OHtA2bpr4rMw1fIekFdLHjOSO35Z+pvE7S8
-      des = new MyDes("12345678");
-      System.out.println("de="+des.encrypt("A"));
-      MyDes des2 = new MyDes("96T4LJ");
-      System.out.println(des2.decrypt("b9c7d3a4279117863cc896e89a452bba"));
-      MyDes des3 = new MyDes("capturer");
-      System.out.println(des3.encrypt("96T5LJ"));
-    }
-    catch (Exception ex)
-    {
-      ex.printStackTrace();
-    }
+//  public static void main(String[] argv) {
+//    MyDes des;
+//    try {//sKRfEOOs1rqvZKWD2DqB+l00nBTJ9OHtA2bpr4rMw1fIekFdLHjOSO35Z+pvE7S8
+//      des = new MyDes("12345678");
+//      System.out.println("de="+des.encrypt("A"));
+//      MyDes des2 = new MyDes("96T4LJ");
+//      System.out.println(des2.decrypt("409f7660aa6120866b0b0af6dc62c879"));
+//      MyDes des3 = new MyDes("capturer");
+//      System.out.println(des3.encrypt("96T5LJ"));
+//    }
+//    catch (Exception ex)
+//    {
+//      ex.printStackTrace();
+//    }
+//  }
+
+  public static String md5Encrypt(String str) throws Exception{
+    String strs = new MyDes().encrypt(str);
+    String mdStr = Md5Tools.getMD5(strs.getBytes());
+    return mdStr;
   }
+
 }

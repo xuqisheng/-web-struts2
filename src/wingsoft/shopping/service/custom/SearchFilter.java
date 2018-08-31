@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(filterName="SearchFilter", urlPatterns = "/shopping/search.jsp")
+//@WebFilter(filterName="SearchFilter", urlPatterns = "/shopping/search.jsp")
 public class SearchFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -19,10 +19,13 @@ public class SearchFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession httpSession = (HttpSession) request.getSession();
-        if( httpSession.getAttribute("userContextStr") != null && httpSession.getAttribute("userId") != null){
+        //predict the quare different is different 
+        if(httpSession.getAttribute("userContextStr") != null && httpSession.getAttribute("userId") != null){
             filterChain.doFilter(servletRequest,servletResponse);
         }else{
-            response.sendRedirect("http://192.168.102.5:8088"+"/"+request.getContextPath()+"/shopping/login.jsp");
+        //    response.sendRedirect("http://192.168.102.5:8088"+request.getContextPath()+"/shopping/login.jsp");
+            String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/shopping/login.jsp";
+            response.sendRedirect(basePath);
         }
     }
 

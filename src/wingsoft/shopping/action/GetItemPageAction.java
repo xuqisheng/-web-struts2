@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONObject;
 import org.apache.struts2.ServletActionContext;
 
 import wingsoft.shopping.dao.ItemDAO;
@@ -14,17 +15,13 @@ import wingsoft.shopping.dao.ItemDAO;
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
-public class GetItemPageAction extends ActionSupport {
+public class GetItemPageAction extends BaseAction {
 	/*
 	 * Generated Methods
 	 */
 	/**
 	 * Method execute
 	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
 	 * @return ActionForward
 	 * @throws IOException 
 	 * @throws SQLException 
@@ -79,15 +76,11 @@ public class GetItemPageAction extends ActionSupport {
 		
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("html/text");
-		PrintWriter out=null;
-		
-		out=response.getWriter();
+//		PrintWriter out=null;
+//
+//		out=response.getWriter();
 		Wjson = "{\"currentpage\":"+page+",\"totalpage\":"+is+",\"baseurl\":\""+baseurl+"\"}";
-		System.out.println("Wjson="+Wjson);
-		out.print(Wjson);
-		out.flush();
-		out.close();
-		
-		return null;
+		setJsonObject(JSONObject.fromObject(Wjson));
+		return SUCCESS;
 	}
 }

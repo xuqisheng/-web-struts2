@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONArray;
 import org.apache.struts2.ServletActionContext;
 
 import wingsoft.shopping.dao.CommentsDAO;
@@ -19,17 +20,12 @@ import wingsoft.shopping.model.Item;
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
-public class GetItemCommentAction extends ActionSupport {
+public class GetItemCommentAction extends BaseAction {
+
 	/*
 	 * Generated Methods
 	 */
 	/**
-	 * Method execute
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
 	 * @return ActionForward
 	 * @throws IOException 
 	 * @throws SQLException 
@@ -61,16 +57,8 @@ public class GetItemCommentAction extends ActionSupport {
 			json = json.substring(0,json.length()-1);
 		}
 		json+="]";
-		
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("html/text");
-		PrintWriter out=null;
-	
-		out=response.getWriter();
-		out.print(json);
-		out.flush();
-		out.close();
-		
-		return null;
+		setJsonArray(JSONArray.fromObject(json));
+
+		return SUCCESS;
 	}
 }

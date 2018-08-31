@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONArray;
 import org.apache.struts2.ServletActionContext;
 
 import wingsoft.shopping.dao.CartDAO;
@@ -17,17 +18,13 @@ import wingsoft.shopping.model.Item;
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
-public class GetCartAction extends ActionSupport {
+public class GetCartAction extends BaseAction {
 	/*
 	 * Generated Methods
 	 */
 	/**
 	 * Method execute
 	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
 	 * @return ActionForward
 	 * @throws IOException 
 	 * @throws SQLException 
@@ -58,35 +55,14 @@ public class GetCartAction extends ActionSupport {
 			json = json.substring(0,json.length()-1);
 			json+=",\"cartid\":\""+c.getCartid()+"\",\"number\":\""+c.getNumber()+"\"},";
 
-//			if (i.getParents()!=null&&i.getParents()!="null") {
-//				pi = id.selectItem(i.getParents());
-//				//pi.setItemname(id.selectItem(i.getParents()).getItemname()+" - "+i.getItemname());
-//			}
-//
-//			if (pi==null) {
-//				json+="{\"cartid\":\""+c.getCartid()+"\",\"itemid\":\""+i.getItemid()+"\",\"itemname\":\""+i.getItemname()+
-//						"\",\"itemimg\":\""+i.getItemimg()+"\",\"subitemid\":\"\",\"subitemname\":\"\",\"subitemprize\":\""+i.getPrize()+"\",\"number\":\""+c.getNumber()+"\"},";
-//			} else {
-//				json+="{\"cartid\":\""+c.getCartid()+"\",\"itemid\":\""+i.getItemid()+"\",\"itemname\":\""+pi.getItemname()+
-//						"\",\"itemimg\":\""+i.getItemimg()+"\",\"subitemid\":\""+i.getItemid()+"\",\"subitemname\":\""+
-//						i.getItemname()+"\",\"subitemprize\":\""+i.getPrize()+"\",\"number\":\""+c.getNumber()+"\"},";
-//			}
 			flag = true;
 		}
 		if (flag) {
 			json = json.substring(0,json.length()-1);
 		}
 		json+="]";
-		
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("html/text");
-		PrintWriter out=null;
-	
-		out=response.getWriter();
-		out.print(json);
-		out.flush();
-		out.close();
-		
-		return null;
+		JSONArray jo = JSONArray.fromObject(json);
+		setJsonArray(jo);
+		return SUCCESS;
 	}
 }

@@ -456,7 +456,7 @@ public class ShopDao {
 		ResultSet rs = null;
 		ResultSet rsdtl = null;
 		String json = "";
-		
+		// this is always
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpServletResponse response = ServletActionContext.getResponse();
 		String cart = request.getParameter("cart");
@@ -498,8 +498,7 @@ public class ShopDao {
 			pool.returnConnection(conn);
 		}
 		return json;
-		
-	}	
+	}
 
 	
 	/**保存自购材料信息**/

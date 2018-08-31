@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONObject;
 import org.apache.struts2.ServletActionContext;
 
 import wingsoft.shopping.dao.CommentsDAO;
@@ -16,21 +17,8 @@ import wingsoft.shopping.model.Item;
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
-public class GetItemInfoAction extends ActionSupport {
-	/*
-	 * Generated Methods
-	 */
-	/**
-	 * Method execute
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return ActionForward
-	 * @throws IOException 
-	 * @throws SQLException 
-	 */
+public class GetItemInfoAction extends BaseAction {
+
 	public String execute() throws IOException, SQLException {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpServletResponse response = ServletActionContext.getResponse();
@@ -55,16 +43,9 @@ public class GetItemInfoAction extends ActionSupport {
 			json = json.substring(0,json.length()-1);
 		}
 		json+="]}";
+		json = json.replaceAll("null","");
+		setJsonObject(JSONObject.fromObject(json));
 		
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("html/text");
-		PrintWriter out=null;
-	
-		out=response.getWriter();
-		out.print(json);
-		out.flush();
-		out.close();
-		
-		return null;
+		return SUCCESS;
 	}
 }

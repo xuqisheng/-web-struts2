@@ -1,30 +1,21 @@
 package wingsoft.shopping.service.action;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import wingsoft.shopping.action.BaseAction;
 import wingsoft.shopping.service.dao.MsgDao;
 import wingsoft.shopping.service.dao.ShopDao;
 
-public class MsgAction {
-	private String json = "";
-	
-	
-	
-	public String getJson() {
-		return json;
-	}
-
-
-	public void setJson(String json) {
-		this.json = json;
-	}
-	
-	
+public class MsgAction extends BaseAction {
 	/**
 	 * 获取公告、相关规定、促销基本信息
 	 * **/
 	public String GetMsgInfo(){
 		MsgDao sd = new MsgDao();
-		json = sd.GetMsgInfo();
-		return "success";
+		JSONObject jo = new JSONObject();
+		jo.put("json",JSONArray.fromObject(sd.GetMsgInfo()));
+		setJsonObject(jo);
+		return OBJECT;
 		
 	}	
 	
@@ -33,8 +24,8 @@ public class MsgAction {
 	 * **/
 	public String GetMsg(){
 		MsgDao sd = new MsgDao();
-		json = sd.GetMsg();
+		setJson(sd.GetMsg());
 		return "success";
-		
+
 	}
 }

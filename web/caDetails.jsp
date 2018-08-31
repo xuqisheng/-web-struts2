@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<script src="../jquery/custom/jquery.min.js"></script>
-	<script src="../jquery/custom/jquery.table2excel.min.js"></script>
-<script src="../jquery/angular.min.js">
+	<script src="jquery/custom/jquery.min.js"></script>
+	<script src="jquery/custom/jquery.table2excel.min.js"></script>
+<script src="jquery/angular.min.js">
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>餐厅领科明细表</title>
@@ -199,11 +199,11 @@ app.controller('detailTableControl', function($scope,$http) {
 		});
 		return numb;
 	});
-	//查询
+	//查询//
 
 	$scope.getData = (function(){
-		 // year = "2018-01-01";
-		 // month =  "2019-01-01";
+         year = "2018-01-01";
+		 month =  "2019-01-01";
         $scope.year = year;
         $scope.month= month;
 		$http({
@@ -227,7 +227,7 @@ app.controller('detailTableControl', function($scope,$http) {
 			angular.forEach(rs.list,function(rs_li){
 				var count = 0;
 				angular.forEach(classList,function(className){
-					count =rs_li[className]*1 + count; 
+					count =rs_li[className]*1 + count;
 				});
 				rs_li.count = count;
 				//console.log(rs_li);
@@ -248,7 +248,7 @@ app.filter('customCurrency', ["$filter", function ($filter) {
     	var currency = $filter('currency');
         if(amount == 0){
             return "";
-        }
+        }year
         return currency(amount, currencySymbol);
     };
 }]);
@@ -292,18 +292,7 @@ app.filter('customCurrency', ["$filter", function ($filter) {
 						</td>
 						<td style="text-align: right;">{{getAll()|customCurrency:""}}</td>
 					</tr>
-					<!--
-					<tr>
-						<td><b>餐厅收入</b></td>
-						<td ng-repeat="clazz in classList"></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td><b>领料占收入比例</b></td>
-						<td ng-repeat="clazz in classList"></td>
-						<td></td>
-					</tr>
-					-->
+
 				</tfoot>
 	</table>
 </div>

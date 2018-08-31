@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONArray;
 import org.apache.struts2.ServletActionContext;
 
 import wingsoft.shopping.dao.ItemparaDAO;
@@ -18,17 +19,13 @@ import wingsoft.shopping.model.Parameter;
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
-public class GetItemParameterAction extends ActionSupport {
+public class GetItemParameterAction extends BaseAction {
 	/*
 	 * Generated Methods
 	 */
 	/**
 	 * Method execute
 	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
 	 * @return ActionForward
 	 * @throws IOException 
 	 * @throws SQLException 
@@ -57,13 +54,8 @@ public class GetItemParameterAction extends ActionSupport {
 		
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("html/text");
-		PrintWriter out=null;
-		System.out.println("parameterAction="+json);
-		out=response.getWriter();
-		out.print(json);
-		out.flush();
-		out.close();
-		
-		return null;
+		setJsonArray(JSONArray.fromObject(json));
+
+		return SUCCESS;
 	}
 }

@@ -165,9 +165,7 @@ public class ItemparaDAO {
 			}
 			
 		}
-		
-		
-	
+
 		sql+=findTopPara2;
 		System.out.println("findtoppara:"+sql);
 		ps =c.prepareStatement(sql);
