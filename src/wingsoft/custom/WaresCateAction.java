@@ -128,7 +128,6 @@ System.out.println(sql);
             pool.closeResultSet(rs2);
             pool.returnConnection(conn);
         }
-        //and td.createdate between to_date ('"+year+"','yyyy-mm-dd') and to_date('"+month+"','yyyy-mm-dd')
         return SUCCESS;
     }
 

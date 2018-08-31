@@ -70,7 +70,7 @@ public class TypeListAction extends ActionSupport {
         return "printDBA";
     }
 
-
+/*
     public String selectType(){
         System.out.println("selectType Methods");
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -133,5 +133,6 @@ public class TypeListAction extends ActionSupport {
         }
         return "getType";
     }
+    */
 }
 

@@ -1,6 +1,8 @@
 package wingsoft.core.wfdao;
 
 import java.util.List;
+
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import wingsoft.core.start.WebInitServlet;
 import wingsoft.tool.common.CommonOperation;
 
@@ -27,6 +29,7 @@ public class UserAuthorityDAO extends WFDefQueryDAO
 
   public List findUserRoleTableCond(String userid) {
     String sql = "select * from  " + WebInitServlet.wfServerName + ".sys_role_table where roleid in (select roleid from  " + WebInitServlet.wfServerName + ".sys_user_role where userid='" + userid + "')";
+    System.out.println(sql);
     return queryHashDataForm(sql); }
 
   public List findRoleTableCond(String roleid) {

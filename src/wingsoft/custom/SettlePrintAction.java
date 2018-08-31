@@ -78,8 +78,8 @@ public class SettlePrintAction extends ActionSupport {
 				json = json.substring(0, json.length() - 1);
 			json += "]";
 			System.out.println(json);
-			json=commonJsonDeal.dealArray(json,"pici").toString();
-			json=commonJsonDeal.updateList(json, "pici").toString();
+//			json=commonJsonDeal.dealArray(json,"pici").toString();
+//			json=commonJsonDeal.updateList(json, "pici").toString();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -170,5 +170,5 @@ System.out.println(json);
 		}
 		return "allSettle";
 	}
-	
+
 }

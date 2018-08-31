@@ -1,72 +1,154 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC
-    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
-    "http://struts.apache.org/dtds/struts-2.3.dtd">
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+
+    <!-- 购物相关actions -->
+    <package name="shopping" extends="json-default">
+        <interceptors>
+            <interceptor name="StaticIntercepter" class="wingsoft.shopping.service.custom.StaticIntercepter"></interceptor>
+        </interceptors>
+        <action name="getCategory" class="wingsoft.shopping.action.GetCategoryAction">
+            <result name="success" type="json">
+                <param name="root">jsonArray</param>
+            </result>
+            <!--<interceptor-ref name="StaticIntercepter"></interceptor-ref>-->
+        </action>
+        <action name="getItem" class="wingsoft.shopping.action.GetItemAction">
+            <result name="success" type="json"><param name="root">jsonArray</param></result>
+            <!--<interceptor-ref name="StaticIntercepter"></interceptor-ref>-->
+        </action>
+
+        <action name="getItemInfomation"
+                class="wingsoft.shopping.action.GetItemInfoAction">
+            <result name="success" type="json">
+                <param name="root">jsonObject</param>
+            </result>
+            <!--<interceptor-ref name="StaticIntercepter"></interceptor-ref>-->
+        </action>
+
+        <action name="getItemParameter"
+                class="wingsoft.shopping.action.GetItemParameterAction">
+            <result name="success" type="json">
+                <param name="root">jsonArray</param>
+            </result>
+            <!--<interceptor-ref name="StaticIntercepter"></interceptor-ref>-->
+        </action>
+        <action name="getItemComment"
+                class="wingsoft.shopping.action.GetItemCommentAction">
+            <result name="success" type="json">
+                <param name="root">jsonArray</param>
+            </result>
+            <!--<interceptor-ref name="StaticIntercepter"></interceptor-ref>-->
+        </action>
+        <action name="getItemPage" class="wingsoft.shopping.action.GetItemPageAction">
+            <result name="success" type="json">
+                <param name="root">jsonObject</param>
+            </result>
+            <!--<interceptor-ref name="StaticIntercepter"></interceptor-ref>-->
+        </action>
+        <action name="getCart" class="wingsoft.shopping.action.GetCartAction">
+            <result name="success" type="json">
+                <param name="root">jsonArray</param>
+            </result>
+            <!--<interceptor-ref name="StaticIntercepter"></interceptor-ref>-->
+        </action>
+        <action name="getCondition" class="wingsoft.shopping.action.GetConditionAction">
+            <result name="success" type="json">
+                <param name="root">jsonArray</param>
+            </result>
+            <!--<interceptor-ref name="StaticIntercepter"></interceptor-ref>-->
+        </action>
+        <action name="addCart" class="wingsoft.shopping.action.AddCartAction">
+            <result name="success" type="json"></result>
+        </action>
+        <action name="deleteCart" class="wingsoft.shopping.action.DeleteCartAction">
+        </action>
+        <action name="deleteCart_*" method="{1}" class="wingsoft.shopping.action.DeleteCartAction">
+        </action>
+        <action name="editCart" class="wingsoft.shopping.action.EditCartAction">
+        </action>
+        <action name="addOrder" class="wingsoft.shopping.action.AddOrderAction">
+        </action>
+    </package>
+    <package name="shoppingPrintAction" extends="json-default">
+        <action name="printOrder_*" method="{1}" class="wingsoft.shopping.service.print.OrderPrintAction">
+            <result name="success" type="json"><param name="root">json</param></result>
+            <result name="array" type="json"><param name="root">jsonArray</param></result>
+            <result name="object" type="json"><param name="root">jsonObject</param></result>
+        </action>
+    </package>
+    <!-- end of  购物相关actions -->
+    <!--自定义shoping相关-->
+    <package name="selfhop" extends="json-default">
+        <interceptors>
+            <interceptor name="StaticIntercepter" class="wingsoft.shopping.service.custom.StaticIntercepter"></interceptor>
+        </interceptors>
+        <action name="SHOP_*"   method="{1}"
+                class="wingsoft.shopping.service.ShopAction">
+            <result name="success" type="json"><param name="root">json</param></result>
+            <result name="array" type="json"><param name="root">jsonArray</param></result>
+            <result name="object" type="json"><param name="root">jsonObject</param></result>
+            <!--<interceptor-ref name="StaticIntercepter"></interceptor-ref>-->
+        </action>
+        <action name="MSG_*"   method="{1}"
+                class="wingsoft.shopping.service.action.MsgAction">
+            <result name="success" type="json"><param name="root">json</param></result>
+            <result name="array" type="json"><param name="root">jsonArray</param></result>
+            <result name="object" type="json"><param name="root">jsonObject</param></result>
+            <!--<interceptor-ref name="StaticIntercepter"></interceptor-ref>-->
+        </action>
+
+    </package>
+    <!--自定义shoping相关   END-->
+
+    <!--shop打印.预约相关-->
+    <package name ="shop" extends="struts-default">
+        <action name="YB_CWBS"   method="YB_CWBS"
+                class="wingsoft.shopping.service.yb.ConnectWWS">
+        </action>
+        <action name="F_C_Order"   method="F_C_Order"
+                class="wingsoft.shopping.service.yb.ConnectWWS">
+        </action>
+        <action name="Print_*" method="{1}" class="wingsoft.shopping.service.Print_shop">
+            <result name="textPlain" type="stream">
+                <param name="contentType">text/plain</param>
+                <param name="inputName">responseText</param>
+            </result>
+        </action>
+
+
+    </package>
+
+    <!--新版预约接口-->
+    <package name ="yb_new" extends="struts-default">
+
+        <action name="ybnew_*"   method="{1}"
+                class="wingsoft.shopping.service.yb.New_WWS">
+        </action>
+    </package>
+    <!--shop打印相关END-->
+
     <package name="loginAction"  extends="struts-default">
         <action name="loginAction_*" method="{1}" class="wingsoft.core.action.LoginAction">
             <result name="textPlain" type="stream">
                 <param name="contentType">text/plain</param>
                 <param name="inputName">responseText</param>
             </result>
-            <result name="img" type="stream" >
-                <param name="contentType">image/jpg</param>
-                <param name="inputName">picStream</param>
-            </result>
+            <!--<result name="img" type="stream" >-->
+                <!--<param name="contentType">image/jpg</param>-->
+                <!--<param name="inputName">picStream</param>-->
+            <!--</result>-->
         </action>
-        <action name="external" method="externalLogin" class="wingsoft.core.action.LoginAction">
-            <result name="textPlain" type="stream">
-                <param name="contentType">text/plain</param>
+        <action name="fileSystem_*" class="wingsoft.fileSystem.FileSystemOperation" method="{1}">
+            <result name="imageJpeg" type="stream">
+                <param name="contentType">image</param>
                 <param name="inputName">responseText</param>
             </result>
         </action>
     </package>
 
-	<package namespace="/" name="selfJson"  extends="json-default">
-	<action name="OrderPrintAction_*" method="{1}"   class="wingsoft.custom.OrderPrintAction">  
-           <result name="orderPrint" type="json"/>
-           <result name="check" type="json"/>
-           <result name="allOrder" type="json"/>
-    </action>
-    <action name="costTable_*" method="{1}" class="wingsoft.custom.CostTable">
-    	<result name="insert" type="json"/>
-    	<result name="fromDBData" type="json"/>
-    	<result name="update" type="json"/>
-    </action>
-    <action name="settlePrint_*" method="{1}" class="wingsoft.custom.SettlePrintAction">
-    	<result name="settlePrint" type="json"/>
-    	<result name="allSettle" type="json"/>
-    </action>
-    <action name="DetailsActionPrint_*" method="{1}" class="wingsoft.custom.DetailsAction">
-    	<result name="printDBA" type="json"/>
-    </action>
-        <action name="TList_*" method="{1}" class="wingsoft.custom.TypeListAction">
-            <result name="printDBA" type="json"/>
-            <result name="getType" type="json"/>
-        </action>
-        <action name="WaresCateAction_*" method="{1}" class="wingsoft.custom.WaresCateAction">
-            <result name="success" type="json" />
-        </action>
-        <action name="CenterInCheckAction_*" method="{1}" class="wingsoft.custom.CenterInCheckAction">
-            <result name="success" type="json"/>
-        </action>
-	</package>
 
-
-    <!-- end of  购物相关actions -->
-    <!--自定义shoping相关-->
-    <package name="selfhop" extends="json-default">
-        <action name="SHOP_*"   method="{1}"
-                class="wingsoft.shopping.service.ShopAction">
-            <result name="success" type="json">
-            </result>
-        </action>
-        <action name="MSG_*"   method="{1}"
-                class="wingsoft.shopping.service.action.MsgAction">
-            <result name="success" type="json">
-            </result>
-        </action>
-
-    </package>
 </struts>
