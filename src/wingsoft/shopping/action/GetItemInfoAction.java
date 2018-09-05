@@ -23,7 +23,7 @@ public class GetItemInfoAction extends BaseAction {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpServletResponse response = ServletActionContext.getResponse();
 		String itemid = request.getParameter("itemid");
-		
+
 		ItemDAO id = new ItemDAO();
 		Item it = id.selectItem(itemid);
 		CommentsDAO cd = new CommentsDAO();

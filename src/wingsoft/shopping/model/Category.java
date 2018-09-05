@@ -8,8 +8,7 @@ public class Category {
 	
 	public Category(){}
 	
-	public Category(String categroyid, String categrpyname, int level,
-			String parent) {
+	public Category(String categroyid, String categrpyname, int level, String parent) {
 		super();
 		this.categoryid = categroyid;
 		this.categoryname = categrpyname;

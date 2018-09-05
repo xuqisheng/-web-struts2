@@ -19,11 +19,9 @@ public class SearchFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession httpSession = (HttpSession) request.getSession();
-        //predict the quare different is different 
         if(httpSession.getAttribute("userContextStr") != null && httpSession.getAttribute("userId") != null){
             filterChain.doFilter(servletRequest,servletResponse);
         }else{
-        //    response.sendRedirect("http://192.168.102.5:8088"+request.getContextPath()+"/shopping/login.jsp");
             String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/shopping/login.jsp";
             response.sendRedirect(basePath);
         }

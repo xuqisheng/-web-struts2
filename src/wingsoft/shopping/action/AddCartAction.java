@@ -17,13 +17,10 @@ import com.opensymphony.xwork2.ActionSupport;
 public class AddCartAction extends ActionSupport {
 	/*
 	 * Generated Methods
-	 * 
-	 */ 
-	
+	 *
+	 */
 	private String json = "";
-	
-	
-	
+
 	public String getJson() {
 		return json;
 	}
@@ -32,17 +29,6 @@ public class AddCartAction extends ActionSupport {
 	public void setJson(String json) {
 		this.json = json;
 	}
-	/**
-	 * Method execute
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return ActionForward
-	 * @throws IOException 
-	 * @throws SQLException 
-	 */
 	public String execute() throws IOException, SQLException {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpServletResponse response = ServletActionContext.getResponse();
@@ -52,16 +38,14 @@ public class AddCartAction extends ActionSupport {
 		String userid = "";//暂定
 		if (request.getSession().getAttribute("userId")!=null) {
 		System.out.println("当前用户已登录");	
-			userid = (String) request.getSession().getAttribute("userId");
-		
-		
-		
+		userid = (String) request.getSession().getAttribute("userId");
+
 		Cart c = new Cart();
 		c.setItemid(subitem);
 		//c.setSubitemid(subitem);
 		c.setNumber(Integer.valueOf(number));
 		c.setUserid(userid);
-		
+
 		CartDAO cd = new CartDAO();
 		if (cd.save(c)) {
 			json = "ok"; 
@@ -69,7 +53,6 @@ public class AddCartAction extends ActionSupport {
 			json = "添加购物车异常";
 		}
 		
-		//response.sendRedirect("cart.jsp");
 		}else{
 			json = "未登录";		
 		}

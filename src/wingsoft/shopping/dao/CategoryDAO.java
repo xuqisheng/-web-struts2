@@ -39,7 +39,6 @@ public class CategoryDAO {
 		PreparedStatement ps=c.prepareStatement(selectChildren);
 		ps.setString(1, parentid);
 		ResultSet rs = ps.executeQuery();
-		
 		List<Category> cas = new ArrayList<Category>();
 		
 		while (rs.next()){

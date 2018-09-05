@@ -23,7 +23,6 @@ public class StaticIntercepter extends AbstractInterceptor {
     @Override
     public String intercept(ActionInvocation actionInvocation) throws Exception {
         System.out.println("过滤开始");
-//        actionInvocation.invoke();
         String result = "error";
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response =ServletActionContext.getResponse();
@@ -31,39 +30,32 @@ public class StaticIntercepter extends AbstractInterceptor {
         CreateStaticFile csf = new CreateStaticFile();
         String exists = csf.getIndex(realUrl);
         String jsons = "";
-//        System.out.println("存在吗啊吗啊啊阿萨德暗示?????:"+exists);w
+
         if(exists.equals("notExists")){
             BaseAction ba =null ;
-//            System.out.println("文件不存在需要过滤:"+realUrl);
             actionInvocation.invoke();
-                Object action = actionInvocation.getAction();
-                String actionName = actionInvocation.getInvocationContext().getName();
-//                System.out.println("1:"+actionInvocation.getAction());
-                ba = (BaseAction) actionInvocation.getAction();
-                if(ba.getJsonArray()!=null&&ba.getJsonArray().toString()!=""){
-                    csf.getURLContent(realUrl,ba.getJsonArray().toString());//文件
-                }else if(ba.getJsonObject()!=null&&ba.getJsonObject().toString()!=""){
-                    csf.getURLContent(realUrl,ba.getJsonObject().toString());//谢文杰
-                }else if(ba.getJson()!=null&&ba.getJson()!=""){
-//                    System.out.println("问题就出在这里写文件时候的的的的的的");
-                    JSONObject jo = new JSONObject();
-                    jo.put("json",ba.getJson());
-//                    System.out.println(ba.getJson());
-                    csf.getURLContent(realUrl,jo.toString());
-                }
+            Object action = actionInvocation.getAction();
+            String actionName = actionInvocation.getInvocationContext().getName();
+            ba = (BaseAction) actionInvocation.getAction();
+            if(ba.getJsonArray()!=null&&ba.getJsonArray().toString()!=""){
+                csf.getURLContent(realUrl,ba.getJsonArray().toString());//文件
+            }else if(ba.getJsonObject()!=null&&ba.getJsonObject().toString()!=""){
+                csf.getURLContent(realUrl,ba.getJsonObject().toString());//谢文杰
+            }else if(ba.getJson()!=null&&ba.getJson()!=""){
+                JSONObject jo = new JSONObject();
+                jo.put("json",ba.getJson());
+                csf.getURLContent(realUrl,jo.toString());
+            }
         }
         else{
             response.setCharacterEncoding("utf-8");
             response.setContentType("html/text");
             jsons  = csf.returnJson(exists);
-            PrintWriter out=null;
+            PrintWriter out=null;//
             out=response.getWriter();
             out.print(jsons);
             out.flush();
             out.close();
-//            System.out.println(exists);
-//            System.out.println(jsons);
-//            System.out.println("返回文本");
             return "success";
         }
         System.out.println("过滤结束");
@@ -80,4 +72,6 @@ public class StaticIntercepter extends AbstractInterceptor {
         strs = strs.substring(0,strs.length()-1);
         return strs;
     }
+
+
 }

@@ -50,7 +50,7 @@ public class GetItemAction extends BaseAction {
 			values = new String(values);
 		}
 		if (keyword!=null) {
-			keyword = new String(keyword);
+			keyword = new String(keyword.getBytes("iso-8859-1"), "utf-8");
 		}
 		if (parameters==null||parameters.equals("null")) {
 			parameters = null;
@@ -99,6 +99,4 @@ public class GetItemAction extends BaseAction {
 		System.out.println("GetItemAction ended");
 		return SUCCESS;
 	}
-
-
 }

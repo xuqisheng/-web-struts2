@@ -16,8 +16,10 @@ import java.net.URL;
 import java.util.HashSet;
 
 public class CreateStaticFile {
-    private final String PATH = this.getClass().getClassLoader().getResource("").getPath();;
+    private static final String PATH = CreateStaticFile.class.getClassLoader().getResource("").getPath();
+    private static final String DIRECTORY_PATH = PATH +"/json/";
 
+    @Deprecated
     public boolean createFile(String url){
         boolean status = false;
         int statusCode = 0;
@@ -51,9 +53,6 @@ public class CreateStaticFile {
                 try{
                     System.out.println("开始写文件");
                     String json = "";
-//                    System.out.println("pageContent:"+pageContent);
-//                    System.out.println("start with {"+pageContent.startsWith("{"));
-//                    System.out.println("start with ["+pageContent.startsWith("["));
                     if(pageContent.startsWith("{")){
                         JSONObject jsonObject = JSONObject.fromObject(pageContent);
                         json = jsonObject.toString();
@@ -84,7 +83,7 @@ public class CreateStaticFile {
         return status;
     }
 
-    //写文件
+    // 写文件
     private synchronized void writeJsonFiles(String url, String pageContent) throws Exception{
         FileWriter fw = null;
         String fileName = Md5Tools.getMD5(url.getBytes());//update
@@ -95,11 +94,38 @@ public class CreateStaticFile {
         if(!file.exists()){
             file.createNewFile();
         }
-//        System.out.println("file文件位置："+file);
+        System.out.println("file文件位置："+file);
         fw = new FileWriter(file);
         fw.write(pageContent);
         if(fw!=null)
             fw.close();
+    }
+
+    private synchronized boolean deleteFiles(String url){
+        File file = new File(url);
+        if (!file.exists()) {
+            return false;
+        }
+        if (!file.isDirectory()) {
+            return false;
+        }
+        String[] tempList = file.list();
+        File temp = null;
+        for (int i = 0; i < tempList.length; i++) {
+            if (url.endsWith(File.separator)) {
+                temp = new File(url + tempList[i]);
+            } else {
+                temp = new File(url + File.separator + tempList[i]);
+            }
+            if (temp.isFile()) {
+                temp.delete();
+            }
+            if (temp.isDirectory()) {
+                deleteFiles(url + "/" + tempList[i]);//先删除文件夹里面的文件
+                return true;
+            }
+        }
+        return true;
     }
 
 
@@ -133,7 +159,6 @@ public class CreateStaticFile {
     }
 
     /**
-     * 写
      * @param urlStr
      * @oaran content
      * @return
@@ -155,7 +180,6 @@ public class CreateStaticFile {
         }catch (Exception e){
             e.printStackTrace();
         }
-//        System.out.println("结束写文件,文件位置：");
         return result;
     }
 
@@ -175,19 +199,18 @@ public class CreateStaticFile {
     }
 
 //        public static void main(String[] args) throws Exception{
-//        String url0 = "http://localhost:8080/shopping/index/SHOP_GetTGROUP.action";
 //        String url1 ="http://localhost:8080/shopping/index/SHOP_GetRECOMMEND.action";
 //        String url2  ="http://localhost:8080/shopping/index/SHOP_GetCart.action";
 //        String url3 ="http://localhost:8080/shopping/index/SHOP_CATEGORY.action";
 //        String url4 ="http://localhost:8080/shopping/index/SHOP_hot_search.action";
 //        String url5 ="http://localhost:8080/shopping/index/MSG_GetMsgInfo.action";
-//        String str [] ={url0,url1,url2,url3,url4,url5};
+//        String str [] ={url1,url2,url3,url4,url5};
 //        CreateStaticFile csf = new CreateStaticFile();
-//        csf.writeJsonFiles(url0,"[{a:'b',b:'b'}]");
 //        for(int i=0;i<str.length;i++){
+//            csf.writeJsonFiles(str[i],"[{a:'b',b:'b'}]");
 //            System.out.println(csf.getIndex(str[i]));
 //        }
+////            boolean st = csf.deleteFiles(DIRECTORY_PATH);
+////            System.out.println(st);
 //    }
-
-
 }
