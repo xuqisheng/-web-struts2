@@ -14,11 +14,11 @@
             <result name="success" type="json">
                 <param name="root">jsonArray</param>
             </result>
-            <!--<interceptor-ref name="StaticIntercepter"></interceptor-ref>-->
+            <interceptor-ref name="StaticIntercepter"></interceptor-ref>
         </action>
         <action name="getItem" class="wingsoft.shopping.action.GetItemAction">
             <result name="success" type="json"><param name="root">jsonArray</param></result>
-            <!--<interceptor-ref name="StaticIntercepter"></interceptor-ref>-->
+            <interceptor-ref name="StaticIntercepter"></interceptor-ref>
         </action>
 
         <action name="getItemInfomation"
@@ -26,7 +26,7 @@
             <result name="success" type="json">
                 <param name="root">jsonObject</param>
             </result>
-            <!--<interceptor-ref name="StaticIntercepter"></interceptor-ref>-->
+            <interceptor-ref name="StaticIntercepter"></interceptor-ref>
         </action>
 
         <action name="getItemParameter"
@@ -34,32 +34,32 @@
             <result name="success" type="json">
                 <param name="root">jsonArray</param>
             </result>
-            <!--<interceptor-ref name="StaticIntercepter"></interceptor-ref>-->
+            <interceptor-ref name="StaticIntercepter"></interceptor-ref>
         </action>
         <action name="getItemComment"
                 class="wingsoft.shopping.action.GetItemCommentAction">
             <result name="success" type="json">
                 <param name="root">jsonArray</param>
             </result>
-            <!--<interceptor-ref name="StaticIntercepter"></interceptor-ref>-->
+            <interceptor-ref name="StaticIntercepter"></interceptor-ref>
         </action>
         <action name="getItemPage" class="wingsoft.shopping.action.GetItemPageAction">
             <result name="success" type="json">
                 <param name="root">jsonObject</param>
             </result>
-            <!--<interceptor-ref name="StaticIntercepter"></interceptor-ref>-->
+            <interceptor-ref name="StaticIntercepter"></interceptor-ref>
         </action>
         <action name="getCart" class="wingsoft.shopping.action.GetCartAction">
             <result name="success" type="json">
                 <param name="root">jsonArray</param>
             </result>
-            <!--<interceptor-ref name="StaticIntercepter"></interceptor-ref>-->
+            <interceptor-ref name="StaticIntercepter"></interceptor-ref>
         </action>
         <action name="getCondition" class="wingsoft.shopping.action.GetConditionAction">
             <result name="success" type="json">
                 <param name="root">jsonArray</param>
             </result>
-            <!--<interceptor-ref name="StaticIntercepter"></interceptor-ref>-->
+            <interceptor-ref name="StaticIntercepter"></interceptor-ref>
         </action>
         <action name="addCart" class="wingsoft.shopping.action.AddCartAction">
             <result name="success" type="json"></result>
@@ -91,14 +91,14 @@
             <result name="success" type="json"><param name="root">json</param></result>
             <result name="array" type="json"><param name="root">jsonArray</param></result>
             <result name="object" type="json"><param name="root">jsonObject</param></result>
-            <!--<interceptor-ref name="StaticIntercepter"></interceptor-ref>-->
+            <interceptor-ref name="StaticIntercepter"></interceptor-ref>
         </action>
         <action name="MSG_*"   method="{1}"
                 class="wingsoft.shopping.service.action.MsgAction">
             <result name="success" type="json"><param name="root">json</param></result>
             <result name="array" type="json"><param name="root">jsonArray</param></result>
             <result name="object" type="json"><param name="root">jsonObject</param></result>
-            <!--<interceptor-ref name="StaticIntercepter"></interceptor-ref>-->
+            <interceptor-ref name="StaticIntercepter"></interceptor-ref>
         </action>
 
     </package>

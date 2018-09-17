@@ -19,15 +19,13 @@ import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
 public class GetConditionAction extends BaseAction {
-	/*
-	 * Generated Methods
-	 */
 	/**
+	 *
 	 * Method execute
-	 * 
 	 * @return ActionForward
 	 * @throws IOException 
 	 * @throws SQLException
+	 *
 	 */
 	public String execute() throws IOException, SQLException {
 		System.out.println("getConditionAction is starting");
@@ -37,14 +35,11 @@ public class GetConditionAction extends BaseAction {
 		String keyword = request.getParameter("keyword");
 		String Collection = request.getParameter("collection");
 		Boolean IsCollection = false;  //是否为查询我的收藏
-		if (keyword != null) {
+		if (keyword != null || keyword.equals("null") ) {
 			keyword = new String(keyword.getBytes("iso-8859-1"), "utf-8");
 		}
 		if (category == null || category.equals("null")) {
 			category = "0";
-		}
-		if (keyword == null || keyword.equals("null")) {
-			keyword = "";
 		}
 		if ("T".equals(Collection)) {
 			IsCollection = true;
@@ -52,16 +47,11 @@ public class GetConditionAction extends BaseAction {
 		ParameterDAO pd = new ParameterDAO();
 		ItemparaDAO ip = new ItemparaDAO();
 		List<String> ps = ip.findTopPara(category, keyword, 5, IsCollection);
-
 		String json = "[";
-
-		//for (int i=0;i<3;i++) {
 		for (int i = 0; i < ps.size(); i++) {
 			Parameter p = pd.selectParameter(ps.get(i));
 			json += "{\"id\":\"" + p.getParameterid() + "\",\"display\":\"";
-
 			json += p.getParametername() + "\",\"options\":[";
-
 			if (p.getParametertype().endsWith("string")) {
 				List<String> value = ip.findParaValue(p.getParameterid(), category, keyword, 10);
 				boolean flag = false;
@@ -69,7 +59,6 @@ public class GetConditionAction extends BaseAction {
 					json += "\"" + value.remove(0) + "\",";
 					flag = true;
 				}
-
 				if (flag) {
 					json = json.substring(0, json.length() - 1);
 				}

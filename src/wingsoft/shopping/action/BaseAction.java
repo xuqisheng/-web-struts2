@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class BaseAction extends ActionSupport {
@@ -51,7 +52,7 @@ public class BaseAction extends ActionSupport {
      * @return
      */
     public JSONObject reObject(String sql){
-        System.out.println("returnObject");
+//        System.out.println("returnObject");
         ConnectionPool pool = ConnectionPoolManager.getPool("CMServer");
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -85,7 +86,7 @@ public class BaseAction extends ActionSupport {
      * @return
      */
     public JSONArray reArray(String sql){
-        System.out.println("returnArray");
+//        System.out.println("returnArray");
         ConnectionPool pool = ConnectionPoolManager.getPool("CMServer");
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -121,14 +122,8 @@ public class BaseAction extends ActionSupport {
      * @param keyWord
      * @return
      */
-    public String gtStringKey(Object obj,String keyWord){
-        if(obj instanceof JSONObject){
-            JSONObject childObj = JSONObject.fromObject(obj);
-            return Comm.nTrim(childObj.getString(keyWord));
-        }
-        else{
-            return null;
-        }
+    public String gtStringKey(JSONObject obj,String keyWord){
+            return Comm.nTrim(obj.getString(keyWord));
     }
 
     /**
@@ -137,17 +132,13 @@ public class BaseAction extends ActionSupport {
      * @param keyWord
      * @return
      */
-    public List<String> gtStringKeys(Object obj, String keyWord){
+    public ArrayList<String> gtStringKeys(JSONArray obj, String keyWord){
         ArrayList<String> keyList = new ArrayList<String>();
-        if(obj instanceof JSONArray) {
-            JSONArray childObj = JSONArray.fromObject(obj);
-            for(Object oj :childObj){
+            for(Object oj :obj) {
                 JSONObject ja = JSONObject.fromObject(oj);
-                keyList.add(Comm.nTrim(gtStringKey(ja,keyWord)));
+                keyList.add(Comm.nTrim(gtStringKey(ja, keyWord)));
             }
             return  keyList;
-        }
-        return null;
-    }
 
+    }
 }

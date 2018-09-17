@@ -18,11 +18,7 @@ public class Comm {
 		
 	}
 	public static String nTrim(String src) {
-        if (src == null) {
-            return "";
-        } else {
-            return src.trim();
-        }
+		return src==null?"":src.trim();
     }
 	public static int TimeBetween(String Abegin,String Aend,String Atype){
 		int day1=0;

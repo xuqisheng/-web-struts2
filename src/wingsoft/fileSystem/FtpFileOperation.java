@@ -142,8 +142,8 @@ public class FtpFileOperation {
         String minFile = CommonOperation.nTrim(request.getParameter("minFile"));
         String seq = CommonOperation.nTrim(request.getParameter("seq"));
 
-        System.out.println("minFile:"+minFile);
-        System.out.println("seq:"+seq);
+//        System.out.println("minFile:"+minFile);
+//        System.out.println("seq:"+seq);
         if (seq.contains("jpeg"))
             seq = seq.replace("jpeg","jpg");
 //        try {
@@ -171,10 +171,10 @@ public class FtpFileOperation {
                 fileName = seq;
             }
 
-            System.out.println("seq:" + seq + "  filename:" + fileName + "   projid:" + projid);
+//            System.out.println("seq:" + seq + "  filename:" + fileName + "   projid:" + projid);
             filePath = this.getFilePathPrivateQCopy(seq,fileName,projid);
 //            filePath = this.getFilePathPrivate(seq, fileName, projid);
-            System.out.println(filePath);
+//            System.out.println(filePath);
             String remoteFilename;
             String directory;
             String hashSourceForFallback2;
@@ -211,8 +211,8 @@ public class FtpFileOperation {
             String remoteFilename_LowerCaseExt = filePath_LowerCaseExt == null ? null : filePath_LowerCaseExt.substring(0, filePath_LowerCaseExt.lastIndexOf("&"));
             hashSourceForFallback2 = fallbackPathForOldCapturer_LowerCaseExt == null ? null : fallbackPathForOldCapturer_LowerCaseExt.substring(0, fallbackPathForOldCapturer_LowerCaseExt.lastIndexOf("&"));
             remoteFilenameFallbackForOldCapturer2_LowerCaseExt = fallbackPathForOldCapturer2_LowerCaseExt == null ? null : fallbackPathForOldCapturer2_LowerCaseExt.substring(0, fallbackPathForOldCapturer2_LowerCaseExt.lastIndexOf("&"));
-            System.out.println("fileName:"+fileName);
-            System.out.println("filePath:"+filePath);
+//            System.out.println("fileName:"+fileName);
+//            System.out.println("filePath:"+filePath);
             if (!this.getPicFromFtp(remoteFilename, bos) && remoteFilename_LowerCaseExt != null && !this.getPicFromFtp(remoteFilename_LowerCaseExt, bos) && directory != null && !this.getPicFromFtp(directory, bos) && hashSourceForFallback2 != null && !this.getPicFromFtp(hashSourceForFallback2, bos) && remoteFilenameFallbackForOldCapturer2 != null && !this.getPicFromFtp(remoteFilenameFallbackForOldCapturer2, bos) && fallbackPathForOldCapturer2_LowerCaseExt != null) {
                 this.getPicFromFtp(remoteFilenameFallbackForOldCapturer2_LowerCaseExt, bos);
             }

@@ -11,6 +11,8 @@ import org.apache.struts2.ServletActionContext;
 import wingsoft.shopping.action.BaseAction;
 import wingsoft.shopping.util.Comm;
 
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.json.JSONResult;
@@ -18,11 +20,11 @@ import org.apache.struts2.json.JSONResult;
 import java.io.PrintWriter;
 import java.util.Enumeration;
 
-public class StaticIntercepter extends AbstractInterceptor {
+public class StaticIntercepter extends AbstractInterceptor implements ServletContextListener {
 
     @Override
     public String intercept(ActionInvocation actionInvocation) throws Exception {
-        System.out.println("过滤开始");
+//        System.out.println("过滤开始");
         String result = "error";
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response =ServletActionContext.getResponse();
@@ -58,7 +60,7 @@ public class StaticIntercepter extends AbstractInterceptor {
             out.close();
             return "success";
         }
-        System.out.println("过滤结束");
+//        System.out.println("过滤结束");
         return null;
     }
 
@@ -73,5 +75,15 @@ public class StaticIntercepter extends AbstractInterceptor {
         return strs;
     }
 
+    @Override
+    public void contextInitialized(ServletContextEvent servletContextEvent) {
+        System.out.println("DataFile Initialized");
+        CreateStaticFile csf = new CreateStaticFile();
+        csf.deleteInterface();
+    }
 
+    @Override
+    public void contextDestroyed(ServletContextEvent servletContextEvent) {
+        System.out.println("destroyed!");
+    }
 }

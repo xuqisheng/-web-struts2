@@ -18,16 +18,12 @@ public class AddOrderAction extends ActionSupport {
 	/*
 	 * Generated Methods
 	 */
+
 	/**
-	 * Method execute
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return ActionForward
-	 * @throws IOException 
-	 * @throws SQLException 
+	 *
+	 * @return
+	 * @throws IOException
+	 * @throws SQLException
 	 */
 	public String execute() throws IOException, SQLException {
 		HttpServletRequest request = ServletActionContext.getRequest();
@@ -36,7 +32,6 @@ public class AddOrderAction extends ActionSupport {
 		if (request.getSession().getAttribute("userId")!=null) {
 			userid = (String) request.getSession().getAttribute("userId");
 		}
-
 		CartDAO cd = new CartDAO();
 		OrdersDAO od = new OrdersDAO();
 		String id = od.save(userid);

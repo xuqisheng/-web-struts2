@@ -7,12 +7,9 @@ import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;
-import org.apache.http.client.config.RequestConfig;
 import wingsoft.tool.common.Md5Tools;
 
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.HashSet;
 
 public class CreateStaticFile {
@@ -94,11 +91,15 @@ public class CreateStaticFile {
         if(!file.exists()){
             file.createNewFile();
         }
-        System.out.println("file文件位置："+file);
+//        System.out.println("file文件位置："+file);
         fw = new FileWriter(file);
         fw.write(pageContent);
         if(fw!=null)
             fw.close();
+    }
+
+    public synchronized boolean deleteInterface(){
+        return this.deleteFiles(DIRECTORY_PATH);
     }
 
     private synchronized boolean deleteFiles(String url){

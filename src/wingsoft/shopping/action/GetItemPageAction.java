@@ -16,9 +16,6 @@ import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
 public class GetItemPageAction extends BaseAction {
-	/*
-	 * Generated Methods
-	 */
 	/**
 	 * Method execute
 	 * 
@@ -37,7 +34,7 @@ public class GetItemPageAction extends BaseAction {
 		String keyword = request.getParameter("keyword");
 		String Wjson = "";
 		if (keyword!=null) {
-			keyword = new String(keyword.getBytes("iso-8859-1"),"utf-8");
+			keyword = new String(keyword.getBytes("iso-8859-1"), "utf-8");
 		}
 		if (values!=null) {
 			values = new String(values.getBytes("iso-8859-1"),"utf-8");
@@ -60,9 +57,6 @@ public class GetItemPageAction extends BaseAction {
 		if (baseurl==null||baseurl.equals("null")) {
 			baseurl="search.html?";
 		}
-		if (keyword==null||keyword.equals("null")) {
-			keyword = "";
-		}
 		
 		ItemDAO id = new ItemDAO();		
 		int is = id.countCategory(category, parameters, keyword, values)/16+1;
@@ -76,9 +70,6 @@ public class GetItemPageAction extends BaseAction {
 		
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("html/text");
-//		PrintWriter out=null;
-//
-//		out=response.getWriter();
 		Wjson = "{\"currentpage\":"+page+",\"totalpage\":"+is+",\"baseurl\":\""+baseurl+"\"}";
 		setJsonObject(JSONObject.fromObject(Wjson));
 		return SUCCESS;
