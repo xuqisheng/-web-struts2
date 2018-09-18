@@ -177,11 +177,7 @@ return html;
 
 	});
 	function doprint(){
-  if($.browser.msie){
-			document.execCommand('print', false, null);
-		}else{
 			window.print();
-		}
 	}
 	
 </script>

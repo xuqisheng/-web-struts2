@@ -1,34 +1,21 @@
 package wingsoft.shopping.service.print;
 
-import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import org.apache.struts2.ServletActionContext;
-import org.apache.struts2.json.JSONException;
-import org.apache.struts2.json.JSONUtil;
-import wingsoft.custom.CommonJsonDeal;
 import wingsoft.shopping.action.BaseAction;
-import wingsoft.shopping.util.Comm;
-import wingsoft.tool.common.CommonOperation;
-import wingsoft.tool.db.ConnectionPool;
-import wingsoft.tool.db.ConnectionPoolManager;
-
-import javax.naming.NamingException;
-import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * 南医大结算单
+ * 打印功能
+ */
 public class OrderPrintAction extends BaseAction {
 
-    public String mainContent(){
-        {
+    public String mainContent()  {
+            JSONObject obj = new JSONObject();
             System.out.println("OrderPrintAction_mainContent");
-            HttpServletRequest request = ServletActionContext.getRequest();
-            String orderApplyNumber =Comm.nTrim(request.getParameter("apply_no"));// 参数啊 201有两个结算明细
+            String orderApplyNumber =super.parametersGetByJson("apply_no");// 参数啊 201有两个结算明细
+            System.out.println("参数鸭:"+orderApplyNumber);
             if(orderApplyNumber==""&&orderApplyNumber.equals(""))
                 orderApplyNumber = "182";
             String orderMain ="SELECT ast.apply_no, ast.userid, ast.sid, ast.samt, ast.indate, ast.remark, ast.username FROM app_settle ast " +
@@ -37,15 +24,10 @@ public class OrderPrintAction extends BaseAction {
                     "WHERE asd.APPLY_NO = '"+orderApplyNumber+"' ORDER BY asd.ORD ASC";
             String orderInvoice = "SELECT asi.invoice_no, asi.invoice_amt, asi.invoice_name, asi.isapp, asi.userid FROM app_settle_invoice asi " +
                     "WHERE (asi.apply_no = '"+orderApplyNumber+"') ORDER BY asi.indate ASC";
-
             JSONObject checkListF = super.reObject(orderMain); //结算单
             JSONArray orderDetailsF = super.reArray(orderDetailsFather); //订单明细
             JSONArray orerInvoice = super.reArray(orderInvoice);
-            System.out.println(checkListF);
-            System.out.println("订单明细分类:"+orderDetailsF);//订单明细分类
-            System.out.println(orerInvoice);
             List<String> orderCodeList = super.gtStringKeys(orderDetailsF,"ordercode");
-            System.out.println("ordercode:"+orderCodeList);
             JSONArray orderArray = new JSONArray();
             for(String ordercode: orderCodeList){
                 JSONObject orderCodeCate = new JSONObject();
@@ -57,14 +39,17 @@ public class OrderPrintAction extends BaseAction {
                         "where  (oc.ordercode = '"+ordercode+"') ORDER BY oc.check_date DESC";
                 JSONArray detailsList = super.reArray(childDetails);
                 JSONArray commentsList = super.reArray(childCheckComments);
-                orderCode.put("detailsList",detailsList);//订单明细
-                orderCode.put("commentsList",commentsList);//审核意见
+                orderCode.put("detailsList",detailsList); //订单明细
+                orderCode.put("commentsList",commentsList); //审核意见
                 orderCodeCate.put(ordercode,orderCode);
                 orderArray.add(orderCodeCate);
             }
-            System.out.println("orderArray:"+orderArray);
-            return  SUCCESS;
-        }
+            obj.put("checkListF",checkListF);
+            obj.put("orderDetailsF",orderDetailsF);
+            obj.put("orerInvoice",orerInvoice);
+            obj.put("orderArray",orderArray);
+            setJsonObject(obj);
+            System.out.println(obj);
+            return  OBJECT;
     }
-
 }

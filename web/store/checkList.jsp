@@ -180,11 +180,7 @@ return html;
 
 	});
 	function doprint(){
-  if($.browser.msie){
-			document.execCommand('print', false, null);
-		}else{
 			window.print();
-		}
 	}
 	
 </script>
@@ -193,13 +189,12 @@ return html;
 <table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0">
 	<br/><br/>
 	<tr align="center">
-		<td ><input name="BtnPrint" type="button" id="BtnPrint" value="打印验收单" onClick="doprint();"></td>
+		 <td><input name="BtnPrint" type="button" id="BtnPrint" value="打印验收单" onClick="doprint();"></td>
 		  <td><input name="bExcel" type="button" value="导出表格" onclick="toExcelData();"/></td>
 	  </tr>
 	</table>
 	<br/><br/>
 	 <table id="printContent" width="100%"  border="1" align="center" cellpadding="0" cellspacing="0" >
-
 	 </table>
 </body>
 <script>

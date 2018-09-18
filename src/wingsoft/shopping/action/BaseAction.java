@@ -1,19 +1,23 @@
 package wingsoft.shopping.action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import net.sf.json.JSON;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.json.JSONException;
+import org.apache.struts2.json.JSONUtil;
 import wingsoft.shopping.util.Comm;
 import wingsoft.tool.db.ConnectionPool;
 import wingsoft.tool.db.ConnectionPoolManager;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+
 
 public class BaseAction extends ActionSupport {
     public static String ARRAY ="array";
@@ -140,5 +144,23 @@ public class BaseAction extends ActionSupport {
             }
             return  keyList;
 
+    }
+
+    /**
+     * 获取参数鸭
+     * @param params
+     * @return 返回参数字符串
+     */
+    public String parametersGetByJson(String params){
+        try{
+            HttpServletRequest request = ServletActionContext.getRequest();
+            JSONObject jo = JSONObject.fromObject(JSONUtil.deserialize(request.getReader()));
+            return Comm.nTrim(JSONObject.fromObject(jo).getString(params));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }catch (JSONException jo){
+            jo.printStackTrace();
+        }
+        return "";
     }
 }
