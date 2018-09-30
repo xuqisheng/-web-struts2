@@ -4,6 +4,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.struts2.ServletActionContext;
+import wingsoft.shopping.action.BaseAction;
 import wingsoft.tool.common.CommonOperation;
 import wingsoft.tool.db.ConnectionPool;
 import wingsoft.tool.db.ConnectionPoolManager;
@@ -13,9 +14,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 
 
-public class CenterInCheckAction extends ActionSupport {
+public class CenterInCheckAction extends BaseAction {
     public String json;
 
     public String getJson() {
@@ -27,6 +29,20 @@ public class CenterInCheckAction extends ActionSupport {
     }
 
     public String centerIn(){
+        CommonJsonDeal cjd = CommonJsonDeal.getInstance();
+        String params = super.parametersRequest("multiParams");
+        String sql ="select cp.product_name, cp.supplier_name,cp.in_num,cp.pack_unit as package_unit, cp.spec as specifications," +
+                " cp.in_price,(cp.in_num)*cp.in_price as total ,cp.check_pic_id as pici " +
+                " from check_page cp where cp.CHECK_PIC_ID in "+cjd.getParameters(Arrays.asList(params.split(";")));
+        System.out.println(sql);
+        setJson(super.reArray(sql).toString());
+        JSONArray array = cjd.updateJsonType(json, "supplier_name");
+        JSONArray sr = cjd.updateJsonTypeByList(array, "pici");
+        json = sr.toString();
+        return SUCCESS;
+    }
+
+    public String centerInOld(){
       {
           System.out.println("centerInCheck ^_^");
           ConnectionPool pool = ConnectionPoolManager.getPool("CMServer");
@@ -35,22 +51,24 @@ public class CenterInCheckAction extends ActionSupport {
           ResultSet rs = null;
           String multiParams = null;
           HttpServletRequest request = ServletActionContext.getRequest();
-          multiParams = CommonOperation.nTrim(request.getParameter("multiParams"));//I20180416D13;I20180416D5
+          multiParams = CommonOperation.nTrim(request.getParameter("multiParams")); //I20180416D13;I20180416D5
           String paramsStr ="";
           for (String s:multiParams.split(";"))
               paramsStr +="'"+s+"',";
           if(paramsStr != null)
               paramsStr = paramsStr.substring(0, paramsStr.length() - 1);
-
-          String sql = "select sd.id,sd.product_name,sd.specifications,sd.package_unit,sd.in_num,sd.return_num,sd.in_price,(sd.in_num+sd.return_num)*sd.in_price total,sd.product_id,sd.pici, " +
-                  "(select t.name from supplier t where t.id  = sd.supplier_id) as supplier_name,(select als.apply_ord from app_link als  where als.store_record_id =sd.pici) as apply_ord " +
+//          String newSql = "select cp.CHECK_PIC_DTL_ID as ";
+          String oldSql = "select sd.id,sd.product_name,sd.specifications,sd.package_unit,sd.in_num,sd.return_num,sd.in_price," +
+                  "(sd.in_num+sd.return_num)*sd.in_price total,sd.product_id,sd.pici, " +
+                  "(select t.name from supplier t where t.id  = sd.supplier_id) as supplier_name,(select als.apply_ord from app_link als " +
+                  " where als.store_record_id =sd.pici) as apply_ord " +
                   " from stock_dtl sd    where sd.pici in ("+paramsStr+")";
           try {
               CommonJsonDeal commonJsonDeal = CommonJsonDeal.getInstance();
-              System.out.println("处理前的sql："+sql);
+              System.out.println("处理前的sql："+oldSql);
               json = "[";
               conn = pool.getConnection();
-              ps = conn.prepareStatement(sql);
+              ps = conn.prepareStatement(oldSql);
               rs = ps.executeQuery();
               boolean flag = false;
               while (rs.next()) {

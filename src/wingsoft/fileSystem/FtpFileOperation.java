@@ -142,15 +142,14 @@ public class FtpFileOperation {
         String minFile = CommonOperation.nTrim(request.getParameter("minFile"));
         String seq = CommonOperation.nTrim(request.getParameter("seq"));
 
-//        System.out.println("minFile:"+minFile);
-//        System.out.println("seq:"+seq);
         if (seq.contains("jpeg"))
             seq = seq.replace("jpeg","jpg");
-//        try {
-//            seq = (new MyDes("seq2017needenc!!!~")).decrypt(seq);
-//        } catch (Exception var24) {
-//            var24.printStackTrace();
-//        }
+        try {
+            seq = (new MyDes("seq2017needenc!!!~")).decrypt(seq);
+//            System.out.println(seq);
+        } catch (Exception var24) {
+            var24.printStackTrace();
+        }
 
         String type = CommonOperation.nTrim(request.getParameter("type"));
         if(type.contains("jpeg"))
@@ -172,7 +171,7 @@ public class FtpFileOperation {
             }
 
 //            System.out.println("seq:" + seq + "  filename:" + fileName + "   projid:" + projid);
-            filePath = this.getFilePathPrivateQCopy(seq,fileName,projid);
+            filePath = this.getFilePathPrivate(seq,fileName,projid);
 //            filePath = this.getFilePathPrivate(seq, fileName, projid);
 //            System.out.println(filePath);
             String remoteFilename;
@@ -575,9 +574,15 @@ public class FtpFileOperation {
         return filePath;
     }
 
-    //
+    /**
+     * mySelf
+     * @param seq
+     * @param name
+     * @param projid
+     * @return
+     */
     protected String getFilePathPrivateQCopy(String seq,String name,String projid){
-        projid ="WF_NYD";
+//        projid ="WF_NYD";
         return projid+"/"+"pic"+"/"+seq+"&"+name;
     }
 

@@ -73,8 +73,22 @@
         <action name="addOrder" class="wingsoft.shopping.action.AddOrderAction">
         </action>
     </package>
+
     <package name="shoppingPrintAction" extends="json-default">
         <action name="printOrder_*" method="{1}" class="wingsoft.shopping.service.print.OrderPrintAction">
+            <result name="success" type="json"><param name="root">json</param></result>
+            <result name="array" type="json"><param name="root">jsonArray</param></result>
+            <result name="object" type="json"><param name="root">jsonObject</param></result>
+        </action>
+
+
+        <action name="typeList_*" method="{1}" class="wingsoft.custom.TypeListAction">
+            <result name="success" type="json"><param name="root">json</param></result>
+            <result name="array" type="json"><param name="root">jsonArray</param></result>
+            <result name="object" type="json"><param name="root">jsonObject</param></result>
+        </action>
+
+        <action name="CenterInCheckAction_*" method="{1}" class="wingsoft.custom.CenterInCheckAction">
             <result name="success" type="json"><param name="root">json</param></result>
             <result name="array" type="json"><param name="root">jsonArray</param></result>
             <result name="object" type="json"><param name="root">jsonObject</param></result>

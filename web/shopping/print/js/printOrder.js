@@ -1,3 +1,5 @@
+
+var apply_no = window.parent.apply_no;
 var datas = new Vue({
     el: '#tableContent',
     data: {
@@ -5,7 +7,7 @@ var datas = new Vue({
         orderDetailsF:[],
         orderInvoice: [],
         orderArray: [],
-        apply_no: '201',
+        apply_no: '',
         uploadedVoiceMount:0
     },
     mounted:function(){
@@ -24,6 +26,7 @@ var datas = new Vue({
                 if (item.isapp=="Y"){
                     count = count + item.invoice_amt*1;
                 }
+                item.invoice_doc = "fileSystem_getImgStreamAction.action?seq="+this.imgUrl(item.invoice_doc);
             });
             return count;
         },
@@ -32,24 +35,43 @@ var datas = new Vue({
             this.orderDetailsF = data.orderDetailsF;
             this.uploadedVoiceMount = this.uploadedVoiceMounts(data.orerInvoice);
             this.parseOrderArray(this.orderDetailsF,data.orderArray);//处理订单明细
-            // console.log(this.orderDetailsF);
+            this.orderInvoice = data.orerInvoice;
         },
-        parseOrderArray:function (orderDetails,orderArray) {
-            orderDetails.forEach(item=>{
-/////////
-                orderArray.forEach(detail=>{
-                    var details = detail[item.ordercode];
-                    if(typeof (details)=="undefined"){
-                        item.detailList = {};
-                        item.detailList.detailsList=[];
-                        item.detailList.commentsList=[];
-                    }else {
-                        item.detailList = details;
+        parseOrderArray:function (orderDetailsF,orderArray) {
+            orderArray.forEach(ite => {
+                orderDetailsF.forEach(item=>{
+                    if(typeof (ite[item.ordercode]) !="undefined"){
+                        item.detailList = ite[item.ordercode];
                     }
                 });
-
             });
+        },imgUrl:function(urls){
+            return urls.substr(0,urls.indexOf("&"));
+        },printPage:function(){
+            var nal = $("button").remove();
+            document.body.innerHTML=document.getElementById('tableContent').innerHTML;
+            window.print();
         }
-
+    },
+    filters: {
+        currency: function (value) {
+            if (!value) return '';
+            return Number(value).toFixed(2);
+        },booleanStr:function(boo){
+            if(boo=='T'){return "通过";}
+            else{return "未通过";}
+        }
     }
+});
+
+$(function() {
+    $("#excelButton").click(function () {
+        $("#tableContent").table2excel({
+            name: $("#tableName").text().replace(/\s+/g,"")+".xls",
+            exclude: ".noExl",
+            fileext: ".xls",
+            filename: $("#tableName").text() + new Date().toISOString().replace(/[\-\:\.]/g, "") + ".xls",
+        });
+        alert("导出成功！");
+    });
 });

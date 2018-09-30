@@ -5,8 +5,10 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 public class CommonJsonDeal {
 
@@ -204,13 +206,17 @@ public class CommonJsonDeal {
         return rsArray;
     }
 
+    public String getParameters(List<String> stringList){
+        StringBuffer sb = new StringBuffer();
+        sb.append("(");
+        for(String str:stringList){
+            sb.append("\'");
+            sb.append(str);
+            sb.append("\',");
+        }
+        sb.deleteCharAt(sb.length()-1);
+        sb.append(")");
+        return sb.toString();
+    }
 
-//    public static void main(String[] args) {
-//        String test = Constants.tests_staticString;
-//        JSONArray jarr = JSONArray.fromObject(test);
-//        System.out.println("最初的json_List"+jarr);
-//        CommonJsonDeal cjd = CommonJsonDeal.getInstance();
-//        System.out.println( createTree(jarr, "storeName","pro_cate", "cate"));
-//
-//    }
 }

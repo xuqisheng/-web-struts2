@@ -22,7 +22,7 @@ public class OrderPrintAction extends BaseAction {
                     "WHERE  ast.apply_no = '"+orderApplyNumber+"'";
             String orderDetailsFather = "SELECT asd.ordercode, asd.amt, asd.uni_prj_code, asd.b_code, asd.apply_no FROM app_settle_dtl asd " +
                     "WHERE asd.APPLY_NO = '"+orderApplyNumber+"' ORDER BY asd.ORD ASC";
-            String orderInvoice = "SELECT asi.invoice_no, asi.invoice_amt, asi.invoice_name, asi.isapp, asi.userid FROM app_settle_invoice asi " +
+            String orderInvoice = "SELECT asi.invoice_no, asi.invoice_amt, asi.invoice_name,asi.invoice_doc , asi.isapp, asi.userid FROM app_settle_invoice asi " +
                     "WHERE (asi.apply_no = '"+orderApplyNumber+"') ORDER BY asi.indate ASC";
             JSONObject checkListF = super.reObject(orderMain); //结算单
             JSONArray orderDetailsF = super.reArray(orderDetailsFather); //订单明细

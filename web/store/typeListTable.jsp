@@ -2,6 +2,7 @@
 <html>
 <head>
     <script src="../js/vue.js"> </script>
+    <script src="../jquery/custom/jquery.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <script src="../js/vue-resource.js"></script>
 
@@ -127,8 +128,10 @@
             typeList : typeList,
             liDataList:[],
             selectList:[],
-            jsonData:''
+            jsonData:'',
+            usStoreId:window.parent.usStoreId
         },
+        //var class_id =window.parent.class_id;
         methods:{
             parseData:function(data){
                 var obj= JSON.parse(data);
@@ -144,7 +147,7 @@
                     }
                     typeList.push(detail);
                 }
-                console.log("typeList:"+typeList);
+                // console.log("typeList:"+typeList);
             },
             changeTypeLi:function () {
                 if(this.liDataList.length!=0){
@@ -168,7 +171,7 @@
                     alert("请首先选择类别！");
                     return;
                 }else{
-                    this.$http.post('TList_selectType.action',{selectList:this.selectList}).then(rss=>{
+                    this.$http.post('TList_selectType.action',{selectList:this.selectList,usStoreId:this.usStoreId}).then(rss=>{
                         this.showTableData(rss.data.json);
                 },rsf=>{
                         console.log("fail");
@@ -178,7 +181,7 @@
             },
             showTableData:function (data) {
                 var obj= JSON.parse(data);
-                console.log(obj);
+                // console.log(obj);
                 this.jsonData = obj;
                 // var obj= JSON.parse(data);
                 // jsonData = obj;

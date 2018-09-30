@@ -41,7 +41,6 @@ public class FileSystemOperation {
 
     //ftp
     public String getImgAction() throws Exception {
-        //IFileSystem fs = constructFs();
         FtpFileOperation ftpFO = new FtpFileOperation();
         ByteArrayOutputStream bos = ftpFO.getImgStream();
         this.setResponseText(new ByteArrayInputStream(bos.toByteArray()));

@@ -7,7 +7,7 @@ import net.sf.json.JSONObject;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.json.JSONException;
 import org.apache.struts2.json.JSONUtil;
-import wingsoft.shopping.util.Comm;
+import wingsoft.tool.common.CommonOperation;
 import wingsoft.tool.db.ConnectionPool;
 import wingsoft.tool.db.ConnectionPoolManager;
 
@@ -41,7 +41,6 @@ public class BaseAction extends ActionSupport {
     public void setJsonArray(JSONArray jsonArray) {
         this.jsonArray = jsonArray;
     }
-
     public String getJson() {
         return json;
     }
@@ -69,7 +68,7 @@ public class BaseAction extends ActionSupport {
             int number = rs.getMetaData().getColumnCount();
             if(rs.next()){
                 for(int i= 1; i<=number;i++){
-                    jo.put(Comm.nTrim(rs.getMetaData().getColumnName(i)).toLowerCase(),Comm.nTrim(rs.getString(i)));
+                    jo.put(CommonOperation.nTrim(rs.getMetaData().getColumnName(i)).toLowerCase(),CommonOperation.nTrim(rs.getString(i)));
                 }
             }
         } catch (Exception  e){
@@ -91,7 +90,7 @@ public class BaseAction extends ActionSupport {
      */
     public JSONArray reArray(String sql){
 //        System.out.println("returnArray");
-        ConnectionPool pool = ConnectionPoolManager.getPool("CMServer");
+        ConnectionPool pool = ConnectionPoolManager.getPool("CMServer");  //server using
         PreparedStatement ps = null;
         ResultSet rs = null;
         Connection conn =null ;
@@ -104,7 +103,7 @@ public class BaseAction extends ActionSupport {
             while(rs.next()){
                 JSONObject jo = new JSONObject();
                 for(int i= 1; i<=number;i++){
-                    jo.put(Comm.nTrim(rs.getMetaData().getColumnName(i)).toLowerCase(),Comm.nTrim(rs.getString(i)));
+                    jo.put(CommonOperation.nTrim(rs.getMetaData().getColumnName(i)).toLowerCase(),CommonOperation.nTrim(rs.getString(i)));
                 }
                 jar.add(jo);
             }
@@ -127,7 +126,7 @@ public class BaseAction extends ActionSupport {
      * @return
      */
     public String gtStringKey(JSONObject obj,String keyWord){
-            return Comm.nTrim(obj.getString(keyWord));
+            return CommonOperation.nTrim(obj.getString(keyWord));
     }
 
     /**
@@ -140,7 +139,7 @@ public class BaseAction extends ActionSupport {
         ArrayList<String> keyList = new ArrayList<String>();
             for(Object oj :obj) {
                 JSONObject ja = JSONObject.fromObject(oj);
-                keyList.add(Comm.nTrim(gtStringKey(ja, keyWord)));
+                keyList.add(CommonOperation.nTrim(gtStringKey(ja, keyWord)));
             }
             return  keyList;
 
@@ -155,12 +154,18 @@ public class BaseAction extends ActionSupport {
         try{
             HttpServletRequest request = ServletActionContext.getRequest();
             JSONObject jo = JSONObject.fromObject(JSONUtil.deserialize(request.getReader()));
-            return Comm.nTrim(JSONObject.fromObject(jo).getString(params));
+            return CommonOperation.nTrim(JSONObject.fromObject(jo).getString(params));
         }catch (IOException ioe){
             ioe.printStackTrace();
         }catch (JSONException jo){
             jo.printStackTrace();
         }
         return "";
+    }
+
+    public String parametersRequest(String name){
+        HttpServletRequest request = ServletActionContext.getRequest();
+        String str = CommonOperation.nTrim(request.getParameter(name));
+        return str;
     }
 }

@@ -70,7 +70,6 @@ public class TypeListAction extends ActionSupport {
         return "printDBA";
     }
 
-/*
     public String selectType(){
         System.out.println("selectType Methods");
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -84,16 +83,18 @@ public class TypeListAction extends ActionSupport {
             JSONObject jsonObject = JSONObject.fromObject(obj);
             List<String> StringList =null;
             StringList=(List<String>) jsonObject.get("selectList");
-            CommonJsonDeal commonJsonDeal = CommonJsonDeal.getInstance();
 
-            String sql = "SELECT pc.pcname, product.name, product.type, product.specifications, product.base_unit,  sn.out_amt,  product.id " +
-                    "FROM stock_num sn, pro_category pc, product product " +
-                    "WHERE (product.id = sn.product_id(+)) " +
-                    "AND (product.category = pc.id) " +
-                    "and (sn.store_id = 1 or sn.store_id is null) " +
-                    "and pc.pcname in "+commonJsonDeal.getParameters(StringList) +
-                    "and sn.out_amt !=0 "+
-                    "ORDER BY product.category ASC, product.name ASC, product.specifications ASC";
+            CommonJsonDeal commonJsonDeal = CommonJsonDeal.getInstance();
+            String usStoreId = CommonOperation.nTrim(jsonObject.getString("usStoreId"));
+            String sql = "SELECT pc.pcname, product.name, product.type, product.specifications, product.base_unit,  sn.out_amt,  product.id , us.storeid " +
+                    " FROM stock_num sn, pro_category pc, product product ,userstore us" +
+                    " WHERE (product.id = sn.product_id(+)) " +
+                    " AND (product.category = pc.id) " +
+                    " and (sn.store_id = us.storeid or sn.store_id is null) " +
+                    " and us.userid = '"+usStoreId+"'"+
+                    " and pc.pcname in "+commonJsonDeal.getParameters(StringList) +
+                    " and sn.out_amt !=0  "+
+                    " ORDER BY product.category ASC, product.name ASC, product.specifications ASC";
             System.out.println(sql);
             conn = pool.getConnection();
             ps1 = conn.prepareStatement(sql);
@@ -133,6 +134,5 @@ public class TypeListAction extends ActionSupport {
         }
         return "getType";
     }
-    */
 }
 
