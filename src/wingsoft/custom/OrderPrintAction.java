@@ -56,18 +56,15 @@ public class OrderPrintAction extends ActionSupport {
 			para_str +="'"+s+"',";
 		}
 		if(para_str != null) 
-		{
 			para_str = para_str.substring(0, para_str.length() - 1);
-		}
-		
 		try {
 String Sql =
-" select (select storename from store t where storeid=od.class_id) as class_name, "+ 
+" select (select storename from store t where storeid=od.class_id) as class_name, "+
 " ol.purchase_id,od.id,od.product_name,od.specifications,od.package_unit,od.purchase_num,od.remarks ,od.price ," +
 		"(select  st.storename from store st where st.storeid = (select p.mid_store_id from purchase p where p.id in ol.purchase_id )) as midle_store "+
 " from order_dtl od,order_link ol  " + 
 " where od.id = ol.order_dtl_id "+ 
-" and ol.purchase_id in ("+para_str+") "+
+//" and ol.purchase_id in ("+para_str+") "+
 " order by  ol.purchase_id ,od.ord ,class_name ";
 System.out.println(Sql);
 			json = "[";
@@ -112,18 +109,16 @@ System.out.println(Sql);
 				details.setSpecifications(jsonObj.getString("specifications"));
 				details.setPurchase_num(jsonObj.getString("purchase_num"));
 				details.setPrice(jsonObj.getString("price"));
-				//details.setMidle_store(jsonObj.getString("midle_store"));
 				list.add(details);
 				clazz.setDetails(list);
 				listClazz.add(clazz);
 			}
-//			JSONObject obj = new JSONObject();//结果对象
 			HashSet<String> keys = new HashSet<String>();
 			for(Clazz caz:listClazz) 
 				keys.add(caz.getClass_id());
 			JSONArray result_js =new  JSONArray();
 			for(String s:keys) 
-			{//null , 10
+			{
 				List<Details> details_list=new ArrayList<Details>();
 				JSONObject jo = new JSONObject();
 				for(Clazz czz:listClazz) 

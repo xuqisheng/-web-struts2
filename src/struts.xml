@@ -89,9 +89,10 @@
         </action>
 
         <action name="CenterInCheckAction_*" method="{1}" class="wingsoft.custom.CenterInCheckAction">
-            <result name="success" type="json"><param name="root">json</param></result>
-            <result name="array" type="json"><param name="root">jsonArray</param></result>
-            <result name="object" type="json"><param name="root">jsonObject</param></result>
+            <result name="success" type="json"></result>
+        </action>
+        <action name="OrderPrintAction_*" method="{1}" class="wingsoft.custom.OrderPrintAction">
+            <result name="orderPrint" type="json"></result>
         </action>
     </package>
     <!-- end of  购物相关actions -->
@@ -120,12 +121,6 @@
 
     <!--shop打印.预约相关-->
     <package name ="shop" extends="struts-default">
-        <action name="YB_CWBS"   method="YB_CWBS"
-                class="wingsoft.shopping.service.yb.ConnectWWS">
-        </action>
-        <action name="F_C_Order"   method="F_C_Order"
-                class="wingsoft.shopping.service.yb.ConnectWWS">
-        </action>
         <action name="Print_*" method="{1}" class="wingsoft.shopping.service.Print_shop">
             <result name="textPlain" type="stream">
                 <param name="contentType">text/plain</param>
@@ -134,14 +129,6 @@
         </action>
 
 
-    </package>
-
-    <!--新版预约接口-->
-    <package name ="yb_new" extends="struts-default">
-
-        <action name="ybnew_*"   method="{1}"
-                class="wingsoft.shopping.service.yb.New_WWS">
-        </action>
     </package>
     <!--shop打印相关END-->
 

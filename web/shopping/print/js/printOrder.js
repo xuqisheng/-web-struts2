@@ -1,5 +1,6 @@
 
-var apply_no = window.parent.apply_no;
+// var apply_no = window.parent.apply_no;
+var apply_no = "183";
 var datas = new Vue({
     el: '#tableContent',
     data: {
@@ -7,7 +8,7 @@ var datas = new Vue({
         orderDetailsF:[],
         orderInvoice: [],
         orderArray: [],
-        apply_no: '',
+        apply_no: apply_no,
         uploadedVoiceMount:0
     },
     mounted:function(){

@@ -143,8 +143,8 @@ public class QRCodeUtils {
         } catch (IOException e) {  
             e.printStackTrace();  
         }  
-  
-        // 解码  
+
+        // 解码
         String reText = QRCodeUtils.qrCodeDecode(qrFile);  
         System.out.println(reText);  
     }  

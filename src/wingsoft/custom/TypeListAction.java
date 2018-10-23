@@ -54,8 +54,6 @@ public class TypeListAction extends ActionSupport {
             System.out.println(json);
         }catch (SQLException se){
             se.printStackTrace();
-        }catch (NamingException ne){
-            ne.printStackTrace();
         }finally {
             try{
                 if(rs1==null)

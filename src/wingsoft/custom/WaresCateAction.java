@@ -83,7 +83,6 @@ public class WaresCateAction extends ActionSupport {
                     "where substr(id,0,1) = 'I'  "+
                     " and t.store_id = "+class_id+
                     " and t.createdate between to_date ('"+startTime+"','yyyy-mm-dd') and to_date('"+endTime+"','yyyy-mm-dd') ";
-
             String sql2 = "select tp.name as storeName from customer tp where tp.id = "+class_id;
             System.out.println(sql2);
             ps2 = conn.prepareStatement(sql2);
@@ -110,8 +109,6 @@ System.out.println(sql);
             jsonArray = arrayNumPrice;
             typeJsonArray = jsonArrayType;
             name =nameJ;
-        }catch (NamingException na){
-            na.printStackTrace();
         }catch (SQLException sle){
             sle.printStackTrace();
         }catch (IOException eo){

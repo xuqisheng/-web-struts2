@@ -21,8 +21,6 @@ import org.dom4j.Element;
 
 import wingsoft.shopping.model.Item;
 import wingsoft.shopping.service.instance.instance;
-import wingsoft.shopping.service.yb.ConnectWWS;
-import wingsoft.shopping.service.yb.New_WWS;
 import wingsoft.shopping.util.Comm;
 import wingsoft.tool.db.ConnectionPool;
 import wingsoft.tool.db.ConnectionPoolManager;
@@ -2028,7 +2026,7 @@ public class ShopDao {
 						     * **/
 						    /**如果是项目支付,进行冻结**/
 						    if(PayType=="XM"||"XM".equals(PayType)){
-							    New_WWS NW = new New_WWS();	
+//							    New_WWS NW = new New_WWS();
 							    String SEQ_ID = "";
 							    sql = "";
 							    sql = "select WWS_SEQ_ID.nextval SEQ_ID from dual";
@@ -2041,28 +2039,28 @@ public class ShopDao {
 							    /**财务接口 结算**/
 							    FreezeInfo =  "<orders>"+ FreezeInfo + "</orders>";
 							    System.out.println("****调用冻结接口1321***");
-							    String RetMsg = NW.OrderFrozee(FreezeInfo, SEQ_ID);
-							    System.out.println("冻结返回RetMsg="+RetMsg);
+//							    String RetMsg = NW.OrderFrozee(FreezeInfo, SEQ_ID);
+//							    System.out.println("冻结返回RetMsg="+RetMsg);
 							    
 							    /**模拟冻结 05-16**/
 							    /*RetMsg= "<?xml version=\"1.0\"  encoding=\"utf-8\"?><return>ok</return>"; 
 							    System.out.println("(模拟)冻结返回RetMsg="+RetMsg);*/
 							    
-							    doc = DocumentHelper.parseText(RetMsg);
+//							    doc = DocumentHelper.parseText(RetMsg);
 								Element rootElt = doc.getRootElement(); // 获取根节点 
 								System.out.println(rootElt.getData());
 								
 								if (!"error".equals(rootElt.getName())) {
 									if("ok".equals(rootElt.getData())){
 									   sql = "";
-									    sql = "update  t_order set FREEZE_NO='"+SEQ_ID+"',FREEZE_MSG='"+RetMsg+"' where ordercode in ("+OrderIdS+")";
+//									    sql = "update  t_order set FREEZE_NO='"+SEQ_ID+"',FREEZE_MSG='"+RetMsg+"' where ordercode in ("+OrderIdS+")";
 									    ps = conn.prepareStatement(sql);
 									    ps.execute();
 									    conn.commit();
 									}
 									else{
 										conn.rollback();
-										json = "冻结失败,"+RetMsg; 
+//										json = "冻结失败,"+RetMsg;
 									}
 								}else{
 									conn.rollback();

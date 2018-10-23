@@ -8,6 +8,7 @@ public class ConnectionPoolManager {
 		pools.put(poolName, pool);
 	}
 	public static ConnectionPool getPool(String poolName){
-		return pools.get(poolName);
+		ConnectionPool pool = new ConnectionPool(poolName);
+		return pool;
 	}
 }

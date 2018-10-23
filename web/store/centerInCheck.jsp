@@ -50,19 +50,19 @@
         html += '<br>';
         html += ('<thead   border="0" align="center" cellpadding="0" cellspacing="0">');
         html += ('<tr align="center" class="TitleStyle">');
-        html += ('<td style="border:0px;" colspan="7" align="center"  width="40%"><h1>' + unitName + '</h1></td>');
+        html += ('<td style="border:0px;" colspan="12" align="center"  width="40%"><h1>' + unitName + '</h1></td>');
         html += ('</tr>');
         html += ('</thead>');
         html += ('<br>');
         html += ('<tbody   border="0" align="center" cellpadding="0" cellspacing="0" style="line-height: 20px;border:1px #999999 solid;line-height: 22px">');
         html += ('<tr align="left" class="text" style="line-height:28px;">');
-        html += ('<td  style="border:0px;" colspan="7" align="left" class="title">&nbsp;</td>');
+        html += ('<td  style="border:0px;" colspan="12" align="left" class="title">&nbsp;</td>');
         html += ('</tr>');
         html += ('<tr align="left" class="text" style="line-height:28px;">');
-        html += ('<td  style="border-left:0px;border-right:0px;border-top: 0px;" ' + 'colspan="7" align="left" class="title">&nbsp;打印时间：' + time + '</td>');
+        html += ('<td  style="border-left:0px;border-right:0px;border-top: 0px;" ' + 'colspan="12" align="left" class="title">&nbsp;打印时间：' + time + '</td>');
         html += ('</tr>');
         html += ('<tr align="left" class="text" style="line-height:28px;">');
-        html += ('<td style="border:0px;" colspan="7" align="right" class="title">总金额：' + Number(v_amount).toFixed(2) + '</td>');
+        html += ('<td style="border:0px;" colspan="12" align="right" class="title">总金额：' + Number(v_amount).toFixed(2) + '</td>');
         html += ('</tr>');
         html += ('</tbody>');
         html += ('<tbody class="print_table"  border="1" cellpadding="0" cellspacing="0">');
@@ -72,7 +72,7 @@
             var supplier_name = cols.supplier_name;// 批次
             var listp = cols.list;
             html += '<tr class=text align="center" >';
-            html += '<td align="center" colspan="7"  style="border:none"><h2>';
+            html += '<td align="center" colspan="12"  style="border:none"><h2>';
             html += supplier_name;
             html += '</2></td>';
             html += '</tr>';
@@ -87,7 +87,12 @@
                     html += '<tr class=text align=center >';
                     html += '<td >序号</td>';
                     html += '<td >商品名称&nbsp;</td>';
-                    html += '<td >入库数量&nbsp;</td>';
+                    html += '<td >部门&nbsp;</td>';//1
+                    html += '<td >生产日期批号&nbsp;</td>';
+                    html += '<td >保质期&nbsp;</td>';
+                    html += '<td >生产厂家&nbsp;</td>';
+                    html += '<td >供应商联系人&nbsp;</td>';
+                    html += '<td >进货数量&nbsp;</td>';
                     html += '<td >包装单位&nbsp;</td>';
                     html += '<td >商品规格&nbsp;</td>';
                     html += '<td >单价&nbsp;</td>';
@@ -98,15 +103,27 @@
                         var id = arr_details[k].id;
                         var product_name = arr_details[k].product_name;
                         var in_num = arr_details[k].in_num;
+
+                        var dep = arr_details[k].dep;
+                        var birth_num = arr_details[k].birth_num;
+                        var save_time = arr_details[k].save_time;
+                        var produce_nuame = arr_details[k].produce_nuame;
+                        var supplier_person = arr_details[k].supplier_person;
+
                         var package_unit = arr_details[k].package_unit;
                         var specifications = arr_details[k].specifications;
                         var in_price = arr_details[k].in_price;
                         var total = arr_details[k].total;
                         html += '<tr class=text align=center width="100%" >';
-                        html += '<td >' + (k + 1) + '</td>';
-                        html += '<td >' + product_name + '</td>';
-                        html += '<td >' + in_num + '</td>';
-                        html += '<td>' + package_unit + '</td>';
+                        html += '<td >' + (k + 1) + '</td>';                          //序号
+                        html += '<td >' + product_name + '</td>';               //商品名称
+                        html += '<td >' + dep + '</td>';
+                        html += '<td >' + birth_num + '</td>';          //生产日期批号
+                        html += '<td >' + save_time + '天</td>';
+                        html += '<td >' + produce_nuame + '</td>';
+                        html += '<td >' + supplier_person + '</td>';
+                        html += '<td >' + in_num + '</td>';         //数量
+                        html += '<td>'  + package_unit + '</td>';
                         html += '<td >' + specifications + '</td>';
                         html += '<td align="right">' + Number(in_price).toFixed(2) + '</td>';
                         html += '<td align="right">' + Number(total).toFixed(2) + '</td>';
@@ -123,7 +140,7 @@
 
         html += ('<tfoot  border="0" align="center" cellpadding="0" cellspacing="0" style="line-height: 22px;border:1px #999999 solid;line-height: 18px">');
         html += ('<tr align="left" class="text" style="line-height:28px;">');
-        html += ('<td colspan="7" style="border: 0px;"  align="left" class="title">&nbsp;</td>');
+        html += ('<td colspan="12" style="border: 0px;"  align="left" class="title">&nbsp;</td>');
         html += ('</tr>');
         html += ('<tr align="left" style="line-height:28px;">');
         html += ('<td style="border: 0px;" colspan="2" align="left" >经办人（签名）：</td>');
@@ -138,8 +155,7 @@
 
     $(function () {
 //传入id
-       MultiRows = "I20180918D2;I20180918D1;I20180504D2;I20180504D1;I20180504D1"
-// MultiRows = "141;142;143;144";
+//        MultiRows = "I20181011D2;I20181011D3"
         $.ajax({
             type: "POST",
             url: 'CenterInCheckAction_centerIn.action',

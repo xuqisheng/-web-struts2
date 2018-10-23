@@ -153,7 +153,8 @@
 		return html;
 	}
 	$(function() {
-		//var MultiRows = "P20180522D2;P20180522D7";
+		var MultiRows = "P20181022D3;P20180918D1";
+
 		$.ajax({
 			type : "POST",
 			url : 'OrderPrintAction_printDoOrderF.action',
@@ -184,7 +185,7 @@
 </script>
 </head>
 <body>
-	<table width="100%" border="0" align="center" cellpadding="0"
+	<table width="90%" border="0" align="center" cellpadding="0"
 		cellspacing="0">
 		<tr align="center">
 			<td><input name="BtnPrint" type="button" id="BtnPrint"
@@ -197,7 +198,7 @@
 			<td><input name="BtnPrint" type="button"  value="导出表格" onClick="toExcelData();"></td>
 		</tr>
 	</table>
-	<table id="printContent" width="100%"  border="1" align="center" cellpadding="0" cellspacing="0" >
+	<table id="printContent" width="90%"  border="1" align="center" cellpadding="0" cellspacing="0" >
 
 	</table>
 </body>

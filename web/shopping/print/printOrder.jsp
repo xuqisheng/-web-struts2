@@ -6,7 +6,10 @@
     <script src="../js/vue-resource.js"></script>
     <script type="text/javascript" src="../mainjs/jquery-1.4.4.js"></script>
     <style>
-
+        /*td.noBorder{*/
+            /*border-width: 0px;*/
+            /*border-style: hidden;*/
+        /*}*/
         #tableContent{
             text-align: center;
         }
@@ -30,19 +33,18 @@
             border-collapse: collapse;
         }
         table.inTable tr{
+
             border:0px solid #666666;
         }
         table.inTable td {
+            border-width: thin;
             text-align: center;
             border-style: solid;
             border-color: #666666;
-            width: 10%;
+            /*width: 10%;*/
             height: 10%;
         }
-        .noBorder{
-            border-width: 0px;
-            border-style: hidden;
-        }
+
         h3{
             margin: auto;
             align-content: center;
@@ -50,14 +52,23 @@
         .currency{
             text-align: right;
         }
+        table.invoiceTable{
+            margin-left: auto;
+            margin-right: auto;
+            align-content: center;
+            border-width: 0px;
+
+            border-collapse: collapse;
+        }
 
     </style>
 </head>
 <body>
 
 <div id="tableContent">
+    <div style="page-break-after:always">
     <table class="inTable">
-        <tr><td  class="noBorder" colspan="9"><h2 id="tableName">{{checkList.apply_no}}号结算单</h2></td></tr>
+        <tr><td  style="border-width: 0px;" colspan="9"><h2 id="tableName">{{checkList.apply_no}}号结算单</h2></td></tr>
         <tr>
             <td ><b>结算单号</b></td>
             <td colspan="2"><b>结算申请用户</b></td>
@@ -72,26 +83,30 @@
             <td style="text-align: right" >{{uploadedVoiceMount|currency}}</td>
             <td colspan="3">{{checkList.indate}}</td>
         </tr>
-        <tr >
-            <td class="noBorder"><h3 align="center">订单明细</h3></td>
-            <%--<td class="noBorder" colspan="8">&nbsp;</td>--%>
+        <tr><td style="border-width: 0px;">&nbsp;</td></tr>
+        <tr><td style="border-width: 0px;">&nbsp;</td></tr>
+        <%--sssssssssssssssssssssssssssssssssssssssssssssssssssssss--%>
+        <tr><td  style="border-width: 0px;" colspan="9"><h3 align="center">订单明细</h3></td></tr>
+        <tr>
+            <%--<td  colspan="9"  style="border-width: 0px;"><h3 align="center">订单明细</h3></td>--%>
         </tr>
+        <tbody v-for="det in orderDetailsF">
         <tr>
             <td ><b>订单号</b></td>
             <td><b>订单总金额</b></td>
             <td><b>结算申请项目</b></td>
             <td colspan="2"><b>结算申请费用项</b></td>
-            <td class="noBorder" colspan="5" ></td>
+            <td rowspan="2" colspan="4" >&nbsp;</td>
+            <%--<td style="border-width: 0px;" colspan="4" >&nbsp;</td>--%>
         </tr>
-        <tbody v-for="det in orderDetailsF">
         <tr >
             <td>{{det.ordercode}}</td>
             <td style="text-align: right">{{det.amt|currency}}</td>
             <td>{{det.uni_prj_code}}</td>
             <td colspan="2">{{det.b_code}}</td>
-            <td class="noBorder" colspan="5" ></td>
-        </tr>
 
+            <%--<td style="border-width: 0px;" colspan="4" >&nbsp;</td>--%>
+        </tr>
         <tr >
             <td ><b>订单明细</b></td>
             <td><b>曾用名</b></td>
@@ -114,46 +129,66 @@
             <td>{{details.by_number}}</td>
             <td style="text-align: right">{{details.price|currency}}</td>
         </tr>
-        <tr class="noBorder">
-            <td class="noBorder"><h3>审核信息</h3></td>
-            <%--<td class="noBorder" colspan="8"></td>--%>
+        <tr> <td style="border-width: 0px;">&nbsp;</td></tr>
+        <tr style="border-width: 0px;">
+            <td style="border-width: 0px;" colspan="9"><h3>审核信息</h3></td>
         </tr>
-        <tr class="noBorder">
+        <tr style="border-width: 0px;">
             <%-- akEPxkPXXuLz --%>
+                <td style="border-width: 0px;">&nbsp;</td>
+                <td style="border-width: 0px;">&nbsp;</td>
             <td></td>
             <td><b>审核人姓名</b></td>
             <td><b>审核结果</b></td>
-            <td><b>审核意见</b></td>
-            <td colspan="5" class="noBorder"></td>
+            <td colspan="2"><b>审核意见</b></td>
+            <td  style="border-width: 0px;"></td><td  style="border-width: 0px;"></td>
         </tr>
-        <tr class="noBorder" v-for="(obj,index) in det.detailList.commentsList">
+        <tr style="border-width: 0px;" v-for="(obj,index) in det.detailList.commentsList">
+            <td style="border-width: 0px;">&nbsp;</td>
+            <td style="border-width: 0px;">&nbsp;</td>
             <td>{{index+1}}</td>
             <td>{{obj.check_name}}</td>
             <td>{{obj.check_result|booleanStr}}</td>
-            <td>{{obj.check_msg}}</td>
-            <td colspan="5" class="noBorder"></td>
+            <td colspan="2">{{obj.check_msg}}</td>
+            <td  style="border-width: 0px;"></td>
+            <td  style="border-width: 0px;"></td>
         </tr>
+        <tr> <td style="border-width: 0px;">&nbsp;</td></tr>
+        <tr> <td style="border-width: 0px;">&nbsp;</td></tr>
         </tbody>
-        <tr >
-            <td class="noBorder"><h3>发票信息</h3></td>
-        </tr>
-        <tr class="noBorder">
-            <td><b>发票号</b></td>
-            <td><b>发票金额</b></td>
-            <td><b>附件</b></td>
-            <td style="border: 0px;" colspan="6" class="noBorder"></td>
-        </tr>
-        <tr v-for="invoice in orderInvoice" class="noBorder">
-            <td>{{invoice.invoice_no}}</td>
-            <td style="text-align: right">{{invoice.invoice_amt|currency}}</td>
-            <td><img width="200" height="200" v-bind:src="invoice.invoice_doc"></td>
-            <td colspan="6" class="noBorder"></td>
-        </tr>
-
     </table>
+</div>
+
+
+    <div v-for="invoice in orderInvoice"  style="page-break-after:always">
+        <table class="invoiceTable">
+            <tr >
+                <td style="border-width: 0px;"><h3>发票信息</h3></td>
+            </tr>
+            <tr style="border-width: 0px;">
+                <td width="300px"><b>发票号</b></td>
+                <td  width="300px"><b>发票金额</b></td>
+                <td style="border: 0px;" colspan="6" style="border-width: 0px;"></td>
+            </tr>
+            <tr >
+                <td>{{invoice.invoice_no}}</td>
+                <td style="text-align: right">{{invoice.invoice_amt|currency}}</td>
+                <%--<td><img width="200" height="200" v-bind:src="invoice.invoice_doc"></td>--%>
+                <td colspan="6" style="border-width: 0px;"></td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr>
+                <td align="center" colspan="2"><img v-bind:src="invoice.invoice_doc"></td>
+            </tr>
+        </table>
+    </div>
+
     <button type="button" v-on:click="printPage()" >打印界面</button>
     <%--<button id="excelButton" type="button" >导出Excel</button>--%>
 </div>
+
+
 </body>
 <script src="./js/printOrder.js"></script>
 </html>

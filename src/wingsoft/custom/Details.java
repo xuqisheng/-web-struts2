@@ -12,6 +12,15 @@ public class Details {
 	private String out_price;/** 入库价格*/ //只有check详细里有
 	private String price;//re -repice
 	private String midle_store ; //
+	private String realNumber; //真实数量
+
+	public String getRealNumber() {
+		return realNumber;
+	}
+
+	public void setRealNumber(String realNumber) {
+		this.realNumber = realNumber;
+	}
 
 	public String getMidle_store() {
 		return midle_store;
