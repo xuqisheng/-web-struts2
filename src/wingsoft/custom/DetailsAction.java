@@ -86,8 +86,7 @@ public class DetailsAction extends ActionSupport{
 		String sql2 = "select t.id, t.name,t.parents from pro_category t"; 
 		String sqlStore = "select t.* from store t";
 		try {
-			CommonJsonDeal commonJsonDeal = CommonJsonDeal.getInstance();
-			conn = pool.getConnection();			
+			conn = pool.getConnection();
 			ps1=conn.prepareStatement(sql1);
 			rs1 = ps1.executeQuery();
 			JSONArray rs1JsonArray = new JSONArray();
@@ -120,17 +119,17 @@ System.out.println("rs1JsonArray"+rs1JsonArray);
 			child.put("parents", CommonOperation.nTrim(rs2.getString("parents")));
 			typeOfJson.add(child);
 		}	
-		typeOfJson = commonJsonDeal.childTreeCount(typeOfJson.toString(), "parents");
+		typeOfJson = CommonJsonDeal.childTreeCount(typeOfJson.toString(), "parents");
 System.out.println("typeOfJson:"+typeOfJson);//分类啊
-		JSONArray tempStockJsonArray =commonJsonDeal.updateJsonType(rs1JsonArray.toString(), "storeName");
+		JSONArray tempStockJsonArray =CommonJsonDeal.updateJsonType(rs1JsonArray, "storeName");
 		JSONArray resultList = new JSONArray();
 		for(Object jArray:tempStockJsonArray) {
 			JSONObject jObject = JSONObject.fromObject(jArray);
-			JSONArray jli = commonJsonDeal.updateJsonType(jObject.get("list").toString(), "pro_cate"); //子list
+			JSONArray jli = CommonJsonDeal.updateJsonType(JSONArray.fromObject(jObject.get("list")), "pro_cate"); //子list
 			JSONArray li_result = new JSONArray();
 			for(Object jli_c : jli) {//遍历子分类
 				JSONObject jli_childObj = JSONObject.fromObject(jli_c);
-				JSONArray li_childList = commonJsonDeal.updateJsonType(jli_childObj.get("list").toString(), "cate");
+				JSONArray li_childList = CommonJsonDeal.updateJsonType(JSONArray.fromObject(jli_childObj.get("list")), "cate");
 				jli_childObj.put("list", li_childList);
 				li_result.add(jli_childObj);
 			}

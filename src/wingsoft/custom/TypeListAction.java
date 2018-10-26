@@ -38,7 +38,6 @@ public class TypeListAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         String sql = "select t.id, t.name,t.parents from pro_category t";
         try {
-            CommonJsonDeal commonJsonDeal = CommonJsonDeal.getInstance();
             conn = pool.getConnection();
             ps1 = conn.prepareStatement(sql);
             rs1 = ps1.executeQuery();
@@ -50,7 +49,7 @@ public class TypeListAction extends ActionSupport {
                 child.put("parents", CommonOperation.nTrim(rs1.getString("parents")));
                 typeOfJson.add(child);
             }
-            json = commonJsonDeal.childTreeCount(typeOfJson.toString(),"parents").toString();
+            json = CommonJsonDeal.childTreeCount(typeOfJson.toString(),"parents").toString();
             System.out.println(json);
         }catch (SQLException se){
             se.printStackTrace();
@@ -82,7 +81,6 @@ public class TypeListAction extends ActionSupport {
             List<String> StringList =null;
             StringList=(List<String>) jsonObject.get("selectList");
 
-            CommonJsonDeal commonJsonDeal = CommonJsonDeal.getInstance();
             String usStoreId = CommonOperation.nTrim(jsonObject.getString("usStoreId"));
             String sql = "SELECT pc.pcname, product.name, product.type, product.specifications, product.base_unit,  sn.out_amt,  product.id , us.storeid " +
                     " FROM stock_num sn, pro_category pc, product product ,userstore us" +
@@ -90,7 +88,7 @@ public class TypeListAction extends ActionSupport {
                     " AND (product.category = pc.id) " +
                     " and (sn.store_id = us.storeid or sn.store_id is null) " +
                     " and us.userid = '"+usStoreId+"'"+
-                    " and pc.pcname in "+commonJsonDeal.getParameters(StringList) +
+                    " and pc.pcname in "+CommonJsonDeal.getParameters(StringList) +
                     " and sn.out_amt !=0  "+
                     " ORDER BY product.category ASC, product.name ASC, product.specifications ASC";
             System.out.println(sql);

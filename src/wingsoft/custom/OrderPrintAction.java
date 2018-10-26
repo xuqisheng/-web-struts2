@@ -21,11 +21,12 @@ import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+import wingsoft.shopping.action.BaseAction;
 import wingsoft.tool.common.CommonOperation;
 import wingsoft.tool.db.ConnectionPool;
 import wingsoft.tool.db.ConnectionPoolManager;
 
-public class OrderPrintAction extends ActionSupport {
+public class OrderPrintAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	public String json;
 
@@ -37,120 +38,25 @@ public class OrderPrintAction extends ActionSupport {
 		this.json = json;
 	}
 
+	/**
+	 * 修改orderJ.jsp
+	 * @return
+	 */
 	public String printDoOrderF() {
-		System.out.println("确认采购单子");
-		System.out.println(new Date());
-		ConnectionPool pool = ConnectionPoolManager.getPool("CMServer");
-		System.out.println(pool);
-		Connection conn = null;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		String ids = null;
-		json = "";
-		HttpServletRequest request = ServletActionContext.getRequest();
-		ids = CommonOperation.nTrim(request.getParameter("MultiRows"));
-//		ids = "P20180320D1;P20180320D2";
-		String para_str ="";
-		for (String s:ids.split(";")) 
-		{
-			para_str +="'"+s+"',";
-		}
-		if(para_str != null) 
-			para_str = para_str.substring(0, para_str.length() - 1);
-		try {
-String Sql =
-" select (select storename from store t where storeid=od.class_id) as class_name, "+
-" ol.purchase_id,od.id,od.product_name,od.specifications,od.package_unit,od.purchase_num,od.remarks ,od.price ," +
-		"(select  st.storename from store st where st.storeid = (select p.mid_store_id from purchase p where p.id in ol.purchase_id )) as midle_store "+
-" from order_dtl od,order_link ol  " + 
-" where od.id = ol.order_dtl_id "+ 
-//" and ol.purchase_id in ("+para_str+") "+
-" order by  ol.purchase_id ,od.ord ,class_name ";
-System.out.println(Sql);
-			json = "[";
-			conn = pool.getConnection();
-			ps = conn.prepareStatement(Sql);
-			rs = ps.executeQuery();
-			boolean flag = false;
-			while (rs.next()) {
-				json+="{class_id:'"+CommonOperation.nTrim((rs.getString("class_name"))).replaceAll("'", "\\\\\'")+
-						"',purchase_id:'"+CommonOperation.nTrim((rs.getString("purchase_id"))).replaceAll("'", "\\\\\'")+
-						"',id:'"+CommonOperation.nTrim((rs.getString("id"))).replaceAll("'", "\\\\\'")+
-						"',product_name:'"+CommonOperation.nTrim((rs.getString("product_name"))).replaceAll("'", "\\\\\'")+
-						"',specifications:'"+CommonOperation.nTrim((rs.getString("specifications"))).replaceAll("'", "\\\\\'")+
-						"',package_unit:'"+CommonOperation.nTrim((rs.getString("package_unit"))).replaceAll("'", "\\\\\'")+
-						"',purchase_num:'"+CommonOperation.nTrim((rs.getString("purchase_num"))).replaceAll("'", "\\\\\'")+
-						"',remarks:'"+CommonOperation.nTrim(rs.getString("remarks")).replaceAll("'", "\\\\\'")+
-						"',price:'"+CommonOperation.nTrim(rs.getString("price"))+
-						"',midle_store:'"+CommonOperation.nTrim(rs.getString("midle_store"))+
-						"'},";
-				flag = true;
-			}
-			if (flag) {
-				json = json.substring(0, json.length() - 1);
-			}
-			json += "]";
-			System.out.println(json);//先对这个json预处理 
-			///json的处理
-			JSONArray jsArray=JSONArray.fromObject(json);
-			List<Clazz> listClazz=new ArrayList<Clazz>();
-			for(Object ob:jsArray) 
-			{
-				Clazz clazz= new Clazz();
-				JSONObject jsonObj=JSONObject.fromObject(ob);
-				clazz.setClass_id(jsonObj.getString("midle_store"));
-				List<Details> list = new ArrayList<Details>();
-				Details details = new Details();
-				details.setPurchase_id(jsonObj.getString("purchase_id"));
-				details.setRemarks(jsonObj.getString("remarks"));
-				details.setId(jsonObj.getString("id"));
-				details.setPackage_unit(jsonObj.getString("package_unit"));
-				details.setProduct_id(jsonObj.getString("product_name"));
-				details.setSpecifications(jsonObj.getString("specifications"));
-				details.setPurchase_num(jsonObj.getString("purchase_num"));
-				details.setPrice(jsonObj.getString("price"));
-				list.add(details);
-				clazz.setDetails(list);
-				listClazz.add(clazz);
-			}
-			HashSet<String> keys = new HashSet<String>();
-			for(Clazz caz:listClazz) 
-				keys.add(caz.getClass_id());
-			JSONArray result_js =new  JSONArray();
-			for(String s:keys) 
-			{
-				List<Details> details_list=new ArrayList<Details>();
-				JSONObject jo = new JSONObject();
-				for(Clazz czz:listClazz) 
-				{
-					if(czz.getClass_id().equals(s)) 
-					{
-						details_list.addAll(czz.getDetails());
-						jo.put("class_id",s);
-						jo.put("details",details_list);
-					}
-				}
-				result_js.add(jo);
-			}
-			json=result_js.toString();
-			System.out.println(json);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			try {
-				if (ps != null)
-					ps.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			pool.returnConnection(conn);
-		}
+		//   " and t.createdate between to_date ('"+startTime+"','yyyy-mm-dd') and to_date('"+endTime+"','yyyy-mm-dd') ";
+		String startTime = super.parametersRequest("startTime");
+		String endTime = super.parametersRequest("endTime");
+		String sql =" select (select storename from store t where storeid=od.class_id) as class_name,  ol.purchase_id,od.id,od.product_name,od.specifications,od.package_unit,od.purchase_num,od.remarks ,od.price ,  " +
+				" (select  st.storename from store st where st.storeid = (select p.mid_store_id from purchase p where p.id in ol.purchase_id )) as midle_store, " +
+				" od.custom_id ,(select cu.name from customer cu where cu.id=od.custom_id) as custom_name " +
+				" from order_dtl od,order_link ol " +
+				"  where od.id = ol.order_dtl_id  " +
+				"and od.orderdate between to_date ('"+startTime+"','yyyy-mm-dd') and to_date('"+endTime+"','yyyy-mm-dd') "+
+				"  order by  ol.purchase_id ,od.ord ,class_name ,od.custom_id,custom_name ";
+		JSONArray result = super.reArray(sql);
+		System.out.println(sql);
+		json = CommonJsonDeal.updateJsonType(result,"custom_name").toString();
+		System.out.println(json);
 		return "orderPrint";
 	}
 	public String checkList_in(){

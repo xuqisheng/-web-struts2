@@ -104,8 +104,7 @@ System.out.println(sql);
                 jo.put("cate",CommonOperation.nTrim(rs.getString("cate")));
                 arrayNumPrice.add(jo);
             }
-            CommonJsonDeal cjd = CommonJsonDeal.getInstance();
-            arrayNumPrice  = cjd.updateJsonType(arrayNumPrice.toString(),"cate");
+            arrayNumPrice  = CommonJsonDeal.updateJsonType(arrayNumPrice,"cate");
             jsonArray = arrayNumPrice;
             typeJsonArray = jsonArrayType;
             name =nameJ;

@@ -29,16 +29,15 @@ public class CenterInCheckAction extends BaseAction {
     }
 
     public String centerIn(){
-        CommonJsonDeal cjd = CommonJsonDeal.getInstance();
         String params = super.parametersRequest("multiParams");
         String sql =" select cp.product_name, cp.supplier_name,cp.in_num,cp.pack_unit as package_unit, cp.spec as specifications, " +
                 " cp.in_price,(cp.in_num)*cp.in_price as total ,cp.check_pic_id as pici , cp.birth_num ,cp.dep,cp.save_time," +
                 " cp.produce_nuame,cp.supplier_person,cp.file_pic   " +
-                " from check_page cp where cp.CHECK_PIC_ID in  "+cjd.getParameters(Arrays.asList(params.split(";")));
+                " from check_page cp where cp.CHECK_PIC_ID in  "+CommonJsonDeal.getParameters(Arrays.asList(params.split(";")));
         System.out.println(sql);
         setJson(super.reArray(sql).toString());
-        JSONArray array = cjd.updateJsonType(json, "supplier_name");
-        JSONArray sr = cjd.updateJsonTypeByList(array, "pici");
+        JSONArray array = CommonJsonDeal.updateJsonType(JSONArray.fromObject(json), "supplier_name");
+        JSONArray sr = CommonJsonDeal.updateJsonTypeByList(array, "pici");
         json = sr.toString();
         return SUCCESS;
     }
@@ -65,7 +64,6 @@ public class CenterInCheckAction extends BaseAction {
                   " where als.store_record_id =sd.pici) as apply_ord " +
                   " from stock_dtl sd    where sd.pici in ("+paramsStr+")";
           try {
-              CommonJsonDeal commonJsonDeal = CommonJsonDeal.getInstance();
               System.out.println("处理前的sql："+oldSql);
               json = "[";
               conn = pool.getConnection();
@@ -90,9 +88,9 @@ public class CenterInCheckAction extends BaseAction {
                   json = json.substring(0, json.length() - 1);
               json += "]";
               System.out.println("处理之前的json"+json);
-              JSONArray array = commonJsonDeal.updateJsonType(json, "supplier_name");
+              JSONArray array = CommonJsonDeal.updateJsonType(JSONArray.fromObject(json), "supplier_name");
               JSONArray finalArray = new JSONArray();
-              JSONArray sr = commonJsonDeal.updateJsonTypeByList(array, "pici");
+              JSONArray sr = CommonJsonDeal.updateJsonTypeByList(array, "pici");
               json = sr.toString();
               System.out.println(json);
           } catch (Exception e) {

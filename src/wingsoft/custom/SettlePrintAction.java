@@ -49,7 +49,6 @@ public class SettlePrintAction extends ActionSupport {
 			paramsStr = paramsStr.substring(0, paramsStr.length() - 1);
 		
 		try {
-			CommonJsonDeal commonJsonDeal = CommonJsonDeal.getInstance();
 			String sql = " select sd.id,sd.product_name,sd.specifications,sd.package_unit,sd.in_num,sd.return_num,sd.in_price,(sd.in_num+sd.return_num)*sd.in_price total,sd.product_id,sd.pici"
 					+ " from stock_dtl sd " + 
 					" where sd.pici in ("+paramsStr+")";
@@ -118,7 +117,6 @@ public class SettlePrintAction extends ActionSupport {
 				"   where sd.pici in "+ 
 				"(select al.store_record_id from app_link al where al.apply_ord in ("+paramsStr+"))";
 		try {
-			CommonJsonDeal commonJsonDeal = CommonJsonDeal.getInstance();
 			System.out.println("处理前的sql："+sql);
 			json = "[";
 			conn = pool.getConnection();
@@ -145,12 +143,12 @@ public class SettlePrintAction extends ActionSupport {
 				json = json.substring(0, json.length() - 1);
 			json += "]";
 			System.out.println("处理之前的json"+json);
-			JSONArray array = commonJsonDeal.updateJsonType(json, "supplier_name");
+			JSONArray array = CommonJsonDeal.updateJsonType(JSONArray.fromObject(json), "supplier_name");
 			JSONArray finalArray = new JSONArray();
-			JSONArray sr = commonJsonDeal.updateJsonTypeByList(array, "apply_ord");
+			JSONArray sr = CommonJsonDeal.updateJsonTypeByList(array, "apply_ord");
 			for(Object o:sr) {
 				JSONObject ojb  = JSONObject.fromObject(o);
-				ojb.put("list", commonJsonDeal.updateJsonTypeByList((JSONArray) ojb.get("list"), "pici"));
+				ojb.put("list", CommonJsonDeal.updateJsonTypeByList((JSONArray) ojb.get("list"), "pici"));
 				finalArray.add(ojb);
 			}
 			json = finalArray.toString();
