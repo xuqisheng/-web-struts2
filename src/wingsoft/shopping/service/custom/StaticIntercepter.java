@@ -1,21 +1,16 @@
 package wingsoft.shopping.service.custom;
 
 import com.opensymphony.xwork2.ActionInvocation;
-import com.opensymphony.xwork2.ActionProxy;
-import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.Result;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
-import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 import org.apache.struts2.ServletActionContext;
-import wingsoft.shopping.action.BaseAction;
+import wingsoft.custom.BaseAction;
 import wingsoft.shopping.util.Comm;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.struts2.json.JSONResult;
 
 import java.io.PrintWriter;
 import java.util.Enumeration;

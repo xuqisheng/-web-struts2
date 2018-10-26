@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONArray;
 import org.apache.struts2.ServletActionContext;
 
+import wingsoft.custom.BaseAction;
 import wingsoft.shopping.dao.CategoryDAO;
 import wingsoft.shopping.model.Category;
-
-import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
 public class GetCategoryAction extends BaseAction {

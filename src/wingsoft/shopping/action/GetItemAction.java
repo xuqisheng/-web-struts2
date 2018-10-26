@@ -11,11 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONArray;
 import org.apache.struts2.ServletActionContext;
 
+import wingsoft.custom.BaseAction;
 import wingsoft.shopping.dao.CommentsDAO;
 import wingsoft.shopping.dao.ItemDAO;
 import wingsoft.shopping.model.Item;
-
-import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
 public class GetItemAction extends BaseAction {

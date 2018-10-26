@@ -1,7 +1,6 @@
 package wingsoft.shopping.action;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -11,11 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONArray;
 import org.apache.struts2.ServletActionContext;
 
+import wingsoft.custom.BaseAction;
 import wingsoft.shopping.dao.CartDAO;
 import wingsoft.shopping.dao.ItemDAO;
 import wingsoft.shopping.model.Cart;
 import wingsoft.shopping.model.Item;
-import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
 public class GetCartAction extends BaseAction {

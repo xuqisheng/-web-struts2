@@ -2,7 +2,7 @@ package wingsoft.shopping.service.print;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import wingsoft.shopping.action.BaseAction;
+import wingsoft.custom.BaseAction;
 import java.util.List;
 
 /**

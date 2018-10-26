@@ -1,4 +1,4 @@
-package wingsoft.shopping.action;
+package wingsoft.custom;
 
 import com.opensymphony.xwork2.ActionSupport;
 

@@ -1,43 +1,21 @@
 package wingsoft.shopping.service;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import javax.naming.NamingException;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.struts2.ServletActionContext;
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
 
-import com.opensymphony.xwork2.ActionSupport;
-
-import wingsoft.shopping.action.BaseAction;
-import wingsoft.shopping.dao.CommentsDAO;
-import wingsoft.shopping.dao.ItemDAO;
+import wingsoft.custom.BaseAction;
 import wingsoft.shopping.model.Item;
-import wingsoft.shopping.model.Itempara;
 import wingsoft.shopping.service.dao.ShopDao;
 import wingsoft.shopping.util.Comm;
 import wingsoft.tool.db.ConnectionPool;

@@ -2,9 +2,8 @@ package wingsoft.shopping.service.action;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import wingsoft.shopping.action.BaseAction;
+import wingsoft.custom.BaseAction;
 import wingsoft.shopping.service.dao.MsgDao;
-import wingsoft.shopping.service.dao.ShopDao;
 
 public class MsgAction extends BaseAction {
 	/**
