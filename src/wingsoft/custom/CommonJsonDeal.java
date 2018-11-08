@@ -205,10 +205,21 @@ public class CommonJsonDeal {
         return rsArray;
     }
 
-    public static String getParameters(List<String> stringList){
+    /**
+     *
+     * @param stringList
+     * @return
+     */
+    public static String getParameters(Object stringList){
+        List<String> stringArrayList = null;
+        if (stringList instanceof String){
+             stringArrayList = Arrays.asList(((String) stringList).split(";"));
+        }else{
+             stringArrayList = (List<String>) stringList;
+        }
         StringBuffer sb = new StringBuffer();
         sb.append("(");
-        for(String str:stringList){
+        for(String str:stringArrayList){
             sb.append("\'");
             sb.append(str);
             sb.append("\',");

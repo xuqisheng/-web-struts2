@@ -94,6 +94,10 @@
         <action name="OrderPrintAction_*" method="{1}" class="wingsoft.custom.OrderPrintAction">
             <result name="orderPrint" type="json"></result>
         </action>
+        <action name="CenterWaresDetails_*" method="{1}" class="wingsoft.custom.CenterWaresDetails">
+            <result name="noCollect" type="json"></result>
+            <result name="collect" type="json"></result>
+        </action>
     </package>
     <!-- end of  购物相关actions -->
     <!--自定义shoping相关-->

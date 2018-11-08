@@ -26,6 +26,7 @@
 var myDate = new Date();
 var time = myDate.toLocaleString( ); //获取日期与时间
 var supplier_name = window.parent.supplier_name;
+
 var MultiRows = window.parent.MultiRows;
 //先获取到相关变量值
 var batNo = window.parent.batNo;
@@ -155,7 +156,7 @@ $.each(tojsons,function(i){
 return html;
 }
   $(function(){
-      // MultiRows = "P20180522D2;P20180522D7";
+       // MultiRows = "P20180522D2;P20180522D7";
   	$.ajax({
 		type: "POST",
 		url:  'OrderPrintAction_printAllOrder.action',

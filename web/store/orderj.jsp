@@ -13,11 +13,13 @@
 <title>采购单</title>
 <script>
 	// var order_flag = -1;
+	var collect = window.parent.collect;
     var startTime = window.parent.startTime;
     var endTime = window.parent.endTime;
+    var userName = window.parent.userName;
     // var startTime= "2010-01-01";
     // var endTime = "2019-01-01";
-    var supplier_name = window.parent.supplier_name;
+    // var supplier_name = window.parent.supplier_name;
     var MultiRows = window.parent.MultiRows;
     var order_flag = window.parent.order_flag;
     // console.log(supplier_name);
@@ -44,15 +46,17 @@
 	var req_date = window.parent.req_date;
 	var url = document.URL;
 	var uarr = url.split('/');
-
+	var supplier_name ='';
 	function orderbuy(printContent, tojsons) {
 		var tojsons = eval(tojsons);
+
 		var v_amount = 0;
 		$.each(tojsons, function(i) {
 			var cols = tojsons[i];
-			var arr_details = cols.details;
+			var arr_details = cols.list;
 			$.each(arr_details, function(i) {
-				var purchase_num = arr_details[i].purchase_num;
+                supplier_name = arr_details[i].provide_name;
+                var purchase_num = arr_details[i].purchase_num;
 				v_amount = v_amount + parseInt(arr_details[i].purchase_num);
 			});
 		});
@@ -66,30 +70,38 @@
 		//条形码
 		html += ('<thead width="80%"   border="0" align="center" cellpadding="0" cellspacing="0">');
 		html += ('<tr align="center" class="TitleStyle">');
-		html += ('<td align="center" style="border:0px;" colspan="10"><h3>采购单位:' + supplier_name + '</h3></td>');
-		html += ('</tr>');
+		html += ('<td align="center" style="border:0px;" colspan="8">');
+        collect ==1?html += ('<h3>采购部 送货单(汇总)</h3>'):html += ('<h3>采购部 送货单(不汇总)</h3>');
+		html += ('</td></tr>');
 		html += ('</thead>');
 		html += ('<br>');
-		html += ('<thead   border="0" align="center" cellpadding="0" cellspacing="0" style="line-height: 20px;border:1px #999999 solid;line-height: 22px">');
-		html += ('<tr align="left" class="text" style="line-height:28px;">');
-            html += ('<td colspan="10" style="border:0px;">&nbsp;</td>');
+		html += ('<thead   border="0" align="center" cellpadding="0" cellspacing="0" ' +
+			'style="border:none;">');
+		html += ('<tr align="left" class="text" style="border:none;">');
+            html += ('<td style="border:none;" colspan="8" style="border:0px;">&nbsp;</td>');
 		html += ('</tr>');
-		html += ('<tr align="left" class="text" style="line-height:28px;">');
-        if(order_flag*1==-1){
-            html += ('<td style="border-bottom:0px;border-right:0px;border-left:0px" colspan="10"  align="left" class="title">&nbsp;打印时间：'
+
+		html += ('<tr align="left" class="text" style="border:none;">');
+        html += ('<tr align="left" class="text" style="line-height:28px;">');
+        html += ('<td colspan="8" style="border:0px;" >&nbsp;</td>');
+        html += ('</tr>');
+		if(order_flag*1==-1){
+            html += ('<td style="border-bottom:0px;border-right:0px;border-left:0px" colspan="8"  align="left" class="title">&nbsp;打印时间：'
                 + time + '</td>');
 		}
         else {
-            html += ('<td style="border-bottom:0px;border-right:0px;border-left:0px" colspan="10"  align="left" class="title">&nbsp;打印时间：'
-                + time + '</td>');
+            // html += ('<td style="border:none;" colspan="1"  align="left" class="title">&nbsp;</td>');
+            html += ('<td style="border:none;" colspan="4"  align="left" class="title">&nbsp;&nbsp;&nbsp;&nbsp;送货时间：'
+					//time
+                + startTime  + '至'+ endTime +'</td>');
+            html += ('<td style="border:none;" colspan="4"  align="left" class="title">&nbsp;送货单位：'
+                + supplier_name + '</td>');
 		}
 		html += ('</tr>');
-        html +=('<tr>' +
-            '<td style="border: 0px;text-align: right;" colspan="10" align="right">采购日期:'+startTime+'至'+endTime+'</td>\n' +
-            '</tr>');
-		html += ('<tr align="left" class="text" style="line-height:28px;">');
-		html += ('<td colspan="10" style="border:0px;" >&nbsp;</td>');
-		html += ('</tr>');
+        // html +=('<tr>' +
+        //     '<td style="border: 0px;text-align: right;" colspan="8" align="right">采购日期:'+startTime+'至'+endTime+'</td>\n' +
+        //     '</tr>');
+
 		html += ('</thead>');
 		html += ('<tbody width="70%" class="print_table"  border="1" cellpadding="0" cellspacing="0">');
 
@@ -106,8 +118,8 @@
 
 							// var arr_details = cols.details;
 							html += '<tr class=text align="center" >';
-							html += '<td style="border:none" width="3%">&nbsp;</td>';
-							html += '<td align="center" colspan="2"  style="border:none"><h4 >';
+							// html += '<td style="border:none" width="3%">&nbsp;</td>';
+							html += '<td align="center" colspan="3"  style="border:none"><h4 >';
 							html += class_name;
 							html += '</4></td>';
 							html += '</tr>'
@@ -186,12 +198,12 @@
 
         html += ('<tfoot  border="0" align="center" cellpadding="0" cellspacing="0" style="line-height: 22px;border:1px #999999 solid;line-height: 18px">');
         html += ('<tr align="left" class="text" style="line-height:28px;">');
-        html += ('<td colspan="7" style="border: 0px;"  align="left" class="title">&nbsp;</td>');
+        html += ('<td colspan="8" style="border: 0px;"  align="left" class="title">&nbsp;</td>');
         html += ('</tr>');
         html += ('<tr align="left" style="line-height:28px;">');
-        html += ('<td style="border: 0px;" colspan="2" align="left" >经办人（签名）：</td>');
-        html += ('<td style="border: 0px;" colspan="2" align="left" >证明人（签名）：</td>');
-        html += ('<td style="border: 0px;" colspan="3" align="left" >审批人（签名）：</td>');
+        html += ('<td style="border: 0px;" colspan="2" align="left" >制表人：'+userName+'</td>');
+        html += ('<td style="border: 0px;" colspan="6" align="left" >制表时间：'+time+'</td>');
+        // html += ('<td style="border: 0px;" colspan="3" align="left" >审批人（签名）：</td>');
         html += ('</tr>');
         html += '</tfoot>';
 		html += ('</div>');
@@ -199,8 +211,9 @@
 		return html;
 	}
 	$(function() {
-		// var MultiRows = "P20181022D3;P20180918D1";
-
+		// var MultiRows = "P20180911D5;P20180911D2";
+        // collect = '0';
+		var url = collect=='1'?"OrderPrintAction_printDoOrderF.action":"OrderPrintAction_printDoOrderFNoCollect.action";
 		$.ajax({
 			type : "POST",
 			url : 'OrderPrintAction_printDoOrderF.action',

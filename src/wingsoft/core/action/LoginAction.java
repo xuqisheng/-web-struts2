@@ -46,7 +46,7 @@ public class LoginAction extends ActionSupport{
 		String uid = CommonOperation.nTrim(request.getParameter("uid"));
 		String pwd = CommonOperation.nTrim(request.getParameter("pwd"));
 		if(uid!=null && pwd !=null){
-			if(isValidate(uid,pwd)){
+			if(isValidate(uid, pwd)){
 				this.setResponseText(new ByteArrayInputStream("ok".getBytes()));
 			}
 			return "textPlain";
@@ -57,7 +57,7 @@ public class LoginAction extends ActionSupport{
 	public boolean isValidate(String uid,String pwd) throws Exception{
 		boolean isLegal = false;
 		Connection coon =null;
-//		ConnectionPool pool = ConnectionPoolManager.getPool("WFServer");
+		ConnectionPool pool = ConnectionPoolManager.getPool("WFServer");
 		Connection conn=null;
 		PreparedStatement ps=null;
 		System.out.println(uid);
@@ -68,7 +68,8 @@ public class LoginAction extends ActionSupport{
 		System.out.println(uid);
 		System.out.println(pwd);
 		String sql ="select * from WF_USERINFO u where trim(u.userid)=? and trim(u.password)=?";
-		conn =  DBManager.getConnection();
+//		conn =  DBManager.getConnection();
+		conn = pool.getConnection();
 		ps = conn.prepareStatement(sql);
 		ps.setString(1,uid);
 		ps.setString(2,pwd);
@@ -77,11 +78,15 @@ public class LoginAction extends ActionSupport{
 			isLegal = true;
 			initUserContext(uid,rs.getString("username"));
 		}
-//		pool.closeResultSet(rs);
-//		pool.closePreparedStatement(ps);
-//		pool.returnConnection(conn);
+		pool.closeResultSet(rs);
+		pool.closePreparedStatement(ps);
+		pool.returnConnection(conn);
 		conn.close();
 		return isLegal;
+	}
+
+	public String getCheckCodeImg(){
+		return "textPlain";
 	}
 
 	protected void initUserContext(String uid,String username) throws SQLException{

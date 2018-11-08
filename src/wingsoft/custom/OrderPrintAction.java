@@ -32,6 +32,38 @@ public class OrderPrintAction extends BaseAction {
 		this.json = json;
 	}
 
+	public String printDoOrderFNoCollect(){
+		String startTime = super.parametersRequest("startTime");
+		String endTime = super.parametersRequest("endTime");
+		String MultiRows = parametersRequest("MultiRows");
+		String para_str = CommonJsonDeal.getParameters(MultiRows);
+		String sql =" select (select storename from store t where storeid=od.class_id) as class_name,  ol.purchase_id,od.id,od.product_name,od.specifications,od.package_unit,od.purchase_num,od.remarks ,od.price ,  " +
+				" (select  st.storename from store st where st.storeid = (select p.mid_store_id from " +
+				"purchase p where p.id in ol.purchase_id )) as midle_store, " +
+				" (select name from supplier where id =od.provide_id) as provide_name, " +
+				" od.custom_id ,(select cu.name from customer cu where cu.id=od.custom_id) as custom_name " +
+				" from order_dtl od,order_link ol " +
+				"  where od.id = ol.order_dtl_id  " +
+				" and ol.purchase_id in "+para_str+" "+
+//				"and od.orderdate between to_date ('"+startTime+"','yyyy-mm-dd') and to_date('"+endTime+"','yyyy-mm-dd') "+
+				"  order by  ol.purchase_id ,od.ord ,class_name ,od.custom_id, custom_name ";
+		JSONArray result = super.reArray(sql);
+//		json = CommonJsonDeal.updateJsonType(result,"custom_name").toString();
+		JSONArray arrayRs = new JSONArray();
+		for (Object ojb :result){
+			JSONObject jsonObj = JSONObject.fromObject(ojb);
+			if (jsonObj.getString("custom_name").equals("")){
+				jsonObj.put("custom_name",jsonObj.getString("midle_store"));
+				arrayRs.add(jsonObj);
+			}else {
+				arrayRs.add(jsonObj);
+			}
+		}
+		json = CommonJsonDeal.updateJsonType(arrayRs,"custom_name").toString();
+//		System.out.println(json);
+		return "orderPrint";
+	}
+
 	/**
 	 * 修改orderJ.jsp
 	 * @return
@@ -40,17 +72,42 @@ public class OrderPrintAction extends BaseAction {
 		//   " and t.createdate between to_date ('"+startTime+"','yyyy-mm-dd') and to_date('"+endTime+"','yyyy-mm-dd') ";
 		String startTime = super.parametersRequest("startTime");
 		String endTime = super.parametersRequest("endTime");
+		//
+		String MultiRows = parametersRequest("MultiRows");
+		String para_str = CommonJsonDeal.getParameters(MultiRows);
 		String sql =" select (select storename from store t where storeid=od.class_id) as class_name,  ol.purchase_id,od.id,od.product_name,od.specifications,od.package_unit,od.purchase_num,od.remarks ,od.price ,  " +
-				" (select  st.storename from store st where st.storeid = (select p.mid_store_id from purchase p where p.id in ol.purchase_id )) as midle_store, " +
+				" (select  st.storename from store st where st.storeid = (select p.mid_store_id from " +
+				" purchase p where p.id in ol.purchase_id )) as midle_store, " +
+				"  (select name from supplier where id =od.provide_id) as provide_name, " +
 				" od.custom_id ,(select cu.name from customer cu where cu.id=od.custom_id) as custom_name " +
 				" from order_dtl od,order_link ol " +
 				"  where od.id = ol.order_dtl_id  " +
-				"and od.orderdate between to_date ('"+startTime+"','yyyy-mm-dd') and to_date('"+endTime+"','yyyy-mm-dd') "+
-				"  order by  ol.purchase_id ,od.ord ,class_name ,od.custom_id,custom_name ";
+				" and ol.purchase_id in "+para_str+" "+
+//				"and od.orderdate between to_date ('"+startTime+"','yyyy-mm-dd') and to_date('"+endTime+"','yyyy-mm-dd') "+
+				"  order by  ol.purchase_id ,od.ord ,class_name ";// ,od.custom_id
+
+
+//		String Sql =" select (select storename from store t where storeid=od.class_id) as class_name, "+
+//						" ol.purchase_id,od.id,od.product_name,od.specifications,od.package_unit,od.purchase_num,od.remarks ,od.price ," +" (select  st.storename from store st where st.storeid = (select p.mid_store_id from purchase p where p.id in ol.purchase_id )) as midle_store "+
+//						" from order_dtl od,order_link ol  " +
+//						" where od.id = ol.order_dtl_id "+
+//						" and ol.purchase_id in "+para_str+" "+
+//						" order by  ol.purchase_id ,od.ord ,class_name ";
+//		System.out.println(sql);
 		JSONArray result = super.reArray(sql);
-		System.out.println(sql);
-		json = CommonJsonDeal.updateJsonType(result,"custom_name").toString();
-		System.out.println(json);
+//		System.out.println(sql);
+		JSONArray arrayRs = new JSONArray();
+		for (Object ojb :result){
+			JSONObject jsonObj = JSONObject.fromObject(ojb);
+			if (jsonObj.getString("custom_name").equals("")){
+				jsonObj.put("custom_name",jsonObj.getString("midle_store"));
+				arrayRs.add(jsonObj);
+			}else {
+				arrayRs.add(jsonObj);
+			}
+		}
+		json = CommonJsonDeal.updateJsonType(arrayRs,"custom_name").toString();
+//		System.out.println(json);
 		return "orderPrint";
 	}
 	public String checkList_in(){
