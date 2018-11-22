@@ -7,7 +7,7 @@
               username="store"
               password="zhao"
               driverClassName="oracle.jdbc.driver.OracleDriver"
-              url="jdbc:oracle:thin:@192.168.15.101:1521/orcl"
+              url="jdbc:oracle:thin:@192.168.15.106:1521/orcl"
     />
     <!--url="jdbc:oracle:thin:@192.168.15.101:1521/orcl"-->
             <!--http://192.168.102.5:8080/STORE/-->

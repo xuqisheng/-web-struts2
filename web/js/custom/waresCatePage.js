@@ -65,7 +65,8 @@ var tbc = new Vue({
         //  this.startTime = "2017-01-01";
         //  this.endTime = "2019-01-01";
         //  this.class_id = "81";
-        this.$http.post('WaresCateAction_waresCateData.action',{startTime:this.startTime,endTime:this.endTime,class_id:this.class_id}).
+        this.$http.post('WaresCateAction_waresCateData.action',
+            {startTime:this.startTime,endTime:this.endTime,class_id:this.class_id}).
         then(response =>{
             if (response.data.jsonArray!=null){
                 this.parseData(response.data);

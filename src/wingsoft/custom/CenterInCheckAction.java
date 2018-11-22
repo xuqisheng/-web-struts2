@@ -27,7 +27,8 @@ public class CenterInCheckAction extends BaseAction {
 
     public String centerIn(){
         String params = super.parametersRequest("multiParams");
-        String sql =" select cp.product_name, cp.supplier_name,cp.in_num,cp.pack_unit as package_unit, cp.spec as specifications, " +
+        String sql =" select cp.product_name, cp.supplier_name,cp.in_num,cp.pack_unit as package_unit, " +
+                " cp.spec as specifications, " +
                 " cp.in_price,(cp.in_num)*cp.in_price as total ,cp.check_pic_id as pici , cp.birth_num ,cp.dep,cp.save_time," +
                 " cp.produce_nuame,cp.supplier_person,cp.file_pic   " +
                 " from check_page cp where cp.CHECK_PIC_ID in  "+CommonJsonDeal.getParameters(Arrays.asList(params.split(";")));
