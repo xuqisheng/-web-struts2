@@ -124,9 +124,6 @@ public class ShopDao {
 		if (flag) {
 			json = json.substring(0,json.length()-1);
 		}
-		
-		
-		
 		json+="]";
 		
 		

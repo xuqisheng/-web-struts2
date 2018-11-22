@@ -75,13 +75,14 @@
             <tbody class="inTable">
             <tr>
                 <td colspan="2" style="border: 0px;text-align: left">&nbsp;&nbsp;供应商: {{supplier_name}}</td>
-                <td colspan="6" style="border: 0px;text-align: left">日期:  {{startTime}}  至 {{endTime}} </td>
+                <td colspan="4" style="border: 0px;text-align: left">日期:  {{startTime}}  &nbsp;至 {{endTime}} </td>
+                <td colspan="2" style="border: 0px;text-align: left">送货单位: {{unitSend}}</td>
             </tr>
 
             <template  v-for="type in jsonArray">
 
                 <tr >
-                    <td  style="text-align: left" colspan="8"><b>&nbsp;&nbsp;商户名称:{{type.custom_name}}</b></td>
+                    <td  style="text-align: left" colspan="8"><b>&nbsp;&nbsp;客户名称:&nbsp;&nbsp;{{type.custom_name}}</b></td>
                 </tr>
                 <tr>
                     <%--<td>编号</td>--%>
@@ -117,21 +118,30 @@
                     </template>
                 </tr>
                 <tr>
-                    <td colspan="8" style="text-align: left;">&nbsp;&nbsp;<b>小计 &nbsp;:{{countNumber(type.list)}}</b></td>
+                    <td colspan="8" style="text-align: left;"><b>&nbsp;&nbsp;小计 &nbsp;:{{countNumber(type.list)|currency}}</b></td>
                 </tr>
             </template>
 
             </tbody>
             <tfoot>
-            <tr>
-                <td colspan="8" style="border: 0px;">&nbsp;</td>
-            </tr>
+
+                <tr >
+                    <td style="border: 0px;" colspan="8">
+                        (<template  v-for="type in typeArray">
+                            {{type.name}}、
+                        </template>)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="8" style="border: 0px;">&nbsp;</td>
+                </tr>
                 <tr>
                     <td style="border: 0px;" colspan="4" align="left" >制表人：{{userName}}</td>
                     <td style="border: 0px;" colspan="4" align="left" >制表时间：{{time}}</td>
                 </tr>
             </tfoot>
         </table>
+
         <center>
             <input @click="printPage()" id="buttons" type="button" value="打印" style="width: 60px;height: 30px;text-align: center;-webkit-text-size-adjust: auto"/>
         </center>

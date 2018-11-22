@@ -117,7 +117,7 @@ app.controller('detailTableControl', function($scope,$http) {
 		});	
 		
 		//console.log(store);//班组对应
-		console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		// console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 
 		reList = [];
 		//type遍历
@@ -202,8 +202,8 @@ app.controller('detailTableControl', function($scope,$http) {
 	//查询//
 
 	$scope.getData = (function(){
-         year = "2018-01-01";
-		 month =  "2019-01-01";
+         // year = "2018-01-01";
+         // month =  "2019-01-01";
         $scope.year = year;
         $scope.month= month;
 		$http({

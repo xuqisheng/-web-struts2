@@ -1,6 +1,7 @@
 package wingsoft.custom;
 
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,13 +13,13 @@ import java.util.Enumeration;
  */
 public class CenterWaresDetails extends BaseAction{
     @Override
-    public JSONArray getJsonArray() {
-        return super.getJsonArray();
+    public JSONObject getJsonObject() {
+        return super.getJsonObject();
     }
 
     @Override
-    public void setJsonArray(JSONArray jsonArray) {
-        super.setJsonArray(jsonArray);
+    public void setJsonObject(JSONObject jsonObject) {
+        super.setJsonObject(jsonObject);
     }
 
     //不汇总查询
@@ -56,19 +57,24 @@ public class CenterWaresDetails extends BaseAction{
     }
 
     public String outCollect(){
+        System.out.println("出库汇总查询");
         HttpServletRequest request = ServletActionContext.getRequest();
         // 获取session中所有的键值
         HttpSession session   =   request.getSession();
         String sql =(String)session.getAttribute("365_sql");
-        String sqlType = (String)session.getAttribute("373_sql");
-        System.out.println(sqlType);
+        String sqlType = (String)session.getAttribute("329_sql");
+        JSONArray typeArray = super.reArray(sqlType);
         JSONArray frankArray = super.reArray(sql);
-        JSONArray array  = CommonJsonDeal.updateJsonType(frankArray,"custom_name");
-        setJsonArray(array);
+        JSONArray array  = CommonJsonDeal.updateJsonType(frankArray,"name");
+        JSONObject result = new JSONObject();
+        result.put("jsonArray",array);
+        result.put("typeArray",typeArray);
+        setJsonObject(result);
         return "collect";
     }
 //frame_centerWaresDetailsCollectOut
     public String outNoCollect(){
+        System.out.println("出库非汇总查询");
         String MultiRows = super.parametersGetByJson("MultiRows");
         String para_str = CommonJsonDeal.getParameters(MultiRows);
         System.out.println(para_str);
@@ -81,9 +87,18 @@ public class CenterWaresDetails extends BaseAction{
                 " and (sd.pici = sr.id )" +
                 " ORDER BY sd.createdate DESC, sd.pici DESC, sd.id ASC ";
         System.out.println(sql);
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session   =   request.getSession();
+        String sqlType = (String)session.getAttribute("329_sql");
         JSONArray frankArray = super.reArray(sql);
+        JSONArray typeArray = super.reArray(sqlType);
+
         JSONArray array  = CommonJsonDeal.updateJsonType(frankArray,"custom_name");
-        setJsonArray(array);
+        JSONObject result = new JSONObject();
+        result.put("jsonArray",array);
+        result.put("typeArray",typeArray);
+        setJsonObject(result);
         return "noCollect";
     }
 }

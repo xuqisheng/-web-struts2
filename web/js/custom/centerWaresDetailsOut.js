@@ -9,11 +9,14 @@ var cwd = new Vue({
         time: time,
         userName:userName,
         MultiRows:MultiRows,
-        collect:flag==0?'(未汇总)':'(汇总)'
+        collect:flag==0?'(未汇总)':'(汇总)',
+        unitSend:'',
+        typeArray:''
     },
     methods:{
         parseData:function(data){
-            this.jsonArray = data.jsonArray;
+            this.jsonArray = data.jsonObject.jsonArray;
+            this.typeArray = data.jsonObject.typeArray;
         },getTypeList:function(typeList,index){
             return typeList[index];
         },getPrice:function(a,b){
@@ -26,7 +29,7 @@ var cwd = new Vue({
         },countNumber:function(list) {
             count = 0;
             list.forEach(it=>{
-                count +=it.in_num*1;
+                count +=it.out_num*1;
             });
             return count;
         }, countPrice:function(list){
@@ -62,16 +65,16 @@ var cwd = new Vue({
     },
     mounted:function(){
         var toUrl = "";
-        flag = 0;
+        // flag = 0;
         if (flag == 0){
             toUrl = "CenterWaresDetails_outNoCollect.action";
         }else {
             toUrl = "CenterWaresDetails_outCollect.action"
         }
-        MultiRows ="O20181113D6T2;O20181113D5T1;O20181113D5T2;O20181113D5T3;O20181113D2T1;O20181113D11T1;O20181113D11T2;O20180911D1T1";
+        // MultiRows ="O20181113D6T2;O20181113D5T1;O20181113D5T2;O20181113D5T3;O20181113D2T1;O20181113D11T1;O20181113D11T2;O20180911D1T1";
             this.$http.post(toUrl, {MultiRows:MultiRows}).
         then(response =>{
-            if (response.data.jsonArray!=null){
+            if (response.data.jsonObject!=null){
                 this.parseData(response.data);
             }
         },failResponse=>{

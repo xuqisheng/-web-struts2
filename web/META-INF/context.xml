@@ -18,14 +18,14 @@
               username="wf_tianyi"
               password="zhao"
               driverClassName="oracle.jdbc.driver.OracleDriver"
-              url="jdbc:oracle:thin:@192.168.102.5:1521/orcl" />
-    <!-- shoptest_nyd -->
-    <Resource name="jdbc/shoptest_nyd" auth="Container" type="javax.sql.DataSource"
-              maxActive="100"
-              maxIdle="100"
-              maxWait="10000"
-              username="shoptest_nyd"
-              password="zhao"
-              driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@192.168.102.5:1521/orcl" />
+              url="jdbc:oracle:thin:@192.168.15.106:1521/orcl" />
+    <!--&lt;!&ndash; shoptest_nyd &ndash;&gt;-->
+    <!--<Resource name="jdbc/shoptest_nyd" auth="Container" type="javax.sql.DataSource"-->
+              <!--maxActive="100"-->
+              <!--maxIdle="100"-->
+              <!--maxWait="10000"-->
+              <!--username="shoptest_nyd"-->
+              <!--password="zhao"-->
+              <!--driverClassName="oracle.jdbc.OracleDriver"-->
+              <!--url="jdbc:oracle:thin:@192.168.102.5:1521/orcl" />-->
 </Context>
