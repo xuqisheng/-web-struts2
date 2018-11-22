@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="commonAction"  extends="struts-default">
+		<interceptors>
+            <interceptor name="WFInterceptor" class="wingsoft.core.action.WFInterceptor">
+            </interceptor>
+            
+            <interceptor name="WFInterceptorCheckSession" class="wingsoft.core.action.WFInterceptorCheckSession">
+            </interceptor>
+        </interceptors>
+        <global-results>
+			<result name="illeagal">/login.html</result>
+		</global-results>
+		
+		<!-- 这个action给json版刷新def文件用。不需要给客户。 -->
+		<action name="refreshSysDef" method="refreshSysDef" class="wingsoft.core.action.CommonAction">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+		</action>
+		<!--  -->
+		
+		<action name="threed_getLevelAction" class="wingsoft.objSelector.action.getLevelAction" method="get">
+		<interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="threed_newLevelAction" class="wingsoft.objSelector.action.newLevelAction" method="newLevel">
+		<interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="saveUserDispSetAction" method="saveUserDispSet" class="wingsoft.core.action.UserDispSetAction">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+            <interceptor-ref name="WFInterceptor"/>
+		</action>
+		
+		<action name="getHelpContentAction" method="getHelpItem" class="wingsoft.winhelp.GetHelpContentAction">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+            <interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="loadMenu" method="loadMenu" class="wingsoft.core.action.MenuAction">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+            <interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="loadRolesMenu" method="loadRolesMenu" class="wingsoft.core.action.MenuAction">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+            <interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="loadRolesName" method="loadRolesName" class="wingsoft.core.action.MenuAction">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+            <interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="getAllLeafNode" method="getAllLeafNode" class="wingsoft.core.action.MenuAction">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+			<interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="expExcel" method="expExcel" class="wingsoft.core.action.FunctionDefinitionAction">
+		</action>
+	
+		<action name="getDefaultWinno" method="getDefaultWinno" class="wingsoft.core.action.MenuAction">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+			<interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="loadDefinition" method="loadDefinition" class="wingsoft.core.action.FunctionDefinitionAction">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+			<interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="crossfieldrebuild" method="rebuild" class="wingsoft.core.action.CrossFieldRebuildAction">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+			<interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="getWinTypes" method="getWinTypes" class="wingsoft.core.action.FunctionDefinitionAction">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+			<interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="loadInitFunction" method="loadInitFunction" class="wingsoft.core.action.FunctionDefinitionAction">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+			<interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="setCustomSession" method="setCustomSession" class="wingsoft.core.action.FunctionDefinitionAction">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+			<interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="common_*" method="{1}" class="wingsoft.core.action.CommonAction">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+			<interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="commonUpdate_*" method="{1}" class="wingsoft.core.action.CommonUpdateAction">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+			<interceptor-ref name="WFInterceptor"/>
+		</action>
+		
+		<action name="commonQuery_*" method="{1}" class="wingsoft.core.action.CommonQueryAction">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+			<interceptor-ref name="WFInterceptor"/>
+		</action>
+				
+		<action name="msgcontent_*" method="{1}" class="wingsoft.core.action.MsgContentAction">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+            <interceptor-ref name="WFInterceptor"/>
+		</action>
+					
+					
+		<action name="impTextNoCheck" method ="impTextNoCheck"  class="wingsoft.core.action.FileUploadAction">  
+            <result name="textPlain" type="stream" >
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>  
+        </action>
+        <action name="impExcel" method ="impExcel"  class="wingsoft.core.action.FileUploadAction">  
+            <result name="textPlain" type="stream" >
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>  
+        </action>
+		<action name="impCrossExcel" method ="impCrossExcel"  class="wingsoft.core.action.FileUploadAction">
+			<result name="textPlain" type="stream" >
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+		</action>
+        <action name="impDbf" method ="impDbf"  class="wingsoft.core.action.FileUploadAction">  
+            <result name="textPlain" type="stream" >
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>  
+        </action>
+        <action name="impCsv" method ="impCsv"  class="wingsoft.core.action.FileUploadAction">  
+            <result name="textPlain" type="stream" >
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>  
+        </action>
+
+        <action name="custom_*"   method="{1}" class="wingsoft.custom.CustomAction">  
+            <result name="textPlain" type="stream" >
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+			<interceptor-ref name="WFInterceptor"/>  
+        </action>
+        
+        <action name="redirectCustomPage"   method="redirectCustomPage" class="wingsoft.custom.CustomRedirectAction">  
+			<interceptor-ref name="WFInterceptor"/>  
+        </action>
+        
+        <!-- 凭证编辑和显示相关actions -->
+        <action name="inputVoucher" class="wingsoft.custom.accounting.action.InputVoucherAction">
+        	<interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="entryOperation" class="wingsoft.custom.accounting.action.EntryOperationAction">
+        	<interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="getItemInfo" class="wingsoft.custom.accounting.action.GetItemInfoAction">
+        	<interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="addVoucher" class="wingsoft.custom.accounting.action.AddVoucherAction">
+        	<interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="deleteVoucher" class="wingsoft.custom.accounting.action.DeleteVoucherAction">
+        	<interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="addEntry" class="wingsoft.custom.accounting.action.AddEntryAction">
+        	<interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="maintainVoucher" class="wingsoft.custom.accounting.action.MaintainVoucherAction">
+        	<interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="editVoucher" class="wingsoft.custom.accounting.action.EditVoucherAction">
+        	<interceptor-ref name="WFInterceptor"/>
+		</action>
+		<action name="recentVoucher" class="wingsoft.custom.accounting.action.RecentVoucherAction">
+        	<interceptor-ref name="WFInterceptor"/>
+		</action>
+		<!-- end of 凭证编辑和显示相关actions -->
+        
+        
+        <action name="printer" class="wingsoft.tool.printer.PrintAction">
+        	<interceptor-ref name="WFInterceptor"/>
+        </action>
+
+		<action name="printGridColData" method="printGridColData" class="wingsoft.tool.printer.PrintAction">
+		</action>
+        
+        <action name="getPrintPic" method="getPrintPic" class="wingsoft.tool.printer.PrintAction">
+        	<interceptor-ref name="WFInterceptor"/>
+        </action>
+        
+        <action name="getNotePrintTemplate" method="getPrintPic" class="wingsoft.tool.printer.NotePrint">
+        	<interceptor-ref name="WFInterceptor"/>
+        </action>
+
+
+		<action name="fileSystem_getImgStreamAction" class="wingsoft.fileSystem.FileSystemOperation"
+			method="getImgAction">
+			<result name="imageJpeg" type="stream">
+				<param name="contentType">image</param>
+				<param name="inputName">responseText</param>
+			</result>
+        	<!--<interceptor-ref name="WFInterceptor"/>-->
+		</action>  
+        <action name="fileSystem_saveAction" method="saveAction" class="wingsoft.fileSystem.FileSystemOperation">
+	 	  	<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+			<!-- 在ocx上传时会通过challenge串进行交换验证  -->
+	 	</action>
+	 	<action name="fileSystem_getFileNameSequence" method="getFileNameSequence" class="wingsoft.fileSystem.FileSystemOperation">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+			<!-- 这个是给capturer的ocx访问用的。不能用session控制，否则ocx访问会被拒绝。challenge串进行交换验证  -->
+		</action>
+	 	<action name="fileSystem_capturer" method="capturer" class="wingsoft.fileSystem.FileSystemOperation">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+			<!-- 这个是给capturer的ocx访问用的。不能用session控制，否则ocx访问会被拒绝。  通过本action提供一个challenge串进行交换验证-->
+		</action>
+	 	<action name="fileSystem_getActionCapturer" method="getActionCapturer" class="wingsoft.fileSystem.FileSystemOperation">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+			<!-- 这个是给capturer的ocx访问用的。不能用session控制，否则ocx访问会被拒绝。challenge串进行交换验证  -->
+		</action>
+	 	
+		<action name="fileSystem_*" class="wingsoft.fileSystem.FileSystemOperation"
+			method="{1}">
+	 	  	<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+        	<interceptor-ref name="WFInterceptor"/>
+		</action>  
+			
+	 	<action name="mailAction_*" method="{1}" class="wingsoft.mail.action.SendMailAction">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+			<interceptor-ref name="WFInterceptor"/>
+		</action>
+	 	<action name="barcode" method="generateBarCode" class="wingsoft.barcode.action.GenerateCodeAction">
+			<result name="success" type="stream">
+				<param name="inputName">responseText</param>
+			</result>
+        	<interceptor-ref name="WFInterceptorCheckSession"/>
+		</action>
+	 	<action name="qrcode" method="generateQRCode" class="wingsoft.barcode.action.GenerateCodeAction">
+			<result name="success" type="stream">
+				<param name="inputName">responseText</param>
+			</result>
+        	<interceptor-ref name="WFInterceptorCheckSession"/>
+		</action>
+		
+		<!-- excelReport author:yfc -->
+	 	
+	 	<action name="reportNewExpExcel" method="expExcel" class="wingsoft.reportNew.ReportAction">
+        	<interceptor-ref name="WFInterceptorCheckSession"/>
+        </action>
+        
+		<action name="reportNewAction_*" method="{1}" class="wingsoft.reportNew.ReportAction">
+			<result name="success">
+				freeReportNew/freeReport.jsp
+			</result>
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+						<!-- 这个是报表用的。暂时不能用session控制，否则请求url中的uc参数会变null。  -->
+		</action>
+
+		<action name="wfNew_*" method="{1}" class="wingsoft.workflow.NewWFAction">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+			<interceptor-ref name="WFInterceptor"/>
+		</action>
+
+	</package>
+	
+	        <!-- 购物相关actions -->
+	<package name="shopping" extends="json-default">
+        <action name="redirectShoppingPage"   method="redirectShoppingPage" class="wingsoft.custom.CustomRedirectAction">  
+		</action>
+		<action name="getCategory"
+			class="wingsoft.shopping.action.GetCategoryAction">
+		</action>
+		<action name="getItem"
+			class="wingsoft.shopping.action.GetItemAction">
+		</action>
+		<action name="getItemInfomation"
+			class="wingsoft.shopping.action.GetItemInfoAction">
+		</action>
+		<action name="getItemParameter"
+			class="wingsoft.shopping.action.GetItemParameterAction">
+		</action>
+		<action name="getItemComment"
+			class="wingsoft.shopping.action.GetItemCommentAction">
+		</action>
+		<action name="getItemPage"
+			class="wingsoft.shopping.action.GetItemPageAction">
+		</action>
+		<action name="addCart"
+			class="wingsoft.shopping.action.AddCartAction">
+           <result name="success" type="json">
+			</result>
+		</action>
+		<action name="getCart"
+			class="wingsoft.shopping.action.GetCartAction">
+		</action>
+		<action name="deleteCart" class="wingsoft.shopping.action.DeleteCartAction">
+		</action>
+		<action name="deleteCart_deleteAll" class="wingsoft.shopping.action.DeleteCartAction">
+		</action>
+		<action name="editCart"
+			class="wingsoft.shopping.action.EditCartAction">
+		</action>
+		<action name="getCondition"
+			class="wingsoft.shopping.action.GetConditionAction">
+		</action>
+		<action name="addOrder"
+			class="wingsoft.shopping.action.AddOrderAction">
+		</action>
+	</package>
+	   <!-- end of  购物相关actions -->
+	<!--自定义shoping相关-->
+		<package name="selfhop" extends="json-default">
+		<action name="SHOP_*"   method="{1}" 
+			class="wingsoft.shopping.service.ShopAction">  
+           <result name="success" type="json">
+			</result>
+        </action>
+		<action name="MSG_*"   method="{1}" 
+			class="wingsoft.shopping.service.action.MsgAction">  
+           <result name="success" type="json">
+			</result>
+        </action>
+		
+	</package>
+<!--自定义shoping相关   END-->
+	
+
+
+ <!--shop打印.预约相关--> 
+	<package name ="shop" extends="struts-default">
+
+		<action name="YB_CWBS"   method="YB_CWBS" 
+			class="wingsoft.shopping.service.yb.ConnectWWS">  
+        </action>
+		<action name="F_C_Order"   method="F_C_Order" 
+			class="wingsoft.shopping.service.yb.ConnectWWS">  
+        </action>
+	<action name="Print_*" method="{1}" class="wingsoft.shopping.service.Print_shop">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+		</action>
+		
+	</package>
+	
+	<!--新版预约接口-->
+	<package name ="yb_new" extends="struts-default">
+
+		<action name="ybnew_*"   method="{1}" 
+			class="wingsoft.shopping.service.yb.New_WWS">  
+        </action> 
+	</package>
+	<!--shop打印相关END-->
+
+
+	<package name ="DataTransAction" extends="struts-default">
+		<!--拦截器配置（固定生成）-->
+		<interceptors>
+            <interceptor name="WFInterceptor" class="wingsoft.core.action.WFInterceptor">
+            </interceptor>
+        </interceptors>
+		<global-results>
+			<result name="illeagal">/login.jsp</result>
+		</global-results>
+		<action name="getTaskInfo"   method="getTaskInfo" class="wingsoft.core.dataTransfer.dataTransferAction">  
+            <result name="textPlain" type="stream" >
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>  
+        </action>
+        <action name="getTaskData"   method="getTaskData" class="wingsoft.core.dataTransfer.dataTransferAction">  
+            <result name="textPlain" type="stream" >
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>  
+        </action>
+        <action name="receiveData"   method="receiveData" class="wingsoft.core.dataTransfer.dataReceiveAction">  
+            <result name="textPlain" type="stream" >
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>  
+        </action>
+	</package>
+	
+	
+	<!--
+	<package name="json" extends="json-default">   
+        <action name="createCheckTree" class="wingsoft.checkTree.CreateCheckTree" method="create">   
+                 返回类型为json 在json-default中定义      
+            <result name="success" type="json">   
+                root的值对应要返回的值的属性      
+                 这里的result值即是 对应action中的 result      
+                <param name="root">result</param>   
+            </result>   
+        </action>   
+</package> 
+	-->
+	<package name="loginAction"  extends="struts-default">
+		<action name="loginAction_*" method="{1}" class="wingsoft.core.action.LoginAction">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+			<result name="img" type="stream" >
+				<param name="contentType">image/jpg</param>
+				<param name="inputName">picStream</param>
+			</result>
+		</action>
+		<action name="external" method="externalLogin" class="wingsoft.core.action.LoginAction">
+			<result name="textPlain" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">responseText</param>
+			</result>
+		</action>
+	</package>
+	
+	<package name ="winAction" extends="struts-default">
+		
+		<!--拦截器配置（固定生成）-->
+		<interceptors>
+            <interceptor name="WFInterceptor" class="wingsoft.core.action.WFInterceptor">
+            </interceptor>
+        </interceptors>
+		<global-results>
+			<result name="illeagal">/login.html</result>
+		</global-results>
+
+	</package>
+</struts>
