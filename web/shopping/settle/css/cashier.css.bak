@@ -1,0 +1,125 @@
+@charset "utf-8";
+body{ font-family: "微软雅黑";}
+body,div,ol,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,p,form,fieldset,legend,input,button{ margin:0; padding:0; }
+ul,li{list-style:none;}
+a{ text-decoration: none; color: #000;}
+.header-top{padding: 16px;background: #FFF;}
+#header{clear:both;width:100%;height:30px;line-height:30px;background:#F1F1F1;}
+/*顶部*/
+.header-box{width:1210px;margin:0 auto;}
+.header-left{float:left;font-size:12px;color:#666;width:96px;height:30px;}
+.header-left li{padding:0 24px 0 10px; position:relative;}
+.header-right{float:right;}
+.header-right li{float:left;padding:0 2px;font-size:12px;height:30px; padding:0 24px 0 10px;position:relative;}
+.header-right .shu{width:1px;height:12px;margin-top:9px;background:#ddd;padding:0;}
+.ci-right{font: 400 15px/15px consolas;height: 7px;overflow: hidden;position:absolute;top:12px;right:5px;-webkit-transition: -webkit-transform .1s ease-in 0s;color:#6a6a6a;-moz-transition: -moz-transform .1s ease-in 0s;color:#6a6a6a;}
+.ci-leftll{font: 400 15px/15px consolas;height: 7px;overflow: hidden;position:absolute;top:12px;right:5px;-webkit-transition: -webkit-transform .1s ease-in 0s;color:#6a6a6a;-moz-transition: -moz-transform .1s ease-in 0s;}
+#header li:hover .ci-right{-webkit-transform:rotate(180deg);-moz-transform:rotate(180deg);}
+#header li:hover .ci-leftll{-webkit-transform:rotate(180deg);-moz-transform:rotate(180deg);}
+/*北京二级菜单*/
+.bj{border-left:1px solid #F1F1F1;border-right:1px solid #F1F1F1;}
+.bj:hover{background:#fff;border-left:1px solid #ccc;border-right:1px solid #ccc;}
+.header-right li.denglu{ padding:0 9px;}
+.bj-1{width:310px;border:1px solid #ccc;border-top:none;display:none;position:absolute;top:30px;left:-1px;background:#fff; z-index:1;}
+.bj-1 a{display:inline-block;height:20px;padding:0 5px; line-height:20px; margin:0 12px;}
+.header-left li:hover .bj-1{display:block;}
+.header-left li .bj-1 a:hover {padding:2px 5px;background:#F1F1F1;}
+/*网站导航2级菜单*/
+.neirong{width:279px;border-right:1px solid #ddd;height:168px; padding-left:10px; float:left;margin:20px 5px;}
+.neirong2{margin-left:10px;font-family: "微软雅黑";font-weight:600px;color:#666;}
+.neirong ul li{color:#666;font-size:12px; overflow:hidden;width:50px;text-align:left;}
+.neirong3{ border:none;}
+.aa{width:1210px;height:220px;border:1px solid #ccc;position:absolute;right:-1px;top:30px;display:none;border-top:none;}
+.daohang{border-left:1px solid #F1F1F1;border-right:1px solid #F1F1F1;}
+.daohang:hover .aa{display:block;background:#fff;}
+.daohang:hover{background:#fff;border-left:1px solid #ccc;border-right:1px solid #ccc;}
+/*客户服务2及菜单*/
+.kehu1{width:164px;height:200px;border:1px solid #ccc;position:absolute;left:-1px;top:30px;display:none;border-top:none;z-index:2;}
+.kehu2{height:100px;}
+.kehu3{width:165px;height:50px;border-top:1px dashed #ccc;}
+.kehu:hover .kehu1{display:block;background:#fff;}
+
+.w,.w-one{ width: 990px; margin: 0 auto; }
+.w{position: relative;height: 520px;z-index: 5;}
+.h-logo{ position: relative; width: 1220px; margin:0 auto; height: 60px; }
+.h-logo a img{vertical-align: middle;}
+.h-title{margin-left:10px;margin-right:10px;color:#e4393c;display: inline-block;height: 60px;line-height: 60px;font-size: 24px;font-weight: 400;}
+.w-title{display: inline-block; font-size: 22px; height: 60px; line-height: 60px;font-weight: 400;color: #535353;}
+.stepflex{border-top: 5px solid #ccc;text-align: center;margin: 20px 0 0;float: right;}
+.container{ width: 1200px; height:200px; margin: 0 auto; padding: 20px 10px; border: 1px solid #f0f0f0; text-align:center; }
+.pay-tit h3{font-size: 14px;height: 40px;line-height: 40px;}
+.step-tit{line-height: 40px;height: 40px;color: #333; border-bottom:1px solid #f3f3f3; margin-bottom: 10px;}
+.step-tit h3{font-size: 14px;height: 40px;line-height: 40px;float: left;}
+.topic-choice{margin-left:10px;}
+.checkbox-one{ float:left;}
+.stepflex dl.done {border-top-color: #caecb6;}
+.stepflex dl {float: left;position: relative;width: 160px;top: -5px;border-top: 5px solid #7ABD54;}
+.stepflex dl.done .s-num {background-position: -46px 0;}
+.stepflex dl.last .s-num {background-position: -23px 0;}
+.stepflex .s-num {position: relative;margin: -15px auto 0;color: #fff;font-weight: 700;width: 23px;height: 23px;
+background-image:url(../images/step2013.png);line-height: 23px;}
+.stepflex .done .s-text s {
+background-position: -46px -24px;
+}
+.stepflex dl.done .s-text {color: #caecb6;}
+
+.stepflex .first s {background-position: 0 -24px;background-color: #fff;}
+.stepflex .doing.last s, .stepflex .doing.normal s {background-color: #caecb6;}
+.stepflex .doing s {background-position: -23px -24px;}
+.stepflex .doing b, .stepflex .doing s, .stepflex .first s, .stepflex .last b {width: 5px;height: 5px;position: absolute;line-height: 0;font-size: 0;top: -5px;background-image: url(../images/step2013.png);overflow: hidden;}
+.stepflex .done b {background-position: -51px -24px;}
+.stepflex .doing b {background-position: -23px -24px;background-color: #ccc;}
+.stepflex b {right: 0;}
+.stepflex dl.doing {border-top-color: #CAECB6;}
+.stepflex dl.doing .s-num {background-position: -47px 0;}
+.stepflex dl.doing .s-text {color: #CAECB6;}
+.stepflex .s-text {color: #7ABD54;}
+.stepflex s {left: 0;}
+.stepflex .last b {background-position: -30px -24px;background-color: #fff;}
+.stepflex b {right: 0;}
+
+.extra-r{ float: right;}
+.r-color,.e-modify{color: #005ea7; font-size: 12px;}
+.wrap{margin-left:9px; padding: 0 10px;font-size: 12px;}
+.consignee-item{float: left;}
+.consignee-item{ list-style: none;position: relative;border: 1px solid #ddd;height: 18px;line-height: 18px;
+padding: 5px 10px;width: 120px;text-align: center;cursor: pointer;background-color: #fff;}
+.addr-detail{float: left;height: 30px;line-height: 30px;margin-left: 20px;margin-top: 23px;}
+.addr-name,.addr-info,.addr-tel,.addr-default{display: inline-block; margin-left: 10px;}
+.addr-default{margin: 5px 10px;background-color: #999;color: #fff;padding: 0 3px;line-height: 20px;}
+.clear{clear: both;}
+.addr-switch{height: 18px;line-height: 18px;padding: 5px 0px; margin-left:35px;cursor: pointer;font-size: 12px;}
+.addr-switch b {display: inline-block;vertical-align: middle;height: 10px;line-height: 10px;width: 9px;margin-left: 5px;background: url(../images/addr-i.png) no-repeat 0 0;}
+.addr-switch.switch-on b {background: url(../images/addr-i.png) no-repeat 0 0;}
+.addr-switch.switch-off b {background: url(../images/addr-i.png) no-repeat 0 -10px;}
+.mode-infor{display:inline-block;}
+.estimate{ font-size: 14px;}
+.estimate-tit{font-weight: 600;color: #686868;}
+.e-modify{display:block; cursor: pointer;}
+.consignee-item:focus{border:2px solid #CC162C;padding: 5px 10px;width: 120px;}
+.wrap-detailed{background-color: #fff4e8;padding: 10px 8px;}
+.clear{clear: both;}
+.mes-add{border-bottom: 1px solid #f3f3f3;}
+.w-left ,.w-right{ float: left;}
+.w-left { width: 100px; height: 100px;}
+.w-left img{ width: 100%;}
+.w-right .right-list{ margin: 5px 0; font-size: 14px;}
+.w-right{ width: 90%;margin-left: 6px;}
+.right-list .list-column{ display: inline-block; width: 240px; font-size: 14px;float: left; }
+.list-column-color{color: #ff2b41;}
+.right-list-botton{ text-align: right; }
+.list-align{text-align: center;}
+.list-color{ color: #ff2b41;}
+.list-color-k{color: #727272;}
+.return{padding: 10px 0;}
+.total{display: inline-block;padding-right: 8px;width: 480px;color: #000; font-size: 14px; }
+.total-amount{display: inline-block;text-align: right; width: 855px;color: #ff2b41;font-weight:bold;}
+.service-desc{ color: #005ea7;}
+.botton-layer{ text-align: right; margin-top:20px;}
+.checkout-submit{position:relative;width: 135px; height: 36px; line-height: 36px; background: #CC162C; color: #fff; font-size: 16px; font-weight: bold; border: 0; border-radius: 3px;font-family: arial,"Microsoft YaHei"; cursor: pointer;}
+.checkout-submit b{ position: absolute; left: 0; top: 0; width: 135px ; height: 36px; background:url(../images/btn-submit.jpg) no-repeat; }
+
+.check-wrap{ margin-top:63px;}
+.check-icon{ display:inline-block; vertical-align:middle; margin-right:10px;}
+.check-title{display:inline-block; vertical-align:middle;}
+.check-tilte-color{ color:#E4393C; font-size:18px; display:inline-block; margin-bottom:4px;}

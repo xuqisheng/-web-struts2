@@ -1,0 +1,45 @@
+#search-2014 {
+	position:relative;
+	z-index:11;
+	float:left;
+	width:462px;
+	margin:25px 0px 25px 269px;
+
+}
+#search-2014 .form {
+	width:462px;
+	height:36px
+}
+#search-2014 .text {
+	float:left;
+	width:370px;
+	height:24px;
+	line-height:24px;
+	color:#666;
+	padding:4px;
+	margin-bottom:4px;
+	border-width:2px 0 2px 2px;
+	border-color:#B61D1D;
+	border-style:solid;
+	outline:0;
+	font-size:14px;
+	font-family:"microsoft yahei"
+}
+#search-2014 .button {
+	float:left;
+	width:82px;
+	height:36px;
+	background:#B61D1D;
+	border:none;
+	line-height:1;
+	color:#fff;
+	font-family:"Microsoft YaHei";
+	font-size:16px;
+	cursor:pointer
+}
+#search-2014 .cw-icon i {
+	top:0;
+	left:0;
+	width:82px;
+	height:36px
+}

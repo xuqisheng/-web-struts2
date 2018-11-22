@@ -1,0 +1,21 @@
+//@ sourceURL=searchbar-control.js
+
+// 初始化
+$(function() {
+	function logic() {
+		$("#searchbtn").live("click",function(e) {
+			var txt = $("#key")[0].value;
+			window.location.href = encodeURI(encodeURI("search.jsp?category=0&keyword="+txt+"???????"++"&projid="+projID));
+		});
+	}
+	var options = {
+        dataurl:null,
+        layer:"page/cartpage/searchbar",
+        parent:$("#search-2014")[0],
+        afterPage:logic,
+        afterCss:null,
+        clear:false,
+        paramData:{}
+    }
+	control(options);
+});

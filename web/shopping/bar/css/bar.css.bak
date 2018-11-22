@@ -1,0 +1,184 @@
+*{margin:0;padding:0;list-style:none;text-decoration:none;}
+#header{clear:both;width:100%;height:30px;line-height:30px;background:#F1F1F1;}
+a{color:#666;}
+a:hover{color:red;}
+body{font: 12px/150% Arial,Verdana,"\5b8b\4f53";color: #666;}
+/*侧边栏*/
+.jdm-toolbar-wrap {
+position: fixed;
+_position: absolute;
+top: 0;
+right: 0;
+z-index: 9990;
+width: 0;
+height: 100%;
+}
+.jdm-toolbar {
+position: absolute;
+right: 0;
+top: 0;
+width: 0;
+height: 100%;
+border-right: 6px solid #7a6e6e;
+-webkit-transition: right .3s ease-in-out 0s;
+-moz-transition: right .3s ease-in-out 0s;
+transition: right .3s ease-in-out 0s;
+}
+.jdm-toolbar-tab {
+position: relative;
+width: 35px;
+height: 35px;
+margin-bottom: 1px;
+cursor: pointer;
+background-color: #7a6e6e;
+-webkit-border-radius: 3px 0 0 3px;
+-moz-border-radius: 3px 0 0 3px;
+border-radius: 3px 0 0 3px;
+}
+.jdm-toolbar-tabs {
+position: absolute;
+top: 50%;
+left: -29px;
+width: 35px;
+margin-top: -61px;
+}
+.jdm-tbar-tab-cart .tab-ico {
+background-position: -50px 0;
+}
+.jdm-tbar-tab-follow .tab-ico {
+background-position: -50px -50px;
+}
+.jdm-tbar-tab-history .tab-ico {
+background-position: -50px -100px;
+}
+.jdm-tbar-tab-message .tab-ico {
+background-position: -190px -150px;
+}
+.jdm-tbar-tab-jimi .tab-ico {
+background-position: -50px -150px;
+}
+.jdm-tbar-tab-top .tab-ico {
+background-position: -50px -250px;
+}
+.jdm-tbar-tab-feedback .tab-ico {
+background-position: -50px -300px;
+}
+.jdm-tbar-tab:hover .tab-ico {
+background-color: #c81623;
+}
+.jdm-toolbar-tab .tab-ico {
+width: 34px;
+height: 35px;
+margin-left: 1px;
+position: relative;
+z-index: 2;
+background-color: #7a6e6e;
+_display: block;
+}
+.jdm-tbar-panel-header .close-panel, .jdm-tbar-panel-header i, .jdm-toolbar-tab .tab-ico, .jdm-toolbar-tab .tab-tip, .jdm-toolbar-tabs .tabs-tip .ico {
+display: inline-block;
+background-image: url(../images/toolbar.png);
+_background-image: url(../images/toolbar-png8.png);
+background-repeat: no-repeat;
+}
+
+
+.jdm-toolbar-tab .tab-text {
+width: 62px;
+height: 35px;
+line-height: 35px;
+color: #fff;
+text-align: center;
+font-family: "微软雅黑";
+position: absolute;
+z-index: 1;
+left: 35px;
+top: 0;
+
+-webkit-border-radius: 3px 0 0 3px;
+-moz-border-radius: 3px 0 0 3px;
+border-radius: 3px 0 0 3px;
+-webkit-transition: left .3s ease-in-out .1s;
+-moz-transition: left .3s ease-in-out .1s;
+transition: left .3s ease-in-out .1s;
+_display: none;
+}
+
+
+.jdm-toolbar-footer {
+position: absolute;
+bottom: -1px;
+width: 100%;
+left: -29px;
+}
+.jdm-toolbar .jdm-toolbar-footer .jdm-tbar-tab-survey .tab-text {
+left: 0px;
+width: 35px;
+height: 30px;
+padding: 2px 0 3px;
+line-height: 15px;
+background: #c81623;
+_display: block;
+}
+.jdm-toolbar-footer .jdm-tbar-tab:hover .jdm-tbar-tab-top>.tab-text {
+left: -48px;
+}
+.jdm-toolbar-tab:hover,.jdm-toolbar-tab .tab-ico:hover{background-color: #c81623;}
+.jdm-toolbar-tab:hover .tab-text {
+left: -60px;
+background-color: #c81623;
+_display: block;
+}
+/*顶部*/
+.header-box{width:1210px;margin:0 auto;}
+.header-left{float:left;font-size:12px;color:#666;width:96px;height:30px;}
+.header-left li{padding:0 24px 0 10px; position:relative;}
+.header-right{float:right;}
+.header-right li{float:left;padding:0 2px;font-size:12px;height:30px; padding:0 24px 0 10px;position:relative;}
+.header-right .shu{width:1px;height:12px;margin-top:9px;background:#ddd;padding:0;}
+.ci-right{font: 400 15px/15px consolas;height: 7px;overflow: hidden;position:absolute;top:12px;right:5px;-webkit-transition: -webkit-transform .1s ease-in 0s;color:#6a6a6a;-moz-transition: -moz-transform .1s ease-in 0s;color:#6a6a6a;}
+.ci-leftll{font: 400 15px/15px consolas;height: 7px;overflow: hidden;position:absolute;top:12px;right:5px;-webkit-transition: -webkit-transform .1s ease-in 0s;color:#6a6a6a;-moz-transition: -moz-transform .1s ease-in 0s;}
+#header li:hover .ci-right{-webkit-transform:rotate(180deg);-moz-transform:rotate(180deg);}
+#header li:hover .ci-leftll{-webkit-transform:rotate(180deg);-moz-transform:rotate(180deg);}
+/*北京二级菜单*/
+.bj{border-left:1px solid #F1F1F1;border-right:1px solid #F1F1F1;}
+.bj:hover{background:#fff;border-left:1px solid #ccc;border-right:1px solid #ccc;}
+.header-right li.denglu{ padding:0 9px;}
+.bj-1{width:310px;border:1px solid #ccc;border-top:none;display:none;position:absolute;top:30px;left:-1px;background:#fff;}
+.bj-1 a{display:inline-block;height:20px;padding:0 5px; line-height:20px; margin:0 12px;}
+.header-left li:hover .bj-1{display:block;}
+.header-left li .bj-1 a:hover {padding:2px 5px;background:#F1F1F1;}
+/*网站导航2级菜单*/
+.neirong{width:279px;border-right:1px solid #ddd;height:168px; padding-left:10px; float:left;margin:20px 5px;}
+.neirong2{margin-left:10px;font-family: "微软雅黑";font-weight:600px;color:#666;}
+.neirong ul li{color:#666;font-size:12px; overflow:hidden;width:50px;text-align:left;}
+.neirong3{ border:none;}
+.aa{width:1210px;height:220px;border:1px solid #ccc;position:absolute;right:-1px;top:30px;display:none;border-top:none;}
+.daohang{border-left:1px solid #F1F1F1;border-right:1px solid #F1F1F1;}
+.daohang:hover .aa{display:block;background:#fff;}
+.daohang:hover{background:#fff;border-left:1px solid #ccc;border-right:1px solid #ccc;}
+/*客户服务2及菜单*/
+.kehu1{width:164px;height:200px;border:1px solid #ccc;position:absolute;left:-1px;top:30px;display:none;border-top:none;}
+.kehu2{height:100px;}
+.kehu3{width:165px;height:50px;border-top:1px dashed #ccc;}
+.kehu:hover .kehu1{display:block;background:#fff;}
+/*关注京东二级菜单*/
+.guanzhu1{width:82px;height:100px;border:1px solid #ccc;border-top:none;position:absolute;left:-1px;top:30px;display:none;}
+.guanzhu:hover .guanzhu1{display:block;background:#fff;}
+/*手机京东二级菜单*/
+.shouji1{width:282px;height:240px;border:1px solid #ccc;border-top:none;position:absolute;left:-1px;top:30px;display:none;}
+.shouji:hover .shouji1{display:block;background:#fff;}
+.shouji4{width:90px;height:90px;margin:10px;}
+.shouji2{font-size:14px;color:#666;margin-top:-10px;position:absolute;top:14px;left:110px;}
+.shouji2 p{height:22px;}
+.red{color:red;}
+.shouji3{width:25px;height:28px;padding:10px 10px;}
+.yi{width:282px;border-top:1px dashed #ccc;}
+.er{font-size:14px;color:#666;position:absolute;top:130px;left:110px;}
+.er p{height:22px;}
+/*我的京东二级页面*/
+.my1{width:260px;height:240px;border:1px solid #ccc;border-top:none;position:absolute;left:-1px;top:30px;display:none;}
+.my:hover .my1{display:block;background:#fff;}
+.my2 img{width:77px;height:77px;border-radius:50px;margin:15px;}
+.my3{float:right;margin:31px 50px 0 0}
+.bj-1,.my1,.shouji1,.guanzhu,.kehu,.daohang,.dorpdown-layer{z-index:100;}

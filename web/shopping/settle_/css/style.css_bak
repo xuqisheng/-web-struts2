@@ -1,0 +1,47 @@
+@charset "utf-8";
+body{ font-family: "微软雅黑";}
+body,div,ol,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,p,form,fieldset,legend,input,button{ margin:0; padding:0; }
+ul,li{list-style:none;}
+a{ text-decoration: none; color: #000;}
+.container{ width: 1200px;  margin: 0 auto; padding: 20px 10px; border: 1px solid #ccc; }
+.step-tit{line-height: 40px;height: 40px;color: #333;}
+ .step-tit h3{font-size: 14px;height: 40px;line-height: 40px;float: left;}
+.extra-r{ float: right;}
+.r-color,.e-modify{color: #005ea7; font-size: 12px;}
+.wrap{/* border: 1px  solid #78b7e7; background:#F9F8F8;*/ margin-bottom: 10px; padding: 0 10px;}
+.consignee-item{float: left;}
+.consignee-item{ list-style: none;position: relative;border: 1px solid #ddd;height: 18px;line-height: 18px;
+padding: 5px 10px;width: 120px;text-align: center;cursor: pointer;background-color: #fff;}
+.addr-detail{float: left;height: 30px;line-height: 30px;}
+.addr-name,.addr-info,.addr-tel,.addr-default{display: inline-block; margin-left: 10px;}
+.addr-default{margin: 5px 10px;background-color: #999;color: #fff;padding: 0 3px;line-height: 20px;}
+.clear{clear: both;}
+.addr-switch{height: 18px;line-height: 18px;padding: 5px 0px;cursor: pointer;font-size: 12px;}
+.addr-switch b {display: inline-block;vertical-align: middle;height: 10px;line-height: 10px;width: 9px;margin-left: 5px;background: url(../images/addr-i.png) no-repeat 0 0;}
+.addr-switch.switch-on b {background: url(../images/addr-i.png) no-repeat 0 0;}
+.mode-infor{display:inline-block;}
+.estimate{ font-size: 14px;}
+.estimate-tit{font-weight: 600;color: #686868;}
+.e-modify{display: inline-block; margin-left: 10px; cursor: pointer;}
+.consignee-item:focus{border:2px solid red;padding: 5px 10px;width: 120px;}
+#.wrap-detailed{background-color: #f3fbfe;}
+.wrap-detailed {
+background-color: #fff4e8;
+padding: 10px 8px;
+}
+.clear{clear: both;}
+.w-left ,.w-right{ float: left;}
+.w-left { width: 100px; height: 100px;}
+.w-left img{ width: 100%;}
+.w-right .right-list{ margin: 5px 0; font-size: 14px;}
+.w-right{ width: 90%;margin-left: 6px;}
+.right-list .list-column{ display: inline-block; width: 240px; font-size: 14px;float: left; }
+.list-column-color{color: #ff2b41;}
+.right-list-botton{ text-align: right; }
+.list-align{text-align: center;}
+.list-color{ color: #ff2b41;}
+.list-color-k{color: #727272;}
+.return{ border-top: 1px solid #EDEDED; padding: 10px 0;}
+.total{display: inline-block;padding-right: 8px;width: 380px;color: #000; font-size: 14px;}
+.total-amount{display: inline-block;text-align: right; width: 100px;color: #ff2b41;}
+.service-desc{ color: #005ea7;}

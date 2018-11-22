@@ -1,0 +1,115 @@
+@charset "utf-8";
+#agency {
+	
+	position: relative;
+}
+
+#agency h3 {
+	margin-left:5px;
+	margin-top:10px;
+}
+
+
+#agency h3 strong{
+	color:#03C;
+	line-height:36px;
+}
+
+
+
+#agency h3 span{
+	font-size:10px;
+	color:#000;
+	margin:10px;
+	padding:3px 8px 3px 20px;
+	text-indent:30px;
+	background: url(../img/qq.png) no-repeat 2px 3px;
+	background-size:14px 13px;
+	background-color:#6CF;
+	border:1px #0CF solid;
+	
+}
+
+#agency li {
+	line-height:36px;
+	margin:0px 0px;	
+}
+
+#agency ul{
+	float:left;	
+	
+}
+
+#agency .agency_info{
+	margin-left:40px;
+	margin-right:150px;
+	
+}
+
+#agency .agency_comment{
+	color:#03C;
+}
+
+#agency .agency_comment i{
+	color:#F30;
+}
+
+
+#agency p{
+	clear:both;
+}
+
+#agency .agency_price {
+	position:absolute;
+	left:800px;
+	top:50px;
+}
+
+#agency .agency_price span{
+	font-size:18px;
+	color:#F60;
+}
+
+#agency .agency_price .btn{
+	float:left;
+	margin:10px 10px 0px 0px;
+}
+
+#agency .agency_price .addCart{
+	border-radius:3px;
+	padding:3px 5px;
+	font-size:16px;
+	background-color:#FC6;
+	border:1px solid #FC9;
+	color:#F00;	
+}
+
+#agency .agency_price .addCart:hover{
+	border-radius:3px;
+	padding:3px 5px;
+	font-size:16px;
+	background-color:#FFE367;
+	border:1px solid #FC9;
+	color:#F00;	
+}
+
+
+#agency .agency_price .addCollection{
+	border-radius:3px;
+	color:#FFF;
+	font-size:16px;
+	padding:3px 5px;
+	background-color: #C81623;
+	border:1px solid #F60
+}
+
+#agency .agency_price .addCollection:hover{
+	border-radius:3px;
+	color:#FFF;
+	font-size:16px;
+	padding:3px 5px;
+	background-color: #E03336;
+	border:1px solid #F60
+}
+
+

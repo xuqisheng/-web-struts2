@@ -1,0 +1,23 @@
+
+/*跳转结算页面*/
+function nexttosettle(){
+var groupCheckbox=$("input[id='chkb']");
+var items=new Array();
+var item = "";
+//var items = "";
+    for(i=0;i<groupCheckbox.length;i++){
+        if(groupCheckbox[i].checked){
+             val = trimRight(trimLeft(groupCheckbox[i].value));
+			/* if(i==0){
+			 vals = "'"+val+"'";
+			 }else{
+			   vals = vals+",'"+val+"'";
+			}*/
+			items[i]=val;
+        }
+    }
+/*获取选择结算订单*/	
+
+   window.open=="./settle/settle.jsp?items="+items;
+
+}

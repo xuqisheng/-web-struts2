@@ -1,0 +1,363 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" contentType="text/html; charset=utf-8" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String url = request.getScheme()+"://"+ request.getServerName()+":"+request.getServerPort()+request.getRequestURI()+"?"+request.getQueryString();
+%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link href="css/index.css" type="text/css" rel="stylesheet">
+		
+	</head>
+	<body id="top">
+	
+
+		<div class="jdm-toolbar-wrap J-wrap">                
+			<div class="jdm-toolbar J-toolbar">                    
+				<div class="jdm-toolbar-panels J-panel">                                             
+				</div>                                       
+			                  
+			<div class="jdm-toolbar-mini">                    
+			</div>                
+		</div>                
+		<div id="J-toolbar-load-hook" clstag="h|keycount|cebianlan_h|load"></div>            
+	</div>
+		<!-----------------------------------------顶部-------------->
+		<%@include file="/shopping/left.jsp"%>
+		<%@include file="/shopping/head.jsp"%>
+		
+		
+		<div class="w">
+			<div class="logo"><a href=""><img src="./images/logo.png"></a></div>
+			<div class="search">
+				<input type="text" value="搜索" class="text" id="key">
+				<button id="searchbtn" class="button" onclick="serch()">搜索</button>
+			</div>
+			<div class="right"  id="maincarts">
+				<!--<i class="gw-left" style="background:url(./images/jd2015img.png)0 -58px no-repeat;width:24px;height:24px;"></i>-->
+				<i class="gw-right">></i>
+				<i class="gw-count" id="itemsnum">0</i>
+				<a id="carts">我的购物车</a>
+				<div class="dorpdown-layer">
+					<img src="./images/settleup-nogoods.png">
+					<a>购物车中还没有商品，赶紧选购吧！</a>
+					
+				</div>
+				
+			</div>
+			<!--<div class="hotwords">
+				<a href="#" class="red">1元秒杀</a>
+				<a href="#">低至1折</a>
+				<a href="#">1元抢</a>
+				<a href="#">时尚鞋靴</a>
+				<a href="#">买一送二</a>
+				<a href="#">乐视乐1</a>
+				<a href="#">特步女鞋</a>
+				<a href="#">威士忌</a>
+				<a href="#">婴儿衣服</a>
+			</div>-->
+		</div>
+		
+		<div class="clear"></div>
+		<!--轮播图上方导航栏  一栏-->
+		<!--轮播图上方导航栏  一栏-->
+		<div id="navv">
+			<div class="nav-img" style="border-bottom: 2px solid #C81623;"></div>
+			<div class="nav-imgs" style="background:url(./images/568a0a8eNe8f4df82.jpg) no-repeat center top"></div>	
+		</div>
+
+		<div class="focus">
+			<div class="focus-a">
+				<div class="fouc-img1"><img src="./images/5689d4ebN19f155a6.jpg" class="nav-img2"></div>
+				<div class="fouc-font"><a href="">全部商品分类</a> </div>
+			</div>
+			<!--<div class="focus-b">
+				<ul>
+					<li><a href="#">服装城</a></li>
+					<li><a href="#">美妆馆</a></li>
+					<li><a href="#">超市</a></li>
+					<li><a href="#">全球购</a></li>
+					<li><a href="#">闪购</a></li>
+					<li><a href="#">团购</a></li>
+					<li><a href="#">拍卖</a></li>
+					<li><a href="#">金融</a></li>
+				</ul>
+			</div>-->
+			<!--<div class="focus-c"><a href=""><img src="./images/hhh.jpg"></a></div>
+			<div class="focus-d"><a href=""><img src="./images/nianhuo.jpg"></a></div>-->
+			<!--轮播图左边当行蓝-->
+			<div class="bb"></div>
+			<div class="dd-inner">
+				<div class="font-item">
+					<div class="item fore1">
+						<h3><a href="../search.jsp?category=0&projid=WF_NYD">普通材料</a></h3>
+						<i>></i>
+					</div>
+					<div class="font-item1">
+						
+						<div class="font-lefty">
+							<dl class="fore1">
+								<dt><a href="">生活日用<i>></i></a></dt>							
+								<dd>
+									<a href="">收纳用品</a><a href="">雨伞雨具</a><a href="">净化除味</a><a href="">浴室用品</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">家具<i>></i></a></dt>							
+								<dd>
+									<a href="">卧室家具</a><a href="">客厅家具</a><a href="">儿童家具</a><a href="">办公家具</a><a href="">沙发</a><a href="">电脑椅</a><a href="">衣柜</a>
+									<a href="">冷风扇</a><a href="">插座</a><a href="">电话机</a><a href="">净水器</a><a href="">饮水机</a>
+									<a href="">茶几</a><a href="">电视柜</a><a href="">电脑桌</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">厨房电器<i>></i></a></dt>							
+								<dd>
+									<a href="">电压力锅</a><a href="">豆浆机</a><a href="">面包机</a><a href="">咖啡机</a><a href="">微波炉料理/榨汁机</a><a href="">电烤箱</a><a href="">电磁炉</a>
+									<a href="">电饼铛/烧烤盘</a><a href="">煮蛋器酸奶机</a><a href="">电水壶/热水瓶</a><a href="">电炖锅</a><a href="">多用途锅</a><a href="">果蔬解毒机</a><a href="">养生壶/煎药壶</a><a href="">其它厨房电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">个护健康<i>></i></a></dt>							
+								<dd>
+									<a href="">剃须刀剃/脱毛器</a><a href="">口腔护理</a><a href="">电吹风</a><a href="">美容器</a><a href="">理发器卷/直发器</a><a href="">按摩椅</a><a href="">按摩器</a>
+									<a href="">足浴盆</a><a href="">血压计</a><a href="">健康秤/厨房秤</a><a href="">血糖仪</a><a href="">体温计</a><a href="">计步器/脂肪检测仪</a><a href="">脂肪检测仪其它健康电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">五金家装<i>></i></a></dt>						
+								<dd>
+									<a href="">平板电视</a><a href="">空调</a><a href="">冰箱</a><a href="">洗衣机</a><a href="">家庭影院</a><a href="">DVD</a><a href="">迷你音响</a><a href="">烟机/灶具</a>
+									<a href="">热水器</a><a href="">消毒具/洗碗柜</a><a href="">冰柜/冰吧</a><a href="">酒柜</a><a href="">家电配件</a>
+								</dd>
+							</dl>
+						</div>
+					
+					</div>
+				</div>
+				<div class="fore-2">
+					<div class="item fore2">
+						<h3>
+							<a href="../search.jsp?category=2&projid=WF_NYD">管制品</a>
+						</h3>
+						<i>></i>
+					</div>
+					<div class="font-item1">
+						<div class="font-lefty">
+							<dl class="fore1">
+								<!--<dt><a href="">手机通讯<i>></i></a></dt>-->
+								<dd>
+									<a href="">易制毒</a><a href="">剧毒</a><a href="">易燃</a><a href="">手机维修</a>					
+								</dd>
+							</dl>				
+						</div>
+						
+						
+					</div>
+				</div>
+				<div class="fore-3">
+					<div class="item fore3">
+						<h3>
+							<a href="">电脑、</a>
+							<a href="">办公</a>
+						</h3>
+						<i>></i>
+					</div>
+					<div class="font-item1">
+						
+						<div class="font-lefty">
+							<dl class="fore1">
+								<dt><a href="">电脑整机<i>></i></a></dt>
+								<dd>
+									<a href="#">笔记本</a>
+									<a href="#">游戏本</a>
+									<a href="#">平板电脑</a>
+									<a href="#">平板电脑配件</a>
+									<a href="#">台式机</a>
+									<a href="#">一体机</a>
+									<a href="#">笔记本配件</a>
+									
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">电脑配件<i>></i></a></dt>
+								<dd>
+									<a href="#">显示器</a>
+									<a href="#">CPU</a>
+									<a href="#">主板</a>
+									<a href="#">显卡</a>
+									<a href="#">硬盘</a>
+									<a href="#">内存</a>
+									<a href="#">机箱</a>
+									<a href="#">电源</a>
+									<a href="#">散热器</a>
+									<a href="#">刻录机</a>
+									<a href="#">声卡</a>
+									<a href="#">SSD固态硬盘</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="###">办公设备<i>></i></a></dt>
+							
+								<dd>
+									<a href="#">投影机</a>
+									<a href="#">投影设备</a>
+									<a href="#">打印机</a>
+									<a href="#">传值设备</a>
+									<a href="#">扫描设备</a>
+									<a href="#">复合机</a>
+									<a href="#">碎纸机</a>
+									<a href="#">考勤机</a>
+									<a href="#">收银机</a>
+									<a href="#">保险柜</a>
+									
+								</dd>
+							</dl>
+							
+						</div>
+						
+					</div>
+				</div>
+			
+				
+			</div>
+			<!------------------------------------轮播图------------------------------------>
+			<div id="lunbo">
+				<ul id="one">
+					<li><a href=""><img src="./images/5690b6dcNd5aaa0f0.jpg"></a></li>
+					<li><a href=""><img src="./images/56960e10N27e2d29f.jpg"></a></li>
+					<li><a href=""><img src="./images/5698a5aaN08e09475.jpg"></a></li>
+				</ul>
+				<ul id="two">
+					<li class="on">1</li>
+					<li>2</li>
+					<li>3</li>
+				</ul>
+				<!------------------------------------轮播图左右箭头------------------------>
+				<div class="slider-page">
+					<a href="javascript:void(0)" id="left"><</a>
+					<a href="javascript:void(0)" id="right">></a>
+				</div>
+			</div>
+			
+			<!------------------------------------轮播图右侧一栏------------------------>
+			<div class="m">
+				<div class="mt">
+					<h3>公告</h3>
+					<div class="extra"><a href="">更多 ></a></div>
+				</div>
+				<div class="mc">
+					<ul>
+						<li><a href=""><span>[特惠]</span>小年备好礼 年货美食满99减50</a></li>
+					</ul>
+				</div>
+				<div class="mc">
+					<ul>
+						<li><a href=""><span>[公告]</span>华北区因雨雪天气配送延迟</a></li>
+					</ul>
+				</div>
+				<div class="mc">
+					<ul>
+						<li><a href=""><span>[特惠]</span>京东全球年货节礼盒买一赠一</a></li>
+					</ul>
+				</div>
+				<div class="mc">
+					<ul>
+						<li><a href=""><span>[公告]</span>品牌+服务 升级茗茶消费体验</a></li>
+					</ul>
+				</div>
+				
+			</div>
+			<div class="m m-c">
+				<div class="mt">
+					<h3>促销</h3>
+					<div class="extra"><a href="">更多 ></a></div>
+				</div>
+				<div class="mc">
+					<ul>
+						<li><a href=""><span>[特惠]</span>小年备好礼 年货美食满99减50</a></li>
+					</ul>
+				</div>
+				<div class="mc">
+					<ul>
+						<li><a href=""><span>[公告]</span>华北区因雨雪天气配送延迟</a></li>
+					</ul>
+				</div>
+				<div class="mc">
+					<ul>
+						<li><a href=""><span>[特惠]</span>京东全球年货节礼盒买一赠一</a></li>
+					</ul>
+				</div>
+				<div class="mc">
+					<ul>
+						<li><a href=""><span>[公告]</span>品牌+服务 升级茗茶消费体验</a></li>
+					</ul>
+				</div>
+				
+			</div>
+			<div class="ms">
+				<div class="mm">
+					<h3>订购</h3>
+					
+				</div>
+				<div class="mmm">
+					<ul>
+						
+						<li>
+							<a href="">
+								<i class="ci-left" style="background:url(./images/568dfdbdN4f7d7ca3.png)no-repeat 0 -25px;"></i>
+								<span class="ci-bottom">机票</span>
+							</a>
+						</li>
+						
+						
+						
+						<li style="border-right:0;">
+							<a href="">
+								<i class="ci-left" style="background:url(./images/568dfdbdN4f7d7ca3.png)no-repeat -25px -150px;"></i>
+								<span class="ci-bottom">酒店</span>
+							</a>
+						</li>
+						
+						
+						
+					</ul>
+					
+				</div>
+			</div>
+		
+		<!--*****************轮播下方*****************-->
+		<div id="footer-2014" >
+		<div class="links">
+			<a rel="nofollow" target="_blank" href="#">关于我们</a>|<a  href="#">联系我们</a>|<a rel="nofollow" target="_blank" href="#">商家入驻</a>|<a rel="nofollow" target="_blank" href="#">营销中心</a>|<a target="_blank" href="#">友情链接</a>|<a target="_blank" href="#">销售联盟</a></div>
+		<!--<div class="copyright">
+			<a target="_blank" href="#"><img src="images/56a0a994Nf1b662dc.png"> 京公网安备 11000002000088号</a>&nbsp;&nbsp;|&nbsp;&nbsp;京ICP证070359号&nbsp;&nbsp;|&nbsp;&nbsp;<a target="_blank" href="#">互联网药品信息服务资格证编号(京)-经营性-2014-0008</a>&nbsp;&nbsp;|&nbsp;&nbsp;新出发京零&nbsp;字第大120007号<br><a rel="nofollow" href="#" target="_blank">音像制品经营许可证苏宿批005号</a>&nbsp;&nbsp;|&nbsp;&nbsp;出版物经营许可证编号新出发(苏)批字第N-012号&nbsp;&nbsp;|&nbsp;&nbsp;互联网出版许可证编号新出网证(京)字150号<br><a href="#" target="_blank">网络文化经营许可证京网文[2014]2148-348号</a>&nbsp;&nbsp;违法和不良信息举报电话：4006561155&nbsp;&nbsp;Copyright&nbsp;©&nbsp;2004-2016&nbsp;&nbsp;京东JD.com&nbsp;版权所有<br>京东旗下网站：<a target="_blank" href="http://www.360top.com/">360TOP</a>&nbsp;&nbsp;<a href="#" target="_blank">拍拍网</a>&nbsp;&nbsp;<a href="#" target="_blank">网银在线</a></div>-->
+		
+		<!--<div class="authentication">
+			<a rel="nofollow" target="_blank" href="#">
+				<img width="103" height="32" alt="经营性网站备案中心" src="images/54b8871eNa9a7067e.png" class="err-product">
+			</a>
+			
+			<a rel="nofollow" target="_blank" id="urlknet" tabindex="-1" href="#">
+				<img border="true" width="103" height="32" onClick="CNNIC_change('urlknet')" oncontextmenu="return false;" name="CNNIC_seal" alt="可信网站" src="images/54b8872dNe37a9860.png" class="err-product">
+			</a>
+			<a rel="nofollow" target="_blank" href="#">
+				<img width="103" height="32" alt="网络警察" src="images/56a89b8fNfbaade9a.jpg" class="err-product">
+			</a>
+			<a rel="nofollow" target="_blank" href="#">
+				<img width="103" height="32" src="images/54b8875fNad1e0c4c.png" class="err-product">
+			</a>
+			<a target="_blank" href="#"><img width="103" height="32" src="images/5698dc03N23f2e3b8.jpg"></a>
+			<a target="_blank" href="#"><img width="103" height="32" src="images/5698dc16Nb2ab99df.jpg"></a>
+		</div>-->
+	  </div>
+	</div>
+	</body>
+	<script src="js/jquery-1.11.3.min.js" ></script>
+	<script src="js/index.js" ></script>
+	<script src="../mainjs/index_dt.js" ></script>
+	 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+</html>

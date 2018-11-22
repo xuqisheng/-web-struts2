@@ -1,0 +1,150 @@
+ <!DOCTYPE>
+<html>
+<head>
+<meta charset="utf-8">
+<title>结算页</title>
+<link rel="stylesheet" href="css/style.css">
+<script type="text/javascript" src="../core/jquery-1.4.4.js"></script>
+<!--<script type="text/javascript" src="../core/My97DatePicker/WdatePicker.js"></script>-->
+<script type="text/javascript" src="./core/settle.js"></script>
+<script type="text/javascript" src="./core/time.js"></script>
+<script type="text/javascript" src="../address/address.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+</script>
+<style type="text/css">
+  *
+  {
+      padding:0px;
+      margin:0px;
+  }
+  #Idiv
+  {
+      /*width:500px;
+      height:auto;
+      position:absolute;
+      z-index:1000;
+      border:2px solid #ffffff;
+      background:#ffffff;*/
+  }
+   ul{list-style-type: none; }
+   .pay-div{ margin-left:32px; font-size:12px;}
+   #ul_list{height: 30px; margin-bottom: 22px;}
+   #ul_list li{height:30px; line-height: 30px; padding: 0 16px; border: 1px solid #CC162C;float: left; margin-right: 3px; cursor: pointer;}
+   .current{ background: #CC162C; color:#fff;}
+   #two{display: none; margin:10px 0;}
+   #two.showlist{ display: block;}
+   .default-add{ float:right; margin-top:20px; height:30px; line-height:30px; cursor:pointer;}
+  </style>
+</head>
+<body>
+<header id="header">
+			<div class="header-box">
+				<ul class="header-left">
+					<li class="bj">
+						送至：北京
+						<i class="ci-leftll">
+							<s class="jt">◇</s>
+						</i>
+						<div class="bj-1">
+							<a href="">北京</a><a href="">上海</a><a href="">天津</a><a href="">重庆</a><a href="">河北</a><a href="">山西</a><a href="">河南</a><a href="">辽宁</a><a href="">吉林</a><a href="">黑龙江</a><a href="">浙江</a><a href="">江苏</a><a href="">山东</a><a href="">安徽</a><a href="">内蒙古</a><a href="">湖北</a><a href="">湖南</a><a href="">广东</a><a href="">广西</a><a href="">江西</a><a href="">四川</a><a href="">海南</a><a href="">贵州</a><a href="">云南</a><a href="">西藏</a><a href="">陕西</a><a href="">甘肃</a><a href="">青海</a><a href="">宁夏</a><a href="">新疆</a><a href="">台湾</a><a href="">香港</a><a href="">澳门</a><a href="">海外</a><a href="">钓鱼岛</a>
+						</div>
+					</li>					
+				</ul>
+				<ul class="header-right">
+					<li class="denglu"><a href="#">您好，请登录</a> <a href="#" class="red">免费注册</a></li> 
+					<li class="shu"></li>
+					<li class="denglu"><a href="#">我的订单</a></li>
+					<li class="shu"></li>
+					
+					<li class="denglu"><a href="#">企业采购</a></li>
+					<li class="shu"></li>
+					
+					<li class="kehu bj">
+						<a href="#">客户服务</a>
+						<i class="ci-right ">
+							<s class="jt">◇</s>
+						</i>
+						<div class="kehu1">
+							<h3 class="neirong2">客户</h3>
+							<ul class="kehu2">
+								<li><a href="">帮助中心</a></li>
+								<li><a href="">售后服务</a></li>
+								<li><a href="">在线客服</a></li>
+								<li><a href="">帮助中心</a></li>
+								<li><a href="">客服邮箱</a></li>
+							</ul>
+							<div>
+								<ul class="kehu3">
+									<h3 class="neirong2 ll">客户</h3>
+									<li><a href="">京东商学院</a></li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					
+				</ul>
+			</div>
+		</header>
+
+<div class="header-top">
+		<div class="h-logo"><a href="#"><img src="./images/logo.png"/></a>
+			<!-- <span class="h-title">复翼集中采购平台</span> -->
+			<span class="w-title">收银台</span>
+			<div class="stepflex">
+				<dl class="first done">
+			                      <dt class="s-num">1</dt>
+			                      <dd class="s-text">1.我的购物车
+			                      	<s></s>
+			                      	<b></b>
+			                      </dd>
+				</dl>
+				<dl class="normal doing">
+				            <dt class="s-num">2</dt>
+				            <dd class="s-text">2.填写核对订单信息
+				            	<s></s>
+				            	<b></b>
+			                         </dd>
+
+			             </dl>
+			                <dl class="normal last">
+				            <dt class="s-num">3</dt>
+				            <dd class="s-text">3.成功提交订单
+				            	<s></s>
+				            	<b></b>
+				            </dd>
+			        </dl>
+			</div>
+		</div>
+           </div>
+	
+	 <div class="container">
+		 <div class="check-wrap">
+	     <span class="check-icon"><img src="./images/check-alt.png"/></span>
+		 <span class="check-title"><span class="check-tilte-color">订单支付成功！我们将尽快安排为您发货！</span><br/><span>支付方式：微信&nbsp;&nbsp;&nbsp;&nbsp;支付订单金额：￥164.00</span>
+		 &nbsp;&nbsp;&nbsp;&nbsp;<span><a href="#">查看订单</a></span>
+		 </span>
+	     </div>
+	</div>
+ 
+	
+</body>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#add").click(function(){
+  $("#addshow").toggle();
+  });
+  
+});
+</script>
+<script>
+      $('#ul_list li').click(function(){
+          
+          //1.点击li的时候要切换样式
+          $(this).addClass('current').siblings().removeClass('current');
+          //2.根据li的索引值,来确定哪个div显示.其它div隐藏
+          $('#content_list>#two').eq($(this).index()).show().siblings().hide();
+
+      });
+    </script>
+
+</html>

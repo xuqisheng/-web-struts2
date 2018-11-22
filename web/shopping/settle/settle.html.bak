@@ -1,0 +1,321 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta charset="utf-8">
+<title>结算页</title>
+<link rel="stylesheet" href="css/style.css">
+<script type="text/javascript" src="../core/jquery-1.4.4.js"></script>
+<!--<script type="text/javascript" src="../core/My97DatePicker/WdatePicker.js"></script>-->
+<script type="text/javascript" src="./core/settle.js"></script>
+<script type="text/javascript" src="./core/time.js"></script>
+<script type="text/javascript" src="../address/address.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+</script>
+<style type="text/css">
+  *
+  {
+      padding:0px;
+      margin:0px;
+  }
+  #Idiv
+  {
+      /*width:500px;
+      height:auto;
+      position:absolute;
+      z-index:1000;
+      border:2px solid #ffffff;
+      background:#ffffff;*/
+  }
+   ul{list-style-type: none; }
+   .pay-div{ margin-left:32px; font-size:12px;}
+   #ul_list{height: 30px; margin-bottom: 22px;}
+   #ul_list li{height:30px; line-height: 30px; padding: 0 16px; border: 1px solid #CC162C;float: left; margin-right: 3px; cursor: pointer;}
+   .current{ background: #CC162C; color:#fff;}
+   #two{display: none; margin:10px 0;}
+   #two.showlist{ display: block;}
+   .default-add{ float:right; margin-top:20px; height:30px; line-height:30px; cursor:pointer;}
+  </style>
+</head>
+<body>
+<header id="header">
+			<div class="header-box">
+				<ul class="header-left">
+					<li class="bj">
+						送至：北京
+						<i class="ci-leftll">
+							<s class="jt">◇</s>
+						</i>
+						<div class="bj-1">
+							<a href="">北京</a><a href="">上海</a><a href="">天津</a><a href="">重庆</a><a href="">河北</a><a href="">山西</a><a href="">河南</a><a href="">辽宁</a><a href="">吉林</a><a href="">黑龙江</a><a href="">浙江</a><a href="">江苏</a><a href="">山东</a><a href="">安徽</a><a href="">内蒙古</a><a href="">湖北</a><a href="">湖南</a><a href="">广东</a><a href="">广西</a><a href="">江西</a><a href="">四川</a><a href="">海南</a><a href="">贵州</a><a href="">云南</a><a href="">西藏</a><a href="">陕西</a><a href="">甘肃</a><a href="">青海</a><a href="">宁夏</a><a href="">新疆</a><a href="">台湾</a><a href="">香港</a><a href="">澳门</a><a href="">海外</a><a href="">钓鱼岛</a>
+						</div>
+					</li>					
+				</ul>
+				<ul class="header-right">
+					<li class="denglu"><a href="#">您好，请登录</a> <a href="#" class="red">免费注册</a></li> 
+					<li class="shu"></li>
+					<li class="denglu"><a href="#">我的订单</a></li>
+					<li class="shu"></li>
+					
+					<li class="denglu"><a href="#">企业采购</a></li>
+					<li class="shu"></li>
+					
+					<li class="kehu bj">
+						<a href="#">客户服务</a>
+						<i class="ci-right ">
+							<s class="jt">◇</s>
+						</i>
+						<div class="kehu1">
+							<h3 class="neirong2">客户</h3>
+							<ul class="kehu2">
+								<li><a href="">帮助中心</a></li>
+								<li><a href="">售后服务</a></li>
+								<li><a href="">在线客服</a></li>
+								<li><a href="">帮助中心</a></li>
+								<li><a href="">客服邮箱</a></li>
+							</ul>
+							<div>
+								<ul class="kehu3">
+									<h3 class="neirong2 ll">客户</h3>
+									<li><a href="">京东商学院</a></li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					
+				</ul>
+			</div>
+		</header>
+
+<div class="header-top">
+		<div class="h-logo"><a href="#"><img src="./images/logo2.png"/></a>
+			<!-- <span class="h-title">复翼集中采购平台</span> -->
+			<span class="w-title">结算页</span>
+			<div class="stepflex">
+				<dl class="first done">
+			                      <dt class="s-num">1</dt>
+			                      <dd class="s-text">1.我的购物车
+			                      	<s></s>
+			                      	<b></b>
+			                      </dd>
+				</dl>
+				<dl class="normal doing">
+				            <dt class="s-num">2</dt>
+				            <dd class="s-text">2.填写核对订单信息
+				            	<s></s>
+				            	<b></b>
+			                         </dd>
+
+			             </dl>
+			                <dl class="normal last">
+				            <dt class="s-num">3</dt>
+				            <dd class="s-text">3.成功提交订单
+				            	<s></s>
+				            	<b></b>
+				            </dd>
+			        </dl>
+			</div>
+		</div>
+           </div>
+	
+	 <div class="container">
+		<div class="pay-tit">
+		  <h3>支付方式</h3>
+		  <div class="pay-div">
+			   <ul id="ul_list">
+				   <li class="current">项目支付</li>
+				   <li>他人代付</li>
+				  
+			   </ul>
+			   <div id="content_list">
+				  <div class="showlist" id="two">
+				  支付项目&nbsp;<select id="pro" name="pro" onChange="projchange(this)">
+										<option value="0">==请选择支付项目==</option>
+											  <option value="值">选项</option>
+											  <option value="值2">选项2</option>
+											</select>
+					<span>项目编号：</span>
+				    <span>项目名称：</span>
+					<span>项目余额：</span>
+					<span>项目负责人：</span>						
+											
+				  </div>
+				  <div id="two">代付人账户&nbsp;<input id="procode" type="text" value=""  /></div>
+			   
+			   </div>
+   </div>
+		</div>
+	 	<div class="step-tit"><h3>收获人信息</h3>
+	 		<div class="extra-r">
+	 			<a href="#" class="r-color" onClick="show()">新增收货地址</a>
+	 		</div>
+			<div>
+	 	
+		
+	              </div>
+		<!--新增收货地址先隐藏-->
+		<div id="Idiv" style="display:none;" class="Bomb-box">
+		    <div class="add-div"><span class="add-title">新增收货人信息</span><a href="javascript:void(0)" onClick="closeDiv()" title="关闭"><span class="ui-dialog-close"></span></a></div>
+			<div class="add-input">
+				<div class="add-input-list">收货人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="newuser" type="text" class="input-style"></input></div>
+				<div class="add-input-list">收货地址&nbsp;&nbsp;<input id="newaddress" type="text" class="input-style"></input></div>
+				<div class="add-input-list">手机号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="newphone" type="text" class="input-style"></input></div>
+				<div class="add-input-list">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onClick="saveaddress()" class="save-botton">保存</a></div>
+			</div>
+		 </div>
+		<!--新增收货地址先隐藏-->
+
+
+
+	              </div>
+		<div class="mes-add">
+		<li class="wrap">
+			<div class="checkbox-one"><div class="express-checkbox express-checkbox1">
+			  <input name="" type="checkbox" value="" id="checkboxOneInput1"/>
+			   
+			  <label for="checkboxOneInput1">吴斌</label> 
+			   
+			  </div></div>
+	 		<div class="addr-detail">
+	 			<span class="addr-name">吴斌</span>
+	 			<span class="addr-info">上海 杨浦区 城区 上海市邯郸路159号10楼A座</span>
+	 			<span class="addr-tel">156****5895</span>
+	 			<span class="addr-default">默认地址</span>
+	 		</div>
+			<div class="default-add">设置为默认地址</div>
+	 		<div class="clear"></div>
+	 		
+	 	</li>
+		<div style="display:none;" id="addshow">
+		<li class="wrap">
+			<div class="checkbox-one"><div class="express-checkbox express-checkbox1">
+			  <input name="" type="checkbox" value="" id="checkboxOneInput2"/>
+			   
+			  <label for="checkboxOneInput2">吴斌</label> 
+			   
+			  </div></div>
+	 		<div class="addr-detail">
+	 			<span class="addr-name">吴斌</span>
+	 			<span class="addr-info">上海 杨浦区 城区 上海市邯郸路159号10楼A座</span>
+	 			<span class="addr-tel">156****5895</span>
+	 			
+	 		</div>
+			<div class="default-add">设置为默认地址</div>
+	 		<div class="clear"></div>
+	 		
+	 	</li>
+		<li class="wrap">
+			<div class="checkbox-one"><div class="express-checkbox express-checkbox1">
+			  <input name="" type="checkbox" value="" id="checkboxOneInput3"/>
+			   
+			  <label for="checkboxOneInput3">吴斌</label> 
+			   
+			  </div></div>
+	 		<div class="addr-detail">
+	 			<span class="addr-name">吴斌</span>
+	 			<span class="addr-info">上海 杨浦区 城区 上海市邯郸路159号10楼A座</span>
+	 			<span class="addr-tel">156****5895</span>
+	 			
+	 		</div>
+			<div class="default-add">设置为默认地址</div>
+	 		<div class="clear"></div>
+	 		
+	 	</li>
+		</div>
+		<div class="addr-switch switch-on" id="add"><span>更多地址</span>
+	 			<b></b>
+	 	</div>
+		<div class="addr-switch switch-off" style="display:none;"><span>收起地址</span>
+	 			<b></b>
+	 	</div>
+        </div>
+	 	
+	      <div id="carts"> 
+			   <span id = "supplier"></span>
+			   <span id = "supplierid" style="display:none;">供应商ID</span>
+	
+		</div>
+
+	 		<div class="clear"></div>
+			<div class="step-tit"><h3>送货清单</h3><div class="extra-r">
+	 			<a href="../cart.jsp" class="r-color">返回修改购物车</a>
+	 		</div></div>
+			<div class="detailed-list">
+			  <div class="detailed-list-left">
+			  <h4 class="detailed-txt">配送方式</h4>
+			  <div class="express-checkbox">
+			  <input name="" type="checkbox" value="" id="checkboxOneInput"/>
+			   
+			  <label for="checkboxOneInput">京东快递</label> 
+			   
+			  </div>
+			  <div class="fore"><span class="mode-label">配送时间：</span><div class="mode-infor" id="gettime">预计&nbsp;2017年6月6日&nbsp;&nbsp;[周二]&nbsp;&nbsp;送达</div>
+			  
+			  <div class="weight-cont"><span class="e-modify" onClick="HS_setDate(this)">修改</span></div></div>
+			  </div>
+			  <div class="detailed-list-right">
+			  <div class="goods-tit"><h4 class="vendor_name_h">商家：京东自营</h4></div>
+			  <div class="goods-item">
+			    <div>
+				   <div class="p-img"><img src="../../../settle/settle/images/5.jpg"/></div>
+				   <div class="goods-msg">手表手表手表手表手表手表手表手表手表手表手表手表手表手表手表手表手表手表</div>
+				   <div class="p-price">
+				       <strong class="price-tot">￥329.00</strong>
+					   <span class="p-num">x2</span>
+					   <span class="p-state">无货</span>
+					   
+				   </div>
+				   <div class="clear"></div>
+				</div>
+				<div class="return">
+	 			<span class="total" >总金额</span>
+	 			<span class="total-amount" id="total-amount">￥0</span>
+	 		</div>
+			  </div>
+			  
+			  </div>
+			  <div class="clear"></div>
+			</div>
+	 		
+			<!--<a onclick="submitorder()">提交订单</a>-->
+			<div class="trade-foot-detail-com">
+	 <div class="fc-price-info">
+	   <span class="price-tit">应付总额：</span>
+	   <span class="price-num">￥329.00</span>
+	 </div>
+	 <div class="fc-consignee-info">
+	   <span class="mr20">寄送至:上海 杨浦区 城区 上海市邯郸路159号10楼A座 复旦天翼计算机有限公司 </span>
+	   <span>收货人:吴斌 156****5895</span>
+	 </div>  
+	 </div>
+	<div class="botton-layer">
+	 	<button type="submit" class="checkout-submit" onClick="submitorder()">提交订单
+	 		 <b></b>
+	 	</button>
+	 	
+	 </div>
+	 
+	 
+	</div>
+ 
+	
+</body>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#add").click(function(){
+  $("#addshow").toggle();
+  });
+  
+});
+</script>
+<script>
+      $('#ul_list li').click(function(){
+          
+          //1.点击li的时候要切换样式
+          $(this).addClass('current').siblings().removeClass('current');
+          //2.根据li的索引值,来确定哪个div显示.其它div隐藏
+          $('#content_list>#two').eq($(this).index()).show().siblings().hide();
+
+      });
+    </script>
+
+</html>

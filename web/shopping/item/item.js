@@ -1,0 +1,376 @@
+//@ sourceURL=item.js
+// 初始化
+$(function() {
+/*系统参数定义表*/
+	var projID ="SHOP";
+	var itemid = getQueryString("itemid");
+	function getRealPath(){  
+		var curWwwPath=window.document.location.href; 
+		//获取主机地址之后的目录，如： myproj/view/my.jsp   
+		var pathName=window.document.location.pathname;  
+		var pos=curWwwPath.indexOf(pathName);  
+		//获取主机地址，如： http://localhost:8083   
+		var localhostPaht=curWwwPath.substring(0,pos);  
+		//获取带"/"的项目名，如：/myproj 
+		var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);   
+		//得到了 http://localhost:8083/myproj  
+		var realPath=localhostPaht+projectName;  
+		return  realPath;
+		} 
+	/**获取项目路径**/
+	var syspath = getRealPath();
+
+	/**获取地址参数**/
+	function GetUrlString(name) { 
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+	var r = window.location.search.substr(1).match(reg); 
+	if (r != null) return unescape(r[2]); return null; 
+	} 
+
+	function repstr(str){
+	if(str==''||str==null){
+		return '&nbsp;';
+	}else{
+		return str;
+		}
+	}
+/*商品信息*/
+	
+	//获取url参数
+	function getQueryString(name) { 
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+		var r = window.location.search.substr(1).match(reg); 
+		if (r != null) return unescape(r[2]); return null; 
+	}
+	
+	//根据商品编号，获取商品各个参数data
+	$.ajax({               
+    	url:"getItemInfomation.action",  
+    	type:'get',  
+    	data: {itemid:itemid},
+    	dataType:'json',  
+    	success:function(data) {
+			if(data!=null&&data!=undefined) {
+			  var subid = getQueryString("subid");
+			  if (subid==null) {
+				 subid="1";
+			  }
+
+			  //处理选项
+			  var tmp1 = "";
+			  var tmp2 = "";
+			  //div16.setAttribute("class","item selected");
+			  for (var i=0;i<data.choose.length;i++) {
+				$(".item.selected a i").html(data.choose[i].itemname);
+				$(".item.selected a i").attr("sub",data.choose[i].itemid); 
+				var itemImgUpload = data.choose[i].itemimgupload;
+				if (data.choose[i].itemid==subid) {
+					if (itemImgUpload) {
+						var seq = itemImgUpload.split(/&/)[0]; // itemImgUplad的格式形如: seq&xxx.jpg&.jpg
+						// projID是index.jsp加载时设置的全局js变量 // by wyj 2016-8-23
+						$("#spec-n1 img").attr("src", "../fileSystem_getImgStreamAction.action?seq="+seq+"&projid="+projID);
+					}
+					else {
+						$("#spec-n1 img").attr("src","img/default.jpg");
+					}
+				}
+				$("h1").html(data.itemname);
+				$("#summary .count").html(data.comment);
+				
+				if (data.choose[i].itemid==subid) {
+					$(".btn .btn-append").attr("onClick","addcard("+data.choose[i].itemid+",1);");
+					/*$("#addcard").click(function (){ 
+						addcard(data.choose[i].itemid,1);
+					});*/
+					$(".item.selected").attr("class","item selected");
+					$("#summary-price .dd strong").css("display","");
+				} else {
+					$(".item.selected").attr("class","item");
+					$("#summary-price .dd strong").css("display","none");
+				}
+				
+				if (itemImgUpload) {
+					var seq = itemImgUpload.split(/&/)[0]; // itemImgUplad的格式形如: seq&xxx.jpg&.jpg
+					$(".item.selected img").attr("src", "../fileSystem_getImgStreamAction.action?seq="+seq+"&projid="+projID); // projID是index.jsp加载时设置的全局js变量 // by wyj 2016-8-23
+				}
+				else {
+					$(".item.selected img").attr("src","img/default.jpg");
+				}
+				$("#summary-price .dd strong").html("￥"+(data.choose[i].prize-0).toFixed(2));
+				$("#summary-price .dd strong").attr("sub",data.choose[i].itemid);
+				$('#suppier-info h3 strong').html(data.choose[i].itempara['0']);
+			  }
+		   }
+    	},
+    	error:function() {
+			console.log("加载商品信息数据出错.");
+    	}
+    });
+	
+/*商品细节*/
+
+	//轮换：经销商信息/规格参数/商品介绍/商品评论
+	 $(".trig-item").live("click",function(e) {
+            $(this).addClass('curr').siblings().removeClass('curr').end();
+        });
+
+	//规格参数
+		$.ajax({
+			url:'getItemParameter.action',
+			type:'get',
+			data:{itemid:itemid},
+			dataType:'json',
+			success:function(data){
+				if (data!=null&&data!=undefined) {
+				  var tmp = "";
+				  for (var i=0;i<data.length;i++) {
+					$("#p-parameter2 li").eq(i).html(data[i].name+"："+data[i].value);
+				  }
+				}
+			
+			},
+			error:function() {
+				console.log("加载规格参数数据出错.");
+    		}
+		});
+
+	//商品介绍
+		$.ajax({
+			url:'getItemInfomation.action',
+			type:'get',
+			data:{itemid:itemid},
+			dataType:'json',
+			success:function(data){
+				var url = "";
+				if (data!=null&&data!=undefined) {
+					if (data.itempage=="null") {
+						$("#infoframe").attr({
+							"src":"img/item.jsp?itemid="+data.itemid+"&projid="+projID,
+							"onload":iFrameHeight()});
+					} else {
+						var imageStrings = data.itempage.split(/\|/);
+						for (var i = 0; i < imageStrings.length; i ++) {
+							var seq = imageStrings[i].split(/&/)[0];
+							$("#infopage").append('<iframe id="infoframe'+(i+1)+'" frameborder="0" scrolling="no" src="../fileSystem_getImgStreamAction.action?seq='+seq+'&projid='+projID+'" onload="iFrameHeight('+(i+1)+')"></iframe>');
+						}
+					}
+				}	
+			},
+			error:
+				function() {
+				console.log("加载商品介绍数据出错.");
+    		}
+		});
+
+	//商品评价
+	$.ajax({
+		url:'getItemComment.action',
+		type:'get',
+		data:{itemid:itemid},
+		dataType:'json',
+		success:function(data){
+			if (data!=null&&data!=undefined) {
+			  var tmp = "";
+			  for (var i=0;i<data.length;i++) {
+				//设置评论格式块
+				$("#comment-0 .com-table-main").append
+					(
+					"<div class='comments-item'>"
+						+"<div class='com-item-main clearfix'>"
+							+"<div class='column column1'>"
+							+"<div class='user-name'>"+data[i].name+"</div>"
+							+"<div class='comment-time type-item'>"+data[i].time+"</div>"
+							+"<div class='features type-item'>"+data[i].type+"</div>"
+							+"</div>"
+							+"<div class='column column2'>"
+							+"<div class='p-comment'>"+data[i].comment+"</div>"
+							+"</div>"
+						+"</div>"
+					+"</div>"
+					);
+			  }
+			}
+		},
+		error:function(){
+			console.log("加载商品评论数据出错.");
+		}
+	});
+	
+	/**获取供应商信息**/
+	var agency = "";
+	$.ajax({
+			url:'SHOP_GetSamSale.action',
+			type:'get',
+			data:{itemid:itemid},
+			dataType:'json',
+			success:function(data){
+				if (data!=null&&data!=undefined) { 
+					myjson = eval(data.json);
+					
+					for(var i=0;i<myjson.length;i++){ 
+						agency = "<div id = \"agency\" class=\"p-parameter\">"+
+								"<h3><strong >"+myjson[i].name+"</strong><span> <a onclick='OpenQQ(\""+myjson[i].qq+"\")'>QQ交谈</a></span></h3>"+
+													"<ul  class=\"agency_info\">"+
+														"<li>联系电话：<i>"+myjson[i].telephone+"</i></li>"+
+														"<li>供货周期：<i>"+myjson[i].cycle+"</i></li>";
+													if(Number(myjson[i].postage)==0){
+														agency = agency +"<li>邮费：<i>免邮</i></li>";
+													}else{ 
+														agency = agency +	"<li>邮费：<i>订单金额小于"+myjson[i].small+"元，需支付"+myjson[i].postage+"元运费</i></li>";  
+														
+													}
+											agency = agency +	"</ul>"+
+													"<ul >"+
+														"<li>动态评价：</li>"+
+														
+													"</ul>"+
+													"<ul class=\"agency_comment\">"+
+														"<li>服务态度：<i>"+myjson[i].se+"</i>分</li>"+
+														"<li>商品质量：<i>"+myjson[i].ps+"</i>分</li>"+
+														"<li>发货速度：<i>"+myjson[i].sd+"</i>分</li>"+
+													"</ul>"+
+													"<div class=\"agency_price\">"+
+														"<p>商家优惠价：<span>"+Number(myjson[i].prize).toFixed(2)+"元<span></p>"+
+														"<div class=\"btn\">"+
+															"<a class=\" addCart\" onclick=\"addcard("+myjson[i].itemid+",1)\"   ><strong>加入购物车</strong></a>"+
+														"</div>"+
+														"<div class=\"btn \">"+
+															"<a class=\" addCollection\" onclick=\"addColletion("+myjson[i].itemid+",1)\"><strong>收藏</strong></a>"+
+														"</div>"+
+													"</div>"+
+													"<p></p>"+
+												"</div>";
+					$("#same_sale").append(agency);
+					
+					}
+				}
+			
+			},
+			error:function() {
+				console.log("加载规格参数数据出错.");
+    		}
+		});
+	
+});
+
+function getQueryString(name) { 
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+	var r = window.location.search.substr(1).match(reg); 
+	if (r != null) return unescape(r[2]); return null; 
+} 
+
+function iFrameHeight(idx) {   
+	var frameName = idx?("infoframe"+idx):"infoframe";
+	var ifm = document.getElementById(frameName);
+	var subWeb = document.frames ? document.frames[frameName].document : ifm.contentDocument;   
+	if(ifm != null && subWeb != null) {
+		ifm.height = subWeb.body.scrollHeight
+	}   
+}   
+
+
+//验证用户登录信息
+function checklogin(type){
+	if(type=='1'){
+		 $.ajax({  
+	      type: "POST",
+		  url: 'SHOP_IsLogin.action',
+		  dataType: "json",
+		  success: function( data ){
+			if(data.json!='ok'){
+				alert('请先登录');
+			}else{
+				window.open('cart/cart.jsp?projid='+projID);
+				}
+		  }
+		 });
+		// href="cart.jsp?projid='+projID+'"
+	}
+}
+
+
+
+function addcard(subid,num){
+	 $.ajax({  
+	      type: "POST",
+		  url: 'addCart.action',
+		  data:{"subid":subid,"num":num},
+		  dataType: "json",
+		  success: function( data ){
+			if(data.json!='ok'){
+				alert('请先登录');
+			}else{
+			show('cart');
+				}
+		  }
+		 });
+}
+
+//加入收藏
+function addColletion(itemid,num){
+	 $.ajax({  
+	      type: "POST",
+		  url: 'SHOP_Collection.action',
+		  data:{"itemid":itemid},
+		  dataType: "json",
+		  success: function( data ){
+			if(data.json!='ok'){
+				alert('请先登录');
+			}else{
+			show("collection");
+				}
+		  }
+		 });
+
+}
+
+
+ function show(type)
+  {
+	  //添加收藏夹/购物车返回消息
+	if(type == "cart"){
+		$("#Idiv").html("<span style='text-align:center;color:#ffffff';line-height: 40px;>添加购物车成功</span>");
+	}else if(type == "collection"){
+		$("#Idiv").html("<span style='text-align:center;color:#ffffff';line-height: 40px;>添加收藏夹成功</span>");
+	}
+
+     var Idiv=document.getElementById("Idiv"); 
+     Idiv.style.display="block";
+     //以下部分要将弹出层居中显示
+     Idiv.style.left=(document.documentElement.clientWidth-Idiv.clientWidth)/2+document.documentElement.scrollLeft+"px";
+         //alert(document.body.scrollTop)
+         var aa_scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+     Idiv.style.top=(document.documentElement.clientHeight-Idiv.clientHeight)/2+aa_scrollTop+"px";
+         //此处出现问题，弹出层左右居中，但是高度却不居中，显示在上部分，导致一                      //部分不可见,于是暂时在下面添加margin-top
+
+
+     //以下部分使整个页面至灰不可点击
+         var procbg = document.createElement("div");  //首先创建一个div
+     procbg.setAttribute("id","mybg");            //定义该div的id
+    // procbg.style.background ="#000000";
+     procbg.style.width ="100%";
+     procbg.style.height ="100%";
+     procbg.style.position ="fixed";
+     procbg.style.top ="0";
+     procbg.style.left ="0";
+     procbg.style.zIndex ="500";
+     procbg.style.opacity ="0.6";
+     procbg.style.filter ="Alpha(opacity=70)";
+         //取消滚动条
+     document.body.appendChild(procbg);
+     document.body.style.overflow ="auto";    
+	 setTimeout( closeDiv, 400 );  
+   
+ } 
+
+  function closeDiv()   //关闭弹出层
+ {
+         
+     var Idiv=document.getElementById("Idiv"); 
+         var mybg = document.getElementById("mybg");
+     document.body.removeChild(mybg);
+     Idiv.style.display="none";
+     document.body.style.overflow ="auto";//恢复页面滚动条
+     //document.getElementById("mybg").style.display="none"; 
+ }
+

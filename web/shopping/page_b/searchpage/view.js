@@ -1,0 +1,11 @@
+//@ sourceURL=homepage-view.js
+
+//子组件赋值，无子组件留空
+include = ['navigation','searchbar','itemdisplay'];
+
+//页面生成
+'<div id="wrapper"><div class="w"><div id = "search-2014"></div><div id = "gz"></div><div id="settleup-2014" class="dorpdown"><div class="cw-icon"><i class="ci-left"></i>'+
+'<a onclick="checklogin(1)">我的购物车</a>'+
+'</div></div><span class="clr"></span></div><div id = "nav-2014"></div><div id="J_searchWrap" class="w"></div></div>'
+
+

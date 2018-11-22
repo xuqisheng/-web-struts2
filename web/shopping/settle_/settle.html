@@ -1,0 +1,188 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta charset="utf-8">
+<title>结算页</title>
+<link rel="stylesheet" href="css/style.css">
+<script type="text/javascript" src="../core/jquery-1.4.4.js"></script>
+<!--<script type="text/javascript" src="../core/My97DatePicker/WdatePicker.js"></script>-->
+<script type="text/javascript" src="./core/settle.js"></script>
+<script type="text/javascript" src="./core/time.js"></script>
+<script type="text/javascript" src="../address/address.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+</script>
+<style type="text/css">
+  *
+  {
+      padding:0px;
+      margin:0px;
+  }
+  #Idiv
+  {
+      width:500px;
+      height:auto;
+      position:absolute;
+      z-index:1000;
+      border:2px solid #ffffff;
+      background:#ffffff;
+  }
+  </style>
+</head>
+<body>
+
+<header>
+		<div class="h-logo"><a href="#"><img src="./images/logo2.png"/></a>
+			<!-- <span class="h-title">复翼集中采购平台</span> -->
+			<span class="w-title">结算页</span>
+			<div class="stepflex">
+				<dl class="first done">
+			                      <dt class="s-num">1</dt>
+			                      <dd class="s-text">1.我的购物车
+			                      	<s></s>
+			                      	<b></b>
+			                      </dd>
+				</dl>
+				<dl class="normal doing">
+				            <dt class="s-num">2</dt>
+				            <dd class="s-text">2.填写核对订单信息
+				            	<s></s>
+				            	<b></b>
+			                         </dd>
+
+			             </dl>
+			                <dl class="normal last">
+				            <dt class="s-num">3</dt>
+				            <dd class="s-text">3.成功提交订单
+				            	<s></s>
+				            	<b></b>
+				            </dd>
+			        </dl>
+			</div>
+		</div>
+           </header>
+		 
+
+		<input type="checkbox" name="test" value="1"/>checkbox-1
+		<input type="checkbox" name="test" value="2"/>checkbox-2
+		<input type="checkbox" name="test" value="3"/>checkbox-3
+		<input type="checkbox" name="test" value="4"/>checkbox-4
+		<input type='button' value='确定' onclick="fun()"/>
+		
+
+
+	<div class="container">
+	 <ul>
+	 	<li class="wrap">
+	 		<div class="estimate">
+	 			<!--项目编号&nbsp;<input id="procode" type="text" value=""  />-->
+	 			支付项目&nbsp;<select id="pro" name="pro" onchange="projchange(this)">
+                            <option value="0">==请选择支付项目==</option>
+								<!--  <option value="值">选项</option>
+								  <option value="值2">选项2</option>-->
+								</select>
+					<span id = "proid">项目编号</span><span>;</span>
+					<span id = "proname">项目名称</span><span>;</span>
+					<span id = "balance">项目余额</span><span>;</span>
+					<span id = "chargename">项目负责人</span>
+					<span  style="display:none;" id = "chargecode">项目负责人编号</span>
+		 			<!--项目名称 &nbsp;<input  id="proname" type="text" value=""  />
+	 			项目负责人 &nbsp;<input id="chargename"  type="text" value="" />
+	 			项目余额 &nbsp;<input id="chargename"  type="text" value="" />-->
+	 		</div>
+	 	</li>
+	 	<div class="step-tit"><h3>收获人信息</h3>
+	 		<div class="extra-r">
+	 			<a href="#" class="r-color" onclick="show()">新增收货地址</a>
+	 		</div>
+		<!--新增收货地址先隐藏-->
+		<div id="Idiv" style="display:none;">
+			<a href="javascript:void(0)" onclick="closeDiv()">点击关闭层</a>
+				<div>收货人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="newuser" type="text"></input></div>
+				<div>收货地址&nbsp;&nbsp;<input id="newaddress" type="text"></input></div>
+				<div>手机号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="newphone" type="text"></input></div>
+				<div><a href="#" onclick="saveaddress()">保存</a></div>
+		 </div>
+		<!--新增收货地址先隐藏-->
+
+
+
+	              </div>
+		<div id="address">
+	 	<li  class="wrap">
+	 	<!--	<div ><a href="#" id="getname1" class="consignee-item">吴斌</a></div>
+	 		<div class="addr-detail">
+				<span id="getname" class="addr-name">吴斌</span>
+	 			<span id="getaddress" class="addr-info">上海 杨浦区 城区 上海市邯郸路159号10楼A座</span>
+	 			<span id="getphone" class="addr-tel">156****5895</span>
+	 			<span class="addr-default">默认地址</span>
+			</div>
+	 		<div class="clear"></div>-->
+	 		
+	 	</li>
+		
+	              </div>
+		
+		<div class="addr-switch switch-on"><span>更多地址</span>
+	 			<b></b>
+	 		</div>
+
+	 	<div class="step-tit"><h3>收货时间</h3></div>
+	 	<li class="wrap">
+	 		<div class="estimate">
+
+	 			<span class="estimate-tit">期望送达：</span>
+	 			<div class="mode-infor" id="gettime">预计&nbsp;5月24日[周三]&nbsp;&nbsp;送达</div><span class="e-modify" onclick="HS_setDate(this)">修改</span>
+				<div id="hidetime" style="display:none;">收货时间</div>
+	 		</div>
+	 	</li>
+	 	<div class="step-tit"><h3  id="sname"></h3>
+	 		<div class="extra-r">
+	 			<a href="../cart.jsp"class="r-color" >返回修改购物车</a>
+	 		</div>
+
+	              </div>
+	      <div id="carts"> 
+			   <span id = "supplier"></span>
+			   <span id = "supplierid" style="display:none;">供应商ID</span>
+	<!--		<li  class="wrap wrap-detailed">
+	 		<div class="w-left"><img src="images/5.jpg"></div>
+	 		<div class="w-right">
+	 			<div class="right-list"><span class="list-column list-column-color">卡西欧（CASIO）手表EDIFICE系列男士石英表EFR-553L-7BVUPR</span><span class="list-column list-align list-color">￥8000.0<br><span class="list-color-k">0.190kg</span></span><span class="list-column list-align">x1</span><span class="list-column list-align">有货</span></div>
+	 			<div class="clear"></div>
+	 			<div class="right-list"><span class="service-desc">支持7天无理由退货</span></div>
+
+	 			
+	 		</div>
+
+	 		<div class="clear"></div>
+	 		
+	 	</li><li  class="wrap wrap-detailed">
+	 		<div class="w-left"><img src="images/5.jpg"></div>
+	 		<div class="w-right">
+	 			<div class="right-list"><span class="list-column list-column-color">卡西欧（CASIO）手表EDIFICE系列男士石英表EFR-553L-7BVUPR</span><span class="list-column list-align list-color">￥8000.0<br><span class="list-color-k">0.190kg</span></span><span class="list-column list-align">x1</span><span class="list-column list-align">有货</span></div>
+	 			<div class="clear"></div>
+	 			<div class="right-list"><span class="service-desc">支持7天无理由退货</span></div>
+
+	 			
+	 		</div>
+
+	 		<div class="clear"></div>
+	 		
+	 	</li>-->
+		</div>
+
+	 		<div class="clear"></div>
+	 		<div class="return">
+	 			<span class="total" >总金额</span>
+	 			<span class="total-amount" id="total-amount">￥0</span>
+	 		</div>
+			<!--<a onclick="submitorder()">提交订单</a>-->
+			 <div class="botton-layer">
+	 	<button type="submit" class="checkout-submit" onclick="submitorder()">提交订单
+	 		 <b></b>
+	 	</button>
+	 	
+	 </ul>
+	</div>
+</body>
+</html>

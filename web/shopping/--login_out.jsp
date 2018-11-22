@@ -1,0 +1,63 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+ 
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+response.setHeader("pragma","no-cache"); 
+response.setHeader("Cache-Control","no-cache"); 
+response.setDateHeader("Expires",0); 
+response.flushBuffer();
+session.removeAttribute("userContextStr");
+session.removeAttribute("userId");
+session.removeAttribute("roles");
+session.removeAttribute("userName");
+session.invalidate(); 
+%>
+<!DOCTYPE>
+<html>
+<head>
+<meta charset="utf-8">
+<title>复翼集中采购平台登录</title>
+<link rel="stylesheet" href="login/css/style.css">
+<script type="text/javascript" src="login/core/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="login/core/login.js"></script>
+
+</head>
+<body>
+	<header>
+		<div class="h-logo"><a href="#"><img src="./login/images/logo.png"/></a>
+		
+			<span class="w-title">欢迎登录</span>
+		</div>
+           </header>
+	<div class="container">
+                      <div class="w">
+		           <div class="wrap" style="display:block;">
+		           	  
+		           	<h4 class="wrap-prompt">用户登录</h4>  
+		           	<div class="wrap-form">
+		           		<form action="" method="get" autocomplete="on">
+		           			 <div class="form-list"><span class="title-list">用户名:</span>
+						<input  id="uid" type="text" value=""  class="form-nomber form-nomber-list"/></div>
+						 <div class="form-list"><span class="title-list">密码:</span>
+						 <input id="pwd" type="password" value="" class="form-nomber form-nomber-list"/></div>
+						 <div class="form-list"><span class="title-list"><img id="checkcodeImg" src="loginAction_getCheckCodeImg.action" title="看不清楚？换一张"></span>
+						 <input id="chkcode" type="text" value="" class="form-nomber form-nomber-list"/></div>
+		           			
+						
+						<input id="loginbtn2" type="button" value="确   认" class="form-botton" />
+					</form>
+				<div id="msg" style="margin-left: 15px; height:20px; max-width:160px;"></div>
+		           	</div>
+		           </div>
+	           </div>
+	           <div class="login-banner">
+	           	<div class="w-one">
+	           	<div class="i-inner"><img src="./login/images/banner.png"/></div>
+	           	</div>
+	           </div>
+	          
+			   
+	</div>
+</body>
+</html>

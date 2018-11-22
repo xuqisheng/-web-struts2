@@ -1,0 +1,34 @@
+@charset "utf-8";
+body{ font-family: "微软雅黑";overflow-x:hidden ;}
+body,div,ol,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,p,form,fieldset,legend,input,button{ margin:0; padding:0; }
+ul,li{list-style:none;}
+a{ text-decoration: none; color: #000;}
+header,.w,.w-one{ width: 990px; margin: 0 auto; }
+.w{position: relative;
+height: 520px;
+/*margin: 10px 0 20px;*/
+z-index: 5;}
+.h-logo{ position: relative; width: 400px; margin: 10px 0; height: 60px;}
+.h-logo a img{vertical-align: middle;}
+.h-title{margin-left:10px;margin-right:10px;color:#e4393c;display: inline-block;height: 60px;line-height: 60px;font-size: 24px;font-weight: 400;}
+.w-title{display: inline-block; font-size: 22px; height: 60px; line-height: 60px;font-weight: 400;color: #535353;}
+
+.container{position: relative;height: 520px;margin: 10px 0 20px;z-index: 5; overflow: hidden; }
+.wrap{ width: 440px; height: 352px;position: relative; left: 50%;top: 50%; margin: -150px 0 0 54px; background: #F0F0F0;z-index: 1;}
+.wrap-fill{ height: 490px; margin-top: -250px;}
+.wrap-logo{ text-align: center; padding: 18px 0; }
+.wrap-prompt{ text-align: center; color: #797979; font-weight:normal; font-size: 24px; padding: 30px 0; }
+.wrap-form{text-align: center;}
+.form-nomber{ color: #525151;display:inline-block; text-align: left; border:0;padding: 8px; font-weight: bold; font-size: 14px; margin: 10px 0;}
+.form-botton{ background: #e4393c; width: 300px;color: #fff; border: 1px solid #e4393c;padding: 8px 0;border-radius: 4px; font-size: 18px; font-weight: bold; margin: 12px 0;}
+.title-prompt{font-size: 14px;color: #F00;width: 300px;margin: 0 auto;text-align: right; margin-bottom: 10px;}
+.form-nomber-list{ margin: 5px 0;}
+.title-prompt-color{ color: #3bc0c3; }
+.form-list{ border: 1px solid #c1c1c1; width: 300px; margin: 0 auto; color: #c1c1c1; margin-bottom: 10px;}
+.title-list{display: inline-block; width: 84px; text-align: left}
+.form-list-block{margin-bottom: 0;}
+
+.login-banner{position: absolute;left: 0;top: 0;width: 100%;height: 520px;background: #DCDCDC;}
+.i-inner{position: relative;
+z-index: 3;
+height: 475px;}

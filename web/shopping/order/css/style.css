@@ -1,0 +1,75 @@
+@charset "utf-8";
+body{ font-family: "微软雅黑";}
+body,div,ol,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,p,form,fieldset,legend,input,button{ margin:0; padding:0; }
+ul,li{list-style:none;}
+a{ text-decoration: none; color: #000;}
+.w,.w-one{ width: 990px; margin: 0 auto; }
+.w{position: relative;height: 520px;z-index: 5;}
+.h-logo{ position: relative; width: 1220px; margin:0 auto; height: 60px; }
+.h-logo a img{vertical-align: middle;}
+.h-title{margin-left:10px;margin-right:10px;color:#e4393c;display: inline-block;height: 60px;line-height: 60px;font-size: 24px;font-weight: 400;}
+.w-title{display: inline-block; font-size: 22px; height: 60px; line-height: 60px;font-weight: 400;color: #535353;}
+.stepflex{border-top: 5px solid #ccc;text-align: center;margin: 20px 0 0;float: right;}
+.clear{clear: both;}
+.container{ width: 1200px;  margin: 0 auto; padding: 20px 10px; border: 1px solid #f0f0f0; }
+.mt{ margin-bottom: 10px; font-size: 14px; border: 1px solid #F3F3F3;padding: 10px 0;}
+.extra-l li{ float: left;  margin-right: 20px;}
+.extra-l li a:hover{ color: #e4393c;}
+.curr{padding-bottom: 0;color: #e4393c;border-bottom: 2px solid #e4393c;font-weight:bold;
+cursor: pointer;text-decoration: none;}
+.order-info{font-size: 14px; }
+.info-div{background: #f3f3f3;  padding: 10px 0;  }
+.div-top{margin: 5px 0;color: #666; font-size: 14px;background: #f3f3f3; }
+.time-txt{position: relative;height: 30px;line-height: 30px;text-align: left;padding-left: 12px;
+padding-right: 12px;border: 1px solid #f5f5f5; width: 138px; cursor: pointer; float: left;}
+.time-txt b {position: absolute;width: 7px;height: 4px;right: 18px;top: 13px;overflow: hidden;vertical-align: middle;
+background: url(../images/order-icons.png) -37px -207px no-repeat;}
+.order-detail-txt {display: inline-block;vertical-align: middle; float: left; height: 30px; line-height: 30px;width: 400px;}
+.ac{ text-align: center;}
+.as{width: 100px;}
+.zt{ width: 218px; text-align: center;}
+.extra-r{ float: right; margin-right: 10px;}
+.itxt {float: left;width: 170px;height: 25px;line-height: 25px;padding: 2px 5px 3px;border: 1px solid #ccc; border-radius: 2px;}
+.search {position: relative;}
+.search-btn {
+position: relative;
+float: left;
+width: 52px;
+height: 23px;
+line-height: 99em;
+overflow: hidden;
+border: 1px solid #ddd;
+border-left: 0;
+text-align: center;
+background-color: #f7f7f7;}
+.search-btn b {
+position: absolute;
+left: 17px;
+top: 3px;
+display: inline-block;
+vertical-align: middle;
+width: 18px;
+height: 16px;
+overflow: hidden;
+background: url(../images/order-icons.png) -8px -58px;border-radius: 2px;}
+.dealtime,.number{ color: #aaa; display: inline-block; margin-left:15px; }
+.num,.consignee,.order-amount,.pay,.order-status,.operator{display: inline-block; margin-left: 15px;}
+.operator{ color: #aaa;}
+.ope-div{ border-bottom: 1px solid #E4E4E4; padding: 10px 0;}
+.details{ border: 1px solid #E4E4E4; margin-bottom: 10px;}
+.details-list{ border-bottom: 1px solid  #E4E4E4; padding: 8px 0;}
+.d-left {float: left; width: 100px; height: 100px;}
+.d-right{ float: left;}
+.d-left img{ width: 100%;}
+.order-details a{ float:right;margin-right: 10px;color: #E43E40;}
+.list-column{ display: inline-block; width: 210px; float: left; margin-left:10px; }
+.tot-color{ color: #F00;}
+.list-align,.text-align{ text-align: center;}
+.evaluate{ float:right; text-align: center; width: 200px;}
+.evaluate-txt{color: #aaa;display: inline-block;margin-bottom: 8px;}
+.buy-now a{ display: inline-block; border:1px solid #aaa; border-radius: 2px;padding: 2px 0 3px;
+background: #f5f5f5; width: 85px;}
+.buy-now a:hover{ border: 1px solid #CC162C;border-radius: 2px;}
+.botton-layer{ text-align: right; }
+.checkout-submit{position:relative;width: 135px; height: 36px; line-height: 36px; background: #CC162C; color: #fff; font-size: 16px; font-weight: bold; border: 0; border-radius: 3px;font-family: arial,"Microsoft YaHei"; cursor: pointer;}
+.checkout-submit b{ position: absolute; left: 0; top: 0; width: 135px ; height: 36px; background:url(../images/btn-submit.jpg) no-repeat; }

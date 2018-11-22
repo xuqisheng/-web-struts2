@@ -1,0 +1,2276 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link href="css/index.css" type="text/css" rel="stylesheet">
+		
+	</head>
+	<body id="top">
+		<div class="jdm-toolbar-wrap J-wrap">                
+			<div class="jdm-toolbar J-toolbar">                    
+				<div class="jdm-toolbar-panels J-panel">                                             
+				</div>                                       
+			                  
+			<div class="jdm-toolbar-mini">                    
+			</div>                
+		</div>                
+		<div id="J-toolbar-load-hook" clstag="h|keycount|cebianlan_h|load"></div>            
+	</div>
+		<!-----------------------------------------顶部-------------->
+		<header id="header">
+			<div class="header-box">
+				<ul class="header-left">
+					<!--<li class="bj">
+						送至：北京
+						<i class="ci-leftll">
+							<s class="jt">◇</s>
+						</i>
+						<div class="bj-1">
+							<a href="">北京</a><a href="">上海</a><a href="">天津</a><a href="">重庆</a><a href="">河北</a><a href="">山西</a><a href="">河南</a><a href="">辽宁</a><a href="">吉林</a><a href="">黑龙江</a><a href="">浙江</a><a href="">江苏</a><a href="">山东</a><a href="">安徽</a><a href="">内蒙古</a><a href="">湖北</a><a href="">湖南</a><a href="">广东</a><a href="">广西</a><a href="">江西</a><a href="">四川</a><a href="">海南</a><a href="">贵州</a><a href="">云南</a><a href="">西藏</a><a href="">陕西</a><a href="">甘肃</a><a href="">青海</a><a href="">宁夏</a><a href="">新疆</a><a href="">台湾</a><a href="">香港</a><a href="">澳门</a><a href="">海外</a><a href="">钓鱼岛</a>
+						</div>
+					</li>	-->	
+				</ul>
+				<ul class="header-right">
+					<li class="denglu"><a href="#">您好，请登录</a> <a href="#"  class="red">免费注册</a></li> 
+					<li class="shu"></li>
+					<li class="denglu"><a href="#">我的订单</a></li>
+					<li class="shu"></li>
+					<!--<li class="my bj">
+						<a href="#">我的京东</a>
+						<i class="ci-right ">
+							<s class="jt">◇</s>
+						</i>
+						<div class="my1">
+							<div class="my2">
+								<img src="./images/no-img_mid_.jpg">
+								<div class="my3">
+									<h3 class="neirong2"><a href="">您好请登录</a></h3>
+									<p class="neirong2"><a href="">优惠卷 丨 消息</a></p>
+								</div>
+							</div>
+							<ul class="neirong2">
+								<li><a href="">带处理订单</a></li>
+								<li><a href="">京我的订单</a></li>
+								<li><a href="">京咨询回复</a></li>
+								<li><a href="">京我的京豆</a></li>
+								<li><a href="">京降价商品</a></li>
+								<li><a href="">京我的理财</a></li>
+								<li><a href="">京返修退换货</a></li>
+								<li><a href="">京东白条</a></li>	
+							</ul>
+						</div>
+					</li>-->
+					<!--<li class="shu"></li>-->
+					<!--<li class="denglu"><a href="#">京东会员</a></li>-->
+					<!--<li class="shu"></li>-->
+					<li class="denglu"><a href="#">企业采购</a></li>
+					<li class="shu"></li>
+					<!--<li class="shouji bj">
+						<a href="#">手机京东</a>
+						<i class="ci-right ">
+							<s class="jt">◇</s>
+						</i>
+						<div class="shouji1">
+							<img src="./images/11.jpg"class="shouji4">
+							<div class="shouji2">
+								<p>京东客户端</p>
+								<p class="red">首次下单满79元，送79元</p>
+								<img src="./images/333.jpg" class="shouji3">
+								<img src="./images/333.jpg" class="shouji3">
+								<img src="./images/333.jpg" class="shouji3">
+								
+							</div>
+							<div class="yi">
+								<img src="./images/222.jpg"class="shouji4">
+								<div class="er">
+									<p>京东钱包客户端</p>
+									<p class="red">一分钱抢超值豪礼</p>
+									<img src="./images/333.jpg" class="shouji3">
+									<img src="./images/333.jpg" class="shouji3">
+									<img src="./images/333.jpg" class="shouji3">
+									
+								</div>
+							</div>
+						</div>
+					</li>-->
+					<!--<li class="shu"></li>-->
+					<!--<li class="guanzhu bj">
+						<a href="#">关注京东</a>
+						<i class="ci-right ">
+							<s class="jt">◇</s>
+						</i>
+						<div class="guanzhu1"><img src="./images/54c84f72Ncc1a02a2.jpg"></div>
+					</li>-->
+					<!--<li class="shu"></li>-->
+					<li class="kehu bj">
+						<a href="#">客户服务</a>
+						<i class="ci-right ">
+							<s class="jt">◇</s>
+						</i>
+						<div class="kehu1">
+							<h3 class="neirong2">客户</h3>
+							<ul class="kehu2">
+								<li><a href="">帮助中心</a></li>
+								<li><a href="">售后服务</a></li>
+								<li><a href="">在线客服</a></li>
+								<li><a href="">帮助中心</a></li>
+								<li><a href="">客服邮箱</a></li>
+							</ul>
+							<div>
+								<ul class="kehu3">
+									<h3 class="neirong2 ll">客户</h3>
+									<li><a href="">京东商学院</a></li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<!--<li class="shu"></li>-->
+					<!--<li class="daohang">
+						<a href="#">网站导航</a>
+						<i class="ci-right ">
+							<s class="jt">◇</s>
+						</i>
+						<div class="aa">
+							<div class="neirong">
+                                    <h4 class="neirong2">特色主题</h4>
+                                    <ul>   
+                                        <li><a href="">品牌街</a></li>
+                                        <li><a href="">今日抄底</a></li>
+                                        <li><a href="">好东西</a></li>
+                                        <li><a href="">京东预售</a></li>
+                                    </ul>
+                                    <ul>
+                                        
+                                        <li><a href="">尖er货</a></li>
+                                        <li><a href="">京东首发</a></li>
+                                        <li><a href="">今日团购</a></li>
+                                        <li><a href="">优惠券</a></li>
+                                    </ul>
+                                    <ul>
+                                        
+                                        <li><a href="">闪购</a></li>
+                                        <li><a href="">京东会员</a></li>
+                                        <li><a href="">京东京选</a></li>
+                                        <li><a href="">定期送</a></li>
+                                    </ul>
+                                    <ul>
+                                        
+                                        <li><a href="">装机大师</a></li>
+                                        <li><a href="">新奇特</a></li>
+                                        <li><a href="">京东试用</a></li>
+                                      
+                                    </ul>
+                                   
+                                </div>
+                                <div class="neirong">
+                                    
+                                        <h4 class="neirong2">行业频道</h4>
+                                   
+                                    <ul>
+                                        
+                                        <li><a href="">品牌街</a></li>
+                                        <li><a href="">今日抄底</a></li>
+                                        <li><a href="">好东西</a></li>
+                                        
+                                    </ul>
+                                    <ul>
+                                        
+                                        <li><a href="">尖er货</a></li>
+                                        <li><a href="">京东首发</a></li>
+                                        <li><a href="">今日团购</a></li>
+                                        
+                                    </ul>
+                                    <ul>
+                                        
+                                        <li><a href="">闪购</a></li>
+                                        <li><a href="">京东会员</a></li>
+                                        <li><a href="">京东京选</a></li>
+                                        
+                                    </ul>
+                                    <ul>
+                                        
+                                        <li><a href="">装机大师</a></li>
+                                        <li><a href="">新奇特</a></li>
+                                        <li><a href="">京东试用</a></li>
+                                       
+                                    </ul>
+                                    <ul>
+                                        
+                                        <li><a href="">智能馆</a></li>
+                                        <li><a href="">玩bigger</a></li>
+                                        <li><a href="">大牌免息</a></li>
+                                       
+                                    </ul>
+                                </div>
+                                <div class="neirong">
+                                        <h4 class="neirong2">生活服务</h4>
+                                    <ul> 
+                                        <li><a href="">品牌街</a></li>
+                                        <li><a href="">今日抄底</a></li>
+                                        <li><a href="">好东西</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="">尖er货</a></li>
+                                        <li><a href="">京东首发</a></li>
+                                        <li><a href="">今日团购</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="">闪购</a></li>
+                                        <li><a href="">京东会员</a></li>
+                                        <li><a href="">京东京选</a></li>
+                                    </ul>
+                                    <ul> 
+                                        <li><a href="">装机大师</a></li>
+                                        <li><a href="">新奇特</a></li>
+                                        <li><a href="">京东试用</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="">智能馆</a></li>
+                                        <li><a href="">玩bigger</a></li>
+                                        <li><a href="">大牌免息</a></li>
+                                    </ul>
+                                </div>
+                                <div class="neirong neirong3">
+                                        <h4 class="neirong2">更多精选</h4>
+                                    <ul>
+                                        <li><a href="">品牌街</a></li>
+                                        <li><a href="">今日抄底</a></li>
+                                        <li><a href="">好东西</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="">尖er货</a></li>
+                                        <li><a href="">京东首发</a></li>
+                                        <li><a href="">今日团购</a></li>
+                                    </ul>
+                                    <ul> 
+                                        <li><a href="">闪购</a></li>
+                                        <li><a href="">京东会员</a></li>
+                                        <li><a href="">京东京选</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="">装机大师</a></li>
+                                        <li><a href="">新奇特</a></li>
+                                        <li><a href="">京东试用</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a href="">智能馆</a></li>
+                                        <li><a href="">玩bigger</a></li>
+                                        <li><a href="">大牌免息</a></li>
+                                    </ul>
+                                </div>
+						</div>
+					</li>-->
+				</ul>
+			</div>
+		</header>
+		
+		<div class="w">
+			<div class="logo"><a href=""><img src="./images/logo.png"></a></div>
+			<div class="search">
+				<input type="text" value="搜索" class="text" id="textt">
+				<button class="button">搜索</button>
+			</div>
+			<div class="right">
+				<i class="gw-left" style="background:url(./images/jd2015img.png)0 -58px no-repeat;width:24px;height:24px;"></i>
+				<i class="gw-right">></i>
+				<i class="gw-count">0</i>
+				<a href="#">我的购物车</a>
+				<div class="dorpdown-layer">
+					<img src="./images/settleup-nogoods.png">
+					购物车中还没有商品，赶紧选购吧！
+				</div>
+			</div>
+			<!--<div class="hotwords">
+				<a href="#" class="red">1元秒杀</a>
+				<a href="#">低至1折</a>
+				<a href="#">1元抢</a>
+				<a href="#">时尚鞋靴</a>
+				<a href="#">买一送二</a>
+				<a href="#">乐视乐1</a>
+				<a href="#">特步女鞋</a>
+				<a href="#">威士忌</a>
+				<a href="#">婴儿衣服</a>
+			</div>-->
+		</div>
+		
+		<div class="clear"></div>
+		<!--轮播图上方导航栏  一栏-->
+		<div id="navv">
+			<div class="nav-img" style="border-bottom: 2px solid #C81623;"></div>
+				
+		</div>
+		<div class="focus">
+			<div class="focus-a">
+				<div class="fouc-img1"><img src="./images/5689d4ebN19f155a6.jpg" class="nav-img2"></div>
+				<div class="fouc-font"><a href="">全部商品分类</a> </div>
+			</div>
+			<!--<div class="focus-b">
+				<ul>
+					<li><a href="#">服装城</a></li>
+					<li><a href="#">美妆馆</a></li>
+					<li><a href="#">超市</a></li>
+					<li><a href="#">全球购</a></li>
+					<li><a href="#">闪购</a></li>
+					<li><a href="#">团购</a></li>
+					<li><a href="#">拍卖</a></li>
+					<li><a href="#">金融</a></li>
+				</ul>
+			</div>-->
+			<!--<div class="focus-c"><a href=""><img src="./images/hhh.jpg"></a></div>
+			<div class="focus-d"><a href=""><img src="./images/nianhuo.jpg"></a></div>-->
+			<!--轮播图左边当行蓝-->
+			<div class="bb"></div>
+			<div class="dd-inner">
+				<div class="font-item">
+					<div class="item fore1">
+						<h3><a href="">普通材料</a></h3>
+						<i>></i>
+					</div>
+					<div class="font-item1">
+						<div class="font-left">
+							<div class="one"><a href="">品牌日<i>></i></a></div>
+							<div class="two"><a href="">家电城<i>></i></a></div>
+							<div class="three"><a href="">智能生活馆<i>></i></a></div>
+							<div class="four"><a href="">京东净化馆<i>></i></a></div>
+							<div class="five"><a href="">京东帮服务店<i>></i></a></div>
+							<div class="sex"><a href="">值得买精选<i>></i></a></div>
+						</div>
+						<div class="font-lefty">
+							<dl class="fore1">
+								<dt><a href="">大家电<i>></i></a></dt>							
+								<dd>
+									<a href="">平板电视</a><a href="">空调</a><a href="">冰箱</a><a href="">洗衣机</a><a href="">家庭影院</a><a href="">DVD</a><a href="">迷你音响</a>
+									<a href="">烟机/灶具</a><a href="">热水器</a><a href="">消毒具/洗碗柜</a><a href="">冰柜/冰吧</a><a href="">酒柜</a><a href="">家电配件</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">生活电器<i>></i></a></dt>							
+								<dd>
+									<a href="">取暖电器</a><a href="">净化器</a><a href="">扫地机器人</a><a href="">吸尘器</a><a href="">加湿器</a><a href="">挂烫机/熨斗</a><a href="">电风扇</a>
+									<a href="">冷风扇</a><a href="">插座</a><a href="">电话机</a><a href="">净水器</a><a href="">饮水机</a>
+									<a href="">除湿机</a><a href="">干衣机清洁机</a><a href="">收录/音机</a><a href="">生活电器配件</a><a href="">其它生活电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">厨房电器<i>></i></a></dt>							
+								<dd>
+									<a href="">电压力锅</a><a href="">豆浆机</a><a href="">面包机</a><a href="">咖啡机</a><a href="">微波炉料理/榨汁机</a><a href="">电烤箱</a><a href="">电磁炉</a>
+									<a href="">电饼铛/烧烤盘</a><a href="">煮蛋器酸奶机</a><a href="">电水壶/热水瓶</a><a href="">电炖锅</a><a href="">多用途锅</a><a href="">果蔬解毒机</a><a href="">养生壶/煎药壶</a><a href="">其它厨房电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">个护健康<i>></i></a></dt>							
+								<dd>
+									<a href="">剃须刀剃/脱毛器</a><a href="">口腔护理</a><a href="">电吹风</a><a href="">美容器</a><a href="">理发器卷/直发器</a><a href="">按摩椅</a><a href="">按摩器</a>
+									<a href="">足浴盆</a><a href="">血压计</a><a href="">健康秤/厨房秤</a><a href="">血糖仪</a><a href="">体温计</a><a href="">计步器/脂肪检测仪</a><a href="">脂肪检测仪其它健康电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">五金家装<i>></i></a></dt>						
+								<dd>
+									<a href="">平板电视</a><a href="">空调</a><a href="">冰箱</a><a href="">洗衣机</a><a href="">家庭影院</a><a href="">DVD</a><a href="">迷你音响</a><a href="">烟机/灶具</a>
+									<a href="">热水器</a><a href="">消毒具/洗碗柜</a><a href="">冰柜/冰吧</a><a href="">酒柜</a><a href="">家电配件</a>
+								</dd>
+							</dl>
+						</div>
+						<div class="font-right">
+							<div>
+								<a href="#">
+									<img src="./images/562f4971Na5379aba.jpg">
+								</a>
+								<a href="#">
+									<img src="./images/54d9eef9N5bb8d27f.jpg">
+								</a>
+								<a href="#">
+									<img src="./images/54d9ef02N99d26435.jpg">
+								</a>
+								<a href="#">
+									<img src="./images/54d9ef10Nd206a236.jpg">
+								</a>
+								<a href="#">
+									<img src="./images/54d9ef28N00328d44.jpg">
+								</a>
+								<a href="#">
+									<img src="./images/54d9ef34N7cc61f4c.jpg">
+								</a>
+								<a href="#">
+									<img src="./images/54d9ef3eN99aef1f0.jpg">
+								</a>
+								<a href="#">
+									<img src="./images/54d9ef4cN4fe57f9b.jpg">
+								</a>
+							</div>
+						</div>
+						<div class="font-righty">
+							<a href="#">
+								<img src="./images/5673a854N10856704.jpg">
+							</a>
+							<a href="#">
+								<img src="./images/56a0376aN7de1bdcf.jpg">
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="fore-2">
+					<div class="item fore2">
+						<h3>
+							<a href="">管制品</a>
+						</h3>
+						<i>></i>
+					</div>
+					<div class="font-item1">
+						<!--<div class="font-left">
+							<div class="one"><a href="">手机频道<i>></i></a></div>
+							<div class="two"><a href="">网上营业厅<i>></i></a></div>
+							<div class="three"><a href="">配件城<i>></i></a></div>
+							<div class="four"><a href="">影响Club<i>></i></a></div>
+							<div class="five"><a href="">手机社区<i>></i></a></div>
+							<div class="sex"><a href="">以旧换新<i>></i></a></div>
+						</div>-->
+						<div class="font-lefty">
+							<dl class="fore1">
+								<!--<dt><a href="">手机通讯<i>></i></a></dt>-->
+								<dd>
+									<a href="">易制毒</a><a href="">剧毒</a><a href="">易燃</a><a href="">手机维修</a>					
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">京东通讯<i>></i></a></dt>
+								<dd>
+									<a href="">选号中心</a><a href="">自助服务</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">运营商<i>></i></a></dt>
+								<dd>
+									<a href="">合约机</a><a href="">办套餐</a><a href="">选号码</a><a href="">装宽带</a><a href="">中国移动</a><a href="">中国联通</a><a href="">中国电信</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">手机配件<i>></i></a></dt>
+								<dd>
+									<a href="">电池/移动电源</a><a href="">蓝牙耳机</a><a href="">充电器/数据线</a><a href="">手机耳机</a><a href="">手机支架</a><a href="">贴膜</a><a href="">存储卡</a>
+									<a href="">保护套</a><a href="">车载iPhone配件</a><a href="">创意配件</a><a href="">便携/无线音箱</a><a href="">手机饰品</a><a href="">拍照配件</a>	
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">摄影摄像<i>></i></a></dt>							
+								<dd>
+									<a href="">数码相机</a><a href="">单电/微单相机</a><a href="">单反相机</a><a href="">拍立得</a><a href="">运动相机</a><a href="">摄像机</a>
+									<a href="">镜头户外器材</a><a href="">影棚器材</a><a href="">冲印服务</a><a href="">数码相框</a>
+								</dd>
+							</dl>							
+						</div>
+						<div class="font-right">
+							<div>
+								<a href="#"><img src="./images/55f7e052N91fe7821.gif"></a><a href="#"><img src="./images/566b9856N9be09c56.png"></a><a href="#"><img src="./images/56302f25N84147dce.jpg"></a><a href="#"><img src="./images/54dac932Nb84e058e.jpg"></a>
+								<a href="#"><img src="./images/54d9d1e9Nfb4684e5.jpg"></a><a href="#"><img src="./images/566e5771N0e6950ee.jpg"></a><a href="#"><img src="./images/55b1d930Nf0bfccbb.jpg"></a><a href="#"><img src="./images/554a11bbN7bb7f655.jpg"></a>
+							</div>
+						</div>
+						<div class="font-righty">
+							<a href="#"><img src="./images/5693228dN146c521c.jpg"></a><a href="#"><img src="./images/56985dc0Nda320512.jpg"></a>
+						</div>
+					</div>
+				</div>
+				<div class="fore-3">
+					<div class="item fore3">
+						<h3>
+							<a href="">电脑、</a>
+							<a href="">办公</a>
+						</h3>
+						<i>></i>
+					</div>
+					<div class="font-item1">
+						<div class="font-left">
+							<div class="one"><a href="">品牌日<i>></i></a></div>
+							<div class="two"><a href="">家电城<i>></i></a></div>
+							<div class="three"><a href="">智能生活馆<i>></i></a></div>
+							<div class="four"><a href="">京东净化馆<i>></i></a></div>
+							<div class="five"><a href="">京东帮服务店<i>></i></a></div>
+							<div class="sex"><a href="">值得买精选<i>></i></a></div>
+						</div>
+						<div class="font-lefty">
+							<dl class="fore1">
+								<dt><a href="">大家电<i>></i></a></dt>
+								<dd>
+									<a href="#">平板电视</a>
+									<a href="#">空调</a>
+									<a href="#">冰箱</a>
+									<a href="#">洗衣机</a>
+									<a href="#">家庭影院</a>
+									<a href="#">DVD</a>
+									<a href="#">迷你音响</a>
+									<a href="#">烟机/灶具</a>
+									<a href="#">热水器</a>
+									<a href="#">消毒具/洗碗柜</a>
+									<a href="#">冰柜/冰吧</a>
+									<a href="#">酒柜</a>
+									<a href="#">家电配件</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">生活电器<i>></i></a></dt>
+								<dd>
+									<a href="#">取暖电器</a>
+									<a href="#">净化器</a>
+									<a href="#">扫地机器人</a>
+									<a href="#">吸尘器</a>
+									<a href="#">加湿器</a>
+									<a href="#">挂烫机/熨斗</a>
+									<a href="#">电风扇</a>
+									<a href="#">冷风扇</a>
+									<a href="#">插座</a>
+									<a href="#">电话机</a>
+									<a href="#">净水器</a>
+									<a href="#">饮水机</a>
+									<a href="#">除湿机</a><a href="">干衣机清洁机</a><a href="">收录/音机</a><a href="">生活电器配件</a><a href="">其它生活电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="###">厨房电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="#">电压力锅</a>
+									<a href="#">豆浆机</a>
+									<a href="#">面包机</a>
+									<a href="#">咖啡机</a>
+									<a href="#">微波炉料理/榨汁机</a>
+									<a href="#">电烤箱</a>
+									<a href="#">电磁炉</a>
+									<a href="#">电饼铛/烧烤盘</a>
+									<a href="#">煮蛋器酸奶机</a>
+									<a href="#">电水壶/热水瓶</a>
+									<a href="#">电炖锅</a>
+									<a href="#">多用途锅</a>
+									<a href="##">果蔬解毒机</a><a href="">养生壶/煎药壶</a><a href="#">其它厨房电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="#">个护健康<i>></i></a></dt>
+							
+								<dd>
+									<a href="#">剃须刀剃/脱毛器</a>
+									<a href="#">口腔护理</a>
+									<a href="#">电吹风</a>
+									<a href="#">美容器</a>
+									<a href="#">理发器卷/直发器</a>
+									<a href="#">按摩椅</a>
+									<a href="#">按摩器</a>
+									<a href="#">足浴盆</a>
+									<a href="#">血压计</a>
+									<a href="#">健康秤/厨房秤</a>
+									<a href="#">血糖仪</a>
+									<a href="#">体温计</a>
+									<a href="#">计步器/脂肪检测仪</a><a href="">脂肪检测仪其它健康电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">五金家装<i>></i></a></dt>
+							
+								<dd>
+									<a href="#">平板电视</a>
+									<a href="#">空调</a>
+									<a href="#">冰箱</a>
+									<a href="#">洗衣机</a>
+									<a href="#">家庭影院</a>
+									<a href="#">DVD</a>
+									<a href="#">迷你音响</a>
+									<a href="#">烟机/灶具</a>
+									<a href="#">热水器</a>
+									<a href="#">消毒具/洗碗柜</a>
+									<a href="#">冰柜/冰吧</a>
+									<a href="#">酒柜</a>
+									<a href="#">家电配件</a>
+								</dd>
+							</dl>
+						</div>
+						<div class="font-right">
+							<div>
+								<a href="#"><img src="./images/562f4971Na5379aba.jpg"></a>
+								<a href="#"><img src="./images/54d9eef9N5bb8d27f.jpg"></a>
+								<a href="#"><img src="./images/54d9ef02N99d26435.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+							</div>
+						</div>
+						<div class="font-righty">
+							<a href="#"><img src="./images/5673a854N10856704.jpg"></a>
+							<a href="#"><img src="./images/56a0376aN7de1bdcf.jpg"></a>
+						</div>
+					</div>
+				</div>
+				<div class="fore-4">
+					<div class="item fore4">
+						<h3>
+							<a href="##">家居、</a>
+							<a href="##">家具、</a>
+							<a href="##">家装、</a>
+							<a href="##">厨具</a>
+						</h3>
+						<i>></i>
+					</div>
+					<div class="font-item1">
+						<div class="font-left">
+							<div class="one"><a href="">品牌日<i>></i></a></div>
+							<div class="two"><a href="">家电城<i>></i></a></div>
+							<div class="three"><a href="">智能生活馆<i>></i></a></div>
+							<div class="four"><a href="">京东净化馆<i>></i></a></div>
+							<div class="five"><a href="">京东帮服务店<i>></i></a></div>
+							<div class="sex"><a href="">值得买精选<i>></i></a></div>
+						</div>
+						<div class="font-lefty">
+							<dl class="fore1">
+								<dt><a href="">大家电<i>></i></a></dt>
+							
+								<dd>
+									<a href="#">平板电视</a>
+									<a href="#">空调</a>
+									<a href="#">冰箱</a>
+									<a href="#">洗衣机</a>
+									<a href="#">家庭影院</a>
+									<a href="#">DVD</a>
+									<a href="#">迷你音响</a>
+									<a href="#">烟机/灶具</a>
+									<a href="#">热水器</a>
+									<a href="#">消毒具/洗碗柜</a>
+									<a href="#">冰柜/冰吧</a>
+									<a href="#">酒柜</a>
+									<a href="#">家电配件</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="#">生活电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="#">取暖电器</a>
+									<a href="#">净化器</a>
+									<a href="#">扫地机器人</a>
+									<a href="#">吸尘器</a>
+									<a href="#">加湿器</a>
+									<a href="#">挂烫机/熨斗</a>
+									<a href="#">电风扇</a>
+									<a href="#">冷风扇</a>
+									<a href="#">插座</a>
+									<a href="#">电话机</a>#
+									<a href="#">净水器</a>
+									<a href="#">饮水机</a>
+									<a href="#">除湿机</a><a href="">干衣机清洁机</a><a href="">收录/音机</a><a href="">生活电器配件</a><a href="">其它生活电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">厨房电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="#">电压力锅</a>
+									<a href="#">豆浆机</a>
+									<a href="#">面包机</a>
+									<a href="#">咖啡机</a>
+									<a href="#">微波炉料理/榨汁机</a>
+									<a href="#">电烤箱</a>
+									<a href="#">电磁炉</a>
+									<a href="#">电饼铛/烧烤盘</a>
+									<a href="#">煮蛋器酸奶机</a>
+									<a href="#">电水壶/热水瓶</a>
+									<a href="#">电炖锅</a>
+									<a href="#">多用途锅</a>
+									<a href="#">果蔬解毒机</a><a href="">养生壶/煎药壶</a><a href="">其它厨房电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="##">个护健康<i>></i></a></dt>
+							
+								<dd>
+									<a href="#">剃须刀剃/脱毛器</a>
+									<a href="#">口腔护理</a>
+									<a href="#">电吹风</a>
+									<a href="#">美容器</a>
+									<a href="#">理发器卷/直发器</a>
+									<a href="#">按摩椅</a>
+									<a href="#">按摩器</a>
+									<a href="#">足浴盆</a>
+									<a href="#">血压计</a>
+									<a href="#">健康秤/厨房秤</a>
+									<a href="#">血糖仪</a>
+									<a href="#">体温计</a>
+									<a href="#">计步器/脂肪检测仪</a><a href="">脂肪检测仪其它健康电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="#">五金家装<i>></i></a></dt>
+							
+								<dd>
+									<a href="#">平板电视</a>
+									<a href="#">空调</a>
+									<a href="#">冰箱</a>
+									<a href="#">洗衣机</a>
+									<a href="#">家庭影院</a>
+									<a href="#">DVD</a>
+									<a href="#">迷你音响</a>
+									<a href="#">烟机/灶具</a>
+									<a href="#">热水器</a>
+									<a href="#">消毒具/洗碗柜</a>
+									<a href="#">冰柜/冰吧</a>
+									<a href="#">酒柜</a>
+									<a href="#">家电配件</a>
+								</dd>
+							</dl>
+						</div>
+						<div class="font-right">
+							<div>
+								<a href="#"><img src="./images/562f4971Na5379aba.jpg"></a>
+								<a href="#"><img src="./images/54d9eef9N5bb8d27f.jpg"></a>
+								<a href="#"><img src="./images/54d9ef02N99d26435.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+							</div>
+						</div>
+						<div class="font-righty">
+							<a href="#"><img src="./images/5673a854N10856704.jpg"></a>
+							<a href="#"><img src="./images/56a0376aN7de1bdcf.jpg"></a>
+						</div>
+					</div>
+				</div>
+				<div class="fore-5">
+					<div class="item fore5">
+						<h3>
+							<a href="##">男装、</a>
+							<a href="##">女装、</a>
+							<a href="##">内衣、</a>
+							<a href="##">珠宝</a>
+						</h3>
+						<i>></i>
+					</div>
+					<div class="font-item1">
+						<div class="font-left">
+							<div class="one"><a href="">品牌日<i>></i></a></div>
+							<div class="two"><a href="">家电城<i>></i></a></div>
+							<div class="three"><a href="">智能生活馆<i>></i></a></div>
+							<div class="four"><a href="">京东净化馆<i>></i></a></div>
+							<div class="five"><a href="">京东帮服务店<i>></i></a></div>
+							<div class="sex"><a href="">值得买精选<i>></i></a></div>
+						</div>
+						<div class="font-lefty">
+							<dl class="fore1">
+								<dt><a href="">大家电<i>></i></a></dt>
+							
+								<dd>
+									<a href="#">平板电视</a>
+									<a href="#">空调</a>
+									<a href="#">冰箱</a>
+									<a href="#">洗衣机</a>
+									<a href="#">家庭影院</a>
+									<a href="#">DVD</a>
+									<a href="#">迷你音响</a>
+									<a href="#">烟机/灶具</a>
+									<a href="#">热水器</a>
+									<a href="#">消毒具/洗碗柜</a>
+									<a href="#">冰柜/冰吧</a>
+									<a href="#">酒柜</a>
+									<a href="#">家电配件</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="##">生活电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="#">取暖电器</a>
+									<a href="#">净化器</a>
+									<a href="#">扫地机器人</a>
+									<a href="#">吸尘器</a>
+									<a href="#">加湿器</a>
+									<a href="#">挂烫机/熨斗</a>
+									<a href="#">电风扇</a>
+									<a href="#">冷风扇</a>
+									<a href="#">插座</a>
+									<a href="#">电话机</a>
+									<a href="#">净水器</a>
+									<a href="#">饮水机</a>
+									<a href="#">除湿机</a><a href="">干衣机清洁机</a><a href="">收录/音机</a><a href="">生活电器配件</a><a href="">其它生活电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="##">厨房电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="#">电压力锅</a>
+									<a href="#">豆浆机</a>
+									<a href="#">面包机</a>
+									<a href="#">咖啡机</a>
+									<a href="#">微波炉料理/榨汁机</a>
+									<a href="#">电烤箱</a>#
+									<a href="#">电磁炉</a>
+									<a href="#">电饼铛/烧烤盘</a>
+									<a href="#">煮蛋器酸奶机</a>
+									<a href="#">电水壶/热水瓶</a>
+									<a href="#">电炖锅</a>
+									<a href="#">多用途锅</a>
+									<a href="#">果蔬解毒机</a><a href="">养生壶/煎药壶</a><a href="">其它厨房电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">个护健康<i>></i></a></dt>
+							
+								<dd>
+									<a href="#">剃须刀剃/脱毛器</a>
+									<a href="#">口腔护理</a>
+									<a href="#">电吹风</a>
+									<a href="#">美容器</a>
+									<a href="#">理发器卷/直发器</a>
+									<a href="#">按摩椅</a>
+									<a href="#">按摩器</a>
+									<a href="#">足浴盆</a>
+									<a href="#">血压计</a>
+									<a href="#">健康秤/厨房秤</a>
+									<a href="#">血糖仪</a>
+									<a href="#">体温计</a>
+									<a href="#">计步器/脂肪检测仪</a><a href="">脂肪检测仪其它健康电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="#">五金家装<i>></i></a></dt>
+							
+								<dd>
+									<a href="#">平板电视</a>
+									<a href="#">空调</a>
+									<a href="#">冰箱</a>
+									<a href="#">洗衣机</a>
+									<a href="#">家庭影院</a>
+									<a href="#">DVD</a>
+									<a href="#">迷你音响</a>
+									<a href="#">烟机/灶具</a>
+									<a href="#">热水器</a>
+									<a href="#">消毒具/洗碗柜</a>
+									<a href="#">冰柜/冰吧</a>
+									<a href="#">酒柜</a>
+									<a href="#">家电配件</a>
+								</dd>
+							</dl>
+						</div>
+						<div class="font-right">
+							<div>
+								<a href="#"><img src="./images/562f4971Na5379aba.jpg"></a>
+								<a href="#"><img src="./images/54d9eef9N5bb8d27f.jpg"></a>
+								<a href="#"><img src="./images/54d9ef02N99d26435.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+							</div>
+						</div>
+						<div class="font-righty">
+							<a href="#"><img src="./images/5673a854N10856704.jpg"></a>
+							<a href="#"><img src="./images/56a0376aN7de1bdcf.jpg"></a>
+						</div>
+					</div>
+				</div>
+				<div class="fore-6">
+					<div class="item fore6">
+						<h3>
+							<a href="">个人化妆、</a>
+							<a href="">清洁用品</a>
+						</h3>
+						<i>></i>
+					</div>
+					<div class="font-item1">
+						<div class="font-left">
+							<div class="one"><a href="">品牌日<i>></i></a></div>
+							<div class="two"><a href="">家电城<i>></i></a></div>
+							<div class="three"><a href="">智能生活馆<i>></i></a></div>
+							<div class="four"><a href="">京东净化馆<i>></i></a></div>
+							<div class="five"><a href="">京东帮服务店<i>></i></a></div>
+							<div class="sex"><a href="">值得买精选<i>></i></a></div>
+						</div>
+						<div class="font-lefty">
+							<dl class="fore1">
+								<dt><a href="">大家电<i>></i></a></dt>
+							
+								<dd>
+									<a href="">平板电视</a>
+									<a href="">空调</a>
+									<a href="">冰箱</a>
+									<a href="">洗衣机</a>
+									<a href="">家庭影院</a>
+									<a href="">DVD</a>
+									<a href="">迷你音响</a>
+									<a href="">烟机/灶具</a>
+									<a href="">热水器</a>
+									<a href="">消毒具/洗碗柜</a>
+									<a href="">冰柜/冰吧</a>
+									<a href="">酒柜</a>
+									<a href="">家电配件</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">生活电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="">取暖电器</a>
+									<a href="">净化器</a>
+									<a href="">扫地机器人</a>
+									<a href="">吸尘器</a>
+									<a href="">加湿器</a>
+									<a href="">挂烫机/熨斗</a>
+									<a href="">电风扇</a>
+									<a href="">冷风扇</a>
+									<a href="">插座</a>
+									<a href="">电话机</a>
+									<a href="">净水器</a>
+									<a href="">饮水机</a>
+									<a href="">除湿机</a><a href="">干衣机清洁机</a><a href="">收录/音机</a><a href="">生活电器配件</a><a href="">其它生活电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">厨房电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="">电压力锅</a>
+									<a href="">豆浆机</a>
+									<a href="">面包机</a>
+									<a href="">咖啡机</a>
+									<a href="">微波炉料理/榨汁机</a>
+									<a href="">电烤箱</a>
+									<a href="">电磁炉</a>
+									<a href="">电饼铛/烧烤盘</a>
+									<a href="">煮蛋器酸奶机</a>
+									<a href="">电水壶/热水瓶</a>
+									<a href="">电炖锅</a>
+									<a href="">多用途锅</a>
+									<a href="">果蔬解毒机</a><a href="">养生壶/煎药壶</a><a href="">其它厨房电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">个护健康<i>></i></a></dt>
+							
+								<dd>
+									<a href="">剃须刀剃/脱毛器</a>
+									<a href="">口腔护理</a>
+									<a href="">电吹风</a>
+									<a href="">美容器</a>
+									<a href="">理发器卷/直发器</a>
+									<a href="">按摩椅</a>
+									<a href="">按摩器</a>
+									<a href="">足浴盆</a>
+									<a href="">血压计</a>
+									<a href="">健康秤/厨房秤</a>
+									<a href="">血糖仪</a>
+									<a href="">体温计</a>
+									<a href="">计步器/脂肪检测仪</a><a href="">脂肪检测仪其它健康电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">五金家装<i>></i></a></dt>
+							
+								<dd>
+									<a href="">平板电视</a>
+									<a href="">空调</a>
+									<a href="">冰箱</a>
+									<a href="">洗衣机</a>
+									<a href="">家庭影院</a>
+									<a href="">DVD</a>
+									<a href="">迷你音响</a>
+									<a href="">烟机/灶具</a>
+									<a href="">热水器</a>
+									<a href="">消毒具/洗碗柜</a>
+									<a href="">冰柜/冰吧</a>
+									<a href="">酒柜</a>
+									<a href="">家电配件</a>
+								</dd>
+							</dl>
+						</div>
+						<div class="font-right">
+							<div>
+								<a href="#"><img src="./images/562f4971Na5379aba.jpg"></a>
+								<a href="#"><img src="./images/54d9eef9N5bb8d27f.jpg"></a>
+								<a href="#"><img src="./images/54d9ef02N99d26435.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+							</div>
+						</div>
+						<div class="font-righty">
+							<a href="#"><img src="./images/5673a854N10856704.jpg"></a>
+							<a href="#"><img src="./images/56a0376aN7de1bdcf.jpg"></a>
+						</div>
+					</div>
+				</div>
+				<div class="fore-7">
+					<div class="item fore7">
+						<h3>
+							<a href="">鞋靴、</a>
+							<a href="">箱包、</a>
+							<a href="">钟表、</a>
+							<a href="">奢饰品</a>
+						</h3>
+						<i>></i>
+					</div>
+					<div class="font-item1">
+						<div class="font-left">
+							<div class="one"><a href="">品牌日<i>></i></a></div>
+							<div class="two"><a href="">家电城<i>></i></a></div>
+							<div class="three"><a href="">智能生活馆<i>></i></a></div>
+							<div class="four"><a href="">京东净化馆<i>></i></a></div>
+							<div class="five"><a href="">京东帮服务店<i>></i></a></div>
+							<div class="sex"><a href="">值得买精选<i>></i></a></div>
+						</div>
+						<div class="font-lefty">
+							<dl class="fore1">
+								<dt><a href="">大家电<i>></i></a></dt>
+							
+								<dd>
+									<a href="">平板电视</a>
+									<a href="">空调</a>
+									<a href="">冰箱</a>
+									<a href="">洗衣机</a>
+									<a href="">家庭影院</a>
+									<a href="">DVD</a>
+									<a href="">迷你音响</a>
+									<a href="">烟机/灶具</a>
+									<a href="">热水器</a>
+									<a href="">消毒具/洗碗柜</a>
+									<a href="">冰柜/冰吧</a>
+									<a href="">酒柜</a>
+									<a href="">家电配件</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">生活电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="">取暖电器</a>
+									<a href="">净化器</a>
+									<a href="">扫地机器人</a>
+									<a href="">吸尘器</a>
+									<a href="">加湿器</a>
+									<a href="">挂烫机/熨斗</a>
+									<a href="">电风扇</a>
+									<a href="">冷风扇</a>
+									<a href="">插座</a>
+									<a href="">电话机</a>
+									<a href="">净水器</a>
+									<a href="">饮水机</a>
+									<a href="">除湿机</a><a href="">干衣机清洁机</a><a href="">收录/音机</a><a href="">生活电器配件</a><a href="">其它生活电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">厨房电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="">电压力锅</a>
+									<a href="">豆浆机</a>
+									<a href="">面包机</a>
+									<a href="">咖啡机</a>
+									<a href="">微波炉料理/榨汁机</a>
+									<a href="">电烤箱</a>
+									<a href="">电磁炉</a>
+									<a href="">电饼铛/烧烤盘</a>
+									<a href="">煮蛋器酸奶机</a>
+									<a href="">电水壶/热水瓶</a>
+									<a href="">电炖锅</a>
+									<a href="">多用途锅</a>
+									<a href="">果蔬解毒机</a><a href="">养生壶/煎药壶</a><a href="">其它厨房电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">个护健康<i>></i></a></dt>
+							
+								<dd>
+									<a href="">剃须刀剃/脱毛器</a>
+									<a href="">口腔护理</a>
+									<a href="">电吹风</a>
+									<a href="">美容器</a>
+									<a href="">理发器卷/直发器</a>
+									<a href="">按摩椅</a>
+									<a href="">按摩器</a>
+									<a href="">足浴盆</a>
+									<a href="">血压计</a>
+									<a href="">健康秤/厨房秤</a>
+									<a href="">血糖仪</a>
+									<a href="">体温计</a>
+									<a href="">计步器/脂肪检测仪</a><a href="">脂肪检测仪其它健康电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">五金家装<i>></i></a></dt>
+							
+								<dd>
+									<a href="">平板电视</a>
+									<a href="">空调</a>
+									<a href="">冰箱</a>
+									<a href="">洗衣机</a>
+									<a href="">家庭影院</a>
+									<a href="">DVD</a>
+									<a href="">迷你音响</a>
+									<a href="">烟机/灶具</a>
+									<a href="">热水器</a>
+									<a href="">消毒具/洗碗柜</a>
+									<a href="">冰柜/冰吧</a>
+									<a href="">酒柜</a>
+									<a href="">家电配件</a>
+								</dd>
+							</dl>
+						</div>
+						<div class="font-right">
+							<div>
+								<a href="#"><img src="./images/562f4971Na5379aba.jpg"></a>
+								<a href="#"><img src="./images/54d9eef9N5bb8d27f.jpg"></a>
+								<a href="#"><img src="./images/54d9ef02N99d26435.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+							</div>
+						</div>
+						<div class="font-righty">
+							<a href="#"><img src="./images/5673a854N10856704.jpg"></a>
+							<a href="#"><img src="./images/56a0376aN7de1bdcf.jpg"></a>
+						</div>
+					</div>
+				</div>
+				<div class="fore-8">
+					<div class="item fore8">
+						<h3><a href="">运动户外</a></h3>
+						<i>></i>
+					</div>
+					<div class="font-item1">
+						<div class="font-left">
+							<div class="one"><a href="">品牌日<i>></i></a></div>
+							<div class="two"><a href="">家电城<i>></i></a></div>
+							<div class="three"><a href="">智能生活馆<i>></i></a></div>
+							<div class="four"><a href="">京东净化馆<i>></i></a></div>
+							<div class="five"><a href="">京东帮服务店<i>></i></a></div>
+							<div class="sex"><a href="">值得买精选<i>></i></a></div>
+						</div>
+						<div class="font-lefty">
+							<dl class="fore1">
+								<dt><a href="">大家电<i>></i></a></dt>
+							
+								<dd>
+									<a href="">平板电视</a>
+									<a href="">空调</a>
+									<a href="">冰箱</a>
+									<a href="">洗衣机</a>
+									<a href="">家庭影院</a>
+									<a href="">DVD</a>
+									<a href="">迷你音响</a>
+									<a href="">烟机/灶具</a>
+									<a href="">热水器</a>
+									<a href="">消毒具/洗碗柜</a>
+									<a href="">冰柜/冰吧</a>
+									<a href="">酒柜</a>
+									<a href="">家电配件</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">生活电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="">取暖电器</a>
+									<a href="">净化器</a>
+									<a href="">扫地机器人</a>
+									<a href="">吸尘器</a>
+									<a href="">加湿器</a>
+									<a href="">挂烫机/熨斗</a>
+									<a href="">电风扇</a>
+									<a href="">冷风扇</a>
+									<a href="">插座</a>
+									<a href="">电话机</a>
+									<a href="">净水器</a>
+									<a href="">饮水机</a>
+									<a href="">除湿机</a><a href="">干衣机清洁机</a><a href="">收录/音机</a><a href="">生活电器配件</a><a href="">其它生活电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">厨房电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="">电压力锅</a>
+									<a href="">豆浆机</a>
+									<a href="">面包机</a>
+									<a href="">咖啡机</a>
+									<a href="">微波炉料理/榨汁机</a>
+									<a href="">电烤箱</a>
+									<a href="">电磁炉</a>
+									<a href="">电饼铛/烧烤盘</a>
+									<a href="">煮蛋器酸奶机</a>
+									<a href="">电水壶/热水瓶</a>
+									<a href="">电炖锅</a>
+									<a href="">多用途锅</a>
+									<a href="">果蔬解毒机</a><a href="">养生壶/煎药壶</a><a href="">其它厨房电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">个护健康<i>></i></a></dt>
+							
+								<dd>
+									<a href="">剃须刀剃/脱毛器</a>
+									<a href="">口腔护理</a>
+									<a href="">电吹风</a>
+									<a href="">美容器</a>
+									<a href="">理发器卷/直发器</a>
+									<a href="">按摩椅</a>
+									<a href="">按摩器</a>
+									<a href="">足浴盆</a>
+									<a href="">血压计</a>
+									<a href="">健康秤/厨房秤</a>
+									<a href="">血糖仪</a>
+									<a href="">体温计</a>
+									<a href="">计步器/脂肪检测仪</a><a href="">脂肪检测仪其它健康电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">五金家装<i>></i></a></dt>
+							
+								<dd>
+									<a href="">平板电视</a>
+									<a href="">空调</a>
+									<a href="">冰箱</a>
+									<a href="">洗衣机</a>
+									<a href="">家庭影院</a>
+									<a href="">DVD</a>
+									<a href="">迷你音响</a>
+									<a href="">烟机/灶具</a>
+									<a href="">热水器</a>
+									<a href="">消毒具/洗碗柜</a>
+									<a href="">冰柜/冰吧</a>
+									<a href="">酒柜</a>
+									<a href="">家电配件</a>
+								</dd>
+							</dl>
+						</div>
+						<div class="font-right">
+							<div>
+								<a href="#"><img src="./images/562f4971Na5379aba.jpg"></a>
+								<a href="#"><img src="./images/54d9eef9N5bb8d27f.jpg"></a>
+								<a href="#"><img src="./images/54d9ef02N99d26435.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+							</div>
+						</div>
+						<div class="font-righty">
+							<a href="#"><img src="./images/5673a854N10856704.jpg"></a>
+							<a href="#"><img src="./images/56a0376aN7de1bdcf.jpg"></a>
+						</div>
+					</div>
+				</div>
+				<div class="fore-9">
+					<div class="item fore9">
+						<h3>
+							<a href="">汽车、</a>
+							<a href="">汽车用品</a>
+						</h3>
+						<i>></i>
+					</div>
+					<div class="font-item1">
+						<div class="font-left">
+							<div class="one"><a href="">品牌日<i>></i></a></div>
+							<div class="two"><a href="">家电城<i>></i></a></div>
+							<div class="three"><a href="">智能生活馆<i>></i></a></div>
+							<div class="four"><a href="">京东净化馆<i>></i></a></div>
+							<div class="five"><a href="">京东帮服务店<i>></i></a></div>
+							<div class="sex"><a href="">值得买精选<i>></i></a></div>
+						</div>
+						<div class="font-lefty">
+							<dl class="fore1">
+								<dt><a href="">大家电<i>></i></a></dt>							
+								<dd>
+									<a href="">平板电视</a><a href="">空调</a><a href="">冰箱</a><a href="">洗衣机</a><a href="">家庭影院</a><a href="">DVD</a><a href="">烟机/灶具</a>
+									<a href="">热水器</a><a href="">消毒具/洗碗柜</a><a href="">冰柜/冰吧</a><a href="">酒柜</a><a href="">家电配件</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">生活电器<i>></i></a></dt>							
+								<dd>
+									<a href="">取暖电器</a><a href="">净化器</a><a href="">扫地机器人</a><a href="">吸尘器</a><a href="">加湿器</a><a href="">挂烫机/熨斗</a><a href="">电风扇</a>
+									<a href="">冷风扇</a><a href="">插座</a><a href="">电话机</a><a href="">净水器</a><a href="">饮水机</a>
+									<a href="">除湿机</a><a href="">干衣机清洁机</a><a href="">收录/音机</a><a href="">生活电器配件</a><a href="">其它生活电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">厨房电器<i>></i></a></dt>							
+								<dd>
+									<a href="">电压力锅</a><a href="">豆浆机</a><a href="">面包机</a><a href="">咖啡机</a><a href="">微波炉料理/榨汁机</a><a href="">电烤箱</a><a href="">电磁炉</a>
+									<a href="">电饼铛/烧烤盘</a><a href="">煮蛋器酸奶机</a><a href="">电水壶/热水瓶</a><a href="">电炖锅</a><a href="">多用途锅</a><a href="">果蔬解毒机</a><a href="">养生壶/煎药壶</a><a href="">其它厨房电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">个护健康<i>></i></a></dt>
+								<dd>
+									<a href="">剃须刀剃/脱毛器</a><a href="">口腔护理</a><a href="">电吹风</a><a href="">美容器</a><a href="">理发器卷/直发器</a><a href="">按摩椅</a><a href="">按摩器</a>
+									<a href="">足浴盆</a><a href="">血压计</a><a href="">健康秤/厨房秤</a><a href="">血糖仪</a><a href="">体温计</a><a href="">计步器/脂肪检测仪</a><a href="">脂肪检测仪其它健康电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">五金家装<i>></i></a></dt>
+								<dd>
+									<a href="">平板电视</a><a href="">空调</a><a href="">冰箱</a><a href="">洗衣机</a><a href="">家庭影院</a><a href="">DVD</a><a href="">迷你音响</a>
+									<a href="">烟机/灶具</a><a href="">热水器</a><a href="">消毒具/洗碗柜</a><a href="">冰柜/冰吧</a><a href="">酒柜</a><a href="">家电配件</a>
+								</dd>
+							</dl>
+						</div>
+						<div class="font-right">
+							<div>
+								<a href="#"><img src="./images/562f4971Na5379aba.jpg"></a>
+								<a href="#"><img src="./images/54d9eef9N5bb8d27f.jpg"></a>
+								<a href="#"><img src="./images/54d9ef02N99d26435.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef28N00328d44.jpg"></a>
+								<a href="#"><img src="./images/54d9ef34N7cc61f4c.jpg"></a>
+								<a href="#"><img src="./images/54d9ef3eN99aef1f0.jpg"></a>
+								<a href="#"><img src="./images/54d9ef4cN4fe57f9b.jpg"></a>
+							</div>
+						</div>
+						<div class="font-righty">
+							<a href="#"><img src="./images/5673a854N10856704.jpg"></a>
+							<a href="#"><img src="./images/56a0376aN7de1bdcf.jpg"></a>
+						</div>
+					</div>
+				</div>
+				<div class="fore-10">
+					<div class="item fore10">
+						<h3>
+							<a href="">母婴、</a>
+							<a href="">玩具乐器</a>
+						</h3>
+						<i>></i>
+					</div>
+					<div class="font-item1">
+						<div class="font-left">
+							<div class="one"><a href="">品牌日<i>></i></a></div>
+							<div class="two"><a href="">家电城<i>></i></a></div>
+							<div class="three"><a href="">智能生活馆<i>></i></a></div>
+							<div class="four"><a href="">京东净化馆<i>></i></a></div>
+							<div class="five"><a href="">京东帮服务店<i>></i></a></div>
+							<div class="sex"><a href="">值得买精选<i>></i></a></div>
+						</div>
+						<div class="font-lefty">
+							<dl class="fore1">
+								<dt><a href="">大家电<i>></i></a></dt>
+							
+								<dd>
+									<a href="">平板电视</a>
+									<a href="">空调</a>
+									<a href="">冰箱</a>
+									<a href="">洗衣机</a>
+									<a href="">家庭影院</a>
+									<a href="">DVD</a>
+									<a href="">迷你音响</a>
+									<a href="">烟机/灶具</a>
+									<a href="">热水器</a>
+									<a href="">消毒具/洗碗柜</a>
+									<a href="">冰柜/冰吧</a>
+									<a href="">酒柜</a>
+									<a href="">家电配件</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">生活电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="">取暖电器</a>
+									<a href="">净化器</a>
+									<a href="">扫地机器人</a>
+									<a href="">吸尘器</a>
+									<a href="">加湿器</a>
+									<a href="">挂烫机/熨斗</a>
+									<a href="">电风扇</a>
+									<a href="">冷风扇</a>
+									<a href="">插座</a>
+									<a href="">电话机</a>
+									<a href="">净水器</a>
+									<a href="">饮水机</a>
+									<a href="">除湿机</a><a href="">干衣机清洁机</a><a href="">收录/音机</a><a href="">生活电器配件</a><a href="">其它生活电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">厨房电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="">电压力锅</a>
+									<a href="">豆浆机</a>
+									<a href="">面包机</a>
+									<a href="">咖啡机</a>
+									<a href="">微波炉料理/榨汁机</a>
+									<a href="">电烤箱</a>
+									<a href="">电磁炉</a>
+									<a href="">电饼铛/烧烤盘</a>
+									<a href="">煮蛋器酸奶机</a>
+									<a href="">电水壶/热水瓶</a>
+									<a href="">电炖锅</a>
+									<a href="">多用途锅</a>
+									<a href="">果蔬解毒机</a><a href="">养生壶/煎药壶</a><a href="">其它厨房电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">个护健康<i>></i></a></dt>
+							
+								<dd>
+									<a href="">剃须刀剃/脱毛器</a>
+									<a href="">口腔护理</a>
+									<a href="">电吹风</a>
+									<a href="">美容器</a>
+									<a href="">理发器卷/直发器</a>
+									<a href="">按摩椅</a>
+									<a href="">按摩器</a>
+									<a href="">足浴盆</a>
+									<a href="">血压计</a>
+									<a href="">健康秤/厨房秤</a>
+									<a href="">血糖仪</a>
+									<a href="">体温计</a>
+									<a href="">计步器/脂肪检测仪</a><a href="">脂肪检测仪其它健康电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">五金家装<i>></i></a></dt>
+							
+								<dd>
+									<a href="">平板电视</a>
+									<a href="">空调</a>
+									<a href="">冰箱</a>
+									<a href="">洗衣机</a>
+									<a href="">家庭影院</a>
+									<a href="">DVD</a>
+									<a href="">迷你音响</a>
+									<a href="">烟机/灶具</a>
+									<a href="">热水器</a>
+									<a href="">消毒具/洗碗柜</a>
+									<a href="">冰柜/冰吧</a>
+									<a href="">酒柜</a>
+									<a href="">家电配件</a>
+								</dd>
+							</dl>
+						</div>
+						<div class="font-right">
+							<div>
+								<a href="#"><img src="./images/562f4971Na5379aba.jpg"></a>
+								<a href="#"><img src="./images/54d9eef9N5bb8d27f.jpg"></a>
+								<a href="#"><img src="./images/54d9ef02N99d26435.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+							</div>
+						</div>
+						<div class="font-righty">
+							<a href="#"><img src="./images/5673a854N10856704.jpg"></a>
+							<a href="#"><img src="./images/56a0376aN7de1bdcf.jpg"></a>
+						</div>
+					</div>
+				</div>
+				<div class="fore-12">
+					<div class="item fore11">
+						<h3>
+							<a href="">食品、</a>
+							<a href="">酒类、</a>
+							<a href="">生鲜、</a>
+							<a href="">特产</a>
+						</h3>
+						<i>></i>
+					</div>
+					<div class="font-item1">
+						<div class="font-left">
+							<div class="one"><a href="">品牌日<i>></i></a></div>
+							<div class="two"><a href="">家电城<i>></i></a></div>
+							<div class="three"><a href="">智能生活馆<i>></i></a></div>
+							<div class="four"><a href="">京东净化馆<i>></i></a></div>
+							<div class="five"><a href="">京东帮服务店<i>></i></a></div>
+							<div class="sex"><a href="">值得买精选<i>></i></a></div>
+						</div>
+						<div class="font-lefty">
+							<dl class="fore1">
+								<dt><a href="">大家电<i>></i></a></dt>
+							
+								<dd>
+									<a href="">平板电视</a>
+									<a href="">空调</a>
+									<a href="">冰箱</a>
+									<a href="">洗衣机</a>
+									<a href="">家庭影院</a>
+									<a href="">DVD</a>
+									<a href="">迷你音响</a>
+									<a href="">烟机/灶具</a>
+									<a href="">热水器</a>
+									<a href="">消毒具/洗碗柜</a>
+									<a href="">冰柜/冰吧</a>
+									<a href="">酒柜</a>
+									<a href="">家电配件</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">生活电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="">取暖电器</a>
+									<a href="">净化器</a>
+									<a href="">扫地机器人</a>
+									<a href="">吸尘器</a>
+									<a href="">加湿器</a>
+									<a href="">挂烫机/熨斗</a>
+									<a href="">电风扇</a>
+									<a href="">冷风扇</a>
+									<a href="">插座</a>
+									<a href="">电话机</a>
+									<a href="">净水器</a>
+									<a href="">饮水机</a>
+									<a href="">除湿机</a><a href="">干衣机清洁机</a><a href="">收录/音机</a><a href="">生活电器配件</a><a href="">其它生活电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">厨房电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="">电压力锅</a>
+									<a href="">豆浆机</a>
+									<a href="">面包机</a>
+									<a href="">咖啡机</a>
+									<a href="">微波炉料理/榨汁机</a>
+									<a href="">电烤箱</a>
+									<a href="">电磁炉</a>
+									<a href="">电饼铛/烧烤盘</a>
+									<a href="">煮蛋器酸奶机</a>
+									<a href="">电水壶/热水瓶</a>
+									<a href="">电炖锅</a>
+									<a href="">多用途锅</a>
+									<a href="">果蔬解毒机</a><a href="">养生壶/煎药壶</a><a href="">其它厨房电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">个护健康<i>></i></a></dt>
+							
+								<dd>
+									<a href="">剃须刀剃/脱毛器</a>
+									<a href="">口腔护理</a>
+									<a href="">电吹风</a>
+									<a href="">美容器</a>
+									<a href="">理发器卷/直发器</a>
+									<a href="">按摩椅</a>
+									<a href="">按摩器</a>
+									<a href="">足浴盆</a>
+									<a href="">血压计</a>
+									<a href="">健康秤/厨房秤</a>
+									<a href="">血糖仪</a>
+									<a href="">体温计</a>
+									<a href="">计步器/脂肪检测仪</a><a href="">脂肪检测仪其它健康电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">五金家装<i>></i></a></dt>
+							
+								<dd>
+									<a href="">平板电视</a>
+									<a href="">空调</a>
+									<a href="">冰箱</a>
+									<a href="">洗衣机</a>
+									<a href="">家庭影院</a>
+									<a href="">DVD</a>
+									<a href="">迷你音响</a>
+									<a href="">烟机/灶具</a>
+									<a href="">热水器</a>
+									<a href="">消毒具/洗碗柜</a>
+									<a href="">冰柜/冰吧</a>
+									<a href="">酒柜</a>
+									<a href="">家电配件</a>
+								</dd>
+							</dl>
+						</div>
+						<div class="font-right">
+							<div>
+								<a href="#"><img src="./images/562f4971Na5379aba.jpg"></a>
+								<a href="#"><img src="./images/54d9eef9N5bb8d27f.jpg"></a>
+								<a href="#"><img src="./images/54d9ef02N99d26435.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+							</div>
+						</div>
+						<div class="font-righty">
+							<a href="#"><img src="./images/5673a854N10856704.jpg"></a>
+							<a href="#"><img src="./images/56a0376aN7de1bdcf.jpg"></a>
+						</div>
+					</div>
+				</div>
+				<div class="fore-12">
+					<div class="item fore12">
+						<h3><a href="">营养保健</a></h3>
+						<i>></i>
+					</div>
+					<div class="font-item1">
+						<div class="font-left">
+							<div class="one"><a href="">品牌日<i>></i></a></div>
+							<div class="two"><a href="">家电城<i>></i></a></div>
+							<div class="three"><a href="">智能生活馆<i>></i></a></div>
+							<div class="four"><a href="">京东净化馆<i>></i></a></div>
+							<div class="five"><a href="">京东帮服务店<i>></i></a></div>
+							<div class="sex"><a href="">值得买精选<i>></i></a></div>
+						</div>
+						<div class="font-lefty">
+							<dl class="fore1">
+								<dt><a href="">大家电<i>></i></a></dt>
+							
+								<dd>
+									<a href="">平板电视</a>
+									<a href="">空调</a>
+									<a href="">冰箱</a>
+									<a href="">洗衣机</a>
+									<a href="">家庭影院</a>
+									<a href="">DVD</a>
+									<a href="">迷你音响</a>
+									<a href="">烟机/灶具</a>
+									<a href="">热水器</a>
+									<a href="">消毒具/洗碗柜</a>
+									<a href="">冰柜/冰吧</a>
+									<a href="">酒柜</a>
+									<a href="">家电配件</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">生活电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="">取暖电器</a>
+									<a href="">净化器</a>
+									<a href="">扫地机器人</a>
+									<a href="">吸尘器</a>
+									<a href="">加湿器</a>
+									<a href="">挂烫机/熨斗</a>
+									<a href="">电风扇</a>
+									<a href="">冷风扇</a>
+									<a href="">插座</a>
+									<a href="">电话机</a>
+									<a href="">净水器</a>
+									<a href="">饮水机</a>
+									<a href="">除湿机</a><a href="">干衣机清洁机</a><a href="">收录/音机</a><a href="">生活电器配件</a><a href="">其它生活电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">厨房电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="">电压力锅</a>
+									<a href="">豆浆机</a>
+									<a href="">面包机</a>
+									<a href="">咖啡机</a>
+									<a href="">微波炉料理/榨汁机</a>
+									<a href="">电烤箱</a>
+									<a href="">电磁炉</a>
+									<a href="">电饼铛/烧烤盘</a>
+									<a href="">煮蛋器酸奶机</a>
+									<a href="">电水壶/热水瓶</a>
+									<a href="">电炖锅</a>
+									<a href="">多用途锅</a>
+									<a href="">果蔬解毒机</a><a href="">养生壶/煎药壶</a><a href="">其它厨房电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">个护健康<i>></i></a></dt>
+							
+								<dd>
+									<a href="">剃须刀剃/脱毛器</a>
+									<a href="">口腔护理</a>
+									<a href="">电吹风</a>
+									<a href="">美容器</a>
+									<a href="">理发器卷/直发器</a>
+									<a href="">按摩椅</a>
+									<a href="">按摩器</a>
+									<a href="">足浴盆</a>
+									<a href="">血压计</a>
+									<a href="">健康秤/厨房秤</a>
+									<a href="">血糖仪</a>
+									<a href="">体温计</a>
+									<a href="">计步器/脂肪检测仪</a><a href="">脂肪检测仪其它健康电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">五金家装<i>></i></a></dt>
+							
+								<dd>
+									<a href="">平板电视</a>
+									<a href="">空调</a>
+									<a href="">冰箱</a>
+									<a href="">洗衣机</a>
+									<a href="">家庭影院</a>
+									<a href="">DVD</a>
+									<a href="">迷你音响</a>
+									<a href="">烟机/灶具</a>
+									<a href="">热水器</a>
+									<a href="">消毒具/洗碗柜</a>
+									<a href="">冰柜/冰吧</a>
+									<a href="">酒柜</a>
+									<a href="">家电配件</a>
+								</dd>
+							</dl>
+						</div>
+						<div class="font-right">
+							<div>
+								<a href="#"><img src="./images/562f4971Na5379aba.jpg"></a>
+								<a href="#"><img src="./images/54d9eef9N5bb8d27f.jpg"></a>
+								<a href="#"><img src="./images/54d9ef02N99d26435.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+							</div>
+						</div>
+						<div class="font-righty">
+							<a href="#"><img src="./images/5673a854N10856704.jpg"></a>
+							<a href="#"><img src="./images/56a0376aN7de1bdcf.jpg"></a>
+						</div>
+					</div>
+				</div>
+				<div class="fore-13">
+					<div class="item fore13">
+						<h3>
+							<a href="">图书、</a>
+							<a href="">音像、</a>
+							<a href="">电子书</a>
+						</h3>
+						<i>></i>
+					</div>
+					<div class="font-item1">
+						<div class="font-left">
+							<div class="one"><a href="">品牌日<i>></i></a></div>
+							<div class="two"><a href="">家电城<i>></i></a></div>
+							<div class="three"><a href="">智能生活馆<i>></i></a></div>
+							<div class="four"><a href="">京东净化馆<i>></i></a></div>
+							<div class="five"><a href="">京东帮服务店<i>></i></a></div>
+							<div class="sex"><a href="">值得买精选<i>></i></a></div>
+						</div>
+						<div class="font-lefty">
+							<dl class="fore1">
+								<dt><a href="">大家电<i>></i></a></dt>
+							
+								<dd>
+									<a href="">平板电视</a>
+									<a href="">空调</a>
+									<a href="">冰箱</a>
+									<a href="">洗衣机</a>
+									<a href="">家庭影院</a>
+									<a href="">DVD</a>
+									<a href="">迷你音响</a>
+									<a href="">烟机/灶具</a>
+									<a href="">热水器</a>
+									<a href="">消毒具/洗碗柜</a>
+									<a href="">冰柜/冰吧</a>
+									<a href="">酒柜</a>
+									<a href="">家电配件</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">生活电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="">取暖电器</a>
+									<a href="">净化器</a>
+									<a href="">扫地机器人</a>
+									<a href="">吸尘器</a>
+									<a href="">加湿器</a>
+									<a href="">挂烫机/熨斗</a>
+									<a href="">电风扇</a>
+									<a href="">冷风扇</a>
+									<a href="">插座</a>
+									<a href="">电话机</a>
+									<a href="">净水器</a>
+									<a href="">饮水机</a>
+									<a href="">除湿机</a><a href="">干衣机清洁机</a><a href="">收录/音机</a><a href="">生活电器配件</a><a href="">其它生活电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">厨房电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="">电压力锅</a>
+									<a href="">豆浆机</a>
+									<a href="">面包机</a>
+									<a href="">咖啡机</a>
+									<a href="">微波炉料理/榨汁机</a>
+									<a href="">电烤箱</a>
+									<a href="">电磁炉</a>
+									<a href="">电饼铛/烧烤盘</a>
+									<a href="">煮蛋器酸奶机</a>
+									<a href="">电水壶/热水瓶</a>
+									<a href="">电炖锅</a>
+									<a href="">多用途锅</a>
+									<a href="">果蔬解毒机</a><a href="">养生壶/煎药壶</a><a href="">其它厨房电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">个护健康<i>></i></a></dt>
+							
+								<dd>
+									<a href="">剃须刀剃/脱毛器</a>
+									<a href="">口腔护理</a>
+									<a href="">电吹风</a>
+									<a href="">美容器</a>
+									<a href="">理发器卷/直发器</a>
+									<a href="">按摩椅</a>
+									<a href="">按摩器</a>
+									<a href="">足浴盆</a>
+									<a href="">血压计</a>
+									<a href="">健康秤/厨房秤</a>
+									<a href="">血糖仪</a>
+									<a href="">体温计</a>
+									<a href="">计步器/脂肪检测仪</a><a href="">脂肪检测仪其它健康电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">五金家装<i>></i></a></dt>
+							
+								<dd>
+									<a href="">平板电视</a>
+									<a href="">空调</a>
+									<a href="">冰箱</a>
+									<a href="">洗衣机</a>
+									<a href="">家庭影院</a>
+									<a href="">DVD</a>
+									<a href="">迷你音响</a>
+									<a href="">烟机/灶具</a>
+									<a href="">热水器</a>
+									<a href="">消毒具/洗碗柜</a>
+									<a href="">冰柜/冰吧</a>
+									<a href="">酒柜</a>
+									<a href="">家电配件</a>
+								</dd>
+							</dl>
+						</div>
+						<div class="font-right">
+							<div>
+								<a href="#"><img src="./images/562f4971Na5379aba.jpg"></a>
+								<a href="#"><img src="./images/54d9eef9N5bb8d27f.jpg"></a>
+								<a href="#"><img src="./images/54d9ef02N99d26435.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+							</div>
+						</div>
+						<div class="font-righty">
+							<a href="#"><img src="./images/5673a854N10856704.jpg"></a>
+							<a href="#"><img src="./images/56a0376aN7de1bdcf.jpg"></a>
+						</div>
+					</div>
+				</div>
+				<div class="fore-14">
+					<div class="item fore14">
+						<h3>
+							<a href="">彩票、</a>
+							<a href="">旅行、</a>
+							<a href="">充值、</a>
+							<a href="">票务</a>
+						</h3>
+						<i>></i>
+					</div>
+					<div class="font-item1">
+						<div class="font-left">
+							<div class="one"><a href="">品牌日<i>></i></a></div>
+							<div class="two"><a href="">家电城<i>></i></a></div>
+							<div class="three"><a href="">智能生活馆<i>></i></a></div>
+							<div class="four"><a href="">京东净化馆<i>></i></a></div>
+							<div class="five"><a href="">京东帮服务店<i>></i></a></div>
+							<div class="sex"><a href="">值得买精选<i>></i></a></div>
+						</div>
+						<div class="font-lefty">
+							<dl class="fore1">
+								<dt><a href="">大家电<i>></i></a></dt>
+							
+								<dd>
+									<a href="">平板电视</a>
+									<a href="">空调</a>
+									<a href="">冰箱</a>
+									<a href="">洗衣机</a>
+									<a href="">家庭影院</a>
+									<a href="">DVD</a>
+									<a href="">迷你音响</a>
+									<a href="">烟机/灶具</a>
+									<a href="">热水器</a>
+									<a href="">消毒具/洗碗柜</a>
+									<a href="">冰柜/冰吧</a>
+									<a href="">酒柜</a>
+									<a href="">家电配件</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">生活电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="">取暖电器</a>
+									<a href="">净化器</a>
+									<a href="">扫地机器人</a>
+									<a href="">吸尘器</a>
+									<a href="">加湿器</a>
+									<a href="">挂烫机/熨斗</a>
+									<a href="">电风扇</a>
+									<a href="">冷风扇</a>
+									<a href="">插座</a>
+									<a href="">电话机</a>
+									<a href="">净水器</a>
+									<a href="">饮水机</a>
+									<a href="">除湿机</a><a href="">干衣机清洁机</a><a href="">收录/音机</a><a href="">生活电器配件</a><a href="">其它生活电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">厨房电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="">电压力锅</a>
+									<a href="">豆浆机</a>
+									<a href="">面包机</a>
+									<a href="">咖啡机</a>
+									<a href="">微波炉料理/榨汁机</a>
+									<a href="">电烤箱</a>
+									<a href="">电磁炉</a>
+									<a href="">电饼铛/烧烤盘</a>
+									<a href="">煮蛋器酸奶机</a>
+									<a href="">电水壶/热水瓶</a>
+									<a href="">电炖锅</a>
+									<a href="">多用途锅</a>
+									<a href="">果蔬解毒机</a><a href="">养生壶/煎药壶</a><a href="">其它厨房电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">个护健康<i>></i></a></dt>
+							
+								<dd>
+									<a href="">剃须刀剃/脱毛器</a>
+									<a href="">口腔护理</a>
+									<a href="">电吹风</a>
+									<a href="">美容器</a>
+									<a href="">理发器卷/直发器</a>
+									<a href="">按摩椅</a>
+									<a href="">按摩器</a>
+									<a href="">足浴盆</a>
+									<a href="">血压计</a>
+									<a href="">健康秤/厨房秤</a>
+									<a href="">血糖仪</a>
+									<a href="">体温计</a>
+									<a href="">计步器/脂肪检测仪</a><a href="">脂肪检测仪其它健康电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">五金家装<i>></i></a></dt>
+							
+								<dd>
+									<a href="">平板电视</a>
+									<a href="">空调</a>
+									<a href="">冰箱</a>
+									<a href="">洗衣机</a>
+									<a href="">家庭影院</a>
+									<a href="">DVD</a>
+									<a href="">迷你音响</a>
+									<a href="">烟机/灶具</a>
+									<a href="">热水器</a>
+									<a href="">消毒具/洗碗柜</a>
+									<a href="">冰柜/冰吧</a>
+									<a href="">酒柜</a>
+									<a href="">家电配件</a>
+								</dd>
+							</dl>
+						</div>
+						<div class="font-right">
+							<div>
+								<a href="#"><img src="./images/562f4971Na5379aba.jpg"></a>
+								<a href="#"><img src="./images/54d9eef9N5bb8d27f.jpg"></a>
+								<a href="#"><img src="./images/54d9ef02N99d26435.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+							</div>
+						</div>
+						<div class="font-righty">
+							<a href="#"><img src="./images/5673a854N10856704.jpg"></a>
+							<a href="#"><img src="./images/56a0376aN7de1bdcf.jpg"></a>
+						</div>
+					</div>
+				</div>
+				<div class="fore-15">
+					<div class="item fore15">
+						<h3>
+							<a href="">理财、</a>
+							<a href="">众筹、</a>
+							<a href="">白条、</a>
+							<a href="">保险</a>
+						</h3>
+						<i>></i>
+					</div>
+					<div class="font-item1">
+						<div class="font-left">
+							<div class="one"><a href="">品牌日<i>></i></a></div>
+							<div class="two"><a href="">家电城<i>></i></a></div>
+							<div class="three"><a href="">智能生活馆<i>></i></a></div>
+							<div class="four"><a href="">京东净化馆<i>></i></a></div>
+							<div class="five"><a href="">京东帮服务店<i>></i></a></div>
+							<div class="sex"><a href="">值得买精选<i>></i></a></div>
+						</div>
+						<div class="font-lefty">
+							<dl class="fore1">
+								<dt><a href="">大家电<i>></i></a></dt>
+							
+								<dd>
+									<a href="">平板电视</a>
+									<a href="">空调</a>
+									<a href="">冰箱</a>
+									<a href="">洗衣机</a>
+									<a href="">家庭影院</a>
+									<a href="">DVD</a>
+									<a href="">迷你音响</a>
+									<a href="">烟机/灶具</a>
+									<a href="">热水器</a>
+									<a href="">消毒具/洗碗柜</a>
+									<a href="">冰柜/冰吧</a>
+									<a href="">酒柜</a>
+									<a href="">家电配件</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">生活电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="">取暖电器</a>
+									<a href="">净化器</a>
+									<a href="">扫地机器人</a>
+									<a href="">吸尘器</a>
+									<a href="">加湿器</a>
+									<a href="">挂烫机/熨斗</a>
+									<a href="">电风扇</a>
+									<a href="">冷风扇</a>
+									<a href="">插座</a>
+									<a href="">电话机</a>
+									<a href="">净水器</a>
+									<a href="">饮水机</a>
+									<a href="">除湿机</a><a href="">干衣机清洁机</a><a href="">收录/音机</a><a href="">生活电器配件</a><a href="">其它生活电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">厨房电器<i>></i></a></dt>
+							
+								<dd>
+									<a href="">电压力锅</a>
+									<a href="">豆浆机</a>
+									<a href="">面包机</a>
+									<a href="">咖啡机</a>
+									<a href="">微波炉料理/榨汁机</a>
+									<a href="">电烤箱</a>
+									<a href="">电磁炉</a>
+									<a href="">电饼铛/烧烤盘</a>
+									<a href="">煮蛋器酸奶机</a>
+									<a href="">电水壶/热水瓶</a>
+									<a href="">电炖锅</a>
+									<a href="">多用途锅</a>
+									<a href="">果蔬解毒机</a><a href="">养生壶/煎药壶</a><a href="">其它厨房电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">个护健康<i>></i></a></dt>
+							
+								<dd>
+									<a href="">剃须刀剃/脱毛器</a>
+									<a href="">口腔护理</a>
+									<a href="">电吹风</a>
+									<a href="">美容器</a>
+									<a href="">理发器卷/直发器</a>
+									<a href="">按摩椅</a>
+									<a href="">按摩器</a>
+									<a href="">足浴盆</a>
+									<a href="">血压计</a>
+									<a href="">健康秤/厨房秤</a>
+									<a href="">血糖仪</a>
+									<a href="">体温计</a>
+									<a href="">计步器/脂肪检测仪</a><a href="">脂肪检测仪其它健康电器</a>
+								</dd>
+							</dl>
+							<dl class="fore1">
+								<dt><a href="">五金家装<i>></i></a></dt>
+							
+								<dd>
+									<a href="">平板电视</a>
+									<a href="">空调</a>
+									<a href="">冰箱</a>
+									<a href="">洗衣机</a>
+									<a href="">家庭影院</a>
+									<a href="">DVD</a>
+									<a href="">迷你音响</a>
+									<a href="">烟机/灶具</a>
+									<a href="">热水器</a>
+									<a href="">消毒具/洗碗柜</a>
+									<a href="">冰柜/冰吧</a>
+									<a href="">酒柜</a>
+									<a href="">家电配件</a>
+								</dd>
+							</dl>
+						</div>
+						<div class="font-right">
+							<div>
+								<a href="#"><img src="./images/562f4971Na5379aba.jpg"></a>
+								<a href="#"><img src="./images/54d9eef9N5bb8d27f.jpg"></a>
+								<a href="#"><img src="./images/54d9ef02N99d26435.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+								<a href="#"><img src="./images/54d9ef10Nd206a236.jpg"></a>
+							</div>
+						</div>
+						<div class="font-righty">
+							<a href="#"><img src="./images/5673a854N10856704.jpg"></a>
+							<a href="#"><img src="./images/56a0376aN7de1bdcf.jpg"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!------------------------------------轮播图------------------------------------>
+			<div id="lunbo">
+				<ul id="one">
+					<li><a href=""><img src="./images/5690b6dcNd5aaa0f0.jpg"></a></li>
+					<li><a href=""><img src="./images/56960e10N27e2d29f.jpg"></a></li>
+					<li><a href=""><img src="./images/5698a5aaN08e09475.jpg"></a></li>
+					<li><a href=""><img src="./images/56a05078N6add136b.jpg"></a></li>
+					<li><a href=""><img src="./images/56a09e6aN373313d9.jpg"></a></li>
+				</ul>
+				<ul id="two">
+					<li class="on">1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+				</ul>
+				<!------------------------------------轮播图左右箭头------------------------>
+				<div class="slider-page">
+					<a href="javascript:void(0)" id="left"><</a>
+					<a href="javascript:void(0)" id="right">></a>
+				</div>
+			</div>
+			
+			<!------------------------------------轮播图右侧一栏------------------------>
+			<div class="m">
+				<div class="mt">
+					<h3>公告</h3>
+					<div class="extra"><a href="">更多 ></a></div>
+				</div>
+				<div class="mc">
+					<ul>
+						<li><a href=""><span>[特惠]</span>小年备好礼 年货美食满99减50</a></li>
+					</ul>
+				</div>
+				<div class="mc">
+					<ul>
+						<li><a href=""><span>[公告]</span>华北区因雨雪天气配送延迟</a></li>
+					</ul>
+				</div>
+				<div class="mc">
+					<ul>
+						<li><a href=""><span>[特惠]</span>京东全球年货节礼盒买一赠一</a></li>
+					</ul>
+				</div>
+				<div class="mc">
+					<ul>
+						<li><a href=""><span>[公告]</span>品牌+服务 升级茗茶消费体验</a></li>
+					</ul>
+				</div>
+				
+			</div>
+			<div class="m m-c">
+				<div class="mt">
+					<h3>促销</h3>
+					<div class="extra"><a href="">更多 ></a></div>
+				</div>
+				<div class="mc">
+					<ul>
+						<li><a href=""><span>[特惠]</span>小年备好礼 年货美食满99减50</a></li>
+					</ul>
+				</div>
+				<div class="mc">
+					<ul>
+						<li><a href=""><span>[公告]</span>华北区因雨雪天气配送延迟</a></li>
+					</ul>
+				</div>
+				<div class="mc">
+					<ul>
+						<li><a href=""><span>[特惠]</span>京东全球年货节礼盒买一赠一</a></li>
+					</ul>
+				</div>
+				<div class="mc">
+					<ul>
+						<li><a href=""><span>[公告]</span>品牌+服务 升级茗茶消费体验</a></li>
+					</ul>
+				</div>
+				
+			</div>
+			<div class="ms">
+				<div class="mm">
+					<h3>订购</h3>
+					
+				</div>
+				<div class="mmm">
+					<ul>
+						
+						<li>
+							<a href="">
+								<i class="ci-left" style="background:url(./images/568dfdbdN4f7d7ca3.png)no-repeat 0 -25px;"></i>
+								<span class="ci-bottom">机票</span>
+							</a>
+						</li>
+						
+						
+						
+						<li style="border-right:0;">
+							<a href="">
+								<i class="ci-left" style="background:url(./images/568dfdbdN4f7d7ca3.png)no-repeat -25px -150px;"></i>
+								<span class="ci-bottom">酒店</span>
+							</a>
+						</li>
+						
+						
+						
+					</ul>
+					
+				</div>
+			</div>
+		
+		<!--*****************轮播下方*****************-->
+		<div id="footer-2014" >
+		<div class="links">
+			<a rel="nofollow" target="_blank" href="#">关于我们</a>|<a  href="#">联系我们</a>|<a rel="nofollow" target="_blank" href="#">商家入驻</a>|<a rel="nofollow" target="_blank" href="#">营销中心</a>|<a target="_blank" href="#">友情链接</a>|<a target="_blank" href="#">销售联盟</a></div>
+		<!--<div class="copyright">
+			<a target="_blank" href="#"><img src="images/56a0a994Nf1b662dc.png"> 京公网安备 11000002000088号</a>&nbsp;&nbsp;|&nbsp;&nbsp;京ICP证070359号&nbsp;&nbsp;|&nbsp;&nbsp;<a target="_blank" href="#">互联网药品信息服务资格证编号(京)-经营性-2014-0008</a>&nbsp;&nbsp;|&nbsp;&nbsp;新出发京零&nbsp;字第大120007号<br><a rel="nofollow" href="#" target="_blank">音像制品经营许可证苏宿批005号</a>&nbsp;&nbsp;|&nbsp;&nbsp;出版物经营许可证编号新出发(苏)批字第N-012号&nbsp;&nbsp;|&nbsp;&nbsp;互联网出版许可证编号新出网证(京)字150号<br><a href="#" target="_blank">网络文化经营许可证京网文[2014]2148-348号</a>&nbsp;&nbsp;违法和不良信息举报电话：4006561155&nbsp;&nbsp;Copyright&nbsp;©&nbsp;2004-2016&nbsp;&nbsp;京东JD.com&nbsp;版权所有<br>京东旗下网站：<a target="_blank" href="http://www.360top.com/">360TOP</a>&nbsp;&nbsp;<a href="#" target="_blank">拍拍网</a>&nbsp;&nbsp;<a href="#" target="_blank">网银在线</a></div>-->
+		
+		<!--<div class="authentication">
+			<a rel="nofollow" target="_blank" href="#">
+				<img width="103" height="32" alt="经营性网站备案中心" src="images/54b8871eNa9a7067e.png" class="err-product">
+			</a>
+			
+			<a rel="nofollow" target="_blank" id="urlknet" tabindex="-1" href="#">
+				<img border="true" width="103" height="32" onClick="CNNIC_change('urlknet')" oncontextmenu="return false;" name="CNNIC_seal" alt="可信网站" src="images/54b8872dNe37a9860.png" class="err-product">
+			</a>
+			<a rel="nofollow" target="_blank" href="#">
+				<img width="103" height="32" alt="网络警察" src="images/56a89b8fNfbaade9a.jpg" class="err-product">
+			</a>
+			<a rel="nofollow" target="_blank" href="#">
+				<img width="103" height="32" src="images/54b8875fNad1e0c4c.png" class="err-product">
+			</a>
+			<a target="_blank" href="#"><img width="103" height="32" src="images/5698dc03N23f2e3b8.jpg"></a>
+			<a target="_blank" href="#"><img width="103" height="32" src="images/5698dc16Nb2ab99df.jpg"></a>
+		</div>-->
+	  </div>
+	</div>
+	</body>
+	<script src="js/jquery-1.11.3.min.js" ></script>
+	<script src="js/index.js" ></script>
+</html>
