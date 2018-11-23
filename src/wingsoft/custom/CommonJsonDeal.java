@@ -13,7 +13,7 @@ import java.util.List;
 public class CommonJsonDeal {
 
 
-    private CommonJsonDeal() {
+    public CommonJsonDeal() {
     }
 
 //    public static CommonJsonDeal getInstance() {

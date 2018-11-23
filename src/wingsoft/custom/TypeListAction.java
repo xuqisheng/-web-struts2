@@ -1,6 +1,7 @@
 package wingsoft.custom;
 
 import com.opensymphony.xwork2.ActionSupport;
+import javassist.compiler.ast.StringL;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.struts2.ServletActionContext;
@@ -9,6 +10,7 @@ import org.apache.struts2.json.JSONUtil;
 import wingsoft.tool.common.CommonOperation;
 import wingsoft.tool.db.ConnectionPool;
 import wingsoft.tool.db.ConnectionPoolManager;
+import wingsoft.custom.CommonJsonDeal;
 
 import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
@@ -80,8 +82,9 @@ public class TypeListAction extends ActionSupport {
             JSONObject jsonObject = JSONObject.fromObject(obj);
             List<String> StringList =null;
             StringList=(List<String>) jsonObject.get("selectList");
-
+            System.out.println(StringList);
             String usStoreId = CommonOperation.nTrim(jsonObject.getString("usStoreId"));
+            System.out.println(usStoreId);
             String sql = "SELECT pc.pcname, product.name, product.type, product.specifications, product.base_unit,  sn.out_amt,  product.id , us.storeid " +
                     " FROM stock_num sn, pro_category pc, product product ,userstore us" +
                     " WHERE (product.id = sn.product_id(+)) " +

@@ -14,7 +14,8 @@
         var userName = window.parent.userName;
         var time = myDate.toLocaleString(); //获取日期与时间
         var MultiRows = window.parent.MultiRows;
-
+        var unitSend = window.parent.unitName;
+        var supplier_name = window.parent.supplier_name;
         var flag =  window.parent.flag;// 汇总是1
     </script>
     <style>
@@ -66,7 +67,7 @@
             <thead>
                 <tr>
                     <td align="center" colspan="12" style="font-size: 26px;padding: auto" >
-                        <h3>出库明细查询表{{collect}}</h3>
+                        <h3 id="tableName">出库明细查询表{{collect}}</h3>
                     </td>
                 </tr>
 
@@ -142,9 +143,8 @@
             </tfoot>
         </table>
 
-        <center>
-            <input @click="printPage()" id="buttons" type="button" value="打印" style="width: 60px;height: 30px;text-align: center;-webkit-text-size-adjust: auto"/>
-        </center>
+        <button type="button" v-on:click="printPage()" >打印界面</button>
+        <button id="excelButton" type="button" >导出Excel</button>
     </div>
 
 </body>

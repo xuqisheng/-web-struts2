@@ -1,16 +1,17 @@
 // var conte = ;
+
 var cwd = new Vue({
     el: '#tableContent',
     data: {
         jsonArray:[],
-        supplier_name:'',
+        supplier_name:supplier_name,
         startTime:startTime,
         endTime:endTime,
         time: time,
         userName:userName,
         MultiRows:MultiRows,
         collect:flag==0?'(未汇总)':'(汇总)',
-        unitSend:'',
+        unitSend:unitSend,
         typeArray:''
     },
     methods:{
@@ -58,7 +59,7 @@ var cwd = new Vue({
             });
             return price;
         }, printPage:function(){
-            document.getElementById("buttons").remove();
+            var nal = $("button").remove();
             document.body.innerHTML=document.getElementById('tableContent').innerHTML;
             window.print();
         }
@@ -86,4 +87,16 @@ var cwd = new Vue({
             return Number(value).toFixed(2);
         }
     }
+});
+
+$(function() {
+    $("#excelButton").click(function () {
+        $("#tableContent").table2excel({
+            name: $("#tableName").text().replace(/\s+/g,"")+".xls",
+            exclude: ".noExl",
+            fileext: ".xls",
+            filename: $("#tableName").text() + new Date().toISOString().replace(/[\-\:\.]/g, "") + ".xls",
+        });
+        alert("导出成功！");
+    });
 });

@@ -65,7 +65,7 @@
             <thead>
                 <tr>
                     <td align="center" colspan="12" style="font-size: 26px;padding: auto" >
-                        <h3>入库明细查询表{{collect}}</h3>
+                        <h3 id="tableName">入库明细查询表{{collect}}</h3>
                     </td>
                 </tr>
 
@@ -141,9 +141,8 @@
                 </tr>
             </tfoot>
         </table>
-        <center>
-            <input @click="printPage()" id="buttons" type="button" value="打印" style="width: 60px;height: 30px;text-align: center;-webkit-text-size-adjust: auto"/>
-        </center>
+        <button type="button" v-on:click="printPage()" >打印界面</button>
+        <button id="excelButton" type="button" >导出Excel</button>
     </div>
 
 </body>

@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<script src="jquery/custom/jquery.min.js"></script>
-	<script src="jquery/custom/jquery.table2excel.min.js"></script>
-<script src="jquery/angular.min.js">
+	<script src="../jquery/custom/jquery.min.js"></script>
+	<script src="../jquery/custom/jquery.table2excel.min.js"></script>
+<script src="../jquery/angular.min.js">
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>餐厅领科明细表</title>

@@ -71,12 +71,12 @@ public class DetailsAction extends ActionSupport{
 
 		String sql1 = "select td.id as pici ,t.id,t.class_id,t.straight_toclass as isClass, " +
 				"(select tc.storename from store tc where tc.storeid= t.class_id) storename, " + 
-				"(select c.pro_cate  as cateId from product c where id =td.product_id) as pro_cate, " + 
+				"(select c.pro_cate  as cateId from product c where id =td.product_id and c.pro_cate is not null) as pro_cate, " +
 				"(select c.category  as cateId from product c where id =td.product_id) as cate, "+
 				"td.out_num,td.out_price, " + 
 				"sum(td.out_num*td.out_price) as acount  " + //c.pro_cate
 				"from store_record t,stock_dtl td " + 
-				"where t.store_id='1' " + 
+				"where t.store_id in (select  s.storeid from store  s where s.levels = 1)  " +
 				"and t.type='1' " + 
 				"and t.status not in ('3','4','5') " + 
 				"and t.id = td.pici(+) " +
@@ -100,8 +100,13 @@ public class DetailsAction extends ActionSupport{
 				jsonObj.put("acount", CommonOperation.nTrim(rs1.getString("acount")));
 				jsonObj.put("cate", CommonOperation.nTrim(rs1.getString("cate")));
 
-				if(CommonOperation.nTrim(rs1.getString("pro_cate")).split(",").length!=0){
+				if(!CommonOperation.nTrim(rs1.getString("pro_cate")).equals("")&&
+						CommonOperation.nTrim(rs1.getString("pro_cate")).contains(",")){
 					jsonObj.put("pro_cate", CommonOperation.nTrim(CommonOperation.nTrim(rs1.getString("pro_cate")).split(",")[1]));
+				}else if (CommonOperation.nTrim(rs1.getString("pro_cate")).equals("")&&!jsonObj.getString("cate").equals("")){
+					String cate = jsonObj.getString("cate");
+					if(cate.length()==4)
+						jsonObj.put("pro_cate",cate.substring(2,4));
 				}else{
 					jsonObj.put("pro_cate","00");
 				}

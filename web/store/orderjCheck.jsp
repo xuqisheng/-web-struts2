@@ -149,7 +149,6 @@
             return html;
         }
         $(function() {
-            // var MultiRows = "P20181022D3;P20180918D1";
             $.ajax({
                 type : "POST",
                 url : 'OrderPrintAction_printDoOrderF.action',

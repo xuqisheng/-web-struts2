@@ -12,6 +12,7 @@ import java.util.Enumeration;
  * 中心仓库日常查询->入库明细查询
  */
 public class CenterWaresDetails extends BaseAction{
+
     @Override
     public JSONObject getJsonObject() {
         return super.getJsonObject();
@@ -20,6 +21,16 @@ public class CenterWaresDetails extends BaseAction{
     @Override
     public void setJsonObject(JSONObject jsonObject) {
         super.setJsonObject(jsonObject);
+    }
+
+    @Override
+    public JSONArray getJsonArray() {
+        return super.getJsonArray();
+    }
+
+    @Override
+    public void setJsonArray(JSONArray jsonArray) {
+        super.setJsonArray(jsonArray);
     }
 
     //不汇总查询
@@ -48,8 +59,8 @@ public class CenterWaresDetails extends BaseAction{
     public String collectSelect(){
         HttpServletRequest request = ServletActionContext.getRequest();
         // 获取session中所有的键值
-        HttpSession session   =   request.getSession();
-        String sql =(String)session.getAttribute("288_sql");
+        HttpSession session =   request.getSession();
+        String sql =(String) session.getAttribute("288_sql");
         JSONArray frankArray = super.reArray(sql);
         JSONArray array  = CommonJsonDeal.updateJsonType(frankArray,"pcname");
         setJsonArray(array);

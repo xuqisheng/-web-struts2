@@ -23,6 +23,7 @@
     var req_date = window.parent.req_date;
     var url = document.URL;
     var uarr = url.split('/');
+    var userName = window.parent.$.UC.bindData("#0-userinfo.username#");
 
     function toExcelData() {
         $("#printContent").table2excel({name: "Worksheet Name", fileext: ".xls", filename: "入库验收单打印" + ".xls"});
@@ -58,9 +59,9 @@
         html += ('<tr align="left" class="text" style="line-height:28px;">');
         html += ('<td  style="border:0px;" colspan="12" align="left" class="title">&nbsp;</td>');
         html += ('</tr>');
-        html += ('<tr align="left" class="text" style="line-height:28px;">');
-        html += ('<td  style="border-left:0px;border-right:0px;border-top: 0px;" ' + 'colspan="12" align="left" class="title">&nbsp;打印时间：' + time + '</td>');
-        html += ('</tr>');
+        // html += ('<tr align="left" class="text" style="line-height:28px;">');
+        // html += ('<td  style="border-left:0px;border-right:0px;border-top: 0px;" ' + 'colspan="12" align="left" class="title">&nbsp;打印时间：' + time + '</td>');
+        // html += ('</tr>');
         html += ('<tr align="left" class="text" style="line-height:28px;">');
         html += ('<td style="border:0px;" colspan="12" align="right" class="title">总金额：' + Number(v_amount).toFixed(2) + '</td>');
         html += ('</tr>');
@@ -143,9 +144,8 @@
         html += ('<td colspan="12" style="border: 0px;"  align="left" class="title">&nbsp;</td>');
         html += ('</tr>');
         html += ('<tr align="left" style="line-height:28px;">');
-        html += ('<td style="border: 0px;" colspan="2" align="left" >经办人（签名）：</td>');
-        html += ('<td style="border: 0px;" colspan="2" align="left" >证明人（签名）：</td>');
-        html += ('<td style="border: 0px;" colspan="3" align="left" >审批人（签名）：</td>');
+        html += ('<td style="border: 0px;" colspan="4" align="left" >制表人：'+userName+'</td>');
+        html += ('<td style="border: 0px;text-align: left" colspan="8" align="left" >打印时间：'+time+'</td>');
         html += ('</tr>');
         html += '</tfoot>';
         html += ('</div>');
@@ -154,8 +154,6 @@
     }
 
     $(function () {
-//传入id
-//        MultiRows = "I20181011D2;I20181011D3"
         $.ajax({
             type: "POST",
             url: 'CenterInCheckAction_centerIn.action',
