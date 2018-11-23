@@ -3,6 +3,7 @@ package wingsoft.custom;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.struts2.ServletActionContext;
+import wingsoft.tool.common.CommonOperation;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -67,6 +68,7 @@ public class CenterWaresDetails extends BaseAction{
         return "collect";
     }
 
+    //出库
     public String outCollect(){
         System.out.println("出库汇总查询");
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -74,6 +76,7 @@ public class CenterWaresDetails extends BaseAction{
         HttpSession session   =   request.getSession();
         String sql =(String)session.getAttribute("365_sql");
         String sqlType = (String)session.getAttribute("329_sql");
+
         JSONArray typeArray = super.reArray(sqlType);
         JSONArray frankArray = super.reArray(sql);
         JSONArray array  = CommonJsonDeal.updateJsonType(frankArray,"name");
@@ -91,21 +94,20 @@ public class CenterWaresDetails extends BaseAction{
         System.out.println(para_str);
         String sql ="  SELECT sd.createdate, supplier.name, sd.product_name,  sr.*, " +
                 " sd.specifications, sd.package_unit, sd.out_num, sd.out_price, sd.pici, sd.id,sd.product_id,sd.class_id, " +
-                " (select name from customer where id  =sr.customer_id) as custom_name " +
+                " (select name from customer where id  =sr.customer_id) as name " +
                 " FROM stock_dtl sd, supplier supplier ,store_record sr " +
                 " WHERE  (sd.supplier_id = supplier.id) " +
                 " and sd.id in "+para_str +
                 " and (sd.pici = sr.id )" +
                 " ORDER BY sd.createdate DESC, sd.pici DESC, sd.id ASC ";
         System.out.println(sql);
-
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session   =   request.getSession();
         String sqlType = (String)session.getAttribute("329_sql");
         JSONArray frankArray = super.reArray(sql);
         JSONArray typeArray = super.reArray(sqlType);
 
-        JSONArray array  = CommonJsonDeal.updateJsonType(frankArray,"custom_name");
+        JSONArray array  = CommonJsonDeal.updateJsonType(frankArray,"name");
         JSONObject result = new JSONObject();
         result.put("jsonArray",array);
         result.put("typeArray",typeArray);

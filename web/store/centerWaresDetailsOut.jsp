@@ -17,6 +17,7 @@
         var unitSend = window.parent.unitName;
         var supplier_name = window.parent.supplier_name;
         var flag =  window.parent.flag;// 汇总是1
+        var storeId = window.parent.storeId;
     </script>
     <style>
         #tableContent{
@@ -77,13 +78,13 @@
             <tr>
                 <td colspan="2" style="border: 0px;text-align: left">&nbsp;&nbsp;供应商: {{supplier_name}}</td>
                 <td colspan="4" style="border: 0px;text-align: left">日期:  {{startTime}}  &nbsp;至 {{endTime}} </td>
-                <td colspan="2" style="border: 0px;text-align: left">送货单位: {{unitSend}}</td>
+                <td colspan="2" style="border: 0px;text-align: left"></td>
             </tr>
 
             <template  v-for="type in jsonArray">
 
                 <tr >
-                    <td  style="text-align: left" colspan="8"><b>&nbsp;&nbsp;客户名称:&nbsp;&nbsp;{{type.custom_name}}</b></td>
+                    <td  style="text-align: left" colspan="8"><b>&nbsp;&nbsp;客户名称:&nbsp;&nbsp;{{type.name}}</b></td>
                 </tr>
                 <tr>
                     <%--<td>编号</td>--%>

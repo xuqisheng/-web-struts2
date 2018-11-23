@@ -11,8 +11,9 @@ var cwd = new Vue({
         userName:userName,
         MultiRows:MultiRows,
         collect:flag==0?'(未汇总)':'(汇总)',
-        unitSend:unitSend,
-        typeArray:''
+        unitSend:'',
+        typeArray:'',
+        storeId:storeId
     },
     methods:{
         parseData:function(data){
@@ -33,15 +34,6 @@ var cwd = new Vue({
                 count +=it.out_num*1;
             });
             return count;
-        }, countPrice:function(list){
-            var price = 0;
-            list.forEach(it=>{
-                price += it.in_num*1*it.in_price*1;
-                if(this.supplier_name==""){
-                    this.supplier_name = it.name;
-                }
-            });
-            return price;
         },getAllNumber:function(){
             var number = 0;
             this.jsonArray.forEach(its=>{
@@ -73,7 +65,7 @@ var cwd = new Vue({
             toUrl = "CenterWaresDetails_outCollect.action"
         }
         // MultiRows ="O20181113D6T2;O20181113D5T1;O20181113D5T2;O20181113D5T3;O20181113D2T1;O20181113D11T1;O20181113D11T2;O20180911D1T1";
-            this.$http.post(toUrl, {MultiRows:MultiRows}).
+            this.$http.post(toUrl, {MultiRows:MultiRows,storeId:this.storeId}).
         then(response =>{
             if (response.data.jsonObject!=null){
                 this.parseData(response.data);
